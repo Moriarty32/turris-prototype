@@ -1,0 +1,252 @@
+[
+  {
+    "id": "tverskaya",
+    "source": "https://turris.online/upload/iblock/c7d/owgh9j3ypm2au3eh6608fc73kym8r36f.jpg",
+    "file": "tverskaya.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-tverskaya/",
+    "kind": "hotel",
+    "width": 1649,
+    "height": 514,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "tverskaya_room_6",
+    "source": "https://turris.online/upload/resize_cache/iblock/020/1000_1000_2/ppeozpltttkryte3v0x04g3hopums1t8.jpg",
+    "file": "tverskaya_room_6.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-tverskaya/rooms/uluchshennyy-nomer-s-dvuspalnoy-krovatyu/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "tverskaya_room_4",
+    "source": "https://turris.online/upload/resize_cache/iblock/020/1000_1000_2/ppeozpltttkryte3v0x04g3hopums1t8.jpg",
+    "file": "tverskaya_room_4.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-tverskaya/rooms/standartnyy-nomer-s-dvuspalnoy-krovatyu/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "tverskaya_room_1",
+    "source": "https://turris.online/upload/resize_cache/iblock/61b/1000_1000_2/cgyau1ll0rr1q5k3f5kfq05rlef0mcwp.jpg",
+    "file": "tverskaya_room_1.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-tverskaya/rooms/semeynyy-lyuks/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "tverskaya_room_5",
+    "source": "https://turris.online/upload/resize_cache/iblock/9c3/1000_1000_2/96u5f6h0ou0d4195p2d9gqk5r7j3r4es.jpg",
+    "file": "tverskaya_room_5.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-tverskaya/rooms/uluchshennyy-nomer-s-dvumya-krovatyami/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "tverskaya_room_3",
+    "source": "https://turris.online/upload/resize_cache/iblock/725/1000_1000_2/h5bja3weai2ay4k1dqbhnj0wodfqo1hs.jpg",
+    "file": "tverskaya_room_3.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-tverskaya/rooms/standartnyy-nomer-s-dvumya-krovatyami/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "tverskaya_room_2",
+    "source": "https://turris.online/upload/resize_cache/iblock/a71/1000_1000_2/rszqo4lgmlbmpvc7ie3b192teroawn76.jpg",
+    "file": "tverskaya_room_2.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-tverskaya/rooms/simpl-s-dvuspalnoy-krovatyu/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "lubyansky",
+    "source": "https://turris.online/upload/iblock/0e1/ufo4px9i0s9x92gb3vg2t172xrbzwgt0.png",
+    "file": "lubyansky.png",
+    "page": "https://turris.online/hotels/turris-hotel-lubyansky-/",
+    "kind": "hotel",
+    "width": 1324,
+    "height": 468,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "lubyansky_room_7",
+    "source": "https://turris.online/upload/resize_cache/iblock/f77/1000_1000_2/y7wyeekb91ue18nwtcv8r08rcla8moko.jpg",
+    "file": "lubyansky_room_7.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-lubyansky-/rooms/odnomestnyy-nomer-s-odnoy-krovatyu/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "lubyansky_room_5",
+    "source": "https://turris.online/upload/resize_cache/iblock/5c3/1000_1000_2/0xfbvfyq82n8ec1vw2dy2xi4foxh421d.jpg",
+    "file": "lubyansky_room_5.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-lubyansky-/rooms/dvukhmestnyy-nomer-s-odnoy-dvukhspalnoy-krovatyu-king-size/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "lubyansky_room_6",
+    "source": "https://turris.online/upload/resize_cache/iblock/19e/1000_1000_2/4abgpxp2jmny7tty04vfio7b9c29l294.jpg",
+    "file": "lubyansky_room_6.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-lubyansky-/rooms/dvukhyarusnyy-nomer-s-odnoy-dvuspalnoy-krovatyu-i-odnim-raskladyvayushchimsya-divanom/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "lubyansky_room_2",
+    "source": "https://turris.online/upload/resize_cache/iblock/343/1000_1000_2/a9pcobph5fj5l53qwfs6n4gjzqf07xbe.jpg",
+    "file": "lubyansky_room_2.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-lubyansky-/rooms/delyuks-s-dvumya-odnospalnymi-krovatyami/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "lubyansky_room_1",
+    "source": "https://turris.online/upload/resize_cache/iblock/209/1000_1000_2/u58zxzcqcf1zfzn0rsmadwfk3so17y8a.jpg",
+    "file": "lubyansky_room_1.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-lubyansky-/rooms/delyuks-s-2-odnospalnymi-krovatyami-i-1-raskladyvayushchimsya-divanom/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "lubyansky_room_3",
+    "source": "https://turris.online/upload/resize_cache/iblock/d6c/1000_1000_2/jfvljiq9lqldmjkjttii0lmgr9wj8ifh.jpg",
+    "file": "lubyansky_room_3.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-lubyansky-/rooms/delyuks-s-odnoy-dvukhspalnoy-krovatyu-i-raskladyvayushchimsya-divanom/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "lubyansky_room_4",
+    "source": "https://turris.online/upload/resize_cache/iblock/36e/1000_1000_2/40tqjcxknw6nwg7q8p02c472p69f2vzm.jpg",
+    "file": "lubyansky_room_4.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-lubyansky-/rooms/delyuks-s-odnoy-dvukhspalnoy-krovatyu-king-size/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "petrovsky",
+    "source": "https://turris.online/upload/iblock/dc0/98vmg819ce2ii89i3z07hdx6umnf61gk.png",
+    "file": "petrovsky.png",
+    "page": "https://turris.online/hotels/turris-hotel-petrovsky/",
+    "kind": "hotel",
+    "width": 1650,
+    "height": 512,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "petrovsky_room_3",
+    "source": "https://turris.online/upload/resize_cache/iblock/020/1000_1000_2/ppeozpltttkryte3v0x04g3hopums1t8.jpg",
+    "file": "petrovsky_room_3.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-petrovsky/rooms/standartnyy-nomer-s-dvuspalnoy-krovatyu/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "petrovsky_room_1",
+    "source": "https://turris.online/upload/resize_cache/iblock/714/1000_1000_2/68vmi7qow9eqw35ncxrtymuyt8gbkxm7.jpg",
+    "file": "petrovsky_room_1.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-petrovsky/rooms/delyuks-mansarda-s-dvuspalnoy-krovatyu/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "petrovsky_room_2",
+    "source": "https://turris.online/upload/resize_cache/iblock/0cf/1000_1000_2/20e0mzjups44u73n9ih2k644p1mr9muh.jpg",
+    "file": "petrovsky_room_2.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-petrovsky/rooms/simpl-mansarda-s-dvuspalnoy-krovatyu/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "petrovsky_room_4",
+    "source": "https://turris.online/upload/resize_cache/iblock/07f/1000_1000_2/az4zvjdukbklx0sijs9rgzfl7w8u0v4f.jpg",
+    "file": "petrovsky_room_4.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-petrovsky/rooms/uluchshennyy-nomer-s-dvuspalnoy-krovatyu/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "tagansky",
+    "source": "https://turris.online/upload/iblock/55b/76w6if64j51taogmnpb33d9modsdl2zk.png",
+    "file": "tagansky.png",
+    "page": "https://turris.online/hotels/turris-hotel-tagansky/",
+    "kind": "hotel",
+    "width": 1321,
+    "height": 468,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "tagansky_room_1",
+    "source": "https://turris.online/upload/resize_cache/iblock/714/1000_1000_2/68vmi7qow9eqw35ncxrtymuyt8gbkxm7.jpg",
+    "file": "tagansky_room_1.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-tagansky/rooms/delyuks-mansarda-s-dvuspalnoy-krovatyu/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "tagansky_room_4",
+    "source": "https://turris.online/upload/resize_cache/iblock/fae/1000_1000_2/0rctnki6011m957awa5em9rb8r1emhr5.jpg",
+    "file": "tagansky_room_4.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-tagansky/rooms/uluchshennyy-nomer-s-odnoy-dvuspalnoy-ili-dvumya-razdelnymi-krovatyami/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "tagansky_room_3",
+    "source": "https://turris.online/upload/resize_cache/iblock/af2/1000_1000_2/2tzv9dtxc1c38sz5jop3wnbd8mpiru3t.jpg",
+    "file": "tagansky_room_3.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-tagansky/rooms/standartnyy-nomer-s-odnoy-dvuspalnoy-ili-s-dvumya-razdelnymi-krovatyami/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  },
+  {
+    "id": "tagansky_room_2",
+    "source": "https://turris.online/upload/resize_cache/iblock/b22/1000_1000_2/xalkn3iqyx2mev8nn57jwrb214gl6men.jpg",
+    "file": "tagansky_room_2.jpg",
+    "page": "https://turris.online/hotels/turris-hotel-tagansky/rooms/delyuks-s-odnoy-dvuspalnoy-ili-s-dvumya-razdelnymi-krovatyami/",
+    "kind": "room",
+    "width": 1000,
+    "height": 1000,
+    "checked": "2026-10-28"
+  }
+]

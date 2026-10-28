@@ -1,0 +1,3 @@
+User-agent: *
+Disallow:
+# Demonstration pages carry noindex in HTML.

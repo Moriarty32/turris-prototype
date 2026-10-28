@@ -1,0 +1,64 @@
+{
+  "version": 1,
+  "layout": {
+    "content_width": 1200,
+    "desktop": 1440,
+    "mobile": 390
+  },
+  "generated_assets": [
+    {
+      "id": "hero-room",
+      "block": "Главная: первый экран справа; страницы мансардных категорий как иллюстрация",
+      "file": "hero-room-v2.png",
+      "width": 1536,
+      "height": 1024,
+      "ratio": "3:2",
+      "desktop_slot": "720×480",
+      "mobile_slot": "358×239",
+      "prompt": "Photorealistic boutique hotel attic room concept, EXACT output canvas 1536 x 1024 pixels, landscape 3:2. Clean white bedding in foreground right, warm pale gray sloped ceiling and skylight left, simple oak desk with dark chair at back, compact black wall-mounted TV, light wooden door, warm soft morning light, restrained contemporary Moscow boutique hotel atmosphere. Wide architectural composition, natural perspective, honest materials, no people, no text, no logo, no collage. This is a concept interior illustration, not a documentary depiction of an existing hotel room.",
+      "refinement": "Bright neutral midday light, pale gray walls, no golden cast. Same composition and exact1536x1024. Built-in image_gen edit; original preserved as hero-room.png."
+    },
+    {
+      "id": "family-room",
+      "block": "Семейный блок главной, семейная посадочная и иллюстрация семейной категории",
+      "file": "family-room.png",
+      "width": 1536,
+      "height": 1024,
+      "ratio": "3:2",
+      "desktop_slot": "580×387",
+      "mobile_slot": "358×239",
+      "prompt": "Photorealistic boutique hotel family suite concept, EXACT output canvas 1536 x 1024 pixels, landscape 3:2. Two visually connected modest rooms, white double bed on right and comfortable gray sofa in a small sitting space on left, warm oak furniture, white walls, blue textile accent, quiet daylight through ordinary window. Natural architectural photography, comfortable and attainable not extravagant luxury, no people, no children, no text, no logo, no collage. Illustrative design concept, not a documentary photograph of a named hotel's actual accommodation."
+    },
+    {
+      "id": "work-stay",
+      "block": "Командировки и длительное проживание: изображение рабочего пространства",
+      "file": "work-stay.png",
+      "width": 1536,
+      "height": 1024,
+      "ratio": "3:2",
+      "desktop_slot": "580×387",
+      "mobile_slot": "358×239",
+      "prompt": "Photorealistic editorial hotel workspace concept, EXACT output canvas 1536 x 1024 pixels, landscape 3:2. Compact oak writing desk beside a tall window in a tasteful modest Moscow boutique hotel room, open laptop with blank dark screen, notebook, glass of water, gray upholstered chair, subtle white bed visible behind. Soft natural morning light, neutral cream and muted blue palette, architectural magazine photography with realistic proportions. No person, no visible logo, no text, no collage. Concept illustration, not a verified feature of any real hotel."
+    },
+    {
+      "id": "moscow-guide",
+      "block": "Гид по Москве: обложка, статьи и рубрики",
+      "file": "moscow-guide.png",
+      "width": 1536,
+      "height": 1024,
+      "ratio": "3:2",
+      "desktop_slot": "1200×600 (CSS crop)",
+      "mobile_slot": "358×239",
+      "prompt": "Photorealistic editorial travel image of a peaceful central Moscow boulevard in early autumn, EXACT output canvas 1536 x 1024 pixels, landscape 3:2. Pedestrian path with mature trees, elegant pale historic facades in background, gentle morning sunlight, subtle golden leaves, no large crowd, no readable shop signs, no people close-up. Natural architectural photography, calm real-world atmosphere, sky pale blue, no text, no logo, no collage. Atmospheric illustration for a Moscow travel guide, not documentation of an exact walking route."
+    }
+  ],
+  "documentary_assets": {
+    "blocks": "Четыре карточки отелей, страницы объектов, адреса и длительное проживание",
+    "source": "Официальные страницы turris.online",
+    "desktop_slot": "580×232",
+    "mobile_slot": "358×215",
+    "rule": "Сохранить исходные фотографии реальных фасадов; кадрирование только CSS, не генерировать вымышленный фасад реального объекта."
+  },
+  "disclosure": "Генерируемые интерьеры и атмосферная иллюстрация гида помечаются как концепция. В прототипе нет выдуманных цен, наличия или отправки заявок.",
+  "mode": "built-in image_gen"
+}

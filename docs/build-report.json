@@ -1,0 +1,9 @@
+{
+  "pages": 109,
+  "templates": 22,
+  "base": "/turris-prototype",
+  "generated_assets": 4,
+  "documentary_assets": 25,
+  "mode": "demo-no-payments-no-submission",
+  "indexing": "noindex"
+}

@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+node_modules/
+.qa/
+.DS_Store
+data/blueprint.json
+data/original-assets.json
+scripts/collect_assets.py
