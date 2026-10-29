@@ -1,0 +1,75 @@
+{
+  "reference": "Семейные номера в Москве.png",
+  "pages": [
+    "offers",
+    "family",
+    "business",
+    "groups",
+    "longstay",
+    "offer_1",
+    "offer_2",
+    "offer_3",
+    "offer_4",
+    "offer_5",
+    "offer_6",
+    "offer_7",
+    "offer_8",
+    "offer_9",
+    "offer_10",
+    "loyalty",
+    "loyalty_standard",
+    "loyalty_platinum",
+    "loyalty_aeroflot"
+  ],
+  "layout": [
+    "Compact header with local anchors and booking action",
+    "Split hero: proposition and authentic room photograph",
+    "Trip form with inline family controls / group quote form",
+    "Room or programme comparison",
+    "Important conditions",
+    "Contextual assistance",
+    "Interactive property map",
+    "FAQ",
+    "Trip summary and repeated action"
+  ],
+  "media": {
+    "hero_css_px": {
+      "desktop": [
+        697,
+        352
+      ],
+      "mobile": [
+        358,
+        170
+      ]
+    },
+    "room_css_px": {
+      "desktop": [
+        590,
+        216
+      ],
+      "mobile": [
+        358,
+        170
+      ]
+    },
+    "delivery": "Existing responsive WebP sources and real hotel photos. Target DPR 2; no new raster generation required. Portrait photographs use contain. Petrovsky restored facade retains visible reconstruction label."
+  },
+  "interaction": [
+    "Required explicit child ages",
+    "Shared dates and guests across pages",
+    "Family search limits results to four relevant categories",
+    "Room action retains selected category",
+    "Map property selection filters suggested categories; reset restores all",
+    "Longstay 21-night minimum",
+    "Group quote uses existing two-step demonstration form",
+    "Catalog property filter",
+    "Fullscreen map with keyboard Escape and focus loop",
+    "Reduced motion respected"
+  ],
+  "limits": [
+    "Demonstration only, no live inventory, payments or request delivery",
+    "Official terms must be confirmed for selected tariff",
+    "Programme status and discounts are not simulated"
+  ]
+}

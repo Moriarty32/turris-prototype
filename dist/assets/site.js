@@ -7,14 +7,14 @@ const addDay=s=>{const d=new Date(s+'T12:00:00');d.setDate(d.getDate()+1);return
 const validDate=s=>/^\d{4}-\d{2}-\d{2}$/.test(s||'')&&!Number.isNaN(new Date(s+'T12:00:00').getTime());
 const fmt=s=>validDate(s)?new Date(s+'T12:00:00').toLocaleDateString('ru-RU',{day:'numeric',month:'short'}):'';
 const clamp=(v,min,max,def)=>{v=Number(v);return Number.isFinite(v)?Math.min(max,Math.max(min,Math.floor(v))):def};
-let context={hotel:'',room:'',checkin:'',checkout:'',adults:2,children:[]};
+let context={hotel:'',room:'',scenario:'',checkin:'',checkout:'',adults:2,children:[]};
 try{const saved=JSON.parse(sessionStorage.getItem('turris-context')||'null');if(saved&&typeof saved==='object')context={...context,...saved};}catch{}
 function normalize(){context.adults=clamp(context.adults,1,6,2);context.children=Array.isArray(context.children)?context.children.slice(0,4).map(n=>clamp(n,0,17,0)):[];if(!validDate(context.checkin)||context.checkin<today()||!validDate(context.checkout)||context.checkout<=context.checkin){context.checkin='';context.checkout='';}}
 normalize();
 function save(){try{sessionStorage.setItem('turris-context',JSON.stringify(context));}catch{}}
 function guestLabel(adults,children){return `${adults} ${adults===1?'взрослый':'взрослых'}`+(children.length?`, ${children.length} ${children.length===1?'ребёнок':children.length<5?'ребёнка':'детей'}`:'');}
 function setForm(form){
- const hotel=form.dataset.hotel||context.hotel||'';if($('[name=hotel]',form))$('[name=hotel]',form).value=hotel;
+ const hotel=form.dataset.hotel||context.hotel||'',select=$('[name=hotel]',form);if(select)select.value=[...select.options].some(o=>o.value===hotel)?hotel:select.options[0].value;
  $('[name=checkin]',form).value=context.checkin;$('[name=checkout]',form).value=context.checkout;
  if(document.body.dataset.template==='booking')$('[name=room]',form).value=context.room||'';
  $('[name=adults]',form).value=context.adults;$('[name=children]',form).value=JSON.stringify(context.children);
@@ -25,7 +25,8 @@ function syncForms(){$$('[data-booking]').forEach(setForm);document.dispatchEven
 const params=new URLSearchParams(location.search);
 if(document.body.dataset.page==='booking'||document.body.dataset.page.endsWith('_booking')){
  if(params.has('hotel')&&!params.has('room'))context.room='';
- for(const k of ['hotel','room','checkin','checkout'])if(params.has(k))context[k]=params.get(k);
+ if(params.has('hotel')&&!params.has('scenario'))context.scenario='';
+ for(const k of ['hotel','room','scenario','checkin','checkout'])if(params.has(k))context[k]=params.get(k);
  if(params.has('adults'))context.adults=params.get('adults');
  if(params.has('children'))try{context.children=JSON.parse(params.get('children'));}catch{context.children=[];}
  const preset=$('[data-booking]')?.dataset.hotel;
@@ -33,7 +34,9 @@ if(document.body.dataset.page==='booking'||document.body.dataset.page.endsWith('
  if(params.has('hotel')&&$('[data-booking]'))$('[data-booking]').dataset.hotel=context.hotel;
  normalize();save();
 }
+if($('[data-scenario=family]')&&!['tverskaya','lubyansky'].includes(context.hotel)){context.hotel='';context.room='';save();}
 syncForms();
+document.addEventListener('booking-guests-change',ev=>{context.adults=ev.detail.adults;context.children=[...ev.detail.children];normalize();save();syncForms();});
 let activeForm=null,returnFocus=null,guestDraft={adults:2,children:[]};
 function open(dialog,trigger){returnFocus=trigger;dialog.showModal();}
 $$('[data-close]').forEach(b=>b.addEventListener('click',()=>b.closest('dialog').close()));
@@ -53,9 +56,9 @@ $$('[data-guests]').forEach(b=>b.addEventListener('click',()=>{activeForm=b.clos
 $$('[data-count]').forEach(b=>b.addEventListener('click',()=>{const change=+b.dataset.change;if(b.dataset.count==='adults')guestDraft.adults=clamp(guestDraft.adults+change,1,6,2);else if(change>0&&guestDraft.children.length<4)guestDraft.children.push(0);else if(change<0)guestDraft.children.pop();renderGuests();}));
 $('[data-save-guests]').addEventListener('click',()=>{context.adults=guestDraft.adults;context.children=[...guestDraft.children];save();syncForms();$('#guests-dialog').close();});
 $$('[data-booking]').forEach(f=>{
- $('[name=hotel]',f).addEventListener('change',ev=>{const preset=f.dataset.hotel||'',room=$('[name=room]',f);if(ev.target.value!==preset&&room.value){room.value='';f.dataset.room='';$('.form-error',f).textContent='Выбран другой отель. Категория сброшена — выберите подходящий номер в результатах.';}context.hotel=ev.target.value;context.room=room.value;$$('[data-booking]').forEach(other=>{other.dataset.hotel=context.hotel;if(other!==f){other.dataset.room='';$('[name=room]',other).value='';}});save();syncForms();});
+ $('[name=hotel]',f).addEventListener('change',ev=>{const preset=f.dataset.hotel||'',room=$('[name=room]',f);if(ev.target.value!==preset&&room.value){room.value='';f.dataset.room='';$('.form-error',f).textContent='Выбран другой отель. Категория сброшена — выберите подходящий номер в результатах.';}context.hotel=ev.target.value;context.room=room.value;if(context.scenario==='family'&&!['','tverskaya','lubyansky'].includes(context.hotel))context.scenario='';if(context.scenario==='offer_four'&&!['','lubyansky','tagansky'].includes(context.hotel))context.scenario='';$$('[data-booking]').forEach(other=>{other.dataset.hotel=context.hotel;if(other!==f){other.dataset.room='';$('[name=room]',other).value='';}});save();syncForms();});
  f.addEventListener('submit',async ev=>{ev.preventDefault();if(!context.checkin||!context.checkout){$('.form-error',f).textContent='Выберите даты поездки.';$('[data-dates]',f).click();return;}
- $('.form-error',f).textContent='';const data=new FormData(f);context={...context,hotel:String(data.get('hotel')||''),room:String(data.get('room')||'')};save();const q=new URLSearchParams({hotel:context.hotel,room:context.room,checkin:context.checkin,checkout:context.checkout,adults:String(context.adults),children:JSON.stringify(context.children)});if(document.body.dataset.template==='booking'){history.replaceState(null,'',location.pathname+'?'+q.toString());await bookingResults();const result=$('#booking-results');result.scrollIntoView({block:'start',behavior:'instant'});result.focus({preventScroll:true});}else location.href=base+'/bronirovanie/?'+q.toString();});
+ $('.form-error',f).textContent='';const data=new FormData(f);context={...context,hotel:String(data.get('hotel')||''),room:String(data.get('room')||''),scenario:document.body.dataset.template==='booking'?context.scenario:(f.dataset.scenario||'')};save();const q=new URLSearchParams({hotel:context.hotel,room:context.room,checkin:context.checkin,checkout:context.checkout,adults:String(context.adults),children:JSON.stringify(context.children)});if(context.scenario)q.set('scenario',context.scenario);if(document.body.dataset.template==='booking'){history.replaceState(null,'',location.pathname+'?'+q.toString());await bookingResults();const result=$('#booking-results');result.scrollIntoView({block:'start',behavior:'instant'});result.focus({preventScroll:true});}else location.href=base+'/bronirovanie/?'+q.toString();});
 });
 $$('[data-demo-info]').forEach(b=>b.addEventListener('click',()=>open($('#demo-dialog'),b)));
 const menu=$('.menu-button'),header=$('.header-inner');
@@ -84,8 +87,8 @@ async function bookingResults(){const root=$('#booking-results');if(!root)return
  if(!context.checkin){root.innerHTML='';return;}
  root.hidden=false;
  root.innerHTML='<p class="small" style="padding:25px 0">Подбираем страницы категорий…</p>';
- try{const data=await getData();let list=data.pages.filter(p=>p.type==='room'&&(!context.hotel||p.hotel===context.hotel));const selected=list.find(p=>p.id===context.room);if(context.room&&!selected){context.room='';save();syncForms();}if(selected)list=[selected];
- const hotel=data.hotels[context.hotel],title=selected?'Ваш выбранный номер':hotel?'Категории отеля '+hotel.full:'Категории четырёх отелей';
+ try{const data=await getData();let list=data.pages.filter(p=>p.type==='room'&&(!context.hotel||p.hotel===context.hotel)&& (context.scenario!=='offer_four'||['lubyansky','tagansky'].includes(p.hotel))&& (context.scenario!=='family'||['tverskaya_room_1','lubyansky_room_3','lubyansky_room_1','lubyansky_room_6'].includes(p.id)));const selected=list.find(p=>p.id===context.room);if(context.room&&!selected){context.room='';save();syncForms();}if(selected)list=[selected];
+ const hotel=data.hotels[context.hotel],title=selected?'Ваш выбранный номер':context.scenario==='family'?'Категории для семейной поездки':context.scenario==='offer_four'?'Категории Лубянского и Таганского':hotel?'Категории отеля '+hotel.full:'Категории четырёх отелей';
  const selectedNote=selected?'<p class="small">Выбранная категория сохранена. Перед реальным оформлением повторно проверьте её в официальном модуле.</p>':'';
  root.innerHTML=`<section class="section"><h2>${esc(title)}</h2><div class="results-summary"><span>${esc(fmt(context.checkin))} — ${esc(fmt(context.checkout))}</span><span>${esc(guestLabel(context.adults,context.children))}</span>${context.children.length?'<span>Возраст детей: '+context.children.map(n=>esc(n)).join(', ')+'</span>':''}</div>${selectedNote}<div class="notice">Это категории для ознакомления, а не подтверждённое наличие. Итоговая цена, допустимый состав гостей и условия тарифа проверяются на официальном сайте.</div><div class="rooms-grid">${list.map(p=>{
  const h=data.hotels[p.hotel],nights=Math.round((new Date(context.checkout+'T12:00:00')-new Date(context.checkin+'T12:00:00'))/86400000);const q=new URLSearchParams({date:context.checkin,nights:String(nights),adults:String(context.adults)});const official='https://turris.online'+p.url+'?'+q.toString();

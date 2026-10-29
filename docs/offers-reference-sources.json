@@ -1,0 +1,130 @@
+{
+  "checked": "2026-10-29",
+  "sources": [
+    {
+      "id": "longstay",
+      "url": "https://turris.online/hotels/turris-hotel-petrovsky/offers/dlitelnoe-prozhivanie-ot-21-dnya/",
+      "status": 200,
+      "checked": "2026-10-29",
+      "use": "Published terms, subject to selected dates and official tariff"
+    },
+    {
+      "id": "offer_1",
+      "url": "https://turris.online/hotels/turris-hotel-lubyansky-/offers/prozhivanie-s-domashnimi-zhivotnymi/",
+      "status": 200,
+      "checked": "2026-10-29",
+      "use": "Published terms, subject to selected dates and official tariff"
+    },
+    {
+      "id": "offer_2",
+      "url": "https://turris.online/hotels/turris-hotel-lubyansky-/offers/skidka-10-/",
+      "status": 200,
+      "checked": "2026-10-29",
+      "use": "Published terms, subject to selected dates and official tariff"
+    },
+    {
+      "id": "offer_3",
+      "url": "https://turris.online/hotels/turris-hotel-lubyansky-/offers/try-plus-odin/",
+      "status": 200,
+      "checked": "2026-10-29",
+      "use": "Published terms, subject to selected dates and official tariff"
+    },
+    {
+      "id": "offer_4",
+      "url": "https://turris.online/hotels/turris-hotel-petrovsky/offers/prozhivanie-s-domashnimi-zhivotnymi/",
+      "status": 200,
+      "checked": "2026-10-29",
+      "use": "Published terms, subject to selected dates and official tariff"
+    },
+    {
+      "id": "offer_5",
+      "url": "https://turris.online/hotels/turris-hotel-petrovsky/offers/skidka-pri-oplate-online/",
+      "status": 200,
+      "checked": "2026-10-29",
+      "use": "Published terms, subject to selected dates and official tariff"
+    },
+    {
+      "id": "offer_6",
+      "url": "https://turris.online/hotels/turris-hotel-tagansky/offers/prozhivanie-s-domashnimi-zhivotnymi/",
+      "status": 200,
+      "checked": "2026-10-29",
+      "use": "Published terms, subject to selected dates and official tariff"
+    },
+    {
+      "id": "offer_7",
+      "url": "https://turris.online/hotels//offers/bonus-v-den-rozhdeniya/",
+      "status": 200,
+      "checked": "2026-10-29",
+      "use": "Published terms, subject to selected dates and official tariff"
+    },
+    {
+      "id": "offer_8",
+      "url": "https://turris.online/hotels//offers/obratnyy-otschet-25-na-osennie-kanikuly/",
+      "status": 404,
+      "checked": "2026-10-29",
+      "use": "Unavailable; no active discount claimed"
+    },
+    {
+      "id": "offer_9",
+      "url": "https://turris.online/hotels//offers/rannee_bronirovanie/",
+      "status": 200,
+      "checked": "2026-10-29",
+      "use": "Published terms, subject to selected dates and official tariff"
+    },
+    {
+      "id": "offer_10",
+      "url": "https://turris.online/hotels/turris-hotel-tverskaya/offers/prozhivanie-s-domashnimi-zhivotnymi/",
+      "status": 200,
+      "checked": "2026-10-29",
+      "use": "Published terms, subject to selected dates and official tariff"
+    },
+    {
+      "id": "loyalty",
+      "url": "https://turris.online/programma-loyalnosti/",
+      "status": 200,
+      "checked": "2026-10-29",
+      "use": "Published terms, subject to selected dates and official tariff"
+    },
+    {
+      "id": "loyalty_standard",
+      "url": "https://turris.online/programma-loyalnosti/turris-bonus-standart/",
+      "status": 200,
+      "checked": "2026-10-29",
+      "use": "Published terms, subject to selected dates and official tariff"
+    },
+    {
+      "id": "loyalty_platinum",
+      "url": "https://turris.online/programma-loyalnosti/turris-bonus-platinum/",
+      "status": 200,
+      "checked": "2026-10-29",
+      "use": "Published terms, subject to selected dates and official tariff"
+    },
+    {
+      "id": "loyalty_aeroflot",
+      "url": "https://turris.online/programma-loyalnosti/aeroflot-bonus/",
+      "status": 200,
+      "checked": "2026-10-29",
+      "use": "Published terms, subject to selected dates and official tariff"
+    },
+    {
+      "id": "family_tverskaya",
+      "url": "https://turris.online/hotels/turris-hotel-tverskaya/rooms/semeynyy-lyuks/",
+      "checked": "2026-10-29",
+      "facts": [
+        "Bedroom and living room with sofa",
+        "Up to four guests",
+        "Adjacent double room can be requested; availability must be confirmed"
+      ]
+    },
+    {
+      "id": "family_lubyansky",
+      "url": "https://turris.online/hotels/turris-hotel-lubyansky-/rooms/",
+      "checked": "2026-10-29",
+      "facts": [
+        "Suite Double and Twin: sofa plus double/twin beds",
+        "Duplex: two levels and internal stairs"
+      ]
+    }
+  ],
+  "policy": "No invented availability, rates or reviews. Programme and offer terms are published facts, not guarantees for a future stay. Unavailable autumn campaign is explicitly identified."
+}
