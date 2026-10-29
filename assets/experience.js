@@ -7,26 +7,6 @@
   const heroSlot = document.querySelector('[data-hero-map-slot]');
   const isHeroMap = root => !!heroSlot && mobileHero.matches && heroSlot.contains(root);
   const header = document.querySelector('.header');
-  const inner = document.querySelector('.header-inner');
-  const menu = document.querySelector('.menu-button');
-  const closeMenu = () => {
-    inner.classList.remove('menu-open');
-    menu.setAttribute('aria-expanded', 'false');
-    menu.setAttribute('aria-label', 'Открыть меню');
-    document.querySelectorAll('.nav details[open]').forEach(el => el.open = false);
-  };
-  document.querySelectorAll('.nav a').forEach(el => el.addEventListener('click', closeMenu));
-  document.addEventListener('keydown', ev => {
-    if (ev.key === 'Escape' && header.contains(document.activeElement)) {
-      closeMenu();
-      if (matchMedia('(max-width: 900px)').matches) menu.focus();
-    }
-  });
-  header.addEventListener('focusout', () => {
-    requestAnimationFrame(() => {
-      if (!header.contains(document.activeElement)) closeMenu();
-    });
-  });
   const top = document.createElement('button');
   top.className = 'back-to-top'; top.type = 'button'; top.textContent = '↑';
   top.setAttribute('aria-label', 'Вернуться к началу страницы'); top.hidden = true;
@@ -88,19 +68,6 @@
     };
     mobileHero.addEventListener('change', placeMap); placeMap();
   }
-  // Content is always visible. A reveal animates once on entry, never gates reading.
-  if ('IntersectionObserver' in window) {
-    const reveal = new IntersectionObserver(entries => entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        if (!motion.matches) entry.target.classList.add('revealed');
-        reveal.unobserve(entry.target);
-      }
-    }), {threshold: .08});
-    document.querySelectorAll('.section-heading,.feature,.benefits,.quote,.team-band,.hotel-card,.room-card,.article-card').forEach(el => {
-      if (el.getBoundingClientRect().top > innerHeight) reveal.observe(el);
-    });
-  }
-
   let leafletPromise;
   const loadLeaflet = () => {
     if (window.L) return Promise.resolve(window.L);
@@ -173,7 +140,7 @@
       try {
         L = await loadLeaflet();
         map = L.map(root.querySelector('[data-map-canvas]'), {
-          scrollWheelZoom: false, zoomControl: false, keyboard: true,
+          scrollWheelZoom: false, zoomControl: false, keyboard: true, zoomSnap: .25,
           dragging: !matchMedia('(pointer: coarse)').matches,
           tap: false, zoomAnimation: !motion.matches, fadeAnimation: !motion.matches,
           markerZoomAnimation: !motion.matches, inertia: !motion.matches
