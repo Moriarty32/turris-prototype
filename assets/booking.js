@@ -8,10 +8,19 @@
  const status = root.querySelector('[data-booking-choice-status]');
  const roomContext = root.querySelector('.bk-room-context');
  let lastTrip = '';
+ let choosingHotel = false;
+ const changeHotel = root.querySelector('[data-booking-change-hotel]');
  const trip = () => [hotel.value,form.elements.checkin.value,form.elements.checkout.value,form.elements.adults.value,form.elements.children.value,form.elements.room.value].join('|');
  function paint(initial = false) {
+  if (!initial && lastTrip.split('|')[0] !== hotel.value) choosingHotel = false;
+  changeHotel.hidden = !hotel.value;
+  changeHotel.textContent = choosingHotel ? 'Оставить выбранный отель' : 'Сменить отель';
+  changeHotel.setAttribute('aria-expanded',String(choosingHotel));
+  root.querySelector('[data-booking-hotels-title]').textContent = hotel.value && !choosingHotel ? 'Выбранный отель · '+hotel.selectedOptions[0].textContent : 'Какой адрес подходит вашей поездке?';
+  root.querySelector('[data-booking-hotels-hint]').textContent = hotel.value && !choosingHotel ? 'Категории номеров показываем только для этого отеля.' : 'Сравните расположение — или выберите отель на карте.';
   root.querySelectorAll('[data-booking-card]').forEach(card => {
    const selected = card.dataset.bookingCard === hotel.value;
+   card.hidden = Boolean(hotel.value) && !choosingHotel && !selected;
    card.classList.toggle('is-selected', selected);
    card.querySelector('.bk-select-circle').setAttribute('aria-pressed', String(selected));
    const label = card.querySelector('[data-pick-label]');
@@ -22,22 +31,31 @@
   else if (!initial) map.querySelector('[data-map-reset]').click();
   const changed = !initial && trip() !== lastTrip;
   if (changed && results.querySelector('.room-card,.empty-state')) results.hidden = true;
-  root.querySelector('[data-search-hint]').textContent = form.elements.checkin.value ? 'Параметры готовы. Нажмите «Показать номера и цены» для продолжения.' : 'Укажите даты, чтобы перейти к выбору категории номера.';
-  if (!initial) status.textContent = hotel.value ? 'Выбран отель «'+hotel.selectedOptions[0].textContent+'». Даты и гости — в форме выше.' : 'Можно сравнить категории всех четырёх отелей.';
+  root.querySelector('[data-search-hint]').textContent = !hotel.value ? 'Сначала выберите отель — покажем только его категории номеров.' : form.elements.checkin.value ? 'Параметры готовы. Нажмите «Показать номера и цены» для продолжения.' : 'Укажите даты, чтобы перейти к выбору категории номера.';
+  if (!initial) status.textContent = hotel.value ? 'Выбран отель «'+hotel.selectedOptions[0].textContent+'». Даты и гости — в форме выше.' : 'Выберите один отель, чтобы посмотреть его категории номеров.';
   const room = form.elements.room.value;
   roomContext.hidden = !room;
-  root.querySelector('[data-room-context]').textContent = room ? 'Категория из предыдущего шага сохранена.' : '';
+  root.querySelector('[data-room-context]').textContent = room ? 'Категория из предыдущего шага сохранена как ориентир. Номер нужно выбрать в TravelLine.' : '';
   lastTrip = trip();
  }
  function pick(id, returnToForm = false) {
   if (hotel.value !== id) {hotel.value = id; hotel.dispatchEvent(new Event('change', {bubbles:true}));}
+  else {choosingHotel=false;paint();}
   if (returnToForm) {
    root.querySelector('#booking-search').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});
    form.querySelector('[data-dates]').focus({preventScroll:true});
   }
  }
  root.querySelectorAll('[data-booking-pick]').forEach(button => button.addEventListener('click', ev => {ev.preventDefault();pick(button.dataset.bookingPick,true);}));
- document.addEventListener('booking-context-change', () => paint());
+ document.addEventListener('booking-context-change', event => {
+  paint();
+  const query = new URLSearchParams(location.search);
+  for (const key of ['hotel','checkin','checkout','adults','children','room']) query.set(key,form.elements[key].value);
+  if(event.detail.scenario)query.set('scenario',event.detail.scenario);else query.delete('scenario');
+  history.replaceState(null,'',location.pathname+'?'+query.toString()+location.hash);
+ });
+ changeHotel.addEventListener('click',()=>{choosingHotel=!choosingHotel;paint();if(choosingHotel)root.querySelector('[data-booking-pick]').focus({preventScroll:true});});
+ results.addEventListener('click',event=>{if(event.target.closest('[data-booking-choose-hotel]')){root.querySelector('#booking-search').scrollIntoView({block:'start',behavior:'instant'});hotel.focus({preventScroll:true});}});
  document.addEventListener('booking-results-updated', () => {results.hidden=false;lastTrip=trip();});
  map.addEventListener('hotel-map-selection', ev => {pick(ev.detail.id);syncAccordion();});
  function syncAccordion() {
@@ -51,14 +69,15 @@
  });
  const promo=root.querySelector('#booking-promo'), promoStatus=root.querySelector('[data-promo-status]');
  try {promo.value=sessionStorage.getItem('turris-promo')||'';} catch {}
- function promoMessage(saved) {promoStatus.textContent=saved?'Код сохранён для этой вкладки. Введите его и проверьте скидку на официальном сайте отеля.':'Действие кода и скидку проверяйте на официальном сайте отеля.';}
+ function promoMessage(saved) {promoStatus.textContent=saved?'Код сохранён. Нажмите «Показать номера и цены» — передадим его в TravelLine для проверки.':'Код проверит TravelLine при поиске номеров.';}
  if(promo.value) promoMessage(true);
  root.querySelector('[data-save-promo]').addEventListener('click',()=>{
   promo.value=promo.value.trim();
   try {if(promo.value)sessionStorage.setItem('turris-promo',promo.value);else sessionStorage.removeItem('turris-promo');promoMessage(Boolean(promo.value));}
-  catch {promoStatus.textContent='Не удалось сохранить код в браузере. Скопируйте его для ввода на сайте отеля.';}
+  catch {promoStatus.textContent='Код передадим при поиске. Сохранение между страницами недоступно.';}
  });
  promo.addEventListener('keydown',ev=>{if(ev.key==='Enter'){ev.preventDefault();root.querySelector('[data-save-promo]').click();}});
+ promo.addEventListener('input',()=>document.dispatchEvent(new Event('booking-query-invalidated')));
  const expand = root.querySelector('[data-booking-expand]'), stage=map.querySelector('.map-stage');
  function expanded(value) {
   map.classList.toggle('bk-map-expanded',value);document.body.classList.toggle('bk-map-open',value);
