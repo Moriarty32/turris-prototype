@@ -1,0 +1,47 @@
+"""Reference-driven hotel overview. Uses shared booking, imagery and map contracts."""
+import json
+from hotel_details import DETAILS
+
+def render(p, g):
+ e, a, ext, image, icon, url = [g[k] for k in ('e','a','ext','image','icon','url')]
+ i=p['id']; h=g['HOTELS'][i]; d=DETAILS[i]; pages=g['PAGES']; geo=g['MAP']['hotels'][i]
+ room_ids=[r['id'] for r in pages.values() if r['template']=='room' and r['id'].startswith(i+'_')]
+ featured=[f'{i}_room_{n}' for n in d['featured']]
+ gallery_ids=[featured[0],i,f'{i}_room_{d["extra"]}']
+ gallery_ids=list(dict.fromkeys(gallery_ids+room_ids))
+ gallery=[]
+ for asset in gallery_ids:
+  caption=h['full']+' · фасад' if asset==i else g['room_name'](pages[asset])
+  label=g['DELIVERY'][asset].get('label','')
+  gallery.append(dict(src=g['BASE']+'/assets/'+g['ASSETS'][asset]['file'],caption=caption+(' · '+label if label else '')))
+ def photo(asset,main=False):
+  n=gallery_ids.index(asset)
+  return f'<a class="hd-photo {"hd-main-photo" if main else ""}" href="{gallery[n]["src"]}" data-hotel-photo="{n}" aria-label="Открыть: {e(gallery[n]["caption"])}">'+image(asset,gallery[n]['caption'].split(' · ИИ')[0],eager=main,sizes='(max-width:640px) calc(100vw - 32px), (max-width:1000px) 58vw, 680px')+('<span class="hd-gallery-button">'+icon('search')+' Все фотографии · '+str(len(gallery))+'</span>' if main else '')+'</a>'
+ photos='<div class="hd-gallery">'+''.join(photo(asset,n==0) for n,asset in enumerate(gallery_ids[:3]))+'</div>'
+ booking=g['booking_form'](i)
+ phone=d['admin']; tel='+'+''.join(c for c in phone if c.isdigit())
+ rules='https://turris.online/upload/Правила_проживания_'+h['name']+'_01.09.2026г.pdf'
+ if i=='tverskaya':rules='https://turris.online/upload/Правила_проживания_Тверская_01.09.2026г.pdf'
+ card='<aside class="hd-booking" id="hotel-booking"><h2>Ваше проживание<br>'+d['stay']+'</h2><p class="hd-selected-room" hidden><span></span><button type="button" data-clear-room aria-label="Сбросить выбранную категорию">×</button></p>'+booking+'<p class="small">Полная стоимость и условия — после выбора дат на сайте отеля.</p><div class="hd-times"><span>'+icon('calendar')+' Заезд с 14:00</span><span>'+icon('calendar')+' Выезд до 12:00</span></div><div class="hd-help"><span>Нужна помощь с выбором?</span><a href="tel:88005054455">'+icon('phone')+' 8 800 505 44 55</a></div></aside>'
+ top='<header class="hd-heading"><div class="eyebrow">Москва · четыре адреса Туррис</div><h1>'+d['title']+'</h1><p>'+d['intro']+'</p><div class="hd-address">'+icon('pin')+h['address']+' <a href="#location">На карте ↗</a></div></header><div class="hd-top">'+photos+card+'</div>'
+ if i!='tverskaya':top+='<p class="hd-important">'+h['notice']+'</p>'
+ nav='<nav class="hd-tabs" aria-label="На странице отеля">'+''.join(f'<a href="#{k}">{label}</a>' for k,label in [('hotel-rooms','Номера'),('location','Расположение'),('amenities','Удобства'),('hotel-reviews','Отзывы'),('hotel-rules','Правила')])+'</nav>'
+ rows=''
+ for rid in featured:
+  r=pages[rid]; name=g['room_name'](r); beds,detail=g['room_facts'](r)
+  if detail.startswith('Выберите даты'):detail='Для поездки вдвоём или проживания одному.' if 'одномест' not in name.lower() else 'Для самостоятельной поездки в Москву.'
+  rows+='<article class="hd-room" data-room-card="'+rid+'"><div class="hd-room-photo">'+photo(rid)+'</div><div class="hd-room-copy"><h3>'+a(rid,e(name))+'</h3><p class="hd-bed">'+icon('guest')+beds+'</p><p>'+detail+'</p>'+a(rid,'Подробнее о номере '+icon('arrow'),'text-link')+'</div><div class="hd-room-price"><span>Стоимость на ваши даты</span><a class="btn secondary" href="'+url(rid)+'" data-select-room="'+rid+'" data-room-name="'+e(name)+'">Показать цены '+icon('arrow')+'</a></div></article>'
+ others=[rid for rid in room_ids if rid not in featured]
+ rooms='<section class="hd-section" id="hotel-rooms"><h2>Выберите номер для своей поездки</h2><p class="hd-sub">'+str(len(room_ids))+' категорий. Стоимость зависит от дат, гостей и тарифа.</p><div class="hd-rooms">'+rows+'</div><p class="hd-other">Также в отеле: '+ ' · '.join(a(rid,e(g['room_name'](pages[rid]))) for rid in others)+'</p><div class="hd-center">'+a(i+'_rooms','Все категории номеров '+icon('arrow'),'btn secondary')+'</div></section>'
+ config={i:dict(geo,name=h['name'])}
+ maphtml=f'<div class="hotel-map hd-map" id="map" data-hotel-map data-selected="{i}" data-tile-url="{g["MAP"]["tile_url"]}"><div class="map-stage"><div class="map-canvas" data-map-canvas role="region" aria-label="Карта: {h["full"]}"></div><div class="map-toolbar"><span>{h["full"]}</span><button type="button" data-map-reset>К отелю {icon("pin")}</button><button type="button" data-map-expand aria-label="Развернуть карту" aria-expanded="false">⛶</button></div><p class="map-status" data-map-status role="status">Загружаем карту… Ссылка на маршрут доступна рядом.</p><div class="hd-open-map">{ext(geo["source"],"Открыть в картах")}</div></div><span class="sr-only" data-map-announcement aria-live="polite"></span><script type="application/json" data-map-config>{json.dumps(config,ensure_ascii=False)}</script></div>'
+ location='<section class="hd-section hd-location" id="location"><h2>'+d['location']+'</h2><div class="hd-location-grid"><div class="hd-location-copy"><h3>Москва, '+h['address']+'</h3><p>'+d['nearby']+'</p><div class="hd-entrance">'+photo(i)+'</div>'+ext(geo['source']+'?rtext=~'+str(geo['lat'])+','+str(geo['lng']),'Построить маршрут','btn secondary')+'<p class="small">Администратор: <a href="tel:'+tel+'">'+phone+'</a></p><p class="small">Вход и парковку уточните до приезда.</p></div>'+maphtml+'</div></section>'
+ amenities='<section class="hd-section" id="amenities"><div class="hd-section-head"><h2>Всё для комфортной поездки</h2>'+a(i+'_services','Все услуги отеля '+icon('arrow'),'text-link')+'</div><div class="hd-amenities">'+''.join('<div>'+icon(ic)+'<div><h3>'+title+'</h3><p>'+text+'</p></div></div>' for ic,(title,text) in zip(['document','guest','headset'],d['amenities']))+'</div></section>'
+ reviews='<section class="hd-review" id="hotel-reviews"><div class="hd-quote-mark" aria-hidden="true">“</div><div><div class="eyebrow">Опыт гостей · '+h['name']+'</div><h2>Посмотрите, что важно гостям</h2><p>Свежие отзывы помогут оценить расположение, выбранную категорию и сервис перед поездкой.</p></div>'+a(i+'_reviews','Читать отзывы '+icon('arrow'),'text-link')+'</section>'
+ rule_rows=[('Заезд и выезд','Заезд с 14:00, выезд до 12:00. Ранний заезд и поздний выезд — по согласованию и при наличии номеров.'),('С детьми','Укажите возраст всех детей и нужные спальные места. Условия и доплаты проверьте для вашего состава.'),('С питомцем','Согласуйте возможность размещения, ограничения и доплату до бронирования.'),('Оплата и отмена','Стоимость, предоплата и условия отмены указаны в выбранном тарифе до оформления.')]
+ ruleshtml='<section class="hd-section hd-rules-grid" id="hotel-rules"><div><h2>Что важно знать перед приездом</h2><dl class="hd-rules">'+''.join('<div><dt>'+k+'</dt><dd>'+v+'</dd></div>' for k,v in rule_rows)+'</dl>'+ext(rules,'Полные правила проживания','text-link')+'</div><aside class="hd-company">'+icon('document')+'<h2>В командировку<br>или с командой</h2><p>Подберём размещение и подготовим расчёт. Реквизиты для документов сообщите до оплаты.</p>'+a('groups','Запросить предложение '+icon('arrow'),'btn white')+'</aside></section>'
+ faq=[('Как узнать полную стоимость проживания?','Выберите даты и состав гостей. В официальном модуле бронирования проверьте наличие, итог за весь период и условия тарифа. В прототипе показаны категории для ознакомления.',None),('Чем отличаются категории номеров?',h['description'],None),('Входит ли завтрак в стоимость?',d['amenities'][2][1] if i!='petrovsky' else 'Проверьте включение питания в выбранном тарифе и уточните формат у отеля до оплаты.',None)]+g['FAQ'][:1]+[('Есть ли лифт и парковка?',h['notice']+' Доступный вход, этаж и парковочное место согласуйте с администратором.',None),('Какие документы нужны для заселения?','Подготовьте документы, удостоверяющие личность каждого гостя. Для детей, иностранных гостей и поездки от компании проверьте требования в правилах отеля.',i+'_rules')]
+ faqhtml='<section class="hd-section hd-faq"><div><h2>Ответы перед<br>бронированием</h2><p>Остались вопросы?<br>Мы всегда на связи.</p><a href="tel:88005054455">'+icon('phone')+' 8 800 505 44 55</a></div>'+g['faqs'](faq)+'</section>'
+ bottom='<section class="hd-bottom"><h2>Ваш номер в Москве — на ваши даты</h2>'+g['booking_form'](i,bottom=True)+'<p><a href="tel:88005054455">'+icon('phone')+' 8 800 505 44 55</a><a href="mailto:'+h['email']+'">'+h['email']+'</a></p></section>'
+ dialog='<dialog class="hd-lightbox" id="hotel-gallery-dialog" aria-label="Фотографии отеля"><button type="button" class="dialog-close" data-close aria-label="Закрыть галерею">×</button><div class="hd-lightbox-stage"><button type="button" data-gallery-prev aria-label="Предыдущая фотография">‹</button><img alt=""><button type="button" data-gallery-next aria-label="Следующая фотография">›</button></div><p data-gallery-caption aria-live="polite"></p><div class="hd-gallery-dots" role="group" aria-label="Выбор фотографии"></div></dialog>'
+ return '<div class="wrap hotel-detail">'+top+nav+rooms+location+amenities+reviews+ruleshtml+faqhtml+bottom+'<script type="application/json" data-hotel-gallery>'+json.dumps(gallery,ensure_ascii=False)+'</script>'+dialog+'</div>'

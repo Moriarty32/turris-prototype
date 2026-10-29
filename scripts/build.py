@@ -134,10 +134,9 @@ def catalog(p):
  comparison='<div class="table-scroll"><table><thead><tr><th>Отель</th><th>Расположение</th><th>На что обратить внимание</th><th>Выбор</th></tr></thead><tbody>'+''.join(f'<tr><td>{h["full"]}</td><td>{h["address"]}</td><td>{h["notice"]}</td><td>{a(i+"_rooms","Выбрать номер")}</td></tr>' for i,h in HOTELS.items())+'</tbody></table></div>'
  return '<div class="wrap">'+head('Четыре отеля.<br>Ваша Москва.','Сравните расположение, категории и важные условия перед выбором.')+'<div class="catalog-tools"><label class="field">Цель поездки<select data-hotel-filter><option value="all">Все отели</option><option value="family">Семейные категории</option><option value="longstay">Длительное проживание</option><option value="beds">Раздельные кровати</option></select></label><button type="button" class="btn secondary" data-reset-hotels hidden>Сбросить фильтр</button><span class="small" data-filter-count>4 отеля</span></div>'+section('Выберите расположение',hotel_explorer(),id='hotels')+section('Сравните важные детали',comparison,id='comparison')+bottom_booking()+'</div>'
 def hotel_page(p):
- i=p['id'];h=HOTELS[i]
- preview=next(r for r in PAGES.values() if r['template']=='room' and r['id'].startswith(i))
- photos='<div class="hotel-photo-stack">'+figure(i,h['full']+': фасад',False,True,'hotel-facade')+'<a class="hotel-room-preview" href="'+url(preview['id'])+'">'+image(preview['id'],room_name(preview))+'<span>'+e(room_name(preview))+' '+icon('arrow')+'</span></a></div>'
- return f'<div class="wrap"><section class="hotel-hero"><div class="hero-copy"><div class="eyebrow">Туррис · {h["location"]}</div><h1>{h["full"]}</h1><p class="sub">{h["line"]}</p><p class="address">{icon("pin")}{h["address"]}</p>{chips([h["focus"],str(len([r for r in PAGES.values() if r["template"]=="room" and r["id"].startswith(i)]))+" категории"])}{booking_form(i)}</div>{photos}</section>{tabs(i,p["id"])}{note(h["notice"])}{section("Ваш номер в Москве",rooms(i))}{section("Ближе к вашей поездке",'<div class="two-col"><div class="prose"><p>'+h['description']+'</p>'+a(i+'_contacts','Посмотреть расположение '+icon('arrow'),'text-link')+'</div><div>'+infocards([('Точный адрес',h['address'])])+'</div></div>')}{section('Что важно знать',faqs())}{bottom_booking(i)}</div>'
+ from hotel_detail import render
+ return render(p,globals())
+
 def room_page(p):
  i=room_hotel(p);h=HOTELS[i];beds,detail=room_facts(p)
  others=[r['id'] for r in PAGES.values() if r['template']=='room' and r['id'].startswith(i) and r['id']!=p['id']][:3]
@@ -264,6 +263,9 @@ def nav_group(label,links,p,group):
   items+=a(id,'<span>'+title+'</span><small>'+desc+'</small>','', 'aria-current="page"' if p['id']==id else '')
  return '<details class="nav-group '+('current' if active else '')+'"><summary>'+label+icon('chevron')+'</summary><div class="drop"><span class="drop-label">'+label+' · Туррис</span>'+items+'</div></details>'
 def header(p):
+ if p['template']=='hotel':
+  return '<a class="skip" href="#main">Перейти к содержанию</a><header class="header hd-header"><div class="wrap header-inner"><div class="brand-block">'+a('home','TURRIS<span>ONLINE</span><i></i>','logo','aria-label="Туррис — главная"')+'</div><nav class="nav" id="main-nav" aria-label="Основное меню">'+a('hotels','Все отели')+'<a href="#hotel-rooms">Номера</a><a href="#location">Расположение</a>'+a(p['id']+'_contacts','Контакты')+'</nav><a class="header-phone" href="tel:88005054455">'+icon('phone')+'<span>8 800 505 44 55</span></a><a href="#hotel-booking" class="btn header-booking">Выбрать номер '+icon('arrow')+'</a><button class="demo-badge" data-demo-info>ДЕМО</button><button class="menu-button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav">'+icon('menu')+'</button></div></header>'
+
  nav=nav_group('Отели',[(i,h['name'],h['location']) for i,h in HOTELS.items()]+[('hotels','Все четыре отеля','Сравнить расположение и условия')],p,'hotels')
  nav+=nav_group('Предложения',[('offers','Все предложения','Выберите свой повод приехать'),('family','С детьми','Категории для семейной поездки'),('longstay','От 21 дня','Длительное проживание в Петровском'),('loyalty','Туррис-Бонус','Программа лояльности')],p,'offers')
  nav+=nav_group('Для компаний',[('business','Деловые поездки','Размещение сотрудников и документы'),('groups','Размещение групп','Индивидуальный расчёт для команды')],p,'business')
@@ -304,6 +306,8 @@ def build():
   if p['template'] in ['blog','article']:
    doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/guide.css?v=images-1"><script src="'+BASE+'/assets/guide.js?v=images-1" defer></script></head>')
   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/media.css?v=images-1"></head>')
+  if p['template']=='hotel':
+   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/hotel-detail.css?v=hotel-1"><script src="'+BASE+'/assets/hotel-detail.js?v=hotel-1" defer></script></head>')
   path=DIST/p['url'].strip('/')/'index.html';path.parent.mkdir(parents=True,exist_ok=True);path.write_text(doc,encoding='utf-8')
   public.append({'id':p['id'],'url':p['url'],'title':room_name(p) if p['template']=='room' else p['h1'],'type':p['template'],'hotel':next((i for i in HOTELS if p['id'].startswith(i)),None),'image':ASSETS.get(p['id'],{}).get('file'),'summary':p['intent']})
  (DIST/'site-data.json').write_text(json.dumps({'pages':public,'hotels':HOTELS},ensure_ascii=False),encoding='utf-8')

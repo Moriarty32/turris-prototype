@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-29",
+  "scope": [
+    "tverskaya",
+    "lubyansky",
+    "petrovsky",
+    "tagansky"
+  ],
+  "reference": "User screenshot: Тверская, gallery left / booking right; horizontal room rows; map; amenities; rules; FAQ",
+  "layout": [
+    "compact hotel navigation",
+    "title and exact address",
+    "gallery and booking",
+    "local section navigation",
+    "three featured room categories and links to all remaining categories",
+    "single-hotel interactive map with route and administrator contact",
+    "property-specific amenities",
+    "links to genuine review sources",
+    "rules and company enquiry",
+    "FAQ",
+    "bottom booking form"
+  ],
+  "image_decision": "Reuse verified high-resolution official room photographs; no new synthetic interiors required. Existing Petrovsky facade reconstruction remains explicitly labelled.",
+  "image_slots_css_px": {
+    "desktop_gallery": "~717 × 503, main: ~717 × 303, thumbnails: ~354 × 190; adapts to booking card",
+    "mobile_gallery": "viewport minus 32; main height 210, thumbnails height 100",
+    "room_row": "~405 × 180 on desktop; half available width on mobile",
+    "location_facade": "~420 × 157 desktop; half available width × 124 mobile"
+  },
+  "functionality": [
+    "gallery previous/next, numbered selectors, keyboard arrows, Escape and focus restoration",
+    "direct image/category links without JavaScript",
+    "room-specific booking context; dates and guests preserved",
+    "one map marker per hotel, reset, zoom, touch activation, expanded view and Escape",
+    "local sticky navigation and mobile menu",
+    "no fake prices, availability, reviews or submitted enquiries"
+  ],
+  "production_dependencies": [
+    "live booking provider",
+    "final hotel approval of service and policy facts",
+    "replace or approve explicitly labelled facade reconstruction"
+  ],
+  "responsive_widths": [
+    320,
+    390,
+    768,
+    1024,
+    1440
+  ]
+}

@@ -1,0 +1,70 @@
+{
+  "tverskaya": {
+    "source": "https://turris.online/hotels/turris-hotel-tverskaya/",
+    "rules": [
+      "https://turris.online/upload/Правила_проживания_Тверская_01.09.2026г.pdf"
+    ],
+    "checked": "2026-10-29",
+    "status": "published_by_hotel",
+    "recheck": "before production launch or policy changes",
+    "owner": "hotel management for production approval",
+    "verified_fields": {
+      "administrator_phone": "+7 (495) 488-71-54",
+      "arrival": "14:00",
+      "departure": "12:00",
+      "time_source": "Published hotel rules, section 3.1",
+      "amenities_source": "Official hotel overview; content is property-specific"
+    }
+  },
+  "lubyansky": {
+    "source": "https://turris.online/hotels/turris-hotel-lubyansky-/",
+    "rules": [
+      "https://turris.online/upload/Правила_проживания_Лубянский_01.09.2026г.pdf"
+    ],
+    "checked": "2026-10-29",
+    "status": "published_by_hotel",
+    "recheck": "before production launch or policy changes",
+    "owner": "hotel management for production approval",
+    "verified_fields": {
+      "administrator_phone": "+7 (495) 488-71-32",
+      "arrival": "14:00",
+      "departure": "12:00",
+      "time_source": "Published hotel rules, section 3.1",
+      "amenities_source": "Official hotel overview; content is property-specific"
+    }
+  },
+  "petrovsky": {
+    "source": "https://turris.online/hotels/turris-hotel-petrovsky/",
+    "rules": [
+      "https://turris.online/upload/Правила_проживания_Петровский_01.09.2026г.pdf"
+    ],
+    "checked": "2026-10-29",
+    "status": "published_by_hotel",
+    "recheck": "before production launch or policy changes",
+    "owner": "hotel management for production approval",
+    "verified_fields": {
+      "administrator_phone": "+7 (495) 488-71-63",
+      "arrival": "14:00",
+      "departure": "12:00",
+      "time_source": "Published hotel rules, section 3.1",
+      "amenities_source": "Official hotel overview; content is property-specific"
+    }
+  },
+  "tagansky": {
+    "source": "https://turris.online/hotels/turris-hotel-tagansky/",
+    "rules": [
+      "https://turris.online/upload/Правила_проживания_Таганский_01.09.2026г.pdf"
+    ],
+    "checked": "2026-10-29",
+    "status": "published_by_hotel",
+    "recheck": "before production launch or policy changes",
+    "owner": "hotel management for production approval",
+    "verified_fields": {
+      "administrator_phone": "+7 (495) 374-64-30",
+      "arrival": "14:00",
+      "departure": "12:00",
+      "time_source": "Published hotel rules, section 3.1",
+      "amenities_source": "Official hotel overview; content is property-specific"
+    }
+  }
+}

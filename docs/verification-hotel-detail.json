@@ -1,0 +1,195 @@
+{
+  "status": "PASS",
+  "pages": 4,
+  "viewports": [
+    320,
+    390,
+    768,
+    1024,
+    1440
+  ],
+  "checks": [
+    {
+      "hotel": "tverskaya",
+      "width": 320,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "lubyansky",
+      "width": 320,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "petrovsky",
+      "width": 320,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "tagansky",
+      "width": 320,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "tverskaya",
+      "width": 390,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "lubyansky",
+      "width": 390,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "petrovsky",
+      "width": 390,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "tagansky",
+      "width": 390,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "tverskaya",
+      "width": 768,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "lubyansky",
+      "width": 768,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "petrovsky",
+      "width": 768,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "tagansky",
+      "width": 768,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "tverskaya",
+      "width": 1024,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "lubyansky",
+      "width": 1024,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "petrovsky",
+      "width": 1024,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "tagansky",
+      "width": 1024,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "tverskaya",
+      "width": 1440,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "lubyansky",
+      "width": 1440,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "petrovsky",
+      "width": 1440,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    },
+    {
+      "hotel": "tagansky",
+      "width": 1440,
+      "gallery": "pass",
+      "booking": "pass",
+      "map": "pass",
+      "images": "pass",
+      "overflow": false
+    }
+  ],
+  "js_errors": [],
+  "no_js": "pass"
+}
