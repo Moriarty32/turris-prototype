@@ -11,6 +11,7 @@
  } catch { /* A disabled store does not disable the checklist. */ }
  const update = () => {
   const selected = inputs.filter(input => input.checked).map(input => input.dataset.guideCheck);
+  const progress=checklist.querySelector('[data-check-progress]');if(progress)progress.value=selected.length;
   checklist.querySelector('[data-check-count]').textContent = `Готово: ${selected.length} из ${inputs.length}`;
   try { sessionStorage.setItem(key, JSON.stringify(selected)); } catch {}
  };

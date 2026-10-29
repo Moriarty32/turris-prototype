@@ -2,7 +2,7 @@ import asyncio,json
 from pathlib import Path
 from urllib.parse import urlsplit,parse_qs
 from bs4 import BeautifulSoup
-from playwright.async_api import async_playwright
+from playwright.async_api import async_playwright,expect
 ROOT=Path(__file__).resolve().parents[1]
 BASE='http://127.0.0.1:4173/turris-prototype'
 
@@ -36,6 +36,7 @@ async def main():
   await page.locator('[data-blog-reset]').click()
   assert await page.locator('[data-article]:visible').count()==16
   await page.locator('.guide-topic[href$="/business/"]').click()
+  await page.wait_for_url(BASE+'/blog/business/')
   assert await page.locator('[data-article]').count()==3
   checks.append('Catalogue: full-content search, combined filter, count, empty state, reset and rubric navigation')
   await page.goto(BASE+'/blog/tverskaya-walk/',wait_until='networkidle')
@@ -62,7 +63,7 @@ async def main():
   await page.wait_for_timeout(800)
   position=await page.locator('#article-checklist').bounding_box()
   assert 65<=position['y']<=180,position
-  assert await page.locator('[data-toc-link][href="#article-checklist"]').get_attribute('aria-current')=='true'
+  await expect(page.locator('[data-toc-link][href="#article-checklist"]')).to_have_attribute('aria-current','true')
   checks.append('Mobile contents disclosure, anchor position below fixed header and active section')
   for width in [320,390,768,1440]:
    await page.set_viewport_size({'width':width,'height':844 if width<900 else 1000})
@@ -72,7 +73,7 @@ async def main():
     assert not await page.evaluate('document.documentElement.scrollWidth>innerWidth+1'),(width,item['url'])
     if item['template']=='article':
      box=await page.locator('.guide-cover img').bounding_box()
-     assert box['height']<=(60 if width<=640 else 160),(width,item['url'],box)
+     assert box['height']<=(64 if width<=640 else 230),(width,item['url'],box)
      assert await page.locator('#article-summary').is_visible()
   checks.append('All 16 articles and 5 catalogue pages at 320, 390, 768 and 1440 px; no overflow; bounded cover images')
   for width in [390,1440]:

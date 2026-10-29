@@ -1,0 +1,243 @@
+{
+  "status": "PASS",
+  "checked": "2026-10-29",
+  "scope": "16 article reference pages, catalogue regression and shared booking/navigation",
+  "reports": {
+    "guide-report": {
+      "status": "PASS",
+      "articles": 16,
+      "catalogue_pages": 5,
+      "widths": [
+        320,
+        390,
+        768,
+        1440
+      ],
+      "checks": [
+        "Catalogue: full-content search, combined filter, count, empty state, reset and rubric navigation",
+        "Checklist persistence/reset, clipboard success/fallback, route origin and destination",
+        "Mobile contents disclosure, anchor position below fixed header and active section",
+        "All 16 articles and 5 catalogue pages at 320, 390, 768 and 1440 px; no overflow; bounded cover images",
+        "No-JavaScript answer, contents, comparison, checklist and source links remain in HTML"
+      ],
+      "js_errors": []
+    },
+    "article-reference-report": {
+      "status": "PASS",
+      "articles": 16,
+      "checks": [
+        {
+          "article": "/blog/choose-area/",
+          "map_hotels": [
+            "tverskaya",
+            "lubyansky",
+            "petrovsky",
+            "tagansky"
+          ],
+          "map_and_booking": "passed"
+        },
+        {
+          "article": "/blog/tverskaya-walk/",
+          "map_hotels": [
+            "tverskaya"
+          ],
+          "map_and_booking": "passed"
+        },
+        {
+          "article": "/blog/lubyanka-walk/",
+          "map_hotels": [
+            "lubyansky"
+          ],
+          "map_and_booking": "passed"
+        },
+        {
+          "article": "/blog/taganka-walk/",
+          "map_hotels": [
+            "tagansky"
+          ],
+          "map_and_booking": "passed"
+        },
+        {
+          "article": "/blog/petrovsky-walk/",
+          "map_hotels": [
+            "petrovsky"
+          ],
+          "map_and_booking": "passed"
+        },
+        {
+          "article": "/blog/family-room-checklist/",
+          "map_hotels": [
+            "tverskaya",
+            "lubyansky"
+          ],
+          "map_and_booking": "passed"
+        },
+        {
+          "article": "/blog/moscow-with-child/",
+          "map_hotels": [
+            "tverskaya",
+            "lubyansky"
+          ],
+          "map_and_booking": "passed"
+        },
+        {
+          "article": "/blog/trip-documents/",
+          "map_hotels": [
+            "tverskaya",
+            "lubyansky",
+            "petrovsky",
+            "tagansky"
+          ],
+          "map_and_booking": "passed"
+        },
+        {
+          "article": "/blog/business-location/",
+          "map_hotels": [
+            "tverskaya",
+            "lubyansky",
+            "petrovsky",
+            "tagansky"
+          ],
+          "map_and_booking": "passed"
+        },
+        {
+          "article": "/blog/group-organizer/",
+          "map_hotels": [
+            "tverskaya",
+            "lubyansky",
+            "petrovsky",
+            "tagansky"
+          ],
+          "map_and_booking": "passed"
+        },
+        {
+          "article": "/blog/attic-room/",
+          "map_hotels": [
+            "petrovsky"
+          ],
+          "map_and_booking": "passed"
+        },
+        {
+          "article": "/blog/twin-double/",
+          "map_hotels": [
+            "lubyansky"
+          ],
+          "map_and_booking": "passed"
+        },
+        {
+          "article": "/blog/breakfast-rates/",
+          "map_hotels": [
+            "tverskaya",
+            "lubyansky",
+            "petrovsky",
+            "tagansky"
+          ],
+          "map_and_booking": "passed"
+        },
+        {
+          "article": "/blog/long-stay-checklist/",
+          "map_hotels": [
+            "petrovsky"
+          ],
+          "map_and_booking": "passed"
+        },
+        {
+          "article": "/blog/arrival-checklist/",
+          "map_hotels": [
+            "tverskaya",
+            "lubyansky",
+            "petrovsky",
+            "tagansky"
+          ],
+          "map_and_booking": "passed"
+        },
+        {
+          "article": "/blog/hotel-pets-checklist/",
+          "map_hotels": [
+            "tverskaya",
+            "lubyansky",
+            "petrovsky",
+            "tagansky"
+          ],
+          "map_and_booking": "passed"
+        },
+        "Responsive reparenting keeps one map and four controls; map/form selection, mobile navigation, dates and child age reach booking",
+        "Native progress, per-article session persistence and reset"
+      ],
+      "js_errors": []
+    },
+    "report": {
+      "status": "PASS",
+      "static_pages": 109,
+      "templates_browser_checked": 22,
+      "generated_dimensions": "4x1536x1024",
+      "local_links": "all resolved",
+      "js_errors": [],
+      "observations": [
+        {
+          "desktop_main_cta_y": {
+            "x": 772.828125,
+            "y": 491.21875,
+            "width": 511.171875,
+            "height": 48
+          }
+        },
+        {
+          "booking": "dates,2adults,child7 retained;7Lubyansky categories"
+        },
+        {
+          "room_context": "family suite preserved"
+        },
+        {
+          "group_form": "two steps and explicit unsent success"
+        },
+        {
+          "blog": "rubric and empty search work"
+        },
+        {
+          "search_results": 3
+        }
+      ]
+    },
+    "image-quality-report": {
+      "status": "PASS",
+      "assets": 28,
+      "web_files": 144,
+      "pages": 109,
+      "viewports": [
+        1440,
+        390
+      ],
+      "device_pixel_ratio": 2,
+      "rendered_checks": 766,
+      "minimum_density": 1.98,
+      "below_1_95": [],
+      "js_errors": [],
+      "notes": [
+        "All web images decoded, dimensions match manifest, no upscaling during export",
+        "Generated facade labelled; full-size lightbox verified",
+        "Source photographs visually reviewed; pixel density is not a measure of original camera sharpness"
+      ]
+    },
+    "experience-report": {
+      "status": "PASS",
+      "checks": [
+        "4 sourced markers; card -> map -> hotel detail; keyboard marker; route; reset; attribution",
+        "Catalogue purpose filter synchronizes cards, choices and markers before/after map initialization",
+        "Cross-page card link opens selected hotel on the home map",
+        "Active navigation, native keyboard disclosure and Escape",
+        "Touch map selection, explicit drag mode, mobile menu, no overflow",
+        "Tile outage and library outage: readable status, usable hotel cards and directions",
+        "Reduced motion disables effects; no-JS renders all four addresses and route links"
+      ],
+      "js_errors": [],
+      "tiles": "isolated fixtures; public tile service not exercised by automated pan/zoom"
+    }
+  },
+  "visual_review": [
+    "Desktop 1440 px: split hero, answer/contents, comparison, map disclosure, steps, checklist, booking and related photos",
+    "Mobile 390 px: compact cover, stacked content, hotel buttons, readable comparison cards and working booking fields"
+  ],
+  "map_note": "Automated checks isolate OSM tile requests. Marker selection, local Leaflet and tile outage fallback verified.",
+  "limitations": "Demonstration pages: no live inventory, prices, payment or booking confirmation; noindex preserved."
+}

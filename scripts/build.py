@@ -205,29 +205,9 @@ def blog_page(p):
  closing='<section class="guide-closing"><div class="eyebrow">От плана — к поездке</div><h2>Теперь найдите свой адрес в Москве</h2><p>Сравните расположение четырёх отелей и условия, которые важны именно вам.</p><div>'+a('hotels','Сравнить отели '+icon('arrow'),'btn')+'<a class="text-link" href="'+url('home')+'#map">Отели на карте '+icon('pin')+'</a></div></section>'
  return '<div class="wrap guide-index">'+hero+topics+library+closing+'</div>'
 def article_page(p):
- b=next(b for b in B['blog_plan'] if b['id']==p['id']);slug,item,detail,minutes=guide_info(b);target=b['commercial_target']
- asset=guide_asset(b);photo_hotel=next(h for h in HOTELS if asset.startswith(h))
- cover='<figure class="guide-cover">'+image(asset,'Фотография '+HOTELS[photo_hotel]['full'],eager=True,sizes='(max-width:640px) 84px, (max-width:900px) 170px, 230px')+'<figcaption>'+HOTELS[photo_hotel]['full']+' · '+('ИИ-реконструкция фасада' if DELIVERY.get(asset,{}).get('label') else 'фасад' if asset in HOTELS else 'одна из категорий')+'</figcaption></figure>'
- header='<header class="guide-article-head"><div><div class="eyebrow">'+a('blog_'+b['rubric'],RUBRIC_LABELS[b['rubric']])+' · '+str(minutes)+' мин чтения</div><h1>'+e(p['h1'])+'</h1><div class="guide-byline"><span>Редакция прототипа Туррис</span><time datetime="2026-10-29">Обновлено 29 октября 2026</time></div><div class="guide-tools"><a href="#article-summary">Краткий ответ ↓</a><a href="#article-checklist">К чек-листу ↓</a><button type="button" data-copy-article>Скопировать ссылку</button><span role="status" data-copy-status></span></div></div>'+cover+'</header>'
- summary='<section class="guide-answer" id="article-summary"><div class="eyebrow">Коротко о главном</div><p>'+e(item['answer'])+'</p><ul>'+''.join('<li>'+e(x)+'</li>' for x in detail['takeaways'])+'</ul></section>'
- table='<section id="article-choice" data-reading-section><h2>'+e(detail['table_title'])+'</h2><table class="guide-table"><caption class="sr-only">'+e(detail['table_title'])+'</caption><thead><tr><th scope="col">Ситуация</th><th scope="col">Что выбрать или сделать</th><th scope="col">На что обратить внимание</th></tr></thead><tbody>'+''.join('<tr><th scope="row">'+e(row[0])+'</th><td data-label="Что сделать">'+e(row[1])+'</td><td data-label="Учесть">'+e(row[2])+'</td></tr>' for row in detail['rows'])+'</tbody></table></section>'
- route=''
- if 'stops' in detail:
-  route_url='https://yandex.ru/maps/?mode=routes&rtt=pd&rtext='+quote('Москва, '+HOTELS[detail['hotel']]['address']+'~'+detail['destination'],safe='')
-  route='<section id="article-route" data-reading-section><h2>Опорные точки прогулки</h2><p>Это план прогулки: точный путь, переходы и время в дороге рассчитайте в карте перед выходом.</p><ol class="guide-route">'+''.join('<li><span>'+str(n).zfill(2)+'</span><div><h3>'+e(title)+'</h3><p>'+e(text)+'</p></div></li>' for n,(title,text) in enumerate(detail['stops'],1))+'</ol>'+ext(route_url,'Пеший путь от отеля к основной точке','btn secondary')+'</section>'
- main=route+table+''.join('<section id="part-'+str(i)+'" data-reading-section><h2>'+h+'</h2><p>'+t+'</p></section>' for i,(h,t) in enumerate(item['sections'],1))
- main+='<aside class="guide-tip"><span>Практический совет</span><p>'+e(detail['tip'])+'</p></aside>'
- main+='<section class="guide-checklist" id="article-checklist" data-reading-section data-guide-checklist="'+slug+'"><div class="eyebrow">Перед поездкой</div><h2>Проверьте по списку</h2><p>Отмечайте готовые пункты. Отметки сохраняются только в этой вкладке.</p>'+''.join('<label><input type="checkbox" data-guide-check="'+str(i)+'"><span>'+e(x)+'</span></label>' for i,x in enumerate(detail['checklist']))+'<div class="guide-check-footer"><span data-check-count aria-live="polite">Готово: 0 из '+str(len(detail['checklist']))+'</span><button type="button" data-check-reset>Сбросить отметки</button></div></section>'
- source_hotels=[detail['hotel']] if 'hotel' in detail else ([target.split('_')[0]] if target.split('_')[0] in HOTELS else list(HOTELS))
- sources=''.join('<li>'+ext('https://turris.online'+PAGES[h]['url'],HOTELS[h]['full'])+'<span>Сведения об отеле сверены 28.10.2026.</span></li>' for h in source_hotels)
- if detail.get('source'):
-  title,href=GUIDE_SOURCES[detail['source']];sources+='<li>'+ext(href,title)+'<span>Адрес и страница посещения проверены 29.10.2026.</span></li>'
- main+='<section class="guide-sources" id="article-sources" data-reading-section><h2>Источники и актуальность</h2><ul>'+sources+'</ul><p>Планирование и чек-листы — рекомендации редакции прототипа. Расписание, билеты, ограничения прохода и условия тарифа проверяйте на дату поездки. Длительность пешего пути здесь не обещается.</p></section>'
- toc_items=[('article-summary','Краткий ответ')]+([('article-route','Опорные точки прогулки')] if route else [])+[('article-choice',detail['table_title'])]+[('part-'+str(i),h) for i,(h,t) in enumerate(item['sections'],1)]+[('article-checklist','Чек-лист'),('article-sources','Источники')]
- toc='<details class="guide-toc" open><summary>В этой статье <span>↓</span></summary><nav aria-label="Содержание статьи">'+''.join('<a href="#'+id+'" data-toc-link>'+e(title)+'</a>' for id,title in toc_items)+'</nav></details>'
- sidebar='<aside class="guide-sidebar">'+toc+'<div class="guide-sidebar-offer"><span class="eyebrow">Для вашей поездки</span><h3>От планов к выбору</h3><p>Посмотрите расположение, категории и условия размещения.</p>'+a(target,'Посмотреть варианты '+icon('arrow'),'text-link')+'</div></aside>'
- related=[x for x in B['blog_plan'] if x['id']!=b['id'] and x['rubric']==b['rubric']][:3]
- return '<div class="wrap guide-article" data-guide-article>'+header+summary+'<div class="guide-reading-layout">'+sidebar+'<article class="prose guide-prose">'+main+'</article></div>'+section('Продолжите планировать поездку','<div class="blog-grid guide-grid">'+''.join(blog_card(x) for x in related)+'</div>')+'</div>'
+ from article_page import render
+ return render(p,globals())
+
 def booking_page(p):
  from booking_page import render
  return render(p,globals())
@@ -269,7 +249,7 @@ def header(p):
   nav+=a(id,title,'nav-direct'+(' current' if current else ''),'aria-current="page"' if p['id']==id else '')
  nav+='<div class="mobile-utility">'+a('help','Помощь')+a('manage','Моя бронь')+a('search','Поиск')+'</div>'
  nav+='<a class="nav-map" href="'+url('home')+'#map">'+icon('pin')+' Отели на карте</a>'
- if p['id']=='home':
+ if p['id']=='home' or p['template']=='article':
   from home_page import header as home_header
   return home_header(nav,globals())
  return '<a class="skip" href="#main">Перейти к содержанию</a><header class="header"><div class="wrap header-inner"><div class="brand-block">'+a('home','TURRIS<span>ONLINE</span><i></i>','logo','aria-label="Туррис — главная"')+'<span class="brand-caption">Четыре адреса. Ваша Москва.</span></div><div class="header-utility">'+a('help','Помощь')+a('manage','Моя бронь')+a('search','Поиск')+'</div><a class="header-phone" href="tel:88005054455" aria-label="Позвонить 8 800 505 44 55">'+icon('phone')+'<span>8 800 505 44 55<small>Поможем выбрать отель</small></span></a>'+a('booking','Выбрать номер '+icon('arrow'),'btn header-booking')+'<button class="demo-badge" data-demo-info>ДЕМО</button><button class="menu-button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav">'+icon('menu')+'<span>Меню</span></button><div class="nav-shell"><nav class="nav wrap" id="main-nav" aria-label="Основное меню">'+nav+'</nav></div></div></header>'
@@ -308,7 +288,7 @@ def build():
    schema.update({'@type':'BlogPosting','headline':p['h1'],'dateModified':'2026-10-29','author':{'@type':'Organization','name':'Редакция прототипа Туррис'},'inLanguage':'ru','description':ARTICLES[p['url'].strip('/').split('/')[-1]]['answer']})
   doc='<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#0758b9"><title>'+e(title)+'</title><meta name="description" content="'+e(p['description'])+'"><meta property="og:title" content="'+e(title)+'"><meta property="og:description" content="Демонстрационный сайт: четыре отеля в Москве, номера, предложения и гид."><meta property="og:type" content="website"><meta property="og:image" content="https://moriarty32.github.io/turris-prototype/assets/hero-room-v2.png"><link rel="icon" href="'+BASE+'/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="'+BASE+'/assets/site.css?v=images-1"><link rel="stylesheet" href="'+BASE+'/assets/premium.css?v=images-1"><link rel="stylesheet" href="'+BASE+'/assets/layout.css?v=images-1"><script type="application/ld+json">'+json.dumps(schema,ensure_ascii=False)+'</script><script>window.SITE_BASE='+json.dumps(BASE)+';</script><script src="'+BASE+'/assets/site.js?v=offers-1" defer></script><script src="'+BASE+'/assets/experience.js?v=home-1" defer></script></head><body data-page="'+p['id']+'" data-template="'+p['template']+'">'+header(p)+breadcrumbs(p)+'<main id="main">'+body+'</main>'+footer(p)+dialogs()+'</body></html>'
   if p['template'] in ['blog','article']:
-   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/guide.css?v=images-1"><script src="'+BASE+'/assets/guide.js?v=images-1" defer></script></head>')
+   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/guide.css?v=images-1"><script src="'+BASE+'/assets/guide.js?v=article-1" defer></script></head>')
   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/media.css?v=images-1"></head>')
   if p['template']=='hotel':
    doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/hotel-detail.css?v=hotel-1"><script src="'+BASE+'/assets/hotel-detail.js?v=hotel-1" defer></script></head>')
@@ -316,6 +296,8 @@ def build():
    doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/booking.css?v=booking-1"><script src="'+BASE+'/assets/booking.js?v=booking-1" defer></script></head>')
   if p['template'] in OFFER_TEMPLATES:
    doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/offers.css?v=offers-1"><script src="'+BASE+'/assets/offers.js?v=offers-1" defer></script></head>')
+  if p['template']=='article':
+   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/home.css?v=home-1"><link rel="stylesheet" href="'+BASE+'/assets/article.css?v=article-1"><script src="'+BASE+'/assets/article.js?v=article-1" defer></script></head>')
   if p['id']=='home':
    doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/home.css?v=home-1"><script src="'+BASE+'/assets/home.js?v=home-1" defer></script></head>')
   path=DIST/p['url'].strip('/')/'index.html';path.parent.mkdir(parents=True,exist_ok=True);path.write_text(doc,encoding='utf-8')
