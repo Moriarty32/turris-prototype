@@ -1,4 +1,34 @@
 /* Compact layouts shared by every page. Keep readable text and usable controls. */
+.hero-map-slot,.hero-map-hint,.hero-map-return,.map-book-dates{display:none}
+@media(max-width:640px){
+ body.has-mobile-map .hero>.hero-visual{display:none}
+ .hero-map-slot:not(:empty){display:block;width:100%;min-width:0}
+ body.has-mobile-map [data-hotel-explorer] .view-switch{display:none}
+ body.has-mobile-map .hero-map-return{display:inline-flex}
+ .hero-map-slot .hotel-map{margin:0;scroll-margin-top:78px}
+ .hero-map-slot .map-choices{grid-template-columns:repeat(4,minmax(0,1fr));border:0;gap:4px;margin-bottom:8px;border-radius:0;background:transparent}
+ .hero-map-slot .map-choice{justify-content:center;align-items:center;text-align:center;padding:9px 3px;min-height:44px;font-size:11px;border:1px solid var(--line)!important;border-radius:5px}
+ .hero-map-slot .map-choice small,.hero-map-slot .map-number{display:none}
+ .hero-map-slot .map-layout{display:block}
+ .hero-map-slot .map-stage,.hero-map-slot .map-canvas{height:240px;min-height:240px}
+ .hero-map-slot .map-toolbar{top:8px;left:8px;right:8px;justify-content:flex-end}
+ .hero-map-slot .map-toolbar>span{display:none}
+ .hero-map-slot .map-toolbar button{min-height:36px;padding:7px 10px}
+ .hero-map-slot .map-move{top:auto;bottom:25px;left:68px;right:auto;min-height:36px;padding:8px 10px;font-size:10px}
+ .hero-map-slot .map-status{font-size:10px;padding:7px 10px;bottom:70px;left:58px;right:8px;pointer-events:none}
+ .hero-map-slot .map-detail{margin-top:10px}
+ .hero-map-slot .map-detail>img,.hero-map-slot .map-detail .eyebrow{display:none}
+ .hero-map-slot .map-detail-copy{padding:13px 15px}
+ .hero-map-slot .map-detail h3{font-size:21px;margin-bottom:8px}
+ .hero-map-slot .map-condition{font-size:11px;margin:9px 0 12px}
+ .hero-map-slot .map-detail .btn{min-height:42px}
+ .hero-map-slot .map-actions{flex-wrap:wrap;gap:7px 14px;align-items:center;margin-top:8px}
+ .hero-map-slot .map-actions .text-link{font-size:11px}
+ .hero-map-slot .map-book-dates{display:inline-flex;background:none;border:0;border-bottom:1px solid #a9bdd7;padding:6px 0;color:var(--blue);cursor:pointer;min-height:32px}
+ .hero-map-slot .hero-map-hint{display:block;font-size:10px;line-height:1.5;color:var(--muted);margin-top:8px}
+ .hero-map-slot .map-footnote{display:none}
+ .hero-map-slot .map-pin>span{width:36px;height:36px;font-size:11px;margin:4px}
+}
 :root{--max:1280px;scroll-padding-top:130px}
 .header-inner{height:112px;padding-bottom:48px;gap:20px}
 .nav{height:48px}.nav>a,.nav summary{min-height:48px;padding-top:13px;padding-bottom:13px}.drop{top:48px;padding:12px}.drop a{padding:10px 12px}.drop-label{padding-bottom:8px}

@@ -3,6 +3,9 @@
   'use strict';
   const base = window.SITE_BASE || '';
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
+  const mobileHero = matchMedia('(max-width: 640px)');
+  const heroSlot = document.querySelector('[data-hero-map-slot]');
+  const isHeroMap = root => !!heroSlot && mobileHero.matches && heroSlot.contains(root);
   const header = document.querySelector('.header');
   const inner = document.querySelector('.header-inner');
   const menu = document.querySelector('.menu-button');
@@ -44,11 +47,13 @@
   scrollState();
   // Two views of one selection task; HTML retains both when JavaScript is unavailable.
   document.querySelectorAll('[data-hotel-explorer]').forEach(explorer => {
+    const mapRoot = explorer.querySelector('[data-hotel-map]');
     const show = (view, updateAddress = false) => {
-      explorer.querySelectorAll('[data-explorer-panel]').forEach(panel => panel.hidden = panel.dataset.explorerPanel !== view);
-      explorer.querySelectorAll('[data-hotel-view]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.hotelView === view)));
-      explorer.dataset.view = view;
-      if (view === 'map') explorer.querySelector('[data-hotel-map]').dispatchEvent(new Event('hotel-map-show'));
+      const localView = isHeroMap(mapRoot) ? 'cards' : view;
+      explorer.querySelectorAll('[data-explorer-panel]').forEach(panel => panel.hidden = panel.dataset.explorerPanel !== localView);
+      explorer.querySelectorAll('[data-hotel-view]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.hotelView === localView)));
+      explorer.dataset.view = localView;
+      if (view === 'map') mapRoot.dispatchEvent(new Event('hotel-map-show'));
       if (updateAddress) history.replaceState(null, '', location.pathname + location.search + (view === 'map' ? '#map' : '#hotels'));
       window.dispatchEvent(new Event('resize'));
     };
@@ -58,16 +63,31 @@
     compare.href = base + '/hotels/#comparison';
     show(location.hash === '#map' ? 'map' : 'cards');
     window.addEventListener('hashchange', () => {
-      if (location.hash === '#map') {show('map'); explorer.querySelector('#map').scrollIntoView({block: 'start'});}
+      if (location.hash === '#map') {show('map'); mapRoot.scrollIntoView({block: 'start'});}
       if (location.hash === '#hotels') show('cards');
     });
     document.querySelectorAll('a[href$="#map"]').forEach(link => link.addEventListener('click', ev => {
       const target = new URL(link.href, location.href);
       if (target.pathname === location.pathname) {
-        ev.preventDefault(); show('map', true); explorer.querySelector('#map').scrollIntoView({behavior: motion.matches ? 'instant' : 'smooth', block: 'start'});
+        ev.preventDefault(); show('map', true); mapRoot.scrollIntoView({behavior: motion.matches ? 'instant' : 'smooth', block: 'start'});
       }
     }));
   });
+  // Relocate one live map: no duplicate markers, IDs, downloads or selection state.
+  if (heroSlot) {
+    const root = document.querySelector('[data-hotel-map]');
+    const desktopSlot = root.parentElement;
+    const explorer = desktopSlot.closest('[data-hotel-explorer]');
+    const placeMap = () => {
+      (mobileHero.matches ? heroSlot : desktopSlot).append(root);
+      document.body.classList.toggle('has-mobile-map', mobileHero.matches);
+      root.classList.toggle('is-hero-map', mobileHero.matches);
+      explorer.showHotelView(location.hash === '#map' ? 'map' : 'cards');
+      root.dispatchEvent(new Event('hotel-map-layout'));
+      requestAnimationFrame(() => root.dispatchEvent(new Event('hotel-map-show')));
+    };
+    mobileHero.addEventListener('change', placeMap); placeMap();
+  }
   // Content is always visible. A reveal animates once on entry, never gates reading.
   if ('IntersectionObserver' in window) {
     const reveal = new IntersectionObserver(entries => entries.forEach(entry => {
@@ -100,12 +120,13 @@
     const status = root.querySelector('[data-map-status]');
     const announce = root.querySelector('[data-map-announcement]');
     const requested = new URLSearchParams(location.search).get('map-hotel');
-    let selected = hotels[requested] ? requested : root.dataset.selected, map, L, started = false;
+    const heroHotel = document.querySelector('.hero [data-booking] [name=hotel]');
+    let selected = hotels[requested] ? requested : isHeroMap(root) ? (heroHotel?.value || '') : root.dataset.selected, map, L, started = false;
     let visible = Object.keys(hotels);
     const markers = {};
     root.classList.add('map-ready');
     const select = (id, pan = true, speak = true) => {
-      if (!hotels[id]) return;
+      if (!hotels[id] && !(id === '' && isHeroMap(root))) return;
       selected = id; root.dataset.selected = id;
       choices.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.mapSelect === id)));
       panels.forEach(panel => panel.hidden = panel.dataset.mapDetail !== id);
@@ -114,18 +135,36 @@
         marker.getElement()?.setAttribute('aria-pressed', String(key === id));
         marker.setZIndexOffset(key === id ? 1000 : 0);
       });
-      if (map && pan) map.panTo([hotels[id].lat, hotels[id].lng], {animate: !motion.matches, duration: .35});
-      if (speak) announce.textContent = 'Выбран отель «' + hotels[id].name + '». Адрес, условия и номера — в карточке рядом с картой.';
+      if (map && pan && hotels[id]) map.panTo([hotels[id].lat, hotels[id].lng], {animate: !motion.matches, duration: .35});
+      if (speak) announce.textContent = id ? 'Выбран отель «' + hotels[id].name + '». Адрес, условия и номера — в карточке рядом с картой.' : 'Выбраны все отели. Нажмите на название или отметку для выбора одного отеля.';
+      if (isHeroMap(root) && speak && heroHotel && heroHotel.value !== id) {
+        heroHotel.value = id; heroHotel.dispatchEvent(new Event('change', {bubbles: true}));
+      }
     };
     const fit = () => {
       if (!map || !visible.length) return;
       map.fitBounds(visible.map(id => [hotels[id].lat, hotels[id].lng]), {
-        paddingTopLeft: [48, 90], paddingBottomRight: [48, 60],
+        paddingTopLeft: isHeroMap(root) ? [35, 55] : [48, 90], paddingBottomRight: isHeroMap(root) ? [35, 30] : [48, 60],
         maxZoom: visible.length === 1 ? 15 : 13, animate: !motion.matches
       });
     };
     choices.forEach(button => button.addEventListener('click', () => select(button.dataset.mapSelect)));
     select(selected, false, false);
+    if (isHeroMap(root) && hotels[requested]) select(requested, false, true);
+    document.querySelectorAll('[data-booking] [name=hotel]').forEach(field => field.addEventListener('change', () => {
+      if (!isHeroMap(root)) return;
+      select(field.value, true, false); if (!field.value) fit();
+    }));
+    root.addEventListener('hotel-map-layout', () => {
+      select(isHeroMap(root) ? (heroHotel?.value || '') : (selected || 'tverskaya'), false, false);
+    });
+    root.querySelectorAll('[data-map-book-dates]').forEach(button => button.addEventListener('click', () => {
+      if (!heroHotel || !isHeroMap(root)) return;
+      select(selected, false, true);
+      const dates = document.querySelector('.hero [data-dates]');
+      document.querySelector('.hero').scrollIntoView({behavior: 'instant', block: 'start'});
+      dates.click();
+    }));
     root.querySelector('[data-map-reset]').addEventListener('click', fit);
     const start = async () => {
       if (started) return; started = true;

@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "first_screen_map": {
+    "x": 16,
+    "y": 597.890625,
+    "width": 358,
+    "height": 240
+  },
+  "widths": [
+    320,
+    375,
+    390,
+    430,
+    640,
+    641,
+    900,
+    1440
+  ],
+  "single_map": true,
+  "selection": "buttons, pointer and keyboard markers, form, persistence and booking verified",
+  "resize": "desktop image and explorer restored; mobile map relocated without duplication",
+  "fallback": "hotel selection remains usable with tile failure",
+  "js_errors": []
+}
