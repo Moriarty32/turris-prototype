@@ -201,13 +201,14 @@
   },
   {
     "id": "tagansky",
-    "source": "https://turris.online/upload/iblock/55b/76w6if64j51taogmnpb33d9modsdl2zk.png",
-    "file": "tagansky.png",
+    "source": "https://turris.online/upload/iblock/e48/m9vwwzz0r7jassvu4cxn132of7o0so37.png",
+    "file": "tagansky-facade.png",
     "page": "https://turris.online/hotels/turris-hotel-tagansky/",
     "kind": "hotel",
-    "width": 1321,
-    "height": 468,
-    "checked": "2026-10-28"
+    "width": 1318,
+    "height": 573,
+    "checked": "2026-10-29",
+    "note": "Facade photograph verified visually; replaces interior image incorrectly used for the hotel card."
   },
   {
     "id": "tagansky_room_1",

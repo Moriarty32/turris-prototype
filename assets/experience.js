@@ -42,6 +42,32 @@
     if (!scrollQueued) {scrollQueued = true; requestAnimationFrame(scrollState);}
   }, {passive: true});
   scrollState();
+  // Two views of one selection task; HTML retains both when JavaScript is unavailable.
+  document.querySelectorAll('[data-hotel-explorer]').forEach(explorer => {
+    const show = (view, updateAddress = false) => {
+      explorer.querySelectorAll('[data-explorer-panel]').forEach(panel => panel.hidden = panel.dataset.explorerPanel !== view);
+      explorer.querySelectorAll('[data-hotel-view]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.hotelView === view)));
+      explorer.dataset.view = view;
+      if (view === 'map') explorer.querySelector('[data-hotel-map]').dispatchEvent(new Event('hotel-map-show'));
+      if (updateAddress) history.replaceState(null, '', location.pathname + location.search + (view === 'map' ? '#map' : '#hotels'));
+      window.dispatchEvent(new Event('resize'));
+    };
+    explorer.showHotelView = show;
+    explorer.querySelectorAll('[data-hotel-view]').forEach(button => button.addEventListener('click', () => show(button.dataset.hotelView, true)));
+    const compare = explorer.querySelector('[data-compare-hotels]');
+    compare.href = base + '/hotels/#comparison';
+    show(location.hash === '#map' ? 'map' : 'cards');
+    window.addEventListener('hashchange', () => {
+      if (location.hash === '#map') {show('map'); explorer.querySelector('#map').scrollIntoView({block: 'start'});}
+      if (location.hash === '#hotels') show('cards');
+    });
+    document.querySelectorAll('a[href$="#map"]').forEach(link => link.addEventListener('click', ev => {
+      const target = new URL(link.href, location.href);
+      if (target.pathname === location.pathname) {
+        ev.preventDefault(); show('map', true); explorer.querySelector('#map').scrollIntoView({behavior: motion.matches ? 'instant' : 'smooth', block: 'start'});
+      }
+    }));
+  });
   // Content is always visible. A reveal animates once on entry, never gates reading.
   if ('IntersectionObserver' in window) {
     const reveal = new IntersectionObserver(entries => entries.forEach(entry => {
@@ -156,6 +182,9 @@
         });
         fit(); layer.addTo(map); select(selected, false, false);
         root.dataset.mapLoaded = 'true';
+        root.addEventListener('hotel-map-show', () => {
+          requestAnimationFrame(() => {map.invalidateSize({pan: false}); fit();});
+        });
         new ResizeObserver(() => {map.invalidateSize({pan: false});}).observe(root.querySelector('.map-stage'));
         motion.addEventListener('change', () => {
           map.options.zoomAnimation = !motion.matches;
@@ -189,6 +218,7 @@
     });
     document.querySelectorAll('[data-show-hotel-map]').forEach(button => button.addEventListener('click', ev => {
       ev.preventDefault();
+      root.closest('[data-hotel-explorer]')?.showHotelView('map', true);
       select(button.dataset.showHotelMap);
       root.scrollIntoView({behavior: motion.matches ? 'instant' : 'smooth', block: 'start'});
       choices.find(choice => choice.dataset.mapSelect === selected)?.focus({preventScroll: true});

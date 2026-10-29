@@ -1,0 +1,91 @@
+{
+  "status": "PASS",
+  "cards": [
+    {
+      "x": 80,
+      "y": 767.46875,
+      "width": 308,
+      "height": 348.59375
+    },
+    {
+      "x": 404,
+      "y": 767.46875,
+      "width": 308,
+      "height": 348.59375
+    },
+    {
+      "x": 728,
+      "y": 767.46875,
+      "width": 308,
+      "height": 348.59375
+    },
+    {
+      "x": 1052,
+      "y": 767.46875,
+      "width": 308,
+      "height": 348.59375
+    }
+  ],
+  "desktop_home_height": 3040,
+  "responsive": [
+    {
+      "width": 320,
+      "pages": 4,
+      "overflow": false
+    },
+    {
+      "width": 390,
+      "pages": 4,
+      "overflow": false
+    },
+    {
+      "width": 640,
+      "pages": 4,
+      "overflow": false
+    },
+    {
+      "width": 768,
+      "pages": 4,
+      "overflow": false
+    },
+    {
+      "width": 900,
+      "pages": 4,
+      "overflow": false
+    },
+    {
+      "width": 901,
+      "pages": 4,
+      "overflow": false
+    },
+    {
+      "width": 1024,
+      "pages": 4,
+      "overflow": false
+    },
+    {
+      "width": 1150,
+      "pages": 4,
+      "overflow": false
+    },
+    {
+      "width": 1151,
+      "pages": 4,
+      "overflow": false
+    },
+    {
+      "width": 1280,
+      "pages": 4,
+      "overflow": false
+    },
+    {
+      "width": 1440,
+      "pages": 4,
+      "overflow": false
+    }
+  ],
+  "forms": "hotel persists across date/guest changes and synchronizes upper/lower forms",
+  "explorer": "cards/map mutually exclusive; repeated switching, selected hotel and comparison anchor verified",
+  "catalog": "reset filter works",
+  "js_errors": []
+}

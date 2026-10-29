@@ -8,10 +8,10 @@
   "observations": [
     {
       "desktop_main_cta_y": {
-        "x": 120,
-        "y": 587.90625,
-        "width": 518.390625,
-        "height": 50
+        "x": 80,
+        "y": 496.5625,
+        "width": 600,
+        "height": 48
       }
     },
     {

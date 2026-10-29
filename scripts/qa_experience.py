@@ -36,14 +36,14 @@ async def main():
         checks.append('4 sourced markers; card -> map -> hotel detail; keyboard marker; route; reset; attribution')
         await page.goto(BASE + '/hotels/', wait_until='networkidle')
         await page.locator('[data-hotel-filter]').select_option('longstay')
-        await page.locator('a[href="#map"]').first.click()
+        await page.locator('[data-hotel-view=map]').click()
         await page.wait_for_selector('[data-map-loaded="true"]')
         assert await page.locator('.map-pin').count() == 1
         assert await page.locator('[data-map-select]:visible').count() == 1
         assert await page.locator('[data-map-detail="petrovsky"]').is_visible()
         await page.locator('[data-hotel-filter]').select_option('family')
         assert await page.locator('.map-pin').count() == 2
-        assert await page.locator('[data-hotel-card]:visible').count() == 2
+        assert await page.locator('[data-hotel-card]:not([hidden])').count() == 2
         await page.locator('[data-hotel-filter]').select_option('all')
         assert await page.locator('.map-pin').count() == 4
         checks.append('Catalogue purpose filter synchronizes cards, choices and markers before/after map initialization')
