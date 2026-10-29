@@ -1,3 +1,5 @@
 User-agent: *
 Disallow:
-# Demonstration pages carry noindex in HTML.
+# Indexing is disabled through robots meta on every HTML page.
+# Crawling must remain allowed so robots can read noindex.
+# This project-path robots.txt is informational; host-root rules take precedence.

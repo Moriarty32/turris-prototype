@@ -11,7 +11,7 @@ async def main():
  for f in pages:
   soup=BeautifulSoup(f.read_text(encoding='utf-8'),'html.parser')
   if len(soup.select('h1'))!=1:problems.append([str(f),'h1 count'])
-  if not soup.select_one('meta[name="robots"][content="noindex,nofollow"]'):problems.append([str(f),'noindex'])
+  if not soup.select_one('meta[name="robots"][content*="noindex"]'):problems.append([str(f),'noindex'])
   for tag,attr in [('a','href'),('img','src'),('script','src'),('link','href')]:
    for el in soup.select(f'{tag}[{attr}]'):
     u=el[attr]

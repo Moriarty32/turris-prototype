@@ -244,7 +244,7 @@ def breadcrumbs(p):
 def build():
  shutil.copytree(ROOT/'assets',DIST/'assets',dirs_exist_ok=True)
  reportdir=DIST/'research';reportdir.mkdir(exist_ok=True)
- for name in ['Turris-premium-design-research.pdf','premium-design-research.html','global-ux-audit.html']:
+ for name in ['premium-design-research.html','global-ux-audit.html']:
   if (ROOT/'docs'/name).exists():shutil.copy2(ROOT/'docs'/name,reportdir/name)
  public=[]
  for p in PAGES.values():
@@ -280,7 +280,19 @@ def build():
  (DIST/'site-data.json').write_text(json.dumps({'pages':public,'hotels':HOTELS},ensure_ascii=False),encoding='utf-8')
  (DIST/'404.html').write_text((DIST/'404/index.html').read_text(encoding='utf-8'),encoding='utf-8')
  (DIST/'.nojekyll').write_text('',encoding='utf-8')
- (DIST/'robots.txt').write_text('User-agent: *\nDisallow:\n# Demonstration pages carry noindex in HTML.\n',encoding='utf-8')
+ # PDFs cannot carry HTML noindex on GitHub Pages; retain the source in docs only.
+ (reportdir/'Turris-premium-design-research.pdf').unlink(missing_ok=True)
+ # Apply to every published HTML artifact, including reports, widgets and 404 pages.
+ robots='<meta name="robots" content="noindex,nofollow,noimageindex,nosnippet">'
+ for page in DIST.rglob('*.html'):
+  markup=page.read_text(encoding='utf-8')
+  if re.search(r'<meta\b[^>]*name=[\"\']robots[\"\'][^>]*>',markup,re.I):
+   markup=re.sub(r'<meta\b[^>]*name=[\"\']robots[\"\'][^>]*>',robots,markup,flags=re.I)
+  else:
+   markup=markup.replace('<head>','<head>'+robots,1)
+  if robots not in markup:raise RuntimeError('Missing indexing protection: '+str(page))
+  page.write_text(markup,encoding='utf-8')
+ (DIST/'robots.txt').write_text('User-agent: *\nDisallow:\n# Indexing is disabled through robots meta on every HTML page.\n# Crawling must remain allowed so robots can read noindex.\n# This project-path robots.txt is informational; host-root rules take precedence.\n',encoding='utf-8')
  (ROOT/'docs/build-report.json').write_text(json.dumps({'pages':len(public),'templates':len(RENDER),'base':BASE,'generated_assets':4,'documentary_assets':len(ASSETS),'mode':'prototype-with-live-travelline-booking-demo-contact-forms','indexing':'noindex'},ensure_ascii=False,indent=2),encoding='utf-8')
  print('Built',len(public),'pages,',len(RENDER),'templates')
 if __name__=='__main__':build()
