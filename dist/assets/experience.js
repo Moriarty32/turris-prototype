@@ -50,7 +50,7 @@
     const mapRoot = explorer.querySelector('[data-hotel-map]');
     const show = (view, updateAddress = false) => {
       const localView = isHeroMap(mapRoot) ? 'cards' : view;
-      explorer.querySelectorAll('[data-explorer-panel]').forEach(panel => panel.hidden = panel.dataset.explorerPanel !== localView);
+      explorer.querySelectorAll('[data-explorer-panel]').forEach(panel => panel.hidden = explorer.hasAttribute('data-home-explorer') ? (isHeroMap(mapRoot) && panel.dataset.explorerPanel === 'map') : panel.dataset.explorerPanel !== localView);
       explorer.querySelectorAll('[data-hotel-view]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.hotelView === localView)));
       explorer.dataset.view = localView;
       if (view === 'map') mapRoot.dispatchEvent(new Event('hotel-map-show'));
@@ -58,7 +58,7 @@
       window.dispatchEvent(new Event('resize'));
     };
     explorer.showHotelView = show;
-    explorer.querySelectorAll('[data-hotel-view]').forEach(button => button.addEventListener('click', () => show(button.dataset.hotelView, true)));
+    explorer.querySelectorAll('[data-hotel-view]').forEach(button => button.addEventListener('click', () => {show(button.dataset.hotelView, true);if(explorer.hasAttribute('data-home-explorer'))(button.dataset.hotelView==='map'?mapRoot:explorer).scrollIntoView({block:'start',behavior:motion.matches?'instant':'smooth'});}));
     const compare = explorer.querySelector('[data-compare-hotels]');
     compare.href = base + '/hotels/#comparison';
     show(location.hash === '#map' ? 'map' : 'cards');

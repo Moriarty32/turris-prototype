@@ -1,0 +1,208 @@
+{
+  "status": "PASS",
+  "checked": "2026-10-29",
+  "scope": "Home reference redesign with preserved booking and map flows",
+  "reports": {
+    "home-reference-report": {
+      "status": "PASS",
+      "checks": [
+        {
+          "width": 390,
+          "first_cta": {
+            "x": 33,
+            "y": 438.453125,
+            "width": 324,
+            "height": 44
+          },
+          "navigation": "passed"
+        },
+        {
+          "width": 901,
+          "first_cta": {
+            "x": 492.53125,
+            "y": 471.40625,
+            "width": 349.46875,
+            "height": 48
+          },
+          "navigation": "passed"
+        },
+        {
+          "width": 1024,
+          "first_cta": {
+            "x": 554.640625,
+            "y": 471.40625,
+            "width": 410.359375,
+            "height": 48
+          },
+          "navigation": "passed"
+        },
+        {
+          "width": 1440,
+          "first_cta": {
+            "x": 772.828125,
+            "y": 491.21875,
+            "width": 511.171875,
+            "height": 48
+          },
+          "navigation": "passed"
+        }
+      ],
+      "js_errors": []
+    },
+    "mobile-hero-map-report": {
+      "status": "PASS",
+      "first_screen_map": {
+        "x": 16,
+        "y": 581.453125,
+        "width": 358,
+        "height": 220
+      },
+      "widths": [
+        320,
+        375,
+        390,
+        430,
+        640,
+        641,
+        900,
+        1440
+      ],
+      "single_map": true,
+      "selection": "buttons, pointer and keyboard markers, form, persistence and booking verified",
+      "resize": "desktop image and explorer restored; mobile map relocated without duplication",
+      "fallback": "hotel selection remains usable with tile failure",
+      "js_errors": []
+    },
+    "experience-report": {
+      "status": "PASS",
+      "checks": [
+        "4 sourced markers; card -> map -> hotel detail; keyboard marker; route; reset; attribution",
+        "Catalogue purpose filter synchronizes cards, choices and markers before/after map initialization",
+        "Cross-page card link opens selected hotel on the home map",
+        "Active navigation, native keyboard disclosure and Escape",
+        "Touch map selection, explicit drag mode, mobile menu, no overflow",
+        "Tile outage and library outage: readable status, usable hotel cards and directions",
+        "Reduced motion disables effects; no-JS renders all four addresses and route links"
+      ],
+      "js_errors": [],
+      "tiles": "isolated fixtures; public tile service not exercised by automated pan/zoom"
+    },
+    "compact-report": {
+      "status": "PASS",
+      "cards": [
+        {
+          "x": 120,
+          "y": 821.734375,
+          "width": 589,
+          "height": 334.046875
+        },
+        {
+          "x": 731,
+          "y": 821.734375,
+          "width": 589,
+          "height": 334.046875
+        },
+        {
+          "x": 120,
+          "y": 1177.78125,
+          "width": 589,
+          "height": 334.046875
+        },
+        {
+          "x": 731,
+          "y": 1177.78125,
+          "width": 589,
+          "height": 334.046875
+        }
+      ],
+      "desktop_home_height": 3680,
+      "responsive": [
+        {
+          "width": 320,
+          "pages": 4,
+          "overflow": false
+        },
+        {
+          "width": 390,
+          "pages": 4,
+          "overflow": false
+        },
+        {
+          "width": 640,
+          "pages": 4,
+          "overflow": false
+        },
+        {
+          "width": 768,
+          "pages": 4,
+          "overflow": false
+        },
+        {
+          "width": 900,
+          "pages": 4,
+          "overflow": false
+        },
+        {
+          "width": 901,
+          "pages": 4,
+          "overflow": false
+        },
+        {
+          "width": 1024,
+          "pages": 4,
+          "overflow": false
+        },
+        {
+          "width": 1150,
+          "pages": 4,
+          "overflow": false
+        },
+        {
+          "width": 1151,
+          "pages": 4,
+          "overflow": false
+        },
+        {
+          "width": 1280,
+          "pages": 4,
+          "overflow": false
+        },
+        {
+          "width": 1440,
+          "pages": 4,
+          "overflow": false
+        }
+      ],
+      "forms": "hotel persists across date/guest changes and synchronizes upper/lower forms",
+      "explorer": "home cards and map both available; view controls navigate; selected hotel and comparison anchor verified",
+      "catalog": "reset filter works",
+      "js_errors": []
+    },
+    "image-quality-report": {
+      "status": "PASS",
+      "assets": 28,
+      "web_files": 144,
+      "pages": 109,
+      "viewports": [
+        1440,
+        390
+      ],
+      "device_pixel_ratio": 2,
+      "rendered_checks": 736,
+      "minimum_density": 1.98,
+      "below_1_95": [],
+      "js_errors": [],
+      "notes": [
+        "All web images decoded, dimensions match manifest, no upscaling during export",
+        "Generated facade labelled; full-size lightbox verified",
+        "Source photographs visually reviewed; pixel density is not a measure of original camera sharpness"
+      ]
+    }
+  },
+  "site_checks": {
+    "static_pages": 109,
+    "browser_templates": 22,
+    "internal_links": "all resolved",
+    "javascript_errors": []
+  }
+}

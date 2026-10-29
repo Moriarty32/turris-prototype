@@ -47,7 +47,7 @@ async def main():
         await page.locator('[data-hotel-filter]').select_option('all')
         assert await page.locator('.map-pin').count() == 4
         checks.append('Catalogue purpose filter synchronizes cards, choices and markers before/after map initialization')
-        await page.goto(BASE + '/business/', wait_until='networkidle')
+        await page.goto(BASE + '/about/', wait_until='networkidle')
         await page.locator('[data-show-hotel-map="lubyansky"]').click()
         await page.wait_for_url('**/?map-hotel=lubyansky#map')
         assert await page.locator('[data-map-detail="lubyansky"]').is_visible()

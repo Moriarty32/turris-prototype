@@ -1,0 +1,63 @@
+{
+  "reference": "Премиальный сайт отелей Туррис с бронированием.png",
+  "scope": "Home page only; existing booking, navigation, content and map contracts preserved",
+  "blocks": [
+    "Utility row and floating main menu with existing dropdowns",
+    "Two-column hero: real Tverskaya room photograph and navy booking panel",
+    "Four property cards in a two-column grid",
+    "Map with one expanded property panel; cards remain visible above it",
+    "Direct booking benefits",
+    "Family suite and longstay offers",
+    "Existing sourced review",
+    "Group quote action",
+    "FAQ with telephone support",
+    "Repeated synchronized booking form",
+    "Existing footer destinations"
+  ],
+  "mobile": "One live map moves into the hero at <=640px, replacing the room photograph. Four hotel tabs and marker selection remain synchronized with both trip forms. No duplicate map or markers.",
+  "images": {
+    "hero": {
+      "asset": "tverskaya_room_4",
+      "css_desktop_px": [
+        595,
+        300
+      ]
+    },
+    "hotel_cards": {
+      "css_desktop_px": [
+        589,
+        184
+      ],
+      "css_mobile_px": [
+        358,
+        164
+      ]
+    },
+    "family_offer": {
+      "asset": "tverskaya_room_1"
+    },
+    "petrovsky": "Existing labelled facade reconstruction retained"
+  },
+  "functional_contract": [
+    "Dates and guests, including child ages",
+    "Upper/lower form synchronization and booking navigation",
+    "Hotel cards, comparison table and room links",
+    "Four sourced map markers, routes, keyboard selection, zoom and touch drag opt-in",
+    "Responsive map relocation and selected hotel persistence",
+    "Menu, search, booking management, help and contact paths",
+    "FAQ, group quote, family and loyalty links",
+    "Reduced-motion support and fallback links without map provider"
+  ],
+  "sources": [
+    "data/content.py",
+    "data/map-locations.json",
+    "data/image-delivery.json",
+    "docs/offers-reference-sources.json",
+    "docs/hotel-detail-sources.json"
+  ],
+  "limitations": [
+    "No live inventory or prices; demo remains noindex",
+    "OpenStreetMap tile service is external",
+    "Existing reviews and hotel facts retained without invented additions"
+  ]
+}
