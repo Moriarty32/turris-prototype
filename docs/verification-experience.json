@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "checks": [
+    "4 sourced markers; card -> map -> hotel detail; keyboard marker; route; reset; attribution",
+    "Catalogue purpose filter synchronizes cards, choices and markers before/after map initialization",
+    "Cross-page card link opens selected hotel on the home map",
+    "Active navigation, native keyboard disclosure and Escape",
+    "Touch map selection, explicit drag mode, mobile menu, no overflow",
+    "Tile outage and library outage: readable status, usable hotel cards and directions",
+    "Reduced motion disables effects; no-JS renders all four addresses and route links"
+  ],
+  "js_errors": [],
+  "tiles": "isolated fixtures; public tile service not exercised by automated pan/zoom"
+}

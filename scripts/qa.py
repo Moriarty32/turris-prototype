@@ -27,6 +27,7 @@ async def main():
  async with async_playwright() as p:
   browser=await p.chromium.launch()
   desktop=await browser.new_context(viewport={'width':1440,'height':1000},locale='ru-RU')
+  await desktop.route('https://tile.openstreetmap.org/**', lambda route: route.abort())
   page=await desktop.new_page();page.on('pageerror',lambda err:errors.append(str(err)))
   await page.goto(BASE+'/',wait_until='networkidle')
   await page.screenshot(path=str(OUT/'home-desktop.png'),full_page=True)
@@ -62,6 +63,7 @@ async def main():
    overflow=await page.evaluate('document.documentElement.scrollWidth>innerWidth+1')
    assert not overflow,('desktop overflow',row['url'])
   mobile=await browser.new_context(viewport={'width':390,'height':844},device_scale_factor=1,is_mobile=True,has_touch=True,locale='ru-RU')
+  await mobile.route('https://tile.openstreetmap.org/**', lambda route: route.abort())
   m=await mobile.new_page();m.on('pageerror',lambda err:errors.append(str(err)))
   await m.goto(BASE+'/',wait_until='networkidle');await m.screenshot(path=str(OUT/'home-mobile.png'),full_page=True);await m.screenshot(path=str(OUT/'home-mobile-first-screen.png'))
   box=await m.locator('[data-booking] .btn').first.bounding_box();assert box['y']+box['height']<844,box

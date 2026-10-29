@@ -1,0 +1,33 @@
+{
+  "status": "PASS",
+  "static_pages": 109,
+  "templates_browser_checked": 22,
+  "generated_dimensions": "4x1536x1024",
+  "local_links": "all resolved",
+  "js_errors": [],
+  "observations": [
+    {
+      "desktop_main_cta_y": {
+        "x": 120,
+        "y": 587.90625,
+        "width": 518.390625,
+        "height": 50
+      }
+    },
+    {
+      "booking": "dates,2adults,child7 retained;7Lubyansky categories"
+    },
+    {
+      "room_context": "family suite preserved"
+    },
+    {
+      "group_form": "two steps and explicit unsent success"
+    },
+    {
+      "blog": "rubric and empty search work"
+    },
+    {
+      "search_results": 3
+    }
+  ]
+}

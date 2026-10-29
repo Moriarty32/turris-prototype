@@ -1,0 +1,12 @@
+{
+  "checked": "2026-10-29",
+  "coordinate_order": "latitude, longitude",
+  "precision": "Organization location; not a verified accessible entrance or parking entrance.",
+  "tile_url": "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+  "hotels": {
+    "tverskaya": {"lat":55.775403,"lng":37.584218,"source":"https://yandex.ru/maps/org/turris_hotel_tverskaya/12319230264/"},
+    "lubyansky": {"lat":55.755951,"lng":37.634086,"source":"https://yandex.ru/maps/org/turris_hotel_lubyansky/41889136191/"},
+    "petrovsky": {"lat":55.768313,"lng":37.614639,"source":"https://yandex.ru/maps/org/turris_hotel_petrovsky/131428245804/"},
+    "tagansky": {"lat":55.749893,"lng":37.648767,"source":"https://yandex.ru/maps/org/turris_hotel_tagansky/226516516872/"}
+  }
+}
