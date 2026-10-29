@@ -140,6 +140,7 @@
       if (isHeroMap(root) && speak && heroHotel && heroHotel.value !== id) {
         heroHotel.value = id; heroHotel.dispatchEvent(new Event('change', {bubbles: true}));
       }
+      if (speak) root.dispatchEvent(new CustomEvent('hotel-map-selection', {detail: {id}}));
     };
     const fit = () => {
       if (!map || !visible.length) return;
@@ -148,6 +149,7 @@
         maxZoom: visible.length === 1 ? 15 : 13, animate: !motion.matches
       });
     };
+    root.addEventListener('hotel-map-select', ev => select(ev.detail.id, ev.detail.pan !== false, false));
     choices.forEach(button => button.addEventListener('click', () => select(button.dataset.mapSelect)));
     select(selected, false, false);
     if (isHeroMap(root) && hotels[requested]) select(requested, false, true);

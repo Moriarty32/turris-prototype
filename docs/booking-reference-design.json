@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-29",
+  "reference": "Бронирование отелей Туррис в Москве.png, user supplied",
+  "scope": [
+    "/bronirovanie/",
+    "four hotel-local /booking/ routes"
+  ],
+  "layout": [
+    "compact logo / all hotels / manage reservation / telephone header",
+    "title and three-step context",
+    "hotel / dates / guests search with optional promo",
+    "two-column selectable hotel cards",
+    "interactive four-hotel map with accordion",
+    "cost / cancellation / help facts",
+    "FAQ and contact",
+    "return-to-dates CTA and compact footer"
+  ],
+  "behavior": [
+    "card, select and map share hotel selection",
+    "date and guest dialogs retain ages",
+    "search updates results in place and updates shareable URL",
+    "parameter edits hide stale category results until resubmission",
+    "incoming room selection preserved across date edits and explicitly resettable",
+    "property-specific booking route initializes its hotel",
+    "promo saved only in sessionStorage; no discount or applicability claim",
+    "map keyboard selection, zoom, expanded view and Escape",
+    "provider error retry and no-JS image/hotel/route links"
+  ],
+  "assets": {
+    "reuse": "existing high-resolution official hotel facade images",
+    "petrovsky": "existing labelled AI reconstruction; no new generation",
+    "desktop_card_slot": "~548 × 200 CSS px at 1440 viewport",
+    "mobile_card_slot": "viewport minus 32 × 155 CSS px",
+    "map_detail_slot": "~288 × 113 desktop; 115 × 110 mobile"
+  },
+  "truthfulness": [
+    "no invented prices or availability",
+    "steps 2 and 3 describe continuation at official hotel website",
+    "no unverified 09:00–21:00 telephone hours copied from reference",
+    "generated Petrovsky facade remains labelled"
+  ],
+  "verification": "docs/verification-booking-reference.json"
+}

@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "responsive_widths": [
+    320,
+    390,
+    640,
+    768,
+    1024,
+    1440
+  ],
+  "checks": [
+    "card/form/map synchronization",
+    "keyboard marker selection",
+    "expanded map Escape",
+    "dates and child age",
+    "promo stored without discount claim",
+    "inline results and stale-state hiding",
+    "selected room retained and reset",
+    "hotel-local booking preset",
+    "provider failure and retry",
+    "no-JS links"
+  ],
+  "js_errors": []
+}

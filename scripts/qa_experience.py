@@ -64,7 +64,9 @@ async def main():
         for path in (ROOT/'dist').rglob('index.html'):
             html = path.read_text(encoding='utf-8')
             assert '/assets/premium.css' in html and '/assets/experience.js' in html
-            assert 'class="nav-shell"' in html
+            # Hotel and booking screens use compact headers; every template
+            # must still retain the primary navigation and skip-to-content link.
+            assert 'id="main-nav"' in html and 'href="#main"' in html
         mobile = await browser.new_context(viewport={'width':390,'height':844},is_mobile=True,has_touch=True,locale='ru-RU')
         await mobile.route('https://tile.openstreetmap.org/**', lambda r: r.fulfill(content_type='image/svg+xml',body=TILE))
         m = await mobile.new_page(); m.on('pageerror', lambda e: errors.append(str(e)))
