@@ -1,0 +1,106 @@
+{
+  "date": "2026-10-29",
+  "scope": {
+    "pages": 109,
+    "templates": 22
+  },
+  "method": "Expert UI review, source audit, Chromium scenario and responsive checks; not a real-guest usability study or WCAG certification.",
+  "before": {
+    "header_variants": 5,
+    "representative_observations": 46,
+    "observations_with_text_below_12px": 45
+  },
+  "navigation": {
+    "header_variants": 1,
+    "content_pages_reachable": 107,
+    "intentional_non_navigation_pages": [
+      "/404/",
+      "/request/success/"
+    ],
+    "missing_local_anchors": 0,
+    "duplicate_ids": 0
+  },
+  "sources": [
+    "https://www.nngroup.com/articles/menu-design/",
+    "https://www.nngroup.com/articles/hamburger-menus/",
+    "https://www.w3.org/TR/WCAG22/",
+    "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+    "https://www.w3.org/WAI/WCAG22/Understanding/animation-from-interactions.html",
+    "https://www.fourseasons.com/",
+    "https://www.mandarinoriental.com/en/london/hyde-park"
+  ],
+  "limitations": [
+    "Rates, availability, payments and message delivery remain demonstration-only.",
+    "Automated contrast samples exclude photographic and gradient backgrounds.",
+    "Image density checks measure delivered resolution, not original camera sharpness."
+  ],
+  "status": "PASS",
+  "responsive": {
+    "pages": 109,
+    "shell_variants": 1,
+    "checks": 327,
+    "overflow": [],
+    "small_text": [],
+    "js_errors": []
+  },
+  "images": {
+    "status": "PASS",
+    "full_audit_pages": 109,
+    "full_audit_viewports": [
+      1440,
+      390
+    ],
+    "followup_pages": [
+      "/blog/",
+      "/blog/districts/",
+      "/blog/family/",
+      "/blog/business/",
+      "/blog/stay/"
+    ],
+    "followup_viewports": [
+      320,
+      390,
+      1440
+    ],
+    "rendered_checks": 810,
+    "minimum_density": 1.98,
+    "below_1_95": [],
+    "notes": [
+      "Full 109-page image audit followed by targeted verification after correcting guide image source selection."
+    ]
+  },
+  "alignment": [
+    {
+      "url": "/",
+      "aligned_buttons": 4
+    },
+    {
+      "url": "/family/",
+      "aligned_buttons": 4
+    },
+    {
+      "url": "/contacts/",
+      "aligned_buttons": 4
+    }
+  ],
+  "contrast": {
+    "templates_sampled": 22,
+    "additional_network_contacts": true,
+    "low_contrast_findings_after_corrections": 0,
+    "scope": "Visible paragraphs, links, labels and FAQ headings on solid backgrounds; excludes gradients/photos."
+  },
+  "functional_suites": [
+    "qa.py",
+    "qa_home_reference.py",
+    "qa_mobile_hero_map.py",
+    "qa_hotel_detail.py",
+    "qa_booking_reference.py",
+    "qa_offers_reference.py",
+    "qa_guide.py",
+    "qa_article_reference.py",
+    "qa_contacts_reference.py",
+    "qa_experience.py",
+    "qa_compact.py"
+  ],
+  "followup": "After the full responsive audit, final targeted checks cover 320/390/1101/1200/1440 headers, complete date/guest labels, button alignment/hover/reduced motion and guide images at 320/390/1440."
+}

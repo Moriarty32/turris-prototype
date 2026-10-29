@@ -19,7 +19,7 @@ async def main():
     assert box['y']+box['height']<=844,box
     await page.locator('.menu-button').click()
     await page.locator('.nav summary').nth(1).click()
-    assert await page.locator('.nav a[href$="/family/"]').is_visible()
+    assert await page.locator('[data-nav-section=offers] a[href$="/family/"]').is_visible()
     await page.keyboard.press('Escape')
     assert not await page.locator('.nav').is_visible()
     await page.locator('.hero [data-guests]').click()
@@ -27,6 +27,10 @@ async def main():
     await page.locator('[data-age="0"]').select_option('4');await page.locator('[data-age="1"]').select_option('8')
     await page.locator('[data-save-guests]').click()
     assert await page.locator('.hero [name=children]').input_value()=='[4,8]'
+   elif width<=1100:
+    await page.locator('.menu-button').click()
+    assert await page.locator('.nav').is_visible()
+    await page.keyboard.press('Escape')
    else:
     navbox=await page.locator('.nav>a[href$="/contacts/"]').bounding_box()
     actionbox=await page.locator('.header-booking').bounding_box()

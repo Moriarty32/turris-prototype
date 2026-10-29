@@ -54,7 +54,7 @@ async def main():
         checks.append('Cross-page card link opens selected hotel on the home map')
         # Header keyboard, active section and close behavior.
         await page.goto(BASE + '/blog/attic-room/', wait_until='networkidle')
-        assert 'current' in await page.locator('.nav-direct').first.get_attribute('class')
+        assert 'current' in await page.locator('[data-nav-section=guide]').get_attribute('class')
         await page.locator('.nav summary').first.focus(); await page.keyboard.press('Enter')
         assert await page.locator('.drop').first.is_visible()
         await page.keyboard.press('Escape')

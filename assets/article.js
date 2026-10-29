@@ -9,5 +9,5 @@ root.addEventListener('hotel-map-selection',ev=>{if(form.elements.hotel.value!==
 function syncHotel(){if(items.some(({button})=>button.dataset.mapSelect===form.elements.hotel.value))root.dispatchEvent(new CustomEvent('hotel-map-select',{detail:{id:form.elements.hotel.value,pan:false}}));}
 form.elements.hotel.addEventListener('change',syncHotel);document.addEventListener('booking-context-change',syncHotel);syncHotel();
 function dateLabel(){if(!form.elements.checkin.value)form.querySelector('[data-date-label]').textContent='Выберите даты';}document.addEventListener('booking-context-change',dateLabel);dateLabel();
-const motion=matchMedia('(prefers-reduced-motion:reduce)');if('IntersectionObserver'in window){const reveal=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){if(!motion.matches)entry.target.classList.add('revealed');reveal.unobserve(entry.target);}}),{threshold:.08});article.querySelectorAll('.ar-related-card,.guide-tip').forEach(el=>reveal.observe(el));}
+
 })();

@@ -21,7 +21,7 @@ async def main():
    await root.scroll_into_view_if_needed()
    await expect(root.locator('.leaflet-marker-icon')).to_have_count(len(config))
    assert await root.locator('.home-map-item').count()==len(config)
-   assert await page.locator('.home-header .nav-direct.current').inner_text()=='Гид по Москве'
+   assert await page.locator('[data-nav-section=guide].current>summary').inner_text()=='Гид по Москве'
    assert await page.locator('.ar-related-card').count()==3
    assert await page.locator('#article-sources a').count()>=len(config)
    for hotel in config:
@@ -44,7 +44,7 @@ async def main():
    await page.locator('[data-map-select=lubyansky]').click()
    await expect(page.locator('[data-map-detail=lubyansky]')).to_be_visible()
   await page.locator('.menu-button').click()
-  await expect(page.locator('.nav-direct.current')).to_be_visible()
+  await expect(page.locator('[data-nav-section=guide].current>summary')).to_be_visible()
   await page.keyboard.press('Escape')
   await expect(page.locator('.nav')).not_to_be_visible()
   await page.locator('.ar-booking [data-dates]').click()

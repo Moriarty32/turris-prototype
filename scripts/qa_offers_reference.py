@@ -27,7 +27,8 @@ async def main():
     if width==390 and item['id']=='family':
      await page.locator('.menu-button').click()
      assert await page.locator('#main-nav').is_visible()
-     await page.locator('#main-nav a[href="#conditions"]').click()
+     await page.locator('#main-nav [data-nav-section=offers]>summary').click()
+     await page.locator('#main-nav [data-nav-section=offers] a[href$="/family/"]').click()
      assert not await page.locator('#main-nav').is_visible()
     assert await page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(item['id'],width)
     bad=await page.locator('img[src]').evaluate_all('els=>els.filter(e=>e.complete&&!e.naturalWidth).map(e=>e.src)')
