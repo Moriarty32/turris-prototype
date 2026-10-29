@@ -29,7 +29,7 @@ async def main():
      assert await page.locator('#main-nav').is_visible()
      await page.locator('#main-nav [data-nav-section=offers]>summary').click()
      await page.locator('#main-nav [data-nav-section=offers] a[href$="/family/"]').click()
-     assert not await page.locator('#main-nav').is_visible()
+     await page.locator('#main-nav').wait_for(state='hidden')
     assert await page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(item['id'],width)
     bad=await page.locator('img[src]').evaluate_all('els=>els.filter(e=>e.complete&&!e.naturalWidth).map(e=>e.src)')
     assert not bad,(item['id'],bad)
@@ -39,6 +39,7 @@ async def main():
     checks.append([item['id'],width])
    await c.close()
   c=await browser.new_context(viewport={'width':1440,'height':900},locale='ru-RU')
+  await c.route('**/assets/booking-widget.html?*',lambda r:r.fulfill(content_type='text/html',body='<p>Provider contract stub</p>'))
   await c.route('**/tile.openstreetmap.org/**',lambda r:r.abort())
   page=await c.new_page();page.on('pageerror',lambda e:errors.append(str(e)))
   await page.goto(BASE+'/family/',wait_until='networkidle')
@@ -52,8 +53,12 @@ async def main():
   await dates(page)
   await page.locator('[data-offer-form] [type=submit]').click()
   await page.wait_for_url('**/bronirovanie/**')
-  await page.wait_for_selector('#booking-results .room-card')
-  assert await page.locator('#booking-results .room-card').count()==4
+  await page.wait_for_selector('[data-booking-choose-hotel]')
+  assert await page.locator('.bk-live-frame').count()==0
+  await page.locator('[data-booking] [name=hotel]').select_option('lubyansky')
+  await page.locator('[data-booking] [type=submit]').click()
+  await page.wait_for_selector('.bk-live-frame')
+  assert await page.locator('.bk-live-frame').count()==1
   assert 'scenario=family' in page.url and '4%2C8' in page.url
   await page.goto(BASE+'/family/',wait_until='networkidle')
   await page.locator('#map').scroll_into_view_if_needed()
@@ -69,8 +74,8 @@ async def main():
   assert await page.locator('.of-room:visible').count()==4
   await page.locator('[data-offer-room=lubyansky_room_3]').click()
   await page.wait_for_url('**/bronirovanie/**')
-  await page.wait_for_selector('#booking-results .room-card')
-  assert await page.locator('#booking-results .room-card').count()==1
+  await page.wait_for_selector('.bk-live-frame')
+  assert await page.locator('.bk-live-frame').count()==1
   assert 'room=lubyansky_room_3' in page.url and '4%2C8' in page.url
   longstay=next(p for p in PAGES if p['id']=='longstay')
   await page.goto(BASE+longstay['url'],wait_until='networkidle')
@@ -87,9 +92,13 @@ async def main():
   await page.locator('[data-offer-form] [name=hotel]').select_option('')
   await page.locator('[data-offer-form] [type=submit]').click()
   await page.wait_for_url('**/bronirovanie/**')
-  await page.wait_for_selector('#booking-results .room-card')
+  await page.wait_for_selector('[data-booking-choose-hotel]')
   assert 'scenario=offer_four' in page.url
-  assert await page.locator('#booking-results .room-card').count()==11
+  assert await page.locator('.bk-live-frame').count()==0
+  await page.locator('[data-booking] [name=hotel]').select_option('lubyansky')
+  await page.locator('[data-booking] [type=submit]').click()
+  await page.wait_for_selector('.bk-live-frame')
+  assert await page.locator('.bk-live-frame').count()==1
   await page.goto(BASE+'/groups/',wait_until='networkidle')
   await page.locator('[data-offer-map-hotel=lubyansky]').click()
   assert 'Лубянский' in await page.locator('[name=wishes]').input_value()
@@ -109,7 +118,7 @@ async def main():
   await reduced.close()
   assert not errors,errors
   await c.close();await browser.close()
- report={'status':'passed','pages':len(PAGES),'responsive_checks':len(checks),'widths':[320,390,768,1440],'flows':['family ages required and preserved','family results limited to four categories','selected category retained','two-property interactive map and fullscreen','hotel filter and reset','longstay minimum 21 nights','group location request','offer catalog hotel filter','unverified promotion status'],'javascript_errors':errors}
+ report={'status':'passed','pages':len(PAGES),'responsive_checks':len(checks),'widths':[320,390,768,1440],'flows':['family ages required and preserved','family ages and hotel handed to live module','selected category retained','two-property interactive map and fullscreen','hotel filter and reset','longstay minimum 21 nights','group location request','offer catalog hotel filter','unverified promotion status'],'javascript_errors':errors}
  (ROOT/'.qa/offers-reference-report.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf-8')
  print(json.dumps(report,ensure_ascii=False))
 asyncio.run(main())

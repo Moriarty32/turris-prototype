@@ -1,0 +1,44 @@
+{
+  "date": "2026-10-29",
+  "implementation": "Public TravelLine booking-form integration in a same-origin bridge, scoped to selected hotel",
+  "sources": [
+    "https://turris.online/hotels/turris-hotel-tagansky/booking/",
+    "https://turris.online/hotels/turris-hotel-tverskaya/booking/",
+    "https://turris.online/hotels/turris-hotel-lubyansky-/booking/",
+    "https://turris.online/hotels/turris-hotel-petrovsky/booking/",
+    "https://www.travelline.ru/support/knowledge-base/kak-sozdat-ssylku-na-tarif-s-raznymi-parametrami/",
+    "https://www.travelline.ru/dev-portal/docs/api/",
+    "https://www.travelline.ru/dev-portal/docs/connect/intro/",
+    "https://www.travelline.ru/blog/kak-integrirovat-modul-bronirovaniya-na-sayt-gostinitsy/"
+  ],
+  "contexts": {
+    "tverskaya": "TL-INT-hotels-turris.turris-hotel-tverskaya",
+    "lubyansky": "TL-INT-hotels-turris.turris-hotel-lubyansky-",
+    "petrovsky": "TL-INT-hotels-turris.turris-hotel-petrovsky",
+    "tagansky": "TL-INT-hotels-turris.turris-hotel-tagansky"
+  },
+  "parameters": {
+    "date": "YYYY-MM-DD check-in",
+    "nights": "UTC date difference",
+    "adults": "adult count",
+    "children": "child count",
+    "children-age": "comma-separated ages",
+    "promo-code-plain": "user-entered code, no discount promise"
+  },
+  "price_policy": "Provider renders current availability, rates, totals and conditions. No hardcoded prices, copied inventory or undocumented API scraping.",
+  "ui": "Shared premium form, hotel choice, map, loading and recovery states; native provider UI inside iframe. Reduced motion respected in wrapper.",
+  "limitations": [
+    "No account access or Partner API credentials",
+    "Inner provider theme unchanged",
+    "Canonical room IDs are not TravelLine IDs; room intent shown as advisory, not selected automatically",
+    "Provider-side date/guest changes do not update outer search; module is authoritative",
+    "No live reservation or payment submitted in QA",
+    "Public loader availability and provider configuration remain external dependencies"
+  ],
+  "privacy": "Only trip parameters and promo passed by prototype; no guest contact or card data read/stored. Third-party module can use its own cookies and telemetry. All contact lead forms outside module remain demo.",
+  "next_with_hotel_access": [
+    "Configure TravelLine theme to match design tokens",
+    "Confirm provider room/rate IDs for category and offer deep links",
+    "If full custom live interface is required, provision Search/Content API access and backend; never expose credentials in static site"
+  ]
+}

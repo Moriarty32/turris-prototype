@@ -39,15 +39,15 @@ async def main():
   await page.locator('[data-guests]').first.click();await page.locator('[data-count=children][data-change="1"]').click();await page.locator('[data-age="0"]').select_option('7');await page.locator('[data-save-guests]').click()
   await page.locator('[data-booking] select[name=hotel]').first.select_option('lubyansky')
   await page.locator('[data-booking] button[type=submit]').first.click()
-  await page.wait_for_url('**/bronirovanie/**');await page.wait_for_selector('#booking-results .room-card')
-  assert await page.locator('#booking-results .room-card').count()==7
-  assert '7' in await page.locator('.results-summary').inner_text()
+  await page.wait_for_url('**/bronirovanie/**');await page.wait_for_selector('.bk-live-frame')
+  assert await page.locator('.bk-live-frame').count()==1
+  assert 'children-age=7' in await page.locator('.bk-live-frame').get_attribute('src')
   await page.screenshot(path=str(OUT/'booking-desktop.png'),full_page=True)
-  observations.append({'booking':'dates,2adults,child7 retained;7Lubyansky categories'})
+  observations.append({'booking':'dates,2adults,child7 transferred;one Lubyansky provider module'})
   data=json.loads((DIST/'site-data.json').read_text(encoding='utf-8'))
   room=next(x for x in data['pages'] if x['type']=='room' and 'semeynyy' in x['url'])
-  await page.goto(BASE+room['url'],wait_until='networkidle');await page.locator('[data-booking] button[type=submit]').click();await page.wait_for_selector('#booking-results .room-card')
-  assert await page.locator('#booking-results .room-card').count()==1
+  await page.goto(BASE+room['url'],wait_until='networkidle');await page.locator('[data-booking] button[type=submit]').click();await page.wait_for_selector('.bk-live-frame')
+  assert await page.locator('.bk-live-frame').count()==1
   assert room['id'] in page.url
   observations.append({'room_context':'family suite preserved'})
   await page.goto(BASE+'/groups/',wait_until='networkidle')

@@ -57,7 +57,7 @@ async def main():
   await page.locator('[data-save-guests]').click()
   await page.locator('.ar-booking [type=submit]').click()
   await page.wait_for_url('**/bronirovanie/**')
-  await expect(page.locator('#booking-results .room-card')).to_have_count(7)
+  await expect(page.locator('.bk-live-frame')).to_have_count(1)
   query=parse_qs(urlsplit(page.url).query)
   assert query['hotel']==['lubyansky'] and query['checkin']==['2026-12-10'] and query['checkout']==['2026-12-13'],query
   assert await page.locator('[data-booking] [name=children]').first.input_value()=='[7]'

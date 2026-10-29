@@ -1,91 +1,23 @@
 {
-  "checked": "2026-10-29",
-  "status": "PASS",
-  "scope": "19 offer and loyalty pages; shared booking context",
-  "checks": {
-    "offers": {
-      "status": "passed",
-      "pages": 19,
-      "responsive_checks": 76,
-      "widths": [
-        320,
-        390,
-        768,
-        1440
-      ],
-      "flows": [
-        "family ages required and preserved",
-        "family results limited to four categories",
-        "selected category retained",
-        "two-property interactive map and fullscreen",
-        "hotel filter and reset",
-        "longstay minimum 21 nights",
-        "group location request",
-        "offer catalog hotel filter",
-        "unverified promotion status"
-      ],
-      "javascript_errors": []
-    },
-    "images": {
-      "status": "PASS",
-      "assets": 28,
-      "web_files": 144,
-      "pages": 109,
-      "viewports": [
-        1440,
-        390
-      ],
-      "device_pixel_ratio": 2,
-      "rendered_checks": 735,
-      "minimum_density": 1.98,
-      "below_1_95": [],
-      "js_errors": [],
-      "notes": [
-        "All web images decoded, dimensions match manifest, no upscaling during export",
-        "Generated facade labelled; full-size lightbox verified",
-        "Source photographs visually reviewed; pixel density is not a measure of original camera sharpness"
-      ]
-    },
-    "mobile_home": {
-      "status": "PASS",
-      "first_screen_map": {
-        "x": 16,
-        "y": 597.890625,
-        "width": 358,
-        "height": 240
-      },
-      "widths": [
-        320,
-        375,
-        390,
-        430,
-        640,
-        641,
-        900,
-        1440
-      ],
-      "single_map": true,
-      "selection": "buttons, pointer and keyboard markers, form, persistence and booking verified",
-      "resize": "desktop image and explorer restored; mobile map relocated without duplication",
-      "fallback": "hotel selection remains usable with tile failure",
-      "js_errors": []
-    },
-    "site": {
-      "status": "PASS",
-      "static_pages": 109,
-      "browser_templates": 22,
-      "local_links": "resolved",
-      "javascript_errors": []
-    },
-    "final_patch": [
-      "Tagansky catalog filter includes joint 3+1 offer",
-      "Scroll reveal works and reduced-motion disables animation",
-      "JavaScript syntax and git diff whitespace check pass"
-    ]
-  },
-  "limits": [
-    "Prototype does not retrieve live inventory or prices",
-    "Group forms are demonstrational and do not send requests",
-    "Map tiles depend on external OpenStreetMap service; addresses and directions remain available on failure"
-  ]
+  "status": "passed",
+  "pages": 19,
+  "responsive_checks": 76,
+  "widths": [
+    320,
+    390,
+    768,
+    1440
+  ],
+  "flows": [
+    "family ages required and preserved",
+    "family ages and hotel handed to live module",
+    "selected category retained",
+    "two-property interactive map and fullscreen",
+    "hotel filter and reset",
+    "longstay minimum 21 nights",
+    "group location request",
+    "offer catalog hotel filter",
+    "unverified promotion status"
+  ],
+  "javascript_errors": []
 }

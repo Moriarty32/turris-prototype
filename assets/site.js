@@ -1,4 +1,4 @@
-/* Turris demonstration. No payment, CRM submission, tracking or personal-data storage. */
+/* Turris site UI. Live reservations are handled exclusively by the external TravelLine module. */
 (()=>{'use strict';
 const base=window.SITE_BASE||'', $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -57,7 +57,7 @@ $$('[data-count]').forEach(b=>b.addEventListener('click',()=>{const change=+b.da
 $('[data-save-guests]').addEventListener('click',()=>{context.adults=guestDraft.adults;context.children=[...guestDraft.children];save();syncForms();$('#guests-dialog').close();});
 $$('[data-booking]').forEach(f=>{
  $('[name=hotel]',f).addEventListener('change',ev=>{const preset=f.dataset.hotel||'',room=$('[name=room]',f);if(ev.target.value!==preset&&room.value){room.value='';f.dataset.room='';$('.form-error',f).textContent='Выбран другой отель. Категория сброшена — выберите подходящий номер в результатах.';}context.hotel=ev.target.value;context.room=room.value;if(context.scenario==='family'&&!['','tverskaya','lubyansky'].includes(context.hotel))context.scenario='';if(context.scenario==='offer_four'&&!['','lubyansky','tagansky'].includes(context.hotel))context.scenario='';$$('[data-booking]').forEach(other=>{other.dataset.hotel=context.hotel;if(other!==f){other.dataset.room='';$('[name=room]',other).value='';}});save();syncForms();});
- f.addEventListener('submit',async ev=>{ev.preventDefault();if(!context.checkin||!context.checkout){$('.form-error',f).textContent='Выберите даты поездки.';$('[data-dates]',f).click();return;}
+ f.addEventListener('submit',async ev=>{ev.preventDefault();if(document.body.dataset.template==='booking'&&!f.elements.hotel.value){$('.form-error',f).textContent='Выберите отель, чтобы посмотреть его категории номеров.';f.elements.hotel.focus();return;}if(!context.checkin||!context.checkout){$('.form-error',f).textContent='Выберите даты поездки.';$('[data-dates]',f).click();return;}
  $('.form-error',f).textContent='';const data=new FormData(f);context={...context,hotel:String(data.get('hotel')||''),room:String(data.get('room')||''),scenario:document.body.dataset.template==='booking'?context.scenario:(f.dataset.scenario||'')};save();const q=new URLSearchParams({hotel:context.hotel,room:context.room,checkin:context.checkin,checkout:context.checkout,adults:String(context.adults),children:JSON.stringify(context.children)});if(context.scenario)q.set('scenario',context.scenario);if(document.body.dataset.template==='booking'){history.replaceState(null,'',location.pathname+'?'+q.toString());await bookingResults();const result=$('#booking-results');result.scrollIntoView({block:'start',behavior:'instant'});result.focus({preventScroll:true});}else location.href=base+'/bronirovanie/?'+q.toString();});
 });
 $$('[data-demo-info]').forEach(b=>b.addEventListener('click',()=>open($('#demo-dialog'),b)));
@@ -78,19 +78,42 @@ $$('[data-lead]').forEach(f=>{
  const result=document.createElement('div');result.className='form-success';result.setAttribute('role','status');result.innerHTML=`<h3>Всё готово для расчёта</h3><p>${esc(fmt(start.value))} — ${esc(fmt(end.value))}<br>Гостей: ${esc(f.elements.guests.value)} · Комнат: ${esc(f.elements.rooms.value)}</p><p><strong>Это демонстрация. Заявка не отправлена, номера не забронированы.</strong></p><p>Для настоящего запроса позвоните <a href="tel:88005054455">8 800 505 44 55</a>.</p><button type="button" class="btn secondary" data-reset-lead>Попробовать ещё раз</button>`;f.hidden=true;f.after(result);$('[data-reset-lead]',result).addEventListener('click',()=>{result.remove();f.hidden=false;f.reset();step(1);});});
 });
 let dataPromise;const getData=()=>dataPromise||(dataPromise=fetch(base+'/site-data.json').then(r=>{if(!r.ok)throw new Error('data unavailable');return r.json();}));
-async function bookingResults(){const root=$('#booking-results');if(!root)return;
- if(!context.checkin){root.innerHTML='';return;}
- root.hidden=false;
- root.innerHTML='<p class="small" style="padding:25px 0">Подбираем страницы категорий…</p>';
- try{const data=await getData();let list=data.pages.filter(p=>p.type==='room'&&(!context.hotel||p.hotel===context.hotel)&& (context.scenario!=='offer_four'||['lubyansky','tagansky'].includes(p.hotel))&& (context.scenario!=='family'||['tverskaya_room_1','lubyansky_room_3','lubyansky_room_1','lubyansky_room_6'].includes(p.id)));const selected=list.find(p=>p.id===context.room);if(context.room&&!selected){context.room='';save();syncForms();}if(selected)list=[selected];
- const hotel=data.hotels[context.hotel],title=selected?'Ваш выбранный номер':context.scenario==='family'?'Категории для семейной поездки':context.scenario==='offer_four'?'Категории Лубянского и Таганского':hotel?'Категории отеля '+hotel.full:'Категории четырёх отелей';
- const selectedNote=selected?'<p class="small">Выбранная категория сохранена. Перед реальным оформлением повторно проверьте её в официальном модуле.</p>':'';
- root.innerHTML=`<section class="section"><h2>${esc(title)}</h2><div class="results-summary"><span>${esc(fmt(context.checkin))} — ${esc(fmt(context.checkout))}</span><span>${esc(guestLabel(context.adults,context.children))}</span>${context.children.length?'<span>Возраст детей: '+context.children.map(n=>esc(n)).join(', ')+'</span>':''}</div>${selectedNote}<div class="notice">Это категории для ознакомления, а не подтверждённое наличие. Итоговая цена, допустимый состав гостей и условия тарифа проверяются на официальном сайте.</div><div class="rooms-grid">${list.map(p=>{
- const h=data.hotels[p.hotel],nights=Math.round((new Date(context.checkout+'T12:00:00')-new Date(context.checkin+'T12:00:00'))/86400000);const q=new URLSearchParams({date:context.checkin,nights:String(nights),adults:String(context.adults)});const official='https://turris.online'+p.url+'?'+q.toString();
- return `<article class="room-card"><a href="${base+esc(p.url)}"><img src="${base}/assets/${esc(p.image)}" alt="${esc(p.title)}" loading="lazy"></a><div class="room-body"><div class="eyebrow">${esc(h.name)}</div><h3><a href="${base+esc(p.url)}">${esc(p.title)}</a></h3><p>Цена и наличие уточняются на официальном сайте. Состав гостей, возраст детей и категория требуют проверки при оформлении.</p><a class="btn secondary" href="${esc(official)}" target="_blank" rel="noopener noreferrer">Проверить на сайте отеля ↗</a></div></article>`;}).join('')}</div>${!list.length?'<div class="empty-state"><h3>Выберите другой отель</h3><p>Не удалось сопоставить выбранную категорию. Измените фильтр в форме выше.</p></div>':''}</section>`;
- }catch{root.innerHTML='<div class="empty-state"><h3>Не удалось загрузить категории</h3><p>Обновите страницу или выберите отель ниже. Ваши даты сохранены.</p><button class="btn secondary" data-retry-results>Попробовать снова</button></div>';$('[data-retry-results]').addEventListener('click',()=>{dataPromise=null;bookingResults();});}
+let bookingRequest=0,disposeBooking=()=>{};
+const chooseHotelMessage='<section class="empty-state"><h2>Сначала выберите отель</h2><p>Покажем номера и цены только выбранного отеля. Даты и гости сохранены.</p><button class="btn secondary" type="button" data-booking-choose-hotel>Выбрать отель</button></section>';
+function resetBooking(){bookingRequest++;disposeBooking();disposeBooking=()=>{};$$('.bk-steps li').forEach((li,i)=>{if(!i)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');});}
+async function bookingResults(){const root=$('#booking-results');if(!root)return;resetBooking();const request=bookingRequest;
+ if(!context.checkin){root.innerHTML='';return;}root.hidden=false;
+ if(!context.hotel){root.innerHTML=chooseHotelMessage;document.dispatchEvent(new Event('booking-results-updated'));return;}
+ root.innerHTML='<p class="small" style="padding:25px 0">Подключаем бронирование отеля…</p>';
+ try{
+  const data=await getData();if(request!==bookingRequest)return;
+  if(!Object.hasOwn(data.hotels,context.hotel)){root.innerHTML=chooseHotelMessage;document.dispatchEvent(new Event('booking-results-updated'));return;}
+  const hotel=data.hotels[context.hotel],selected=data.pages.find(p=>p.type==='room'&&p.hotel===context.hotel&&p.id===context.room);
+  const nights=Math.round((Date.parse(context.checkout+'T00:00:00Z')-Date.parse(context.checkin+'T00:00:00Z'))/86400000);
+  const q=new URLSearchParams({date:context.checkin,nights:String(nights),adults:String(context.adults),children:String(context.children.length)});
+  if(context.children.length)q.set('children-age',context.children.join(','));
+  const promo=$('#booking-promo')?.value.trim()||(()=>{try{return sessionStorage.getItem('turris-promo')||'';}catch{return '';}})();
+  if(promo)q.set('promo-code-plain',promo.slice(0,40));
+  const official='https://turris.online/hotels/'+hotel.slug+'/booking/?'+q.toString();
+  const widgetQuery=new URLSearchParams(q);widgetQuery.set('hotel',context.hotel);
+  root.innerHTML=`<section class="bk-live" data-live-hotel="${esc(context.hotel)}"><div class="bk-live-heading"><div><span class="bk-live-label">БРОНИРОВАНИЕ · TRAVELLINE</span><h2>Номера и цены · ${esc(hotel.name)}</h2><p>Выберите номер, затем тариф. Полная стоимость и условия — до оформления.</p></div><a href="#booking-search" class="text-link">Изменить поиск ↑</a></div>${selected?'<p class="bk-live-room">Вы смотрели: <strong>'+esc(selected.title)+'</strong>. Выберите эту категорию в модуле, если она доступна на ваши даты.</p>':''}<p class="bk-live-info">Это действующий модуль отеля. Оформление и оплата реальны. Даты и гостей можно изменить внутри модуля; итоговые параметры проверяйте в нём.</p><div class="bk-live-status" role="status" data-live-status><span class="bk-loader" aria-hidden="true"></span><span>Загружаем номера и тарифы отеля…</span></div><div class="bk-live-stage"><iframe class="bk-live-frame" title="Номера, тарифы и бронирование — ${esc(hotel.full)}" src="${base}/assets/booking-widget.html?${esc(widgetQuery.toString())}" allow="payment" referrerpolicy="strict-origin-when-cross-origin"></iframe></div><div class="bk-live-recovery"><p>Модуль не открылся или неудобно продолжать?</p><div><button type="button" class="btn secondary" data-retry-results>Загрузить снова</button><a class="btn secondary" data-official-booking href="${esc(official)}" target="_blank" rel="noopener noreferrer">Открыть на сайте отеля ↗</a></div><small>Передадим отель, даты, состав гостей и промокод. Доступность и скидка проверяются отелем.</small></div></section>`;
+  const frame=$('.bk-live-frame',root),status=$('[data-live-status]',root);let loaded=false;
+  function message(event){if(event.origin!==location.origin||event.source!==frame.contentWindow||event.data?.source!=='turris-booking'||request!==bookingRequest)return;
+   const msg=event.data;
+   if(msg.type==='height'&&Number.isFinite(msg.height)&&msg.height>0)frame.style.height=Math.min(30000,Math.max(500,msg.height))+'px';
+   if(msg.type==='ready'){loaded=true;clearTimeout(timer);status.hidden=true;frame.classList.add('is-ready');}
+   if(msg.type==='error'){clearTimeout(timer);status.textContent='Не удалось подключить модуль. Попробуйте ещё раз или откройте бронирование на сайте отеля.';}
+   if(msg.type==='empty'){status.hidden=false;status.textContent='На эти параметры нет предложений. Измените даты или состав гостей в модуле либо выберите другой отель.';}
+   if(msg.type==='step'){const step={search:0,preview:1,payment:1,complete:2}[msg.step];if(step!==undefined){$$('.bk-steps li').forEach((li,i)=>{if(i===step)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');});if(loaded&&step>0)frame.scrollIntoView({block:'start',behavior:'instant'});}}
+  }
+  const timer=setTimeout(()=>{status.hidden=false;status.textContent='Загрузка занимает больше обычного. Можно подождать или продолжить на сайте отеля по ссылке ниже.';},25000);
+  window.addEventListener('message',message);disposeBooking=()=>{clearTimeout(timer);window.removeEventListener('message',message);};
+  $('[data-retry-results]',root).addEventListener('click',bookingResults);
+ }catch{if(request!==bookingRequest)return;root.innerHTML='<div class="empty-state"><h3>Не удалось подключить бронирование</h3><p>Ваши даты сохранены. Повторите попытку или позвоните <a href="tel:88005054455">8 800 505 44 55</a>.</p><button class="btn secondary" data-retry-results>Попробовать снова</button></div>';$('[data-retry-results]',root).addEventListener('click',()=>{dataPromise=null;bookingResults();});}
  document.dispatchEvent(new Event('booking-results-updated'));
 }
+document.addEventListener('booking-context-change',()=>{resetBooking();const root=$('#booking-results');if(root){root.replaceChildren();root.hidden=true;}});
+document.addEventListener('booking-query-invalidated',()=>{resetBooking();const root=$('#booking-results');if(root){root.replaceChildren();root.hidden=true;}});
 document.addEventListener('booking-clear-room',async()=>{context.room='';$$('[data-booking]').forEach(f=>{f.dataset.room='';$('[name=room]',f).value='';});save();syncForms();const q=new URLSearchParams(location.search);q.delete('room');history.replaceState(null,'',location.pathname+(q.size?'?'+q.toString():''));await bookingResults();});
 bookingResults();
 const search=$('[data-site-search]');if(search){const input=$('[name=q]',search),root=$('[data-search-results]');input.value=params.get('q')||'';

@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "date": "2026-10-29",
+  "base": "http://127.0.0.1:4173/turris-prototype",
+  "live_checks": [
+    {
+      "hotel": "tverskaya",
+      "width": 390,
+      "provider_id": [
+        "39663"
+      ],
+      "real_prices": true,
+      "dates_transferred": true,
+      "tariff_selection": true,
+      "overflow": false
+    },
+    {
+      "hotel": "lubyansky",
+      "width": 1440,
+      "provider_id": [
+        "40263"
+      ],
+      "real_prices": true,
+      "dates_transferred": true,
+      "tariff_selection": true,
+      "overflow": false
+    },
+    {
+      "hotel": "petrovsky",
+      "width": 390,
+      "provider_id": [
+        "39291"
+      ],
+      "real_prices": true,
+      "dates_transferred": true,
+      "tariff_selection": true,
+      "overflow": false
+    },
+    {
+      "hotel": "tagansky",
+      "width": 1440,
+      "provider_id": [
+        "20876"
+      ],
+      "real_prices": true,
+      "dates_transferred": true,
+      "tariff_selection": true,
+      "overflow": false
+    }
+  ],
+  "loader_failure_fallback": true,
+  "untrusted_message_ignored": true,
+  "actual_booking_submitted": false,
+  "payment_tested": false
+}

@@ -4,6 +4,6 @@
   "base": "/turris-prototype",
   "generated_assets": 4,
   "documentary_assets": 28,
-  "mode": "demo-no-payments-no-submission",
+  "mode": "prototype-with-live-travelline-booking-demo-contact-forms",
   "indexing": "noindex"
 }

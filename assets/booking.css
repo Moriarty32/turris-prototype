@@ -21,3 +21,19 @@ body[data-template=booking] .breadcrumbs{padding-top:23px;padding-bottom:0;font-
 .bk-header .header-phone{display:flex}.bk-footer a,.bk-faq>div>a{text-decoration:none}
 @media(max-width:700px){.bk-search .select-button{gap:5px}.bk-search [data-date-label]{font-size:11px}.bk-search [data-date-label]:only-child{white-space:nowrap}}
 @media(prefers-reduced-motion:reduce){.bk-hotel-photo img,.bk-hotel-card,.bk-promo summary>.icon,.bk-map-choice>.icon{transition:none}}
+.bk-hotel-card[hidden],.bk-change-hotel[hidden]{display:none!important}.bk-change-hotel{margin-bottom:18px}
+.bk-live{margin:28px 0 0;border:1px solid #dce8f5;border-radius:20px;background:#fff;box-shadow:0 12px 40px #173c6410;overflow:hidden;animation:booking-enter .4s ease-out}
+.bk-live-heading{padding:26px 28px 18px;background:linear-gradient(120deg,#edf6ff,#fff);display:flex;justify-content:space-between;align-items:center;gap:20px}
+.bk-live-heading h2{margin:7px 0 8px;font-size:28px}.bk-live-heading p{margin:0;color:#536e90;font-size:15px;line-height:1.55}.bk-live-heading>.text-link{flex-shrink:0}
+.bk-live-label{font-size:11px;font-weight:750;letter-spacing:.12em;color:#1d60a7}
+.bk-live-info,.bk-live-room{margin:0;padding:14px 28px;color:#375579;background:#f5f9fe;border-bottom:1px solid #e1eaf4;font-size:13px;line-height:1.6}
+.bk-live-room{background:#fff}.bk-live-status{display:flex;align-items:center;gap:14px;padding:24px 28px;background:#edf6ff;color:#173b67;font-size:15px}.bk-live-status[hidden]{display:none}
+.bk-loader{width:23px;height:23px;flex-shrink:0;border:2px solid #b7d9ff;border-top-color:#076bff;border-radius:50%;animation:booking-spin .8s linear infinite}
+.bk-live-stage{background:white;min-width:0}.bk-live-frame{display:block;width:100%;height:580px;border:0;scroll-margin-top:135px}
+.bk-live-recovery{padding:20px 28px;background:#f5f9fe;border-top:1px solid #e1eaf4}.bk-live-recovery p{margin:0 0 12px;font-size:14px;font-weight:650}.bk-live-recovery>div{display:flex;gap:12px;flex-wrap:wrap}.bk-live-recovery small{display:block;margin-top:12px;color:#536e90;line-height:1.5;font-size:12px}
+.bk-steps li[aria-current=step]{color:#006aff}.bk-steps li[aria-current=step]>span{background:#006aff;color:#fff;border-color:#006aff}.bk-steps li:not([aria-current])>span{background:transparent;color:#6681a2;border-color:#c9d9eb}
+@keyframes booking-enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}@keyframes booking-spin{to{transform:rotate(360deg)}}
+@media(max-width:700px){.bk-live{margin-top:20px;border-radius:12px}.bk-live-heading{padding:20px 16px;display:block}.bk-live-heading h2{font-size:24px}.bk-live-heading>.text-link{display:inline-flex;margin-top:12px}.bk-live-info,.bk-live-room,.bk-live-status,.bk-live-recovery{padding:16px}.bk-live-recovery>div{display:grid}.bk-live-recovery .btn{width:100%;white-space:normal}.bk-live-frame{scroll-margin-top:95px}}
+@media(prefers-reduced-motion:reduce){.bk-live,.bk-loader{animation:none}}
+.bk-hotels:has(>[hidden]){grid-template-columns:1fr}
+@media(min-width:701px){.bk-hotels:has(>[hidden])>.bk-hotel-card:not([hidden]){display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,1.2fr)}.bk-hotels:has(>[hidden]) .bk-hotel-photo{height:100%;min-height:210px}.bk-hotels:has(>[hidden]) .bk-hotel-body{align-self:center}}

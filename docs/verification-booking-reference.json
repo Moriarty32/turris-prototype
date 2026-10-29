@@ -20,5 +20,7 @@
     "provider failure and retry",
     "no-JS links"
   ],
-  "js_errors": []
+  "js_errors": [],
+  "provider_stubbed": true,
+  "live_provider_checks": "live-booking-verification.json"
 }

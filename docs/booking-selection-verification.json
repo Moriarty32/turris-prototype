@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "width": 390,
+      "four_hotels_scoped": true,
+      "change_hotel_and_reload": true,
+      "map_selection": true,
+      "unselected_no_categories": true
+    },
+    {
+      "width": 1440,
+      "four_hotels_scoped": true,
+      "change_hotel_and_reload": true,
+      "map_selection": true,
+      "unselected_no_categories": true
+    }
+  ],
+  "stale_request_guard": "passed",
+  "js_errors": [],
+  "date": "2026-10-29",
+  "mode": "isolated live module per selected hotel",
+  "provider_stubbed_in_scope_test": true,
+  "behavior": [
+    "No inventory module before hotel selection",
+    "Changing hotel removes previous module and preserves dates and guests",
+    "Card, form, map, session and URL select the same property",
+    "Stale catalog requests cannot restore previous hotel results",
+    "Room preference is advisory; availability and category choice are confirmed in TravelLine"
+  ]
+}

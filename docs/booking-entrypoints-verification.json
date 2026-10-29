@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "static_pages": 109,
+  "booking_entrypoints": [
+    "/",
+    "/hotels/turris-hotel-tagansky/",
+    "/blog/choose-area/",
+    "/hotels/turris-hotel-tverskaya/rooms/semeynyy-lyuks/"
+  ],
+  "js_errors": []
+}

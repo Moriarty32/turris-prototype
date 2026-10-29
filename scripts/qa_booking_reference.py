@@ -2,6 +2,7 @@
 import asyncio,json
 from pathlib import Path
 from datetime import date,timedelta
+from urllib.parse import urlparse,parse_qs
 from playwright.async_api import async_playwright
 ROOT=Path(__file__).resolve().parents[1];BASE='http://127.0.0.1:4173/turris-prototype'
 START=(date.today()+timedelta(days=14)).isoformat();END=(date.today()+timedelta(days=17)).isoformat()
@@ -16,6 +17,7 @@ async def main():
   browser=await pw.chromium.launch()
   for width in [320,390,640,768,1024,1440]:
    c=await browser.new_context(viewport={'width':width,'height':900},locale='ru-RU',is_mobile=width<700,has_touch=width<700)
+   await c.route('**/assets/booking-widget.html?*',lambda r:r.fulfill(content_type='text/html',body='<p>Provider contract stub</p>'))
    await c.route('**/tile.openstreetmap.org/**',lambda r:r.abort())
    page=await c.new_page();page.on('pageerror',lambda err:errors.append(str(err)))
    await page.goto(BASE+'/bronirovanie/',wait_until='networkidle')
@@ -55,16 +57,20 @@ async def main():
    await page.locator('[data-save-promo]').click()
    assert 'сохранён' in await page.locator('[data-promo-status]').inner_text()
    await page.locator('[data-booking] [type=submit]').click()
-   await page.wait_for_selector('#booking-results .room-card')
-   assert await page.locator('#booking-results .room-card').count()==7
-   assert '7' in await page.locator('.results-summary').inner_text()
+   await page.wait_for_selector('.bk-live-frame')
+   assert await page.locator('.bk-live-frame').count()==1
+   q=parse_qs(urlparse(await page.locator('.bk-live-frame').get_attribute('src')).query)
+   assert q['children-age']==['7'] and q['children']==['1'] and q['promo-code-plain']==['DEMO-TEST']
+   assert q['date']==[START] and q['nights']==['3']
+   fallback=parse_qs(urlparse(await page.locator('[data-official-booking]').get_attribute('href')).query)
+   assert all(fallback[key]==q[key] for key in fallback)
    assert 'lubyansky' in page.url and 'checkin='+START in page.url
    # Updated form must hide stale results until search is submitted again.
    await page.locator('[data-booking] [name=hotel]').select_option('tagansky')
    assert not await page.locator('#booking-results').is_visible()
    await page.locator('[data-booking] [type=submit]').click()
-   await page.wait_for_selector('#booking-results .room-card')
-   assert await page.locator('#booking-results .room-card').count()==4
+   await page.wait_for_selector('.bk-live-frame')
+   assert await page.locator('.bk-live-frame').count()==1
    await page.reload(wait_until='networkidle')
    assert await page.locator('#booking-promo').input_value()=='DEMO-TEST'
    assert await page.locator('[data-booking] [name=hotel]').input_value()=='tagansky'
@@ -72,32 +78,35 @@ async def main():
    sizes.append(width);await c.close()
   # Deep link to selected room survives date/guest edits, then explicit reset.
   c=await browser.new_context(viewport={'width':1440,'height':1000})
+  await c.route('**/assets/booking-widget.html?*',lambda r:r.fulfill(content_type='text/html',body='<p>Provider contract stub</p>'))
   await c.route('**/tile.openstreetmap.org/**',lambda r:r.abort())
   page=await c.new_page();page.on('pageerror',lambda err:errors.append(str(err)))
   await page.goto(BASE+'/bronirovanie/?hotel=tverskaya&room=tverskaya_room_1&checkin='+START+'&checkout='+END,wait_until='networkidle')
-  await page.wait_for_selector('#booking-results .room-card')
-  assert await page.locator('#booking-results .room-card').count()==1
+  await page.wait_for_selector('.bk-live-frame')
+  assert await page.locator('.bk-live-frame').count()==1
+  assert 'Вы смотрели' in await page.locator('.bk-live-room').inner_text()
   await dates(page);await page.locator('[data-booking] [type=submit]').click()
-  assert await page.locator('#booking-results .room-card').count()==1
+  assert await page.locator('.bk-live-frame').count()==1
   assert await page.locator('[data-booking] [name=room]').input_value()=='tverskaya_room_1'
   # A fresh hotel-only link must not inherit a room from an earlier trip.
   await page.goto(BASE+'/bronirovanie/?hotel=lubyansky',wait_until='networkidle')
-  await page.wait_for_function("document.querySelectorAll('#booking-results .room-card').length===7")
+  await page.wait_for_function("document.querySelectorAll('.bk-live-frame').length===1")
   assert await page.locator('[data-booking] [name=room]').input_value()==''
   await page.goto(BASE+'/bronirovanie/?hotel=tverskaya&room=tverskaya_room_1',wait_until='networkidle')
-  await page.wait_for_selector('#booking-results .room-card')
+  await page.wait_for_selector('.bk-live-frame')
   await page.locator('[data-booking-clear-room]').click()
-  await page.wait_for_function("document.querySelectorAll('#booking-results .room-card').length===6")
+  assert await page.locator('.bk-live-room').count()==0
+  await page.wait_for_function("document.querySelectorAll('.bk-live-frame').length===1")
   # Hotel-local booking route replaces the previous property's saved selection.
   await page.goto(BASE+'/hotels/turris-hotel-petrovsky/booking/',wait_until='networkidle')
   assert await page.locator('[data-booking] [name=hotel]').input_value()=='petrovsky'
-  await page.wait_for_function("document.querySelectorAll('#booking-results .room-card').length===4")
+  await page.wait_for_function("document.querySelectorAll('.bk-live-frame').length===1")
   # Data-provider failure is recoverable and does not invent availability.
   await page.route('**/site-data.json',lambda r:r.abort())
   await page.reload(wait_until='networkidle')
   await page.wait_for_selector('[data-retry-results]')
   await page.unroute('**/site-data.json');await page.locator('[data-retry-results]').click()
-  await page.wait_for_selector('#booking-results .room-card')
+  await page.wait_for_selector('.bk-live-frame')
   await c.close()
   c=await browser.new_context(java_script_enabled=False,viewport={'width':390,'height':844})
   page=await c.new_page();await page.goto(BASE+'/bronirovanie/')

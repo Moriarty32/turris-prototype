@@ -44,9 +44,9 @@ async def main():
         await page.locator('.hero [name=hotel]').select_option('')
         assert await page.locator('[data-map-detail]:visible').count()==0
         await page.locator('[data-map-select=lubyansky]').click()
-        await page.locator('.hero [data-booking] button[type=submit]').click();await page.wait_for_selector('#booking-results .room-card')
+        await page.locator('.hero [data-booking] button[type=submit]').click();await page.wait_for_selector('.bk-live-frame')
         assert 'hotel=lubyansky' in page.url
-        assert await page.locator('#booking-results .room-card').count()==7
+        assert await page.locator('.bk-live-frame').count()==1
         await page.goto(BASE+'/',wait_until='networkidle')
         assert await page.locator('[data-map-detail=lubyansky]').is_visible(), 'Saved selection must restore'
         await page.set_viewport_size({'width':1440,'height':1000})
