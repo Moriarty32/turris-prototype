@@ -1,0 +1,47 @@
+{
+  "date": "2026-10-29",
+  "goal": "Sharp images at actual block sizes; preserve real room photographs and mark reconstructed facade",
+  "decisions": [
+    {
+      "asset": "21 room photos",
+      "action": "Use original uncropped official photographs instead of 1000x1000 thumbnails; encode web derivatives without altering room content",
+      "target": "Hero up to 648x430 CSS px; gallery up to 754x360; original width mostly 1603–2560 px, two larger originals retained for source audit"
+    },
+    {
+      "asset": "Existing concept images",
+      "action": "Keep 1536x1024 masters; correct unconstrained feature image heights and web delivery",
+      "target": "Feature 625x352 desktop, 358x201 mobile; never 1024 CSS px tall"
+    },
+    {
+      "asset": "Facades",
+      "action": "Preserve full facade framing in wide panels; pair hotel hero facade with one real room photograph",
+      "target": "Hero facade approximately 648x216 and room 648x224; contacts approximately 625x208"
+    },
+    {
+      "asset": "petrovsky",
+      "action": "Built-in image_gen restoration using the existing official facade as the sole reference",
+      "reference": "assets/petrovsky.png",
+      "output": "assets/petrovsky-restored.png",
+      "target_pixels": [
+        3072,
+        1024
+      ],
+      "target_ratio": "3:1",
+      "label": "ИИ-реконструкция по фото",
+      "prompt": "Edit target: the supplied real Hotel Petrovsky facade photograph. Produce exactly 3072 by 1024 pixels, a panoramic 3:1 canvas. High fidelity photo restoration, not architectural redesign. Preserve the same facade, exact central entrance arch, placement/count of windows, pale gray stucco moldings, warm beige ground floor, dark base, black drainpipes and existing signs HOTEL PETROVSKY. Keep the original framing essentially unchanged; use only a tiny symmetric crop to fit 3:1, do not extend above or below to invent floors. Remove JPEG block artifacts and blur; reconstruct crisp but natural architectural edges and restrained material texture, balanced neutral daylight, preserve warm window light. No extra floors, windows, entrances, objects, people, foliage, vehicles, paving, text or logos. Do not make the building more luxurious or newly renovated. This will be explicitly labeled as an AI reconstruction based on an original photograph in a demonstration website.",
+      "actual_generated_pixels": [
+        2172,
+        724
+      ],
+      "resolution_note": "Imagegen returned 2172x724, not the requested 3072x1024. The 3:1 ratio is exact and the native result exceeds the 1296x432 pixels required for a 648x216 CSS block at 2x. No upsampling was applied. Web variants are proportional reductions from this master."
+    }
+  ],
+  "delivery": {
+    "manifest": "data/image-delivery.json",
+    "pipeline": "scripts/prepare_images.py",
+    "method": "WebP quality 90, proportional downsampling only, no visual content edits; no enlargement",
+    "widths": "320, 640, 960, 1280, 1600 and native width capped to a 2560px long edge",
+    "facades": "Largest source served to preserve detail when cropped into tall small thumbnails",
+    "source_storage": "Original official URLs and SHA256 recorded. Existing source files retained; fetched uncropped files cached in .qa/originals, not published."
+  }
+}

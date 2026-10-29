@@ -60,5 +60,6 @@
     "rule": "Сохранить исходные фотографии реальных фасадов; кадрирование только CSS, не генерировать вымышленный фасад реального объекта."
   },
   "disclosure": "Генерируемые интерьеры и атмосферная иллюстрация гида помечаются как концепция. В прототипе нет выдуманных цен, наличия или отправки заявок.",
-  "mode": "built-in image_gen"
+  "mode": "built-in image_gen",
+  "quality_update": "See image-quality-plan.json and data/image-delivery.json for the 2026-10-29 audit and exact delivered dimensions."
 }

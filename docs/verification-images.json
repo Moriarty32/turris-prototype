@@ -1,0 +1,20 @@
+{
+  "status": "PASS",
+  "assets": 28,
+  "web_files": 144,
+  "pages": 109,
+  "viewports": [
+    1440,
+    390
+  ],
+  "device_pixel_ratio": 2,
+  "rendered_checks": 629,
+  "minimum_density": 2.0,
+  "below_1_95": [],
+  "js_errors": [],
+  "notes": [
+    "All web images decoded, dimensions match manifest, no upscaling during export",
+    "Generated facade labelled; full-size lightbox verified",
+    "Source photographs visually reviewed; pixel density is not a measure of original camera sharpness"
+  ]
+}

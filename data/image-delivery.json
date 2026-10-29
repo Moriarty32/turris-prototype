@@ -1,0 +1,1388 @@
+{
+  "tverskaya": {
+    "file": "media/422f909fdd40-1649.webp",
+    "width": 1649,
+    "height": 514,
+    "variants": [
+      {
+        "file": "media/422f909fdd40-320.webp",
+        "width": 320,
+        "height": 100,
+        "bytes": 12190
+      },
+      {
+        "file": "media/422f909fdd40-640.webp",
+        "width": 640,
+        "height": 199,
+        "bytes": 34440
+      },
+      {
+        "file": "media/422f909fdd40-960.webp",
+        "width": 960,
+        "height": 299,
+        "bytes": 64028
+      },
+      {
+        "file": "media/422f909fdd40-1280.webp",
+        "width": 1280,
+        "height": 399,
+        "bytes": 96494
+      },
+      {
+        "file": "media/422f909fdd40-1600.webp",
+        "width": 1600,
+        "height": 499,
+        "bytes": 139688
+      },
+      {
+        "file": "media/422f909fdd40-1649.webp",
+        "width": 1649,
+        "height": 514,
+        "bytes": 146908
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/c7d/owgh9j3ypm2au3eh6608fc73kym8r36f.jpg",
+    "source_width": 1649,
+    "source_height": 514,
+    "source_bytes": 159035,
+    "source_sha256": "422f909fdd40adc1d4e25d29a628463d234222b4c50a08b29dcac2439673f2a6",
+    "label": "",
+    "kind": "hotel",
+    "reviewed": "2026-10-29"
+  },
+  "tverskaya_room_6": {
+    "file": "media/00cabef939b6-1639.webp",
+    "width": 1639,
+    "height": 1080,
+    "variants": [
+      {
+        "file": "media/00cabef939b6-320.webp",
+        "width": 320,
+        "height": 211,
+        "bytes": 10020
+      },
+      {
+        "file": "media/00cabef939b6-640.webp",
+        "width": 640,
+        "height": 422,
+        "bytes": 31118
+      },
+      {
+        "file": "media/00cabef939b6-960.webp",
+        "width": 960,
+        "height": 633,
+        "bytes": 67316
+      },
+      {
+        "file": "media/00cabef939b6-1280.webp",
+        "width": 1280,
+        "height": 843,
+        "bytes": 117028
+      },
+      {
+        "file": "media/00cabef939b6-1600.webp",
+        "width": 1600,
+        "height": 1054,
+        "bytes": 180674
+      },
+      {
+        "file": "media/00cabef939b6-1639.webp",
+        "width": 1639,
+        "height": 1080,
+        "bytes": 196952
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/020/ppeozpltttkryte3v0x04g3hopums1t8.jpg",
+    "source_width": 1639,
+    "source_height": 1080,
+    "source_bytes": 262144,
+    "source_sha256": "00cabef939b6095778ccc75ef876b2729fe25021a72d2d81b7559b40c8a3a034",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "tverskaya_room_4": {
+    "file": "media/00cabef939b6-1639.webp",
+    "width": 1639,
+    "height": 1080,
+    "variants": [
+      {
+        "file": "media/00cabef939b6-320.webp",
+        "width": 320,
+        "height": 211,
+        "bytes": 10020
+      },
+      {
+        "file": "media/00cabef939b6-640.webp",
+        "width": 640,
+        "height": 422,
+        "bytes": 31118
+      },
+      {
+        "file": "media/00cabef939b6-960.webp",
+        "width": 960,
+        "height": 633,
+        "bytes": 67316
+      },
+      {
+        "file": "media/00cabef939b6-1280.webp",
+        "width": 1280,
+        "height": 843,
+        "bytes": 117028
+      },
+      {
+        "file": "media/00cabef939b6-1600.webp",
+        "width": 1600,
+        "height": 1054,
+        "bytes": 180674
+      },
+      {
+        "file": "media/00cabef939b6-1639.webp",
+        "width": 1639,
+        "height": 1080,
+        "bytes": 196952
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/020/ppeozpltttkryte3v0x04g3hopums1t8.jpg",
+    "source_width": 1639,
+    "source_height": 1080,
+    "source_bytes": 262144,
+    "source_sha256": "00cabef939b6095778ccc75ef876b2729fe25021a72d2d81b7559b40c8a3a034",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "tverskaya_room_1": {
+    "file": "media/d15c01e25ce6-1622.webp",
+    "width": 1622,
+    "height": 1080,
+    "variants": [
+      {
+        "file": "media/d15c01e25ce6-320.webp",
+        "width": 320,
+        "height": 213,
+        "bytes": 5982
+      },
+      {
+        "file": "media/d15c01e25ce6-640.webp",
+        "width": 640,
+        "height": 426,
+        "bytes": 16106
+      },
+      {
+        "file": "media/d15c01e25ce6-960.webp",
+        "width": 960,
+        "height": 639,
+        "bytes": 29672
+      },
+      {
+        "file": "media/d15c01e25ce6-1280.webp",
+        "width": 1280,
+        "height": 852,
+        "bytes": 47538
+      },
+      {
+        "file": "media/d15c01e25ce6-1600.webp",
+        "width": 1600,
+        "height": 1065,
+        "bytes": 65456
+      },
+      {
+        "file": "media/d15c01e25ce6-1622.webp",
+        "width": 1622,
+        "height": 1080,
+        "bytes": 67298
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/61b/cgyau1ll0rr1q5k3f5kfq05rlef0mcwp.jpg",
+    "source_width": 1622,
+    "source_height": 1080,
+    "source_bytes": 131072,
+    "source_sha256": "d15c01e25ce6248f647659fb61d46f0a5724d59ae9feb2be79f52a7ff9d70140",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "tverskaya_room_5": {
+    "file": "media/4685f48b4402-1640.webp",
+    "width": 1640,
+    "height": 1080,
+    "variants": [
+      {
+        "file": "media/4685f48b4402-320.webp",
+        "width": 320,
+        "height": 211,
+        "bytes": 8612
+      },
+      {
+        "file": "media/4685f48b4402-640.webp",
+        "width": 640,
+        "height": 421,
+        "bytes": 29338
+      },
+      {
+        "file": "media/4685f48b4402-960.webp",
+        "width": 960,
+        "height": 632,
+        "bytes": 62032
+      },
+      {
+        "file": "media/4685f48b4402-1280.webp",
+        "width": 1280,
+        "height": 843,
+        "bytes": 105590
+      },
+      {
+        "file": "media/4685f48b4402-1600.webp",
+        "width": 1600,
+        "height": 1054,
+        "bytes": 154858
+      },
+      {
+        "file": "media/4685f48b4402-1640.webp",
+        "width": 1640,
+        "height": 1080,
+        "bytes": 169708
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/9c3/96u5f6h0ou0d4195p2d9gqk5r7j3r4es.jpg",
+    "source_width": 1640,
+    "source_height": 1080,
+    "source_bytes": 262144,
+    "source_sha256": "4685f48b44020eb29407f8666e46ba419922e9c8f5eca960da1733e1c0b05b47",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "tverskaya_room_3": {
+    "file": "media/714b6ee63dd3-1640.webp",
+    "width": 1640,
+    "height": 1080,
+    "variants": [
+      {
+        "file": "media/714b6ee63dd3-320.webp",
+        "width": 320,
+        "height": 211,
+        "bytes": 11118
+      },
+      {
+        "file": "media/714b6ee63dd3-640.webp",
+        "width": 640,
+        "height": 421,
+        "bytes": 34544
+      },
+      {
+        "file": "media/714b6ee63dd3-960.webp",
+        "width": 960,
+        "height": 632,
+        "bytes": 66540
+      },
+      {
+        "file": "media/714b6ee63dd3-1280.webp",
+        "width": 1280,
+        "height": 843,
+        "bytes": 110348
+      },
+      {
+        "file": "media/714b6ee63dd3-1600.webp",
+        "width": 1600,
+        "height": 1054,
+        "bytes": 160154
+      },
+      {
+        "file": "media/714b6ee63dd3-1640.webp",
+        "width": 1640,
+        "height": 1080,
+        "bytes": 174756
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/725/h5bja3weai2ay4k1dqbhnj0wodfqo1hs.jpg",
+    "source_width": 1640,
+    "source_height": 1080,
+    "source_bytes": 262144,
+    "source_sha256": "714b6ee63dd31c4d88f10d267d0ce128b626f04e18c6479d22639f0dfa33e100",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "tverskaya_room_2": {
+    "file": "media/b94f0db58b52-1618.webp",
+    "width": 1618,
+    "height": 1080,
+    "variants": [
+      {
+        "file": "media/b94f0db58b52-320.webp",
+        "width": 320,
+        "height": 214,
+        "bytes": 7948
+      },
+      {
+        "file": "media/b94f0db58b52-640.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 22362
+      },
+      {
+        "file": "media/b94f0db58b52-960.webp",
+        "width": 960,
+        "height": 641,
+        "bytes": 44874
+      },
+      {
+        "file": "media/b94f0db58b52-1280.webp",
+        "width": 1280,
+        "height": 854,
+        "bytes": 73678
+      },
+      {
+        "file": "media/b94f0db58b52-1600.webp",
+        "width": 1600,
+        "height": 1068,
+        "bytes": 106344
+      },
+      {
+        "file": "media/b94f0db58b52-1618.webp",
+        "width": 1618,
+        "height": 1080,
+        "bytes": 113772
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/a71/rszqo4lgmlbmpvc7ie3b192teroawn76.jpg",
+    "source_width": 1618,
+    "source_height": 1080,
+    "source_bytes": 262144,
+    "source_sha256": "b94f0db58b5201bd1fcd15486f7fbe40b2f9f0febf9d1ea9b462d69efbb40763",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "lubyansky": {
+    "file": "media/2cb82e033538-1324.webp",
+    "width": 1324,
+    "height": 468,
+    "variants": [
+      {
+        "file": "media/2cb82e033538-320.webp",
+        "width": 320,
+        "height": 113,
+        "bytes": 12298
+      },
+      {
+        "file": "media/2cb82e033538-640.webp",
+        "width": 640,
+        "height": 226,
+        "bytes": 47728
+      },
+      {
+        "file": "media/2cb82e033538-960.webp",
+        "width": 960,
+        "height": 339,
+        "bytes": 102134
+      },
+      {
+        "file": "media/2cb82e033538-1280.webp",
+        "width": 1280,
+        "height": 452,
+        "bytes": 178104
+      },
+      {
+        "file": "media/2cb82e033538-1324.webp",
+        "width": 1324,
+        "height": 468,
+        "bytes": 202590
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/0e1/ufo4px9i0s9x92gb3vg2t172xrbzwgt0.png",
+    "source_width": 1324,
+    "source_height": 468,
+    "source_bytes": 362581,
+    "source_sha256": "2cb82e0335381438190fb5d45c68c12b4bb0735a4fa8813fa490a02fa2f7221b",
+    "label": "",
+    "kind": "hotel",
+    "reviewed": "2026-10-29"
+  },
+  "lubyansky_room_7": {
+    "file": "media/b4680e66d8f2-1920.webp",
+    "width": 1920,
+    "height": 2560,
+    "variants": [
+      {
+        "file": "media/b4680e66d8f2-320.webp",
+        "width": 320,
+        "height": 427,
+        "bytes": 20070
+      },
+      {
+        "file": "media/b4680e66d8f2-640.webp",
+        "width": 640,
+        "height": 853,
+        "bytes": 70470
+      },
+      {
+        "file": "media/b4680e66d8f2-960.webp",
+        "width": 960,
+        "height": 1280,
+        "bytes": 161112
+      },
+      {
+        "file": "media/b4680e66d8f2-1280.webp",
+        "width": 1280,
+        "height": 1707,
+        "bytes": 294806
+      },
+      {
+        "file": "media/b4680e66d8f2-1600.webp",
+        "width": 1600,
+        "height": 2134,
+        "bytes": 470290
+      },
+      {
+        "file": "media/b4680e66d8f2-1920.webp",
+        "width": 1920,
+        "height": 2560,
+        "bytes": 681674
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/f77/y7wyeekb91ue18nwtcv8r08rcla8moko.jpg",
+    "source_width": 4879,
+    "source_height": 6506,
+    "source_bytes": 25016140,
+    "source_sha256": "b4680e66d8f277f1b13268be1a4ff8fa9e7ca9a70a8e1afff69f94be86a1e36e",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "lubyansky_room_5": {
+    "file": "media/5334b9079265-1700.webp",
+    "width": 1700,
+    "height": 1150,
+    "variants": [
+      {
+        "file": "media/5334b9079265-320.webp",
+        "width": 320,
+        "height": 216,
+        "bytes": 14540
+      },
+      {
+        "file": "media/5334b9079265-640.webp",
+        "width": 640,
+        "height": 433,
+        "bytes": 52850
+      },
+      {
+        "file": "media/5334b9079265-960.webp",
+        "width": 960,
+        "height": 649,
+        "bytes": 113466
+      },
+      {
+        "file": "media/5334b9079265-1280.webp",
+        "width": 1280,
+        "height": 866,
+        "bytes": 200302
+      },
+      {
+        "file": "media/5334b9079265-1600.webp",
+        "width": 1600,
+        "height": 1082,
+        "bytes": 301212
+      },
+      {
+        "file": "media/5334b9079265-1700.webp",
+        "width": 1700,
+        "height": 1150,
+        "bytes": 350844
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/5c3/0xfbvfyq82n8ec1vw2dy2xi4foxh421d.jpg",
+    "source_width": 1700,
+    "source_height": 1150,
+    "source_bytes": 1514093,
+    "source_sha256": "5334b9079265c7070929c1fbaf525f5514ced755665c86dfaa2df9ebf9b668a8",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "lubyansky_room_6": {
+    "file": "media/e3dc58709803-1700.webp",
+    "width": 1700,
+    "height": 1132,
+    "variants": [
+      {
+        "file": "media/e3dc58709803-320.webp",
+        "width": 320,
+        "height": 213,
+        "bytes": 14076
+      },
+      {
+        "file": "media/e3dc58709803-640.webp",
+        "width": 640,
+        "height": 426,
+        "bytes": 44194
+      },
+      {
+        "file": "media/e3dc58709803-960.webp",
+        "width": 960,
+        "height": 639,
+        "bytes": 92904
+      },
+      {
+        "file": "media/e3dc58709803-1280.webp",
+        "width": 1280,
+        "height": 852,
+        "bytes": 166310
+      },
+      {
+        "file": "media/e3dc58709803-1600.webp",
+        "width": 1600,
+        "height": 1065,
+        "bytes": 254026
+      },
+      {
+        "file": "media/e3dc58709803-1700.webp",
+        "width": 1700,
+        "height": 1132,
+        "bytes": 295944
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/19e/4abgpxp2jmny7tty04vfio7b9c29l294.jpg",
+    "source_width": 1700,
+    "source_height": 1132,
+    "source_bytes": 1405213,
+    "source_sha256": "e3dc58709803786a50a26f7ab94a77cd25b8b40eb3d23dbd773f23b16a8fcd13",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "lubyansky_room_2": {
+    "file": "media/c922ec1a1854-1700.webp",
+    "width": 1700,
+    "height": 1132,
+    "variants": [
+      {
+        "file": "media/c922ec1a1854-320.webp",
+        "width": 320,
+        "height": 213,
+        "bytes": 13572
+      },
+      {
+        "file": "media/c922ec1a1854-640.webp",
+        "width": 640,
+        "height": 426,
+        "bytes": 42718
+      },
+      {
+        "file": "media/c922ec1a1854-960.webp",
+        "width": 960,
+        "height": 639,
+        "bytes": 92298
+      },
+      {
+        "file": "media/c922ec1a1854-1280.webp",
+        "width": 1280,
+        "height": 852,
+        "bytes": 163048
+      },
+      {
+        "file": "media/c922ec1a1854-1600.webp",
+        "width": 1600,
+        "height": 1065,
+        "bytes": 249172
+      },
+      {
+        "file": "media/c922ec1a1854-1700.webp",
+        "width": 1700,
+        "height": 1132,
+        "bytes": 293424
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/343/a9pcobph5fj5l53qwfs6n4gjzqf07xbe.jpg",
+    "source_width": 1700,
+    "source_height": 1132,
+    "source_bytes": 1365681,
+    "source_sha256": "c922ec1a1854fbf94721051879d8bb82e4e4bad64263c8f3d2eacfae6fd4c68b",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "lubyansky_room_1": {
+    "file": "media/562eba91f931-2560.webp",
+    "width": 2560,
+    "height": 1920,
+    "variants": [
+      {
+        "file": "media/562eba91f931-320.webp",
+        "width": 320,
+        "height": 240,
+        "bytes": 16334
+      },
+      {
+        "file": "media/562eba91f931-640.webp",
+        "width": 640,
+        "height": 480,
+        "bytes": 54632
+      },
+      {
+        "file": "media/562eba91f931-960.webp",
+        "width": 960,
+        "height": 720,
+        "bytes": 115334
+      },
+      {
+        "file": "media/562eba91f931-1280.webp",
+        "width": 1280,
+        "height": 960,
+        "bytes": 188108
+      },
+      {
+        "file": "media/562eba91f931-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "bytes": 282352
+      },
+      {
+        "file": "media/562eba91f931-2560.webp",
+        "width": 2560,
+        "height": 1920,
+        "bytes": 665086
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/209/u58zxzcqcf1zfzn0rsmadwfk3so17y8a.jpg",
+    "source_width": 6341,
+    "source_height": 4756,
+    "source_bytes": 25174200,
+    "source_sha256": "562eba91f9316538836cd1091b93c8b62e1ab21ac54f9082e7ab0d70f8082f13",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "lubyansky_room_3": {
+    "file": "media/832d2fd3c95a-1700.webp",
+    "width": 1700,
+    "height": 1119,
+    "variants": [
+      {
+        "file": "media/832d2fd3c95a-320.webp",
+        "width": 320,
+        "height": 211,
+        "bytes": 8140
+      },
+      {
+        "file": "media/832d2fd3c95a-640.webp",
+        "width": 640,
+        "height": 421,
+        "bytes": 31358
+      },
+      {
+        "file": "media/832d2fd3c95a-960.webp",
+        "width": 960,
+        "height": 632,
+        "bytes": 73472
+      },
+      {
+        "file": "media/832d2fd3c95a-1280.webp",
+        "width": 1280,
+        "height": 843,
+        "bytes": 144896
+      },
+      {
+        "file": "media/832d2fd3c95a-1600.webp",
+        "width": 1600,
+        "height": 1053,
+        "bytes": 251904
+      },
+      {
+        "file": "media/832d2fd3c95a-1700.webp",
+        "width": 1700,
+        "height": 1119,
+        "bytes": 316496
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/d6c/jfvljiq9lqldmjkjttii0lmgr9wj8ifh.jpg",
+    "source_width": 1700,
+    "source_height": 1119,
+    "source_bytes": 1388931,
+    "source_sha256": "832d2fd3c95affa86ddddcdad92c7cf58fb36cadc1f09da29609c1c274a24323",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "lubyansky_room_4": {
+    "file": "media/afe7f550d186-1700.webp",
+    "width": 1700,
+    "height": 1119,
+    "variants": [
+      {
+        "file": "media/afe7f550d186-320.webp",
+        "width": 320,
+        "height": 211,
+        "bytes": 9556
+      },
+      {
+        "file": "media/afe7f550d186-640.webp",
+        "width": 640,
+        "height": 421,
+        "bytes": 26420
+      },
+      {
+        "file": "media/afe7f550d186-960.webp",
+        "width": 960,
+        "height": 632,
+        "bytes": 52094
+      },
+      {
+        "file": "media/afe7f550d186-1280.webp",
+        "width": 1280,
+        "height": 843,
+        "bytes": 87334
+      },
+      {
+        "file": "media/afe7f550d186-1600.webp",
+        "width": 1600,
+        "height": 1053,
+        "bytes": 130486
+      },
+      {
+        "file": "media/afe7f550d186-1700.webp",
+        "width": 1700,
+        "height": 1119,
+        "bytes": 148090
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/36e/40tqjcxknw6nwg7q8p02c472p69f2vzm.jpg",
+    "source_width": 1700,
+    "source_height": 1119,
+    "source_bytes": 1122747,
+    "source_sha256": "afe7f550d18628c442dbf59758c4fce2adfa37989afa4d9ddc5e4548b6e9eb79",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "petrovsky": {
+    "file": "media/2bd6f8f69ec7-2172.webp",
+    "width": 2172,
+    "height": 724,
+    "variants": [
+      {
+        "file": "media/2bd6f8f69ec7-320.webp",
+        "width": 320,
+        "height": 107,
+        "bytes": 11364
+      },
+      {
+        "file": "media/2bd6f8f69ec7-640.webp",
+        "width": 640,
+        "height": 213,
+        "bytes": 32288
+      },
+      {
+        "file": "media/2bd6f8f69ec7-960.webp",
+        "width": 960,
+        "height": 320,
+        "bytes": 58558
+      },
+      {
+        "file": "media/2bd6f8f69ec7-1280.webp",
+        "width": 1280,
+        "height": 427,
+        "bytes": 90510
+      },
+      {
+        "file": "media/2bd6f8f69ec7-1600.webp",
+        "width": 1600,
+        "height": 533,
+        "bytes": 125886
+      },
+      {
+        "file": "media/2bd6f8f69ec7-2172.webp",
+        "width": 2172,
+        "height": 724,
+        "bytes": 196630
+      }
+    ],
+    "source": "built-in image_gen, reference: https://turris.online/upload/iblock/dc0/98vmg819ce2ii89i3z07hdx6umnf61gk.png",
+    "source_width": 2172,
+    "source_height": 724,
+    "source_bytes": 2046757,
+    "source_sha256": "2bd6f8f69ec724d28b7f42b70576965bb83381cf3ae4c4b56d384fa3bc134a10",
+    "label": "ИИ-реконструкция по фото",
+    "kind": "hotel",
+    "reviewed": "2026-10-29"
+  },
+  "petrovsky_room_3": {
+    "file": "media/00cabef939b6-1639.webp",
+    "width": 1639,
+    "height": 1080,
+    "variants": [
+      {
+        "file": "media/00cabef939b6-320.webp",
+        "width": 320,
+        "height": 211,
+        "bytes": 10020
+      },
+      {
+        "file": "media/00cabef939b6-640.webp",
+        "width": 640,
+        "height": 422,
+        "bytes": 31118
+      },
+      {
+        "file": "media/00cabef939b6-960.webp",
+        "width": 960,
+        "height": 633,
+        "bytes": 67316
+      },
+      {
+        "file": "media/00cabef939b6-1280.webp",
+        "width": 1280,
+        "height": 843,
+        "bytes": 117028
+      },
+      {
+        "file": "media/00cabef939b6-1600.webp",
+        "width": 1600,
+        "height": 1054,
+        "bytes": 180674
+      },
+      {
+        "file": "media/00cabef939b6-1639.webp",
+        "width": 1639,
+        "height": 1080,
+        "bytes": 196952
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/020/ppeozpltttkryte3v0x04g3hopums1t8.jpg",
+    "source_width": 1639,
+    "source_height": 1080,
+    "source_bytes": 262144,
+    "source_sha256": "00cabef939b6095778ccc75ef876b2729fe25021a72d2d81b7559b40c8a3a034",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "petrovsky_room_1": {
+    "file": "media/f9be2cc0bccc-1380.webp",
+    "width": 1380,
+    "height": 1080,
+    "variants": [
+      {
+        "file": "media/f9be2cc0bccc-320.webp",
+        "width": 320,
+        "height": 250,
+        "bytes": 15882
+      },
+      {
+        "file": "media/f9be2cc0bccc-640.webp",
+        "width": 640,
+        "height": 501,
+        "bytes": 54228
+      },
+      {
+        "file": "media/f9be2cc0bccc-960.webp",
+        "width": 960,
+        "height": 751,
+        "bytes": 114116
+      },
+      {
+        "file": "media/f9be2cc0bccc-1280.webp",
+        "width": 1280,
+        "height": 1002,
+        "bytes": 195278
+      },
+      {
+        "file": "media/f9be2cc0bccc-1380.webp",
+        "width": 1380,
+        "height": 1080,
+        "bytes": 235140
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/714/68vmi7qow9eqw35ncxrtymuyt8gbkxm7.jpg",
+    "source_width": 1380,
+    "source_height": 1080,
+    "source_bytes": 298833,
+    "source_sha256": "f9be2cc0bccc6e4c452b8c83252b54f38639dc339b4a51aff8068a52ab5b55c2",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "petrovsky_room_2": {
+    "file": "media/0c86738f2144-1995.webp",
+    "width": 1995,
+    "height": 1080,
+    "variants": [
+      {
+        "file": "media/0c86738f2144-320.webp",
+        "width": 320,
+        "height": 173,
+        "bytes": 7548
+      },
+      {
+        "file": "media/0c86738f2144-640.webp",
+        "width": 640,
+        "height": 346,
+        "bytes": 22876
+      },
+      {
+        "file": "media/0c86738f2144-960.webp",
+        "width": 960,
+        "height": 520,
+        "bytes": 47218
+      },
+      {
+        "file": "media/0c86738f2144-1280.webp",
+        "width": 1280,
+        "height": 693,
+        "bytes": 84102
+      },
+      {
+        "file": "media/0c86738f2144-1600.webp",
+        "width": 1600,
+        "height": 866,
+        "bytes": 131502
+      },
+      {
+        "file": "media/0c86738f2144-1995.webp",
+        "width": 1995,
+        "height": 1080,
+        "bytes": 210032
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/0cf/20e0mzjups44u73n9ih2k644p1mr9muh.jpg",
+    "source_width": 1995,
+    "source_height": 1080,
+    "source_bytes": 524288,
+    "source_sha256": "0c86738f2144c190879c2d3a2beef0e5e516f11bb152744fbca91b6e944e08b7",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "petrovsky_room_4": {
+    "file": "media/c4f0314a4775-1603.webp",
+    "width": 1603,
+    "height": 1080,
+    "variants": [
+      {
+        "file": "media/c4f0314a4775-320.webp",
+        "width": 320,
+        "height": 216,
+        "bytes": 9856
+      },
+      {
+        "file": "media/c4f0314a4775-640.webp",
+        "width": 640,
+        "height": 431,
+        "bytes": 33702
+      },
+      {
+        "file": "media/c4f0314a4775-960.webp",
+        "width": 960,
+        "height": 647,
+        "bytes": 83666
+      },
+      {
+        "file": "media/c4f0314a4775-1280.webp",
+        "width": 1280,
+        "height": 862,
+        "bytes": 151136
+      },
+      {
+        "file": "media/c4f0314a4775-1600.webp",
+        "width": 1600,
+        "height": 1078,
+        "bytes": 237678
+      },
+      {
+        "file": "media/c4f0314a4775-1603.webp",
+        "width": 1603,
+        "height": 1080,
+        "bytes": 247660
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/07f/az4zvjdukbklx0sijs9rgzfl7w8u0v4f.jpg",
+    "source_width": 1603,
+    "source_height": 1080,
+    "source_bytes": 524288,
+    "source_sha256": "c4f0314a4775e35c1a1c427d70f1f4da0fe7872e4a64f0129497f56ea936b29a",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "tagansky": {
+    "file": "media/fabe73b411d3-1318.webp",
+    "width": 1318,
+    "height": 573,
+    "variants": [
+      {
+        "file": "media/fabe73b411d3-320.webp",
+        "width": 320,
+        "height": 139,
+        "bytes": 19382
+      },
+      {
+        "file": "media/fabe73b411d3-640.webp",
+        "width": 640,
+        "height": 278,
+        "bytes": 66688
+      },
+      {
+        "file": "media/fabe73b411d3-960.webp",
+        "width": 960,
+        "height": 417,
+        "bytes": 136734
+      },
+      {
+        "file": "media/fabe73b411d3-1280.webp",
+        "width": 1280,
+        "height": 556,
+        "bytes": 222834
+      },
+      {
+        "file": "media/fabe73b411d3-1318.webp",
+        "width": 1318,
+        "height": 573,
+        "bytes": 249316
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/e48/m9vwwzz0r7jassvu4cxn132of7o0so37.png",
+    "source_width": 1318,
+    "source_height": 573,
+    "source_bytes": 465495,
+    "source_sha256": "fabe73b411d32fd05eaa33b7f3b35c3ca41b6ed9e581d65160253e39f9c83bc8",
+    "label": "",
+    "kind": "hotel",
+    "reviewed": "2026-10-29"
+  },
+  "tagansky_room_1": {
+    "file": "media/f9be2cc0bccc-1380.webp",
+    "width": 1380,
+    "height": 1080,
+    "variants": [
+      {
+        "file": "media/f9be2cc0bccc-320.webp",
+        "width": 320,
+        "height": 250,
+        "bytes": 15882
+      },
+      {
+        "file": "media/f9be2cc0bccc-640.webp",
+        "width": 640,
+        "height": 501,
+        "bytes": 54228
+      },
+      {
+        "file": "media/f9be2cc0bccc-960.webp",
+        "width": 960,
+        "height": 751,
+        "bytes": 114116
+      },
+      {
+        "file": "media/f9be2cc0bccc-1280.webp",
+        "width": 1280,
+        "height": 1002,
+        "bytes": 195278
+      },
+      {
+        "file": "media/f9be2cc0bccc-1380.webp",
+        "width": 1380,
+        "height": 1080,
+        "bytes": 235140
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/714/68vmi7qow9eqw35ncxrtymuyt8gbkxm7.jpg",
+    "source_width": 1380,
+    "source_height": 1080,
+    "source_bytes": 298833,
+    "source_sha256": "f9be2cc0bccc6e4c452b8c83252b54f38639dc339b4a51aff8068a52ab5b55c2",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "tagansky_room_4": {
+    "file": "media/e07015f37791-1700.webp",
+    "width": 1700,
+    "height": 1132,
+    "variants": [
+      {
+        "file": "media/e07015f37791-320.webp",
+        "width": 320,
+        "height": 213,
+        "bytes": 10458
+      },
+      {
+        "file": "media/e07015f37791-640.webp",
+        "width": 640,
+        "height": 426,
+        "bytes": 34074
+      },
+      {
+        "file": "media/e07015f37791-960.webp",
+        "width": 960,
+        "height": 639,
+        "bytes": 73902
+      },
+      {
+        "file": "media/e07015f37791-1280.webp",
+        "width": 1280,
+        "height": 852,
+        "bytes": 129058
+      },
+      {
+        "file": "media/e07015f37791-1600.webp",
+        "width": 1600,
+        "height": 1065,
+        "bytes": 195496
+      },
+      {
+        "file": "media/e07015f37791-1700.webp",
+        "width": 1700,
+        "height": 1132,
+        "bytes": 226226
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/fae/0rctnki6011m957awa5em9rb8r1emhr5.jpg",
+    "source_width": 1700,
+    "source_height": 1132,
+    "source_bytes": 1235047,
+    "source_sha256": "e07015f377910874ca5ad288cfac91cd88d84e17ca03300a083948bfdb0ab6ce",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "tagansky_room_3": {
+    "file": "media/b60365cdfd29-2560.webp",
+    "width": 2560,
+    "height": 1381,
+    "variants": [
+      {
+        "file": "media/b60365cdfd29-320.webp",
+        "width": 320,
+        "height": 173,
+        "bytes": 6206
+      },
+      {
+        "file": "media/b60365cdfd29-640.webp",
+        "width": 640,
+        "height": 345,
+        "bytes": 17754
+      },
+      {
+        "file": "media/b60365cdfd29-960.webp",
+        "width": 960,
+        "height": 518,
+        "bytes": 35948
+      },
+      {
+        "file": "media/b60365cdfd29-1280.webp",
+        "width": 1280,
+        "height": 690,
+        "bytes": 62410
+      },
+      {
+        "file": "media/b60365cdfd29-1600.webp",
+        "width": 1600,
+        "height": 863,
+        "bytes": 93010
+      },
+      {
+        "file": "media/b60365cdfd29-2560.webp",
+        "width": 2560,
+        "height": 1381,
+        "bytes": 223114
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/af2/2tzv9dtxc1c38sz5jop3wnbd8mpiru3t.jpg",
+    "source_width": 2560,
+    "source_height": 1381,
+    "source_bytes": 271936,
+    "source_sha256": "b60365cdfd298f941d5ac5545a12aae16f3e8b094c6b9059df134d29d7b82e63",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "tagansky_room_2": {
+    "file": "media/ebaf1c73523e-2200.webp",
+    "width": 2200,
+    "height": 1564,
+    "variants": [
+      {
+        "file": "media/ebaf1c73523e-320.webp",
+        "width": 320,
+        "height": 227,
+        "bytes": 8826
+      },
+      {
+        "file": "media/ebaf1c73523e-640.webp",
+        "width": 640,
+        "height": 455,
+        "bytes": 31158
+      },
+      {
+        "file": "media/ebaf1c73523e-960.webp",
+        "width": 960,
+        "height": 682,
+        "bytes": 70314
+      },
+      {
+        "file": "media/ebaf1c73523e-1280.webp",
+        "width": 1280,
+        "height": 910,
+        "bytes": 132474
+      },
+      {
+        "file": "media/ebaf1c73523e-1600.webp",
+        "width": 1600,
+        "height": 1137,
+        "bytes": 226904
+      },
+      {
+        "file": "media/ebaf1c73523e-2200.webp",
+        "width": 2200,
+        "height": 1564,
+        "bytes": 500300
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/b22/xalkn3iqyx2mev8nn57jwrb214gl6men.jpg",
+    "source_width": 2200,
+    "source_height": 1564,
+    "source_bytes": 848924,
+    "source_sha256": "ebaf1c73523e260e910e265eaa6b8e78233bf3aed065b30159c73b9e7a2976a4",
+    "label": "",
+    "kind": "room",
+    "reviewed": "2026-10-29"
+  },
+  "hero-room": {
+    "file": "media/ee70edefe916-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "file": "media/ee70edefe916-320.webp",
+        "width": 320,
+        "height": 213,
+        "bytes": 11928
+      },
+      {
+        "file": "media/ee70edefe916-640.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 36844
+      },
+      {
+        "file": "media/ee70edefe916-960.webp",
+        "width": 960,
+        "height": 640,
+        "bytes": 75564
+      },
+      {
+        "file": "media/ee70edefe916-1280.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 124100
+      },
+      {
+        "file": "media/ee70edefe916-1536.webp",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 178766
+      }
+    ],
+    "source": "built-in image_gen",
+    "source_width": 1536,
+    "source_height": 1024,
+    "source_bytes": 2172122,
+    "source_sha256": "ee70edefe9169f708c26d07be3378362187d9815d9f4b4d32a38a0131fbeda48",
+    "label": "",
+    "kind": "concept",
+    "reviewed": "2026-10-29"
+  },
+  "family-room": {
+    "file": "media/234a672ed347-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "file": "media/234a672ed347-320.webp",
+        "width": 320,
+        "height": 213,
+        "bytes": 17246
+      },
+      {
+        "file": "media/234a672ed347-640.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 60532
+      },
+      {
+        "file": "media/234a672ed347-960.webp",
+        "width": 960,
+        "height": 640,
+        "bytes": 134240
+      },
+      {
+        "file": "media/234a672ed347-1280.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 228806
+      },
+      {
+        "file": "media/234a672ed347-1536.webp",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 330318
+      }
+    ],
+    "source": "built-in image_gen",
+    "source_width": 1536,
+    "source_height": 1024,
+    "source_bytes": 2826784,
+    "source_sha256": "234a672ed3479746a5ae7c23f063bbf3e27d9e4e36362b4139146b2a5332d8ac",
+    "label": "",
+    "kind": "concept",
+    "reviewed": "2026-10-29"
+  },
+  "work-stay": {
+    "file": "media/9c6b024e167c-1536.webp",
+    "width": 1536,
+    "height": 1024,
+    "variants": [
+      {
+        "file": "media/9c6b024e167c-320.webp",
+        "width": 320,
+        "height": 213,
+        "bytes": 17056
+      },
+      {
+        "file": "media/9c6b024e167c-640.webp",
+        "width": 640,
+        "height": 427,
+        "bytes": 57208
+      },
+      {
+        "file": "media/9c6b024e167c-960.webp",
+        "width": 960,
+        "height": 640,
+        "bytes": 122004
+      },
+      {
+        "file": "media/9c6b024e167c-1280.webp",
+        "width": 1280,
+        "height": 853,
+        "bytes": 208132
+      },
+      {
+        "file": "media/9c6b024e167c-1536.webp",
+        "width": 1536,
+        "height": 1024,
+        "bytes": 287864
+      }
+    ],
+    "source": "built-in image_gen",
+    "source_width": 1536,
+    "source_height": 1024,
+    "source_bytes": 2529633,
+    "source_sha256": "9c6b024e167cbac4d853fdc49635a7734447190704363a4ae47c486358f711d3",
+    "label": "",
+    "kind": "concept",
+    "reviewed": "2026-10-29"
+  }
+}

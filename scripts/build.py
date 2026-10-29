@@ -8,6 +8,8 @@ from guide import DETAILS as GUIDE, SOURCES as GUIDE_SOURCES
 B=json.loads((ROOT/'data/routes.json').read_text(encoding='utf-8'))
 PAGES={p['id']:p for p in B['pages']}
 ASSETS={a['id']:a for a in json.loads((ROOT/'data/asset-sources.json').read_text(encoding='utf-8'))}
+DELIVERY=json.loads((ROOT/'data/image-delivery.json').read_text(encoding='utf-8')) if (ROOT/'data/image-delivery.json').exists() else {}
+for asset,delivery in DELIVERY.items():ASSETS[asset]={**ASSETS.get(asset,{}),**delivery}
 MAP=json.loads((ROOT/'data/map-locations.json').read_text(encoding='utf-8'))
 BASE='/turris-prototype'
 DIST=ROOT/'dist';DIST.mkdir(exist_ok=True)
@@ -29,12 +31,18 @@ ICONS={
  'search':'<circle cx="10" cy="10" r="7"/><path d="m15 15 6 6"/>',
 }
 def icon(id):return f'<svg class="icon" viewBox="0 0 24 24" aria-hidden="true">{ICONS[id]}</svg>'
-def image(asset,alt,cls='',eager=False):
+def image(asset,alt,cls='',eager=False,sizes='(max-width:640px) calc(100vw - 32px), (max-width:900px) 80vw, 754px'):
  if asset in ASSETS:
   aa=ASSETS[asset];file=aa['file'];w=aa['width'];h=aa['height']
  else:file=('hero-room-v2' if asset=='hero-room' else asset)+'.png';w=1536;h=1024
- return f'<img src="{BASE}/assets/{file}" width="{w}" height="{h}" alt="{e(alt)}" class="{cls}" loading="{"eager" if eager else "lazy"}" {"fetchpriority=high" if eager else ""} decoding="async">'
+ delivery=DELIVERY.get(asset,{})
+ srcset=' srcset="'+', '.join(BASE+'/assets/'+v['file']+' '+str(v['width'])+'w' for v in delivery['variants'])+'" sizes="'+sizes+'"' if delivery and asset not in HOTELS else ''
+ cls+=' facade-photo' if asset in HOTELS else ' portrait-photo' if h>w else ''
+ label=delivery.get('label','')
+ if label:alt=alt.replace('Фотография','Изображение').replace('фотография','изображение')+' — '+label
+ return f'<img src="{BASE}/assets/{file}"{srcset} width="{w}" height="{h}" alt="{e(alt)}" class="{cls.strip()}" data-asset="{asset}" loading="{"eager" if eager else "lazy"}" {"fetchpriority=high" if eager else ""} decoding="async">'+('<small class="ai-image-label">'+label+'</small>' if label else '')
 def figure(asset,alt,generated=False,eager=False,cls='hero-visual'):
+ if asset in HOTELS:cls+=' facade-media'
  return f'<figure class="{cls}">{image(asset,alt,eager=eager)}'+('<figcaption class="image-note">Иллюстрация концепции</figcaption>' if generated else '')+'</figure>'
 def section(title,body,sub='',id='',cls=''):
  return f'<section class="section {cls}"'+(f' id="{id}"' if id else '')+f'><div class="section-heading"><div><h2>{title}</h2>'+ (f'<p class="sub">{sub}</p>' if sub else '')+f'</div></div>{body}</section>'
@@ -127,7 +135,9 @@ def catalog(p):
  return '<div class="wrap">'+head('Четыре отеля.<br>Ваша Москва.','Сравните расположение, категории и важные условия перед выбором.')+'<div class="catalog-tools"><label class="field">Цель поездки<select data-hotel-filter><option value="all">Все отели</option><option value="family">Семейные категории</option><option value="longstay">Длительное проживание</option><option value="beds">Раздельные кровати</option></select></label><button type="button" class="btn secondary" data-reset-hotels hidden>Сбросить фильтр</button><span class="small" data-filter-count>4 отеля</span></div>'+section('Выберите расположение',hotel_explorer(),id='hotels')+section('Сравните важные детали',comparison,id='comparison')+bottom_booking()+'</div>'
 def hotel_page(p):
  i=p['id'];h=HOTELS[i]
- return f'<div class="wrap"><section class="hotel-hero"><div class="hero-copy"><div class="eyebrow">Туррис · {h["location"]}</div><h1>{h["full"]}</h1><p class="sub">{h["line"]}</p><p class="address">{icon("pin")}{h["address"]}</p>{chips([h["focus"],str(len([r for r in PAGES.values() if r["template"]=="room" and r["id"].startswith(i)]))+" категории"])}{booking_form(i)}</div>{figure(i,h["full"]+': фасад',False,True)}</section>{tabs(i,p["id"])}{note(h["notice"])}{section("Ваш номер в Москве",rooms(i))}{section("Ближе к вашей поездке",'<div class="two-col"><div class="prose"><p>'+h['description']+'</p>'+a(i+'_contacts','Посмотреть расположение '+icon('arrow'),'text-link')+'</div><div>'+infocards([('Точный адрес',h['address'])])+'</div></div>')}{section('Что важно знать',faqs())}{bottom_booking(i)}</div>'
+ preview=next(r for r in PAGES.values() if r['template']=='room' and r['id'].startswith(i))
+ photos='<div class="hotel-photo-stack">'+figure(i,h['full']+': фасад',False,True,'hotel-facade')+'<a class="hotel-room-preview" href="'+url(preview['id'])+'">'+image(preview['id'],room_name(preview))+'<span>'+e(room_name(preview))+' '+icon('arrow')+'</span></a></div>'
+ return f'<div class="wrap"><section class="hotel-hero"><div class="hero-copy"><div class="eyebrow">Туррис · {h["location"]}</div><h1>{h["full"]}</h1><p class="sub">{h["line"]}</p><p class="address">{icon("pin")}{h["address"]}</p>{chips([h["focus"],str(len([r for r in PAGES.values() if r["template"]=="room" and r["id"].startswith(i)]))+" категории"])}{booking_form(i)}</div>{photos}</section>{tabs(i,p["id"])}{note(h["notice"])}{section("Ваш номер в Москве",rooms(i))}{section("Ближе к вашей поездке",'<div class="two-col"><div class="prose"><p>'+h['description']+'</p>'+a(i+'_contacts','Посмотреть расположение '+icon('arrow'),'text-link')+'</div><div>'+infocards([('Точный адрес',h['address'])])+'</div></div>')}{section('Что важно знать',faqs())}{bottom_booking(i)}</div>'
 def room_page(p):
  i=room_hotel(p);h=HOTELS[i];beds,detail=room_facts(p)
  others=[r['id'] for r in PAGES.values() if r['template']=='room' and r['id'].startswith(i) and r['id']!=p['id']][:3]
@@ -194,7 +204,7 @@ def guide_asset(b):
 def blog_card(b):
  slug,item,detail,minutes=guide_info(b)
  search=' '.join([b['title'],item['answer'],RUBRIC_LABELS[b['rubric']],str(detail)]).lower()
- return '<article class="article-card guide-card" data-article data-rubric="'+b['rubric']+'" data-title="'+e(search)+'"><a class="guide-card-image" href="'+url(b['id'])+'" tabindex="-1" aria-hidden="true">'+image(guide_asset(b),'')+'</a><div class="article-card-body"><div class="guide-card-meta"><span>'+RUBRIC_LABELS[b['rubric']]+'</span><span>'+str(minutes)+' мин</span></div><h3>'+a(b['id'],b['title'])+'</h3><p>'+e(detail['takeaways'][0])+' '+e(detail['takeaways'][1])+'</p>'+a(b['id'],('Маршрут и советы' if 'stops' in detail else 'Читать руководство')+' '+icon('arrow'),'text-link')+'</div></article>'
+ return '<article class="article-card guide-card" data-article data-rubric="'+b['rubric']+'" data-title="'+e(search)+'"><a class="guide-card-image" href="'+url(b['id'])+'" tabindex="-1" aria-hidden="true">'+image(guide_asset(b),'',sizes='(max-width:640px) 300px, 380px')+'</a><div class="article-card-body"><div class="guide-card-meta"><span>'+RUBRIC_LABELS[b['rubric']]+'</span><span>'+str(minutes)+' мин</span></div><h3>'+a(b['id'],b['title'])+'</h3><p>'+e(detail['takeaways'][0])+' '+e(detail['takeaways'][1])+'</p>'+a(b['id'],('Маршрут и советы' if 'stops' in detail else 'Читать руководство')+' '+icon('arrow'),'text-link')+'</div></article>'
 RUBRIC_LABELS={'districts':'Районы и маршруты','family':'Москва с детьми','business':'Командировки','stay':'Как подготовиться'}
 def blog_page(p):
  rubric=p['id'].replace('blog_','') if p['id']!='blog' else 'all'
@@ -210,7 +220,7 @@ def blog_page(p):
 def article_page(p):
  b=next(b for b in B['blog_plan'] if b['id']==p['id']);slug,item,detail,minutes=guide_info(b);target=b['commercial_target']
  asset=guide_asset(b);photo_hotel=next(h for h in HOTELS if asset.startswith(h))
- cover='<figure class="guide-cover">'+image(asset,'Фотография '+HOTELS[photo_hotel]['full'],eager=True)+'<figcaption>'+HOTELS[photo_hotel]['full']+' · '+('фасад' if asset in HOTELS else 'одна из категорий')+'</figcaption></figure>'
+ cover='<figure class="guide-cover">'+image(asset,'Фотография '+HOTELS[photo_hotel]['full'],eager=True,sizes='(max-width:640px) 84px, (max-width:900px) 170px, 230px')+'<figcaption>'+HOTELS[photo_hotel]['full']+' · '+('ИИ-реконструкция фасада' if DELIVERY.get(asset,{}).get('label') else 'фасад' if asset in HOTELS else 'одна из категорий')+'</figcaption></figure>'
  header='<header class="guide-article-head"><div><div class="eyebrow">'+a('blog_'+b['rubric'],RUBRIC_LABELS[b['rubric']])+' · '+str(minutes)+' мин чтения</div><h1>'+e(p['h1'])+'</h1><div class="guide-byline"><span>Редакция прототипа Туррис</span><time datetime="2026-10-29">Обновлено 29 октября 2026</time></div><div class="guide-tools"><a href="#article-summary">Краткий ответ ↓</a><a href="#article-checklist">К чек-листу ↓</a><button type="button" data-copy-article>Скопировать ссылку</button><span role="status" data-copy-status></span></div></div>'+cover+'</header>'
  summary='<section class="guide-answer" id="article-summary"><div class="eyebrow">Коротко о главном</div><p>'+e(item['answer'])+'</p><ul>'+''.join('<li>'+e(x)+'</li>' for x in detail['takeaways'])+'</ul></section>'
  table='<section id="article-choice" data-reading-section><h2>'+e(detail['table_title'])+'</h2><table class="guide-table"><caption class="sr-only">'+e(detail['table_title'])+'</caption><thead><tr><th scope="col">Ситуация</th><th scope="col">Что выбрать или сделать</th><th scope="col">На что обратить внимание</th></tr></thead><tbody>'+''.join('<tr><th scope="row">'+e(row[0])+'</th><td data-label="Что сделать">'+e(row[1])+'</td><td data-label="Учесть">'+e(row[2])+'</td></tr>' for row in detail['rows'])+'</tbody></table></section>'
@@ -290,9 +300,10 @@ def build():
   schema={'@context':'https://schema.org','@type':'WebPage','name':title,'description':'Демонстрационный прототип сайта отелей Туррис.'}
   if p['template']=='article':
    schema.update({'@type':'BlogPosting','headline':p['h1'],'dateModified':'2026-10-29','author':{'@type':'Organization','name':'Редакция прототипа Туррис'},'inLanguage':'ru','description':ARTICLES[p['url'].strip('/').split('/')[-1]]['answer']})
-  doc='<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#0758b9"><title>'+e(title)+'</title><meta name="description" content="'+e(p['description'])+'"><meta property="og:title" content="'+e(title)+'"><meta property="og:description" content="Демонстрационный сайт: четыре отеля в Москве, номера, предложения и гид."><meta property="og:type" content="website"><meta property="og:image" content="https://moriarty32.github.io/turris-prototype/assets/hero-room-v2.png"><link rel="icon" href="'+BASE+'/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="'+BASE+'/assets/site.css?v=guide-1"><link rel="stylesheet" href="'+BASE+'/assets/premium.css?v=guide-1"><link rel="stylesheet" href="'+BASE+'/assets/layout.css?v=guide-1"><script type="application/ld+json">'+json.dumps(schema,ensure_ascii=False)+'</script><script>window.SITE_BASE='+json.dumps(BASE)+';</script><script src="'+BASE+'/assets/site.js?v=guide-1" defer></script><script src="'+BASE+'/assets/experience.js?v=guide-1" defer></script></head><body data-page="'+p['id']+'" data-template="'+p['template']+'">'+header(p)+breadcrumbs(p)+'<main id="main">'+body+'</main>'+footer()+dialogs()+'</body></html>'
+  doc='<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><meta name="theme-color" content="#0758b9"><title>'+e(title)+'</title><meta name="description" content="'+e(p['description'])+'"><meta property="og:title" content="'+e(title)+'"><meta property="og:description" content="Демонстрационный сайт: четыре отеля в Москве, номера, предложения и гид."><meta property="og:type" content="website"><meta property="og:image" content="https://moriarty32.github.io/turris-prototype/assets/hero-room-v2.png"><link rel="icon" href="'+BASE+'/assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="'+BASE+'/assets/site.css?v=images-1"><link rel="stylesheet" href="'+BASE+'/assets/premium.css?v=images-1"><link rel="stylesheet" href="'+BASE+'/assets/layout.css?v=images-1"><script type="application/ld+json">'+json.dumps(schema,ensure_ascii=False)+'</script><script>window.SITE_BASE='+json.dumps(BASE)+';</script><script src="'+BASE+'/assets/site.js?v=images-1" defer></script><script src="'+BASE+'/assets/experience.js?v=images-1" defer></script></head><body data-page="'+p['id']+'" data-template="'+p['template']+'">'+header(p)+breadcrumbs(p)+'<main id="main">'+body+'</main>'+footer()+dialogs()+'</body></html>'
   if p['template'] in ['blog','article']:
-   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/guide.css?v=guide-1"><script src="'+BASE+'/assets/guide.js?v=guide-1" defer></script></head>')
+   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/guide.css?v=images-1"><script src="'+BASE+'/assets/guide.js?v=images-1" defer></script></head>')
+  doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/media.css?v=images-1"></head>')
   path=DIST/p['url'].strip('/')/'index.html';path.parent.mkdir(parents=True,exist_ok=True);path.write_text(doc,encoding='utf-8')
   public.append({'id':p['id'],'url':p['url'],'title':room_name(p) if p['template']=='room' else p['h1'],'type':p['template'],'hotel':next((i for i in HOTELS if p['id'].startswith(i)),None),'image':ASSETS.get(p['id'],{}).get('file'),'summary':p['intent']})
  (DIST/'site-data.json').write_text(json.dumps({'pages':public,'hotels':HOTELS},ensure_ascii=False),encoding='utf-8')
