@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-29",
+  "reference": "C:/Users/Bogomazov/.codex/attachments/3e548b5a-35fa-43c9-aefd-a67189797ad0/image-1.png",
+  "routes": [
+    "/blog/",
+    "/blog/districts/",
+    "/blog/family/",
+    "/blog/business/",
+    "/blog/stay/"
+  ],
+  "blocks": [
+    "Two-column hero: title, search, four topic links and featured guide",
+    "Topic and hotel filters; six editorial cards per page",
+    "Load more and numbered pagination, query state retained in URL",
+    "Four-hotel interactive map with dedicated walking-guide links",
+    "Four practical related guides",
+    "Shared live-booking handoff and support telephone"
+  ],
+  "preserved": [
+    "Global header/footer and complete navigation",
+    "All 16 article URLs and article layouts",
+    "Verified hotel photos, addresses and map coordinates",
+    "Shared booking dates, guests and hotel context",
+    "No-JavaScript article and route links",
+    "Reduced-motion setting and keyboard controls"
+  ],
+  "new_media": [
+    "assets/guide-documents.webp",
+    "assets/guide-arrival.webp"
+  ],
+  "media_sources": "blog-reference-image-plan.json and blog-image-prompts.json",
+  "visual_rules": {
+    "article_grid": "2 columns desktop, 1 column <=540px",
+    "article_cover": "8:3; no oversized editorial heroes",
+    "card_alignment": "flex column; links pinned to bottom; equal row heights",
+    "actions": "Blue for reading and routes; shared crimson for booking",
+    "map": "Height follows hotel accordion on desktop, 340px on mobile"
+  },
+  "checks": "scripts/qa_blog_reference.py",
+  "map_dependency": "Live OpenStreetMap tiles are external. Markers, address cards and guide links remain usable when tiles are unavailable."
+}

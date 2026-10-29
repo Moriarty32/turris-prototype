@@ -198,16 +198,9 @@ def blog_card(b):
  return '<article class="article-card guide-card" data-article data-rubric="'+b['rubric']+'" data-title="'+e(search)+'"><a class="guide-card-image" href="'+url(b['id'])+'" tabindex="-1" aria-hidden="true">'+image(guide_asset(b),'',sizes='(max-width:640px) 400px, 380px')+'</a><div class="article-card-body"><div class="guide-card-meta"><span>'+RUBRIC_LABELS[b['rubric']]+'</span><span>'+str(minutes)+' мин</span></div><h3>'+a(b['id'],b['title'])+'</h3><p>'+e(detail['takeaways'][0])+' '+e(detail['takeaways'][1])+'</p>'+a(b['id'],('Маршрут и советы' if 'stops' in detail else 'Читать руководство')+' '+icon('arrow'),'text-link')+'</div></article>'
 RUBRIC_LABELS={'districts':'Районы и маршруты','family':'Москва с детьми','business':'Командировки','stay':'Как подготовиться'}
 def blog_page(p):
- rubric=p['id'].replace('blog_','') if p['id']!='blog' else 'all'
- items=B['blog_plan'] if rubric=='all' else [b for b in B['blog_plan'] if b['rubric']==rubric]
- filters='<div class="filter-row" data-blog-filters><button data-rubric-filter="all" aria-pressed="true">Все материалы</button>'+''.join('<button data-rubric-filter="'+id+'" aria-pressed="false">'+name+'</button>' for id,name in RUBRIC_LABELS.items())+'</div>' if rubric=='all' else '<p>'+a('blog','← Все материалы гида')+'</p>'
- lead=next(x for x in B['blog_plan'] if x['id']==('article_1' if rubric=='all' else items[0]['id']))
- feature='<aside class="guide-feature"><div>'+image(guide_asset(lead),'Туррис: фотография отеля из материала')+'</div><div><span class="eyebrow">С чего начать</span><h2>'+a(lead['id'],lead['title'])+'</h2>'+a(lead['id'],'Открыть руководство '+icon('arrow'),'text-link')+'</div></aside>'
- hero='<header class="guide-hero"><div><div class="eyebrow">Гид Туррис · Москва</div><h1>'+('Город ближе,<br><em>когда есть план.</em>' if rubric=='all' else RUBRIC_LABELS[rubric])+'</h1><p>Выберите район, соберите маршрут и подготовьте поездку. Конкретные адреса, понятные сравнения и списки, которые можно отметить по ходу дела.</p><a class="text-link" href="#guide-library">'+str(len(items))+' материалов для вашей поездки ↓</a></div>'+feature+'</header>'
- topics='<nav class="guide-topics" aria-label="Рубрики гида">'+''.join(a('blog_'+key,'<span>'+str(n).zfill(2)+'</span><strong>'+name+'</strong><small>'+str(sum(x['rubric']==key for x in B['blog_plan']))+' материалов '+icon('arrow')+'</small>','guide-topic'+(' active' if key==rubric else '')) for n,(key,name) in enumerate(RUBRIC_LABELS.items(),1))+'</nav>'
- library='<section class="guide-library" id="guide-library"><div class="guide-library-heading"><h2>Найдите ответ для своей поездки</h2><label class="field guide-search">Поиск по теме<input type="search" placeholder="Например: завтрак, коляска, Зарядье" data-blog-search></label></div>'+filters+'<div class="guide-result-line"><span data-blog-count aria-live="polite">Материалов: '+str(len(items))+'</span><button type="button" class="text-link" data-blog-reset hidden>Сбросить поиск и фильтр</button></div><div class="blog-grid guide-grid">'+''.join(blog_card(b) for b in items)+'</div><div class="empty-state" data-blog-empty hidden><h3>Материалы не найдены</h3><p>Попробуйте другую тему или более короткий запрос.</p></div></section>'
- closing='<section class="guide-closing"><div class="eyebrow">От плана — к поездке</div><h2>Теперь найдите свой адрес в Москве</h2><p>Сравните расположение четырёх отелей и условия, которые важны именно вам.</p><div>'+a('hotels','Сравнить отели '+icon('arrow'),'btn')+'<a class="text-link" href="'+url('home')+'#map">Отели на карте '+icon('pin')+'</a></div></section>'
- return '<div class="wrap guide-index">'+hero+topics+library+closing+'</div>'
+ from blog_page import render
+ return render(p,globals())
+
 def article_page(p):
  from article_page import render
  return render(p,globals())
@@ -247,7 +240,7 @@ def breadcrumbs(p):
  parents=[];pid=p['parent']
  while pid:
   pp=PAGES[pid];parents.insert(0,a(pid,'Главная' if pid=='home' else 'Отели' if pid=='hotels' else 'Гид по Москве' if pid=='blog' else pp['h1'].split(' — ')[0]));pid=pp['parent']
- return '<div class="wrap"><nav class="breadcrumbs" aria-label="Хлебные крошки">'+'<span>/</span>'.join(parents)+('<span>/</span>' if parents else '')+'<span>'+e(room_name(p) if p['template']=='room' else p['h1'])+'</span></nav></div>'
+ return '<div class="wrap"><nav class="breadcrumbs" aria-label="Хлебные крошки">'+'<span>/</span>'.join(parents)+('<span>/</span>' if parents else '')+'<span>'+e(room_name(p) if p['template']=='room' else 'Гид по Москве' if p['id']=='blog' else p['h1'])+'</span></nav></div>'
 def build():
  shutil.copytree(ROOT/'assets',DIST/'assets',dirs_exist_ok=True)
  reportdir=DIST/'research';reportdir.mkdir(exist_ok=True)
@@ -280,6 +273,8 @@ def build():
   if p['id']=='home':
    doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/home.css?v=home-1"><script src="'+BASE+'/assets/home.js?v=home-1" defer></script></head>')
   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/design-system.css?v=system-1"><script src="'+BASE+'/assets/design-system.js?v=system-1" defer></script></head>')
+  if p['template']=='blog':
+   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/journal.css?v=journal-1"><script src="'+BASE+'/assets/journal.js?v=journal-1" defer></script></head>')
   path=DIST/p['url'].strip('/')/'index.html';path.parent.mkdir(parents=True,exist_ok=True);path.write_text(doc,encoding='utf-8')
   public.append({'id':p['id'],'url':p['url'],'title':room_name(p) if p['template']=='room' else p['h1'],'type':p['template'],'hotel':next((i for i in HOTELS if p['id'].startswith(i)),None),'image':ASSETS.get(p['id'],{}).get('file'),'summary':p['intent']})
  (DIST/'site-data.json').write_text(json.dumps({'pages':public,'hotels':HOTELS},ensure_ascii=False),encoding='utf-8')

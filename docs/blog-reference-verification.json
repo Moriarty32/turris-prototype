@@ -1,0 +1,58 @@
+{
+  "status": "PASS",
+  "reference": "image-1.png",
+  "responsive_checks": [
+    {
+      "width": 320,
+      "filters": true,
+      "pagination": true,
+      "map": true,
+      "no_overflow": true
+    },
+    {
+      "width": 390,
+      "filters": true,
+      "pagination": true,
+      "map": true,
+      "no_overflow": true
+    },
+    {
+      "width": 640,
+      "filters": true,
+      "pagination": true,
+      "map": true,
+      "no_overflow": true
+    },
+    {
+      "width": 768,
+      "filters": true,
+      "pagination": true,
+      "map": true,
+      "no_overflow": true
+    },
+    {
+      "width": 1024,
+      "filters": true,
+      "pagination": true,
+      "map": true,
+      "no_overflow": true
+    },
+    {
+      "width": 1440,
+      "filters": true,
+      "pagination": true,
+      "map": true,
+      "no_overflow": true
+    }
+  ],
+  "generated_assets": [
+    2048,
+    768
+  ],
+  "all_16_articles_accessible": true,
+  "rubric_pages": true,
+  "no_js_links": true,
+  "reduced_motion": true,
+  "live_booking_handoff": true,
+  "js_errors": []
+}

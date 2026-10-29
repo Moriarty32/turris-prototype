@@ -1,0 +1,44 @@
+{
+  "reference": "C:/Users/Bogomazov/.codex/attachments/3e548b5a-35fa-43c9-aefd-a67189797ad0/image-1.png",
+  "card_image": {
+    "aspect_ratio": "8:3",
+    "desktop_css_max": [
+      600,
+      225
+    ],
+    "mobile_css_max": [
+      608,
+      228
+    ],
+    "requested_master": [
+      1536,
+      576
+    ],
+    "fit": "cover; central composition with safe margins"
+  },
+  "new_assets": [
+    {
+      "id": "guide-documents",
+      "subject": "Navy suitcase, white business documents and blue checkmark on ice blue background",
+      "file": "guide-documents.png",
+      "actual_master": [
+        2048,
+        768
+      ],
+      "delivery": "guide-documents.webp",
+      "method": "Built-in image_gen; original dimensions preserved, WebP encoding only"
+    },
+    {
+      "id": "guide-arrival",
+      "subject": "Fine light blue lines of clock, hotel door and plant on deep navy background",
+      "file": "guide-arrival.png",
+      "actual_master": [
+        2048,
+        768
+      ],
+      "delivery": "guide-arrival.webp",
+      "method": "Built-in image_gen; original dimensions preserved, WebP encoding only"
+    }
+  ],
+  "existing_photography": "Use hotel and room photographs already sourced and quality-checked; do not invent hotel interiors."
+}

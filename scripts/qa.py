@@ -53,7 +53,7 @@ async def main():
   await page.goto(BASE+'/groups/',wait_until='networkidle')
   await page.locator('[name=arrival]').fill('2026-12-10');await page.locator('[name=departure]').fill('2026-12-13');await page.locator('[data-next-step]').click();await page.locator('[name=name]').fill('Демонстрация');await page.locator('[name=email]').fill('demo@example.com');await page.locator('[name=consent]').check();await page.locator('[data-lead] button[type=submit]').click();await page.wait_for_selector('.form-success');assert 'не отправлена' in await page.locator('.form-success').inner_text();observations.append({'group_form':'two steps and explicit unsent success'})
   await page.screenshot(path=str(OUT/'groups-desktop.png'),full_page=True)
-  await page.goto(BASE+'/blog/',wait_until='networkidle');await page.locator('[data-rubric-filter=family]').click();assert await page.locator('[data-article]:visible').count()==2;await page.locator('[data-blog-search]').fill('несуществующий');assert await page.locator('[data-blog-empty]').is_visible();observations.append({'blog':'rubric and empty search work'})
+  await page.goto(BASE+'/blog/',wait_until='networkidle');await page.locator('[data-journal-topic=family]').click();assert await page.locator('[data-journal-card]:visible').count()==2;await page.locator('[data-journal-search]').fill('несуществующий');assert await page.locator('[data-journal-empty]').is_visible();observations.append({'blog':'rubric and empty search work'})
   await page.goto(BASE+'/search/?q=мансарда',wait_until='networkidle');await page.wait_for_selector('.search-result');observations.append({'search_results':await page.locator('.search-result').count()})
   representatives={}
   for row in data['pages']:representatives.setdefault(row['type'],row)

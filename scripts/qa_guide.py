@@ -24,20 +24,20 @@ async def main():
   await context.route('https://tile.openstreetmap.org/**',lambda r:r.abort())
   page=await context.new_page();page.on('pageerror',lambda e:errors.append(str(e)))
   await page.goto(BASE+'/blog/',wait_until='networkidle')
-  assert await page.locator('[data-article]').count()==16
-  await page.locator('[data-blog-search]').fill('Зарядье')
-  assert await page.locator('[data-article]:visible').count()==1
-  assert '1' in await page.locator('[data-blog-count]').inner_text()
-  await page.locator('[data-blog-reset]').click()
-  await page.locator('[data-rubric-filter=family]').click()
-  assert await page.locator('[data-article]:visible').count()==2
-  await page.locator('[data-blog-search]').fill('несуществующее')
-  assert await page.locator('[data-blog-empty]').is_visible()
-  await page.locator('[data-blog-reset]').click()
-  assert await page.locator('[data-article]:visible').count()==16
-  await page.locator('.guide-topic[href$="/business/"]').click()
+  assert await page.locator('[data-journal-card]').count()==16
+  await page.locator('[data-journal-search]').fill('Большая Садовая')
+  assert await page.locator('[data-journal-card]:visible').count()==1
+  assert '1' in await page.locator('[data-journal-count]').inner_text()
+  await page.locator('[data-journal-reset]').click()
+  await page.locator('[data-journal-topic=family]').click()
+  assert await page.locator('[data-journal-card]:visible').count()==2
+  await page.locator('[data-journal-search]').fill('несуществующее')
+  assert await page.locator('[data-journal-empty]').is_visible()
+  await page.locator('[data-journal-reset]').click()
+  assert await page.locator('[data-journal-card]:visible').count()==6
+  await page.goto(BASE+'/blog/business/')
   await page.wait_for_url(BASE+'/blog/business/')
-  assert await page.locator('[data-article]').count()==3
+  assert await page.locator('[data-journal-card]').count()==3
   checks.append('Catalogue: full-content search, combined filter, count, empty state, reset and rubric navigation')
   await page.goto(BASE+'/blog/tverskaya-walk/',wait_until='networkidle')
   await page.locator('[data-guide-check="0"]').check()
