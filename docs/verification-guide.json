@@ -1,0 +1,19 @@
+{
+  "status": "PASS",
+  "articles": 16,
+  "catalogue_pages": 5,
+  "widths": [
+    320,
+    390,
+    768,
+    1440
+  ],
+  "checks": [
+    "Catalogue: full-content search, combined filter, count, empty state, reset and rubric navigation",
+    "Checklist persistence/reset, clipboard success/fallback, route origin and destination",
+    "Mobile contents disclosure, anchor position below fixed header and active section",
+    "All 16 articles and 5 catalogue pages at 320, 390, 768 and 1440 px; no overflow; bounded cover images",
+    "No-JavaScript answer, contents, comparison, checklist and source links remain in HTML"
+  ],
+  "js_errors": []
+}
