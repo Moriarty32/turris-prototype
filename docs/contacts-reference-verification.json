@@ -1,0 +1,105 @@
+{
+  "status": "PASS",
+  "checked": "2026-10-29",
+  "scope": "Network contacts page reference",
+  "reports": {
+    "contacts-reference-report": {
+      "status": "PASS",
+      "responsive": [
+        {
+          "width": 320,
+          "cta_visible": true,
+          "map_selection": "passed",
+          "overflow": false
+        },
+        {
+          "width": 390,
+          "cta_visible": true,
+          "map_selection": "passed",
+          "overflow": false
+        },
+        {
+          "width": 640,
+          "cta_visible": true,
+          "map_selection": "passed",
+          "overflow": false
+        },
+        {
+          "width": 768,
+          "cta_visible": true,
+          "map_selection": "passed",
+          "overflow": false
+        },
+        {
+          "width": 901,
+          "cta_visible": true,
+          "map_selection": "passed",
+          "overflow": false
+        },
+        {
+          "width": 1024,
+          "cta_visible": true,
+          "map_selection": "passed",
+          "overflow": false
+        },
+        {
+          "width": 1440,
+          "cta_visible": true,
+          "map_selection": "passed",
+          "overflow": false
+        }
+      ],
+      "minimum_image_density": 2.17,
+      "functions": [
+        "4 direct phones and sourced routes",
+        "map/form selection and query parameter",
+        "one map across breakpoints",
+        "clipboard and permission failure",
+        "form validation, explicit unsent result, keyboard focus and edit",
+        "no network submission or personal-data storage",
+        "no-JavaScript contacts, routes and disabled form",
+        "desktop and mobile navigation"
+      ],
+      "js_errors": []
+    },
+    "report": {
+      "status": "PASS",
+      "static_pages": 109,
+      "templates_browser_checked": 22,
+      "generated_dimensions": "4x1536x1024",
+      "local_links": "all resolved",
+      "js_errors": [],
+      "observations": [
+        {
+          "desktop_main_cta_y": {
+            "x": 772.828125,
+            "y": 491.21875,
+            "width": 511.171875,
+            "height": 48
+          }
+        },
+        {
+          "booking": "dates,2adults,child7 retained;7Lubyansky categories"
+        },
+        {
+          "room_context": "family suite preserved"
+        },
+        {
+          "group_form": "two steps and explicit unsent success"
+        },
+        {
+          "blog": "rubric and empty search work"
+        },
+        {
+          "search_results": 3
+        }
+      ]
+    }
+  },
+  "visual_review": [
+    "1440 px desktop: hero, booking phone panel, map accordion, two-column contact cards, form, FAQ and documents",
+    "390 px mobile: visible primary action, hotel buttons, compact contact details and stacked form"
+  ],
+  "images": "Existing sourced facades; all contact-page photographs decoded, minimum measured source density 2.17 at DPR 2. Petrovsky reconstruction labelled.",
+  "limitations": "Static prototype: no form submission, CRM or live inventory. Browser checks use isolated map tiles; external route destinations are ordinary links."
+}
