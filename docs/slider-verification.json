@@ -1,0 +1,10 @@
+{
+  "checks": [
+    "5s autoplay, hover pause, explicit pause/resume, focus pause, arrows, all four hotels and wraparound; booking state unchanged",
+    "Seven viewport widths; desktop booking CTA stays in first screen; controls have 44px height",
+    "Reduced motion disables autoplay by default; mobile swipe changes hotel",
+    "Without JavaScript: first hotel and its link remain usable"
+  ],
+  "javascript_errors": [],
+  "reservation_submitted": false
+}
