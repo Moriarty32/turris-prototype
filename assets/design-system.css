@@ -279,7 +279,13 @@ main [id] {
 .btn:active {
   background: #8e0f30;
   border-color: #8e0f30;
+  color: var(--white);
   transition-duration: 100ms;
+}
+.btn:is(.secondary,.white,.ct-outline,.jr-blue,.ct-blue):active {
+  background: var(--pale);
+  border-color: var(--ink);
+  color: var(--ink);
 }
 .btn:disabled,button:disabled {
   opacity: .55;
@@ -314,6 +320,13 @@ main [id] {
 .btn:focus-visible {
   outline-offset: 4px;
 }
+/* Foreground and background change together in selected control states. */
+.view-switch button,.filter-row button,.jr-pagination nav button { color: var(--ink); }
+.view-switch button[aria-pressed=true],.filter-row button[aria-pressed=true],.jr-pagination nav button[aria-current=page],.map-move[aria-pressed=true] {
+  background: var(--navy);
+  color: var(--white);
+}
+.article-page .guide-toc summary span { color: var(--blue); }
 .field {
   display: flex;
   flex-direction: column;
@@ -847,6 +860,9 @@ html:not(.js) .menu-button {
   max-width: 1000px;
   margin-top: 24px;
 }
+/* Use the shared readable tone for secondary offer and loyalty copy. */
+.of-option p,.of-filter,.of-promo-grid p,.of-programs p { color: var(--muted); }
+.of-program-number { color: var(--blue); }
 /* Reusable content rhythm and alignment. */
 /* Keep prose, action groups and card metadata visibly separated. */
 .card-bottom { gap: 16px; padding-top: 24px; }
@@ -2088,6 +2104,7 @@ dialog h2 {
   height: auto;
   min-height: 56px;
 }
+.ar-booking-target>.text-link { color: var(--white); }
 .ct-booking .eyebrow {
   color: #dce6f1;
 }
