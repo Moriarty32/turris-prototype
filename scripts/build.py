@@ -57,8 +57,8 @@ def booking_form(hotel='',room='',bottom=False):
  options='<option value="">Любой из четырёх</option>'+''.join(f'<option value="{i}" {"selected" if i==hotel else ""}>{h["name"]} · {h["location"]}</option>' for i,h in HOTELS.items())
  return f'''<form class="booking-form" data-booking data-hotel="{hotel}" data-room="{room}" action="{url('booking')}" method="get">
  <label class="field hotel-select">Отель<select name="hotel" aria-label="Выберите отель">{options}</select></label>
- <label class="field">Даты поездки<button type="button" class="select-button" data-dates><span data-date-label>Заезд — Выезд</span>{icon('calendar')}</button></label>
- <label class="field">Гости<button type="button" class="select-button" data-guests><span data-guest-label>2 взрослых</span>{icon('chevron')}</button></label>
+ <label class="field">Даты поездки<button type="button" class="select-button" data-dates>{icon('calendar')}<span data-date-label>Заезд — Выезд</span>{icon('chevron')}</button></label>
+ <label class="field">Гости<button type="button" class="select-button" data-guests>{icon('guest')}<span data-guest-label>2 взрослых</span>{icon('chevron')}</button></label>
  <input type="hidden" name="checkin"><input type="hidden" name="checkout"><input type="hidden" name="adults" value="2"><input type="hidden" name="children" value="[]"><input type="hidden" name="room" value="{room}">
  <button class="btn" type="submit">Показать номера и цены {icon('arrow')}</button><p class="form-error" aria-live="polite"></p></form>'''
 def bottom_booking(hotel=''):
@@ -272,9 +272,10 @@ def build():
    doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/contacts.css?v=contacts-1"><script src="'+BASE+'/assets/contacts.js?v=contacts-1" defer></script></head>')
   if p['id']=='home':
    doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/home.css?v=adaptive-hero-4"><script src="'+BASE+'/assets/home.js?v=home-slider-2" defer></script></head>')
-  doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/design-system.css?v=adaptive-hero-2"><script src="'+BASE+'/assets/design-system.js?v=system-1" defer></script></head>')
+  doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/design-system.css?v=forms-3"><script src="'+BASE+'/assets/design-system.js?v=system-1" defer></script></head>')
   if p['template']=='blog':
    doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/journal.css?v=journal-1"><script src="'+BASE+'/assets/journal.js?v=journal-1" defer></script></head>')
+  doc=doc.replace('</head>','<script src="'+BASE+'/assets/selects.js?v=selects-1" defer></script></head>')
   path=DIST/p['url'].strip('/')/'index.html';path.parent.mkdir(parents=True,exist_ok=True);path.write_text(doc,encoding='utf-8')
   public.append({'id':p['id'],'url':p['url'],'title':room_name(p) if p['template']=='room' else p['h1'],'type':p['template'],'hotel':next((i for i in HOTELS if p['id'].startswith(i)),None),'image':ASSETS.get(p['id'],{}).get('file'),'summary':p['intent']})
  (DIST/'site-data.json').write_text(json.dumps({'pages':public,'hotels':HOTELS},ensure_ascii=False),encoding='utf-8')

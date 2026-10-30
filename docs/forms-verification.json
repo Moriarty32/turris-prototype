@@ -1,0 +1,13 @@
+{
+  "checks": [
+    "Hotel pointer/keyboard/typeahead, Escape cancellation, outside close, native change and both booking forms synchronize",
+    "Dynamic infant age in modal: validation focus, nested Escape keeps dialog open, explicit age zero saves correctly",
+    "Family child-age controls are enhanced after rendering and retain the correct age",
+    "Guide filter/reset and contacts map update their visible select values; no contact submission",
+    "Booking hotel selection retains one-hotel results scope",
+    "Seven page types across six sizes; popup stays within viewport; long age list reaches 17 via keyboard",
+    "Native no-JS fallback and reduced-motion popup verified"
+  ],
+  "javascript_errors": [],
+  "reservation_payment_or_lead_submitted": false
+}

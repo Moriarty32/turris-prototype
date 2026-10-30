@@ -6,7 +6,7 @@
         1024,
         600
       ],
-      "cta_bottom": 440,
+      "cta_bottom": 474,
       "content_width": 976
     },
     {
@@ -15,7 +15,7 @@
         1024,
         600
       ],
-      "cta_bottom": 471,
+      "cta_bottom": 495,
       "content_width": 976
     },
     {
@@ -24,7 +24,7 @@
         1024,
         600
       ],
-      "cta_bottom": 562,
+      "cta_bottom": 554,
       "content_width": 976
     },
     {
@@ -42,7 +42,7 @@
         1024,
         600
       ],
-      "cta_bottom": 516,
+      "cta_bottom": 522,
       "content_width": 976
     },
     {
@@ -51,7 +51,7 @@
         1024,
         600
       ],
-      "cta_bottom": 511,
+      "cta_bottom": 534,
       "content_width": 976
     },
     {
@@ -69,7 +69,7 @@
         1280,
         720
       ],
-      "cta_bottom": 633,
+      "cta_bottom": 653,
       "content_width": 1200
     },
     {
@@ -78,7 +78,7 @@
         1280,
         720
       ],
-      "cta_bottom": 471,
+      "cta_bottom": 495,
       "content_width": 1200
     },
     {
@@ -105,7 +105,7 @@
         1280,
         720
       ],
-      "cta_bottom": 525,
+      "cta_bottom": 531,
       "content_width": 1200
     },
     {
@@ -114,7 +114,7 @@
         1280,
         720
       ],
-      "cta_bottom": 505,
+      "cta_bottom": 523,
       "content_width": 1200
     },
     {
@@ -132,7 +132,7 @@
         1366,
         768
       ],
-      "cta_bottom": 685,
+      "cta_bottom": 705,
       "content_width": 1200
     },
     {
@@ -141,7 +141,7 @@
         1366,
         768
       ],
-      "cta_bottom": 471,
+      "cta_bottom": 495,
       "content_width": 1200
     },
     {
@@ -168,7 +168,7 @@
         1366,
         768
       ],
-      "cta_bottom": 528,
+      "cta_bottom": 534,
       "content_width": 1200
     },
     {
@@ -177,7 +177,7 @@
         1366,
         768
       ],
-      "cta_bottom": 509,
+      "cta_bottom": 527,
       "content_width": 1200
     },
     {
@@ -195,7 +195,7 @@
         1440,
         900
       ],
-      "cta_bottom": 845,
+      "cta_bottom": 865,
       "content_width": 1200
     },
     {
@@ -204,7 +204,7 @@
         1440,
         900
       ],
-      "cta_bottom": 789,
+      "cta_bottom": 813,
       "content_width": 1200
     },
     {
@@ -231,7 +231,7 @@
         1440,
         900
       ],
-      "cta_bottom": 553,
+      "cta_bottom": 559,
       "content_width": 1200
     },
     {
@@ -240,7 +240,7 @@
         1440,
         900
       ],
-      "cta_bottom": 550,
+      "cta_bottom": 568,
       "content_width": 1200
     },
     {
@@ -258,7 +258,7 @@
         1920,
         1080
       ],
-      "cta_bottom": 980,
+      "cta_bottom": 1000,
       "content_width": 1600
     },
     {
@@ -267,7 +267,7 @@
         1920,
         1080
       ],
-      "cta_bottom": 747,
+      "cta_bottom": 771,
       "content_width": 1600
     },
     {
@@ -294,7 +294,7 @@
         1920,
         1080
       ],
-      "cta_bottom": 563,
+      "cta_bottom": 569,
       "content_width": 1600
     },
     {
@@ -303,7 +303,7 @@
         1920,
         1080
       ],
-      "cta_bottom": 559,
+      "cta_bottom": 575,
       "content_width": 1600
     },
     {
@@ -321,7 +321,7 @@
         2560,
         1440
       ],
-      "cta_bottom": 987,
+      "cta_bottom": 1007,
       "content_width": 1600
     },
     {
@@ -330,7 +330,7 @@
         2560,
         1440
       ],
-      "cta_bottom": 762,
+      "cta_bottom": 786,
       "content_width": 1600
     },
     {
@@ -357,7 +357,7 @@
         2560,
         1440
       ],
-      "cta_bottom": 563,
+      "cta_bottom": 569,
       "content_width": 1600
     },
     {
@@ -366,7 +366,7 @@
         2560,
         1440
       ],
-      "cta_bottom": 559,
+      "cta_bottom": 575,
       "content_width": 1600
     },
     {
@@ -384,7 +384,7 @@
         3840,
         2160
       ],
-      "cta_bottom": 987,
+      "cta_bottom": 1007,
       "content_width": 1600
     },
     {
@@ -393,7 +393,7 @@
         3840,
         2160
       ],
-      "cta_bottom": 762,
+      "cta_bottom": 786,
       "content_width": 1600
     },
     {
@@ -420,7 +420,7 @@
         3840,
         2160
       ],
-      "cta_bottom": 563,
+      "cta_bottom": 569,
       "content_width": 1600
     },
     {
@@ -429,7 +429,7 @@
         3840,
         2160
       ],
-      "cta_bottom": 559,
+      "cta_bottom": 575,
       "content_width": 1600
     },
     {

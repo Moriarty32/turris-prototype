@@ -1,0 +1,26 @@
+[
+  {
+    "page": "home",
+    "violations": []
+  },
+  {
+    "page": "booking",
+    "violations": []
+  },
+  {
+    "page": "family",
+    "violations": []
+  },
+  {
+    "page": "contacts",
+    "violations": []
+  },
+  {
+    "page": "blog",
+    "violations": []
+  },
+  {
+    "page": "open-dropdown",
+    "violations": []
+  }
+]
