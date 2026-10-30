@@ -1,0 +1,450 @@
+{
+  "checks": [
+    {
+      "page": "home",
+      "viewport": [
+        1024,
+        600
+      ],
+      "cta_bottom": 440,
+      "content_width": 976
+    },
+    {
+      "page": "hotel",
+      "viewport": [
+        1024,
+        600
+      ],
+      "cta_bottom": 471,
+      "content_width": 976
+    },
+    {
+      "page": "family",
+      "viewport": [
+        1024,
+        600
+      ],
+      "cta_bottom": 562,
+      "content_width": 976
+    },
+    {
+      "page": "contacts",
+      "viewport": [
+        1024,
+        600
+      ],
+      "cta_bottom": 453,
+      "content_width": 976
+    },
+    {
+      "page": "booking",
+      "viewport": [
+        1024,
+        600
+      ],
+      "cta_bottom": 516,
+      "content_width": 976
+    },
+    {
+      "page": "room",
+      "viewport": [
+        1024,
+        600
+      ],
+      "cta_bottom": 511,
+      "content_width": 976
+    },
+    {
+      "page": "article",
+      "viewport": [
+        1024,
+        600
+      ],
+      "cta_bottom": 395,
+      "content_width": 976
+    },
+    {
+      "page": "home",
+      "viewport": [
+        1280,
+        720
+      ],
+      "cta_bottom": 633,
+      "content_width": 1200
+    },
+    {
+      "page": "hotel",
+      "viewport": [
+        1280,
+        720
+      ],
+      "cta_bottom": 471,
+      "content_width": 1200
+    },
+    {
+      "page": "family",
+      "viewport": [
+        1280,
+        720
+      ],
+      "cta_bottom": 601,
+      "content_width": 1200
+    },
+    {
+      "page": "contacts",
+      "viewport": [
+        1280,
+        720
+      ],
+      "cta_bottom": 453,
+      "content_width": 1200
+    },
+    {
+      "page": "booking",
+      "viewport": [
+        1280,
+        720
+      ],
+      "cta_bottom": 525,
+      "content_width": 1200
+    },
+    {
+      "page": "room",
+      "viewport": [
+        1280,
+        720
+      ],
+      "cta_bottom": 505,
+      "content_width": 1200
+    },
+    {
+      "page": "article",
+      "viewport": [
+        1280,
+        720
+      ],
+      "cta_bottom": 415,
+      "content_width": 1200
+    },
+    {
+      "page": "home",
+      "viewport": [
+        1366,
+        768
+      ],
+      "cta_bottom": 685,
+      "content_width": 1200
+    },
+    {
+      "page": "hotel",
+      "viewport": [
+        1366,
+        768
+      ],
+      "cta_bottom": 471,
+      "content_width": 1200
+    },
+    {
+      "page": "family",
+      "viewport": [
+        1366,
+        768
+      ],
+      "cta_bottom": 631,
+      "content_width": 1200
+    },
+    {
+      "page": "contacts",
+      "viewport": [
+        1366,
+        768
+      ],
+      "cta_bottom": 456,
+      "content_width": 1200
+    },
+    {
+      "page": "booking",
+      "viewport": [
+        1366,
+        768
+      ],
+      "cta_bottom": 528,
+      "content_width": 1200
+    },
+    {
+      "page": "room",
+      "viewport": [
+        1366,
+        768
+      ],
+      "cta_bottom": 509,
+      "content_width": 1200
+    },
+    {
+      "page": "article",
+      "viewport": [
+        1366,
+        768
+      ],
+      "cta_bottom": 421,
+      "content_width": 1200
+    },
+    {
+      "page": "home",
+      "viewport": [
+        1440,
+        900
+      ],
+      "cta_bottom": 845,
+      "content_width": 1200
+    },
+    {
+      "page": "hotel",
+      "viewport": [
+        1440,
+        900
+      ],
+      "cta_bottom": 789,
+      "content_width": 1200
+    },
+    {
+      "page": "family",
+      "viewport": [
+        1440,
+        900
+      ],
+      "cta_bottom": 819,
+      "content_width": 1200
+    },
+    {
+      "page": "contacts",
+      "viewport": [
+        1440,
+        900
+      ],
+      "cta_bottom": 482,
+      "content_width": 1200
+    },
+    {
+      "page": "booking",
+      "viewport": [
+        1440,
+        900
+      ],
+      "cta_bottom": 553,
+      "content_width": 1200
+    },
+    {
+      "page": "room",
+      "viewport": [
+        1440,
+        900
+      ],
+      "cta_bottom": 550,
+      "content_width": 1200
+    },
+    {
+      "page": "article",
+      "viewport": [
+        1440,
+        900
+      ],
+      "cta_bottom": 527,
+      "content_width": 1200
+    },
+    {
+      "page": "home",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "cta_bottom": 980,
+      "content_width": 1600
+    },
+    {
+      "page": "hotel",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "cta_bottom": 747,
+      "content_width": 1600
+    },
+    {
+      "page": "family",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "cta_bottom": 819,
+      "content_width": 1600
+    },
+    {
+      "page": "contacts",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "cta_bottom": 477,
+      "content_width": 1600
+    },
+    {
+      "page": "booking",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "cta_bottom": 563,
+      "content_width": 1600
+    },
+    {
+      "page": "room",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "cta_bottom": 559,
+      "content_width": 1600
+    },
+    {
+      "page": "article",
+      "viewport": [
+        1920,
+        1080
+      ],
+      "cta_bottom": 478,
+      "content_width": 1600
+    },
+    {
+      "page": "home",
+      "viewport": [
+        2560,
+        1440
+      ],
+      "cta_bottom": 987,
+      "content_width": 1600
+    },
+    {
+      "page": "hotel",
+      "viewport": [
+        2560,
+        1440
+      ],
+      "cta_bottom": 762,
+      "content_width": 1600
+    },
+    {
+      "page": "family",
+      "viewport": [
+        2560,
+        1440
+      ],
+      "cta_bottom": 819,
+      "content_width": 1600
+    },
+    {
+      "page": "contacts",
+      "viewport": [
+        2560,
+        1440
+      ],
+      "cta_bottom": 477,
+      "content_width": 1600
+    },
+    {
+      "page": "booking",
+      "viewport": [
+        2560,
+        1440
+      ],
+      "cta_bottom": 563,
+      "content_width": 1600
+    },
+    {
+      "page": "room",
+      "viewport": [
+        2560,
+        1440
+      ],
+      "cta_bottom": 559,
+      "content_width": 1600
+    },
+    {
+      "page": "article",
+      "viewport": [
+        2560,
+        1440
+      ],
+      "cta_bottom": 516,
+      "content_width": 1600
+    },
+    {
+      "page": "home",
+      "viewport": [
+        3840,
+        2160
+      ],
+      "cta_bottom": 987,
+      "content_width": 1600
+    },
+    {
+      "page": "hotel",
+      "viewport": [
+        3840,
+        2160
+      ],
+      "cta_bottom": 762,
+      "content_width": 1600
+    },
+    {
+      "page": "family",
+      "viewport": [
+        3840,
+        2160
+      ],
+      "cta_bottom": 819,
+      "content_width": 1600
+    },
+    {
+      "page": "contacts",
+      "viewport": [
+        3840,
+        2160
+      ],
+      "cta_bottom": 477,
+      "content_width": 1600
+    },
+    {
+      "page": "booking",
+      "viewport": [
+        3840,
+        2160
+      ],
+      "cta_bottom": 563,
+      "content_width": 1600
+    },
+    {
+      "page": "room",
+      "viewport": [
+        3840,
+        2160
+      ],
+      "cta_bottom": 559,
+      "content_width": 1600
+    },
+    {
+      "page": "article",
+      "viewport": [
+        3840,
+        2160
+      ],
+      "cta_bottom": 516,
+      "content_width": 1600
+    }
+  ],
+  "resize_preserves_selected_hotel": true,
+  "date_and_guest_dialogs": "passed",
+  "zoom_200_percent": "no horizontal overflow on seven key pages",
+  "javascript_errors": [],
+  "reservation_or_payment_submitted": false
+}

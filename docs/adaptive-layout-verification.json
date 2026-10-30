@@ -1,0 +1,10 @@
+{
+  "overflows": [],
+  "errors": [],
+  "templates": 22,
+  "representative_pages": 22,
+  "viewport_cases": 11,
+  "rendered_checks": 242,
+  "viewport_range": "320x568 to 3840x2160, including 1920x600",
+  "scope": "Shared first-screen layout, fluid container width, images, headings, forms"
+}
