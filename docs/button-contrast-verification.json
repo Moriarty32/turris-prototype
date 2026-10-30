@@ -1,0 +1,14 @@
+{
+  "layouts_checked": 218,
+  "pseudo_states_checked": 879,
+  "interactive_states_checked": [
+    "Both selected hotel views",
+    "Guide pagination after selecting another page",
+    "Active touch-map movement button",
+    "Selected calendar dates and guest-age options"
+  ],
+  "findings": [],
+  "javascript_errors": [],
+  "reservation_payment_or_lead_submitted": false,
+  "scope": "Enabled text actions on resolved CSS backgrounds; image overlays are inspected separately."
+}
