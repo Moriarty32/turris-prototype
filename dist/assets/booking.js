@@ -96,3 +96,58 @@
   else if(!ev.shiftKey&&document.activeElement===focus.at(-1)){ev.preventDefault();focus[0].focus();}
  });
 })();
+
+/* A complete mobile trip opens results immediately; the existing form is an editor. */
+(() => {
+ 'use strict';
+ const page=document.querySelector('.booking-page');
+ if(!page)return;
+ const mobile=matchMedia('(max-width:767px)'),form=page.querySelector('[data-booking]');
+ const search=page.querySelector('#booking-search'),summary=page.querySelector('.bk-trip-summary');
+ const edit=summary.querySelector('[data-booking-edit]'),results=page.querySelector('#booking-results');
+ const heading=page.querySelector('.bk-heading h1'),originalHeading=heading.textContent;
+ let editing=false;
+ function complete(){
+  let children;
+  try{children=JSON.parse(form.elements.children.value);}catch{return false;}
+  return !!form.elements.hotel.value&&!!form.elements.checkin.value&&!!form.elements.checkout.value&&Array.isArray(children)&&children.every(age=>Number.isInteger(age)&&age>=0&&age<=17);
+ }
+ function paint(){
+  const ready=complete(),compact=mobile.matches&&ready;
+  page.classList.toggle('bk-has-trip',compact);
+  page.classList.toggle('bk-editing-trip',compact&&editing);
+  summary.hidden=!compact;
+  search.hidden=compact&&!editing;
+  heading.textContent=compact?'Бронирование':originalHeading;
+  edit.setAttribute('aria-expanded',String(compact&&editing));
+  edit.firstChild.textContent=editing?'К номерам ':'Изменить ';
+  if(!ready)return;
+  summary.querySelector('[data-trip-summary-hotel]').textContent=form.elements.hotel.selectedOptions[0].textContent.split(' · ')[0];
+  summary.querySelector('[data-trip-dates]').textContent=form.querySelector('[data-date-label]').textContent;
+  let guests=form.querySelector('[data-guest-label]').textContent;
+  const children=JSON.parse(form.elements.children.value);
+  if(children.length)guests+=' · возраст: '+children.map(age=>age===0?'до года':age===1?'1 год':age<5?age+' года':age+' лет').join(', ');
+  summary.querySelector('[data-trip-guests]').textContent=guests;
+ }
+ function openEditor(){
+  editing=true;paint();
+  search.scrollIntoView({block:'start',behavior:'instant'});
+  (form.querySelector('.ui-select-trigger')||form.elements.hotel).focus({preventScroll:true});
+ }
+ edit.addEventListener('click',()=>{
+  if(!editing){openEditor();return;}
+  if(results.hidden||!results.childElementCount){form.requestSubmit();return;}
+  editing=false;paint();edit.focus({preventScroll:true});
+ });
+ results.addEventListener('click',event=>{
+  if(!mobile.matches||!event.target.closest('a[href="#booking-search"]'))return;
+  event.preventDefault();openEditor();
+ });
+ form.addEventListener('submit',()=>{
+  if(mobile.matches&&complete()){editing=false;paint();}
+ });
+ document.addEventListener('booking-context-change',paint);
+ document.addEventListener('booking-results-updated',paint);
+ mobile.addEventListener('change',()=>{paint();});
+ paint();
+})();

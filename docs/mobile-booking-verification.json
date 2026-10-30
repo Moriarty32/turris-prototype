@@ -1,0 +1,15 @@
+{
+  "checks": [
+    "Complete hotel/date/guest trip opens TravelLine immediately; compact summary includes child ages; no duplicate hotel chooser",
+    "Edit selected hotel then return to rooms refreshes results, retaining dates and explicit infant age",
+    "Changing dates and submitting refreshes rates and collapses the editor",
+    "Desktop full form and mobile compact results switch without losing trip state",
+    "Incomplete or invalid trips retain the full form and child-age validation",
+    "Hotel-specific booking at 320, 390 and 767 px: automatic results, no horizontal overflow",
+    "Mobile homepage map selection and primary CTA navigate directly to selected-hotel rooms, retaining dates and child ages"
+  ],
+  "javascript_errors": [],
+  "widget_requests": "stubbed; checked hotel, dates, nights, adults and child ages",
+  "reservation_payment_or_lead_submitted": false,
+  "axe_violations": []
+}
