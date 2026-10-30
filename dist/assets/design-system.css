@@ -2834,3 +2834,16 @@ dialog h2 {
     animation: none;
   }
 }
+
+/* Compact mobile footer keeps every section one tap away. */
+.footer-toggle { display: none; }
+@media (max-width:767px) {
+  .ux-ready .footer-top { gap: 0; }
+  .ux-ready .footer-top>div { border-bottom: 1px solid var(--line); }
+  .ux-ready .footer-top h2 { margin: 0; }
+  .ux-ready .footer-label { display: none; }
+  .ux-ready .footer-toggle { display: flex; align-items: center; justify-content: space-between; width: 100%; min-height: 56px; padding: 12px 0; border: 0; background: transparent; color: var(--ink); font: inherit; text-align: left; }
+  .footer-toggle::after { content: '+'; font-size: 24px; color: var(--blue); }
+  .footer-toggle[aria-expanded=true]::after { content: '−'; }
+  .ux-ready .footer-links { padding-bottom: 12px; }
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "state": "mobile-home",
+    "violations": []
+  },
+  {
+    "state": "selected-hotel",
+    "violations": []
+  },
+  {
+    "state": "fullscreen-map",
+    "violations": []
+  },
+  {
+    "state": "open-footer",
+    "violations": []
+  },
+  {
+    "state": "map-network-failure",
+    "hotel_selection": "passed"
+  }
+]

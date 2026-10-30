@@ -1,0 +1,17 @@
+{
+  "checks": [
+    "One hero map, no mobile carousel; four visible markers; marker and button selection update both booking forms",
+    "Sticky action opens calendar; guest ages survive map changes; any-hotel selection clears map highlight",
+    "Fullscreen map, touch movement, menu/modal isolation and footer disclosures work",
+    "Responsive relocation keeps one map, guest state and desktop carousel; footer links restored on desktop",
+    "109 routes at 320 and 390 px: no horizontal overflow, noindex retained",
+    "No-JS fallback retains forms, map address choices and footer links",
+    "Touch gesture over the inline map scrolls the page; map movement is reset after closing fullscreen",
+    "Primary action visible at 320, 360, 390, 430 and 767 px, via the form or contextual bottom bar",
+    "Resizing an expanded mobile map restores background interaction and desktop map detail",
+    "Dates retain their values when choosing another hotel; bottom action passes selected hotel and dates to booking"
+  ],
+  "layouts_tested": 218,
+  "javascript_errors": [],
+  "reservation_payment_or_lead_submitted": false
+}

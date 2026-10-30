@@ -614,3 +614,57 @@ html:not(.js) .hotel-previews { gap: 24px; }
   .hero-slide-picker { gap: 8px; }
   .hero-carousel-controls { gap: 16px; }
 }
+
+/* Mobile entry: location first, then dates and guests. The desktop map is reused. */
+.home-mobile-map,.home-mobile-actions,.mobile-map-empty { display: none; }
+@media (max-width:767px) {
+  body[data-page=home] { padding-bottom: calc(84px + env(safe-area-inset-bottom)); }
+  .home-hero { gap: 20px; padding-top: 16px; }
+  .home-hero h1 { font-size: clamp(28px,7.6vw,36px); margin-bottom: 8px; }
+  .home-hero .sub { margin: 0; font-size: 16px; line-height: 1.45; }
+  .home-hero-photo { display: none; }
+  html.js .home-mobile-map { display: block; }
+  .home-mobile-map h2 { font-size: 20px; margin: 0 0 4px; }
+  .mobile-map-intro { font-size: 14px; line-height: 1.4; margin: 0 0 12px; color: var(--muted); }
+  .home-mobile-map .hotel-map:not(.map-expanded) { display: grid; gap: 12px; margin: 0; scroll-margin-top: 84px; }
+  .home-mobile-map .hotel-map:not(.map-expanded) .map-layout { display: contents; }
+  .home-mobile-map .map-stage { order: 0; }
+  .home-mobile-map .hotel-map:not(.map-expanded) :is(.map-stage,.map-canvas) { height: clamp(220px,29svh,280px); min-height: 220px; }
+  .home-mobile-map .map-choices { order: 1; margin: 0; gap: 8px; overflow: visible; border-radius: 0; }
+  .home-mobile-map .map-choice { padding: 8px; min-height: 48px; gap: 6px; font-size: 15px; }
+  .home-mobile-map .map-number { display: grid; width: 24px; min-width: 24px; height: 24px; font-size: 12px; }
+  .home-mobile-map .map-details { order: 2; }
+  .home-mobile-map .map-detail>img,.home-mobile-map .map-detail .eyebrow,.home-mobile-map .map-detail .btn,.home-mobile-map .map-footnote,.home-mobile-map .hero-map-hint { display: none; }
+  .home-mobile-map .map-detail-copy { padding: 12px 14px; }
+  .home-mobile-map .map-detail h3 { font-size: 18px; margin: 0 0 6px; }
+  .home-mobile-map .map-detail .address { margin: 0; font-size: 14px; }
+  .home-mobile-map .map-condition { font-size: 14px; margin: 8px 0 0; }
+  .home-mobile-map .map-actions { margin-top: 4px; justify-content: space-between; gap: 8px; }
+  .home-mobile-map .map-actions a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
+  .home-mobile-map .map-toolbar { inset: 8px 8px auto; }
+  .home-mobile-map .map-toolbar button { padding: 8px 10px; }
+  .home-mobile-map .map-move { padding: 8px 10px; min-height: 44px; }
+  .home-mobile-map .hotel-map:not(.map-expanded) .map-move { display: none; }
+  .home-mobile-map .mobile-map-empty { display: block; margin: 0; font-size: 14px; line-height: 1.45; color: var(--muted); }
+  .home-booking { padding: 16px; order: initial; scroll-margin-top: 88px; }
+  .home-booking .booking-form { grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: 12px; }
+  .home-booking .hotel-select,.home-booking .booking-form>.btn { grid-column: 1/-1; }
+  .home-booking .booking-form :is(.select-button,.btn) { min-height: 56px; padding: 10px; }
+  .home-booking .booking-form [data-dates]>.icon:last-child,.home-booking .booking-form [data-guests]>.icon:last-child { display: none; }
+  .home-booking .booking-form [data-dates],.home-booking .booking-form [data-guests] { gap: 6px; font-size: 14px; }
+  .home-booking .booking-form [data-dates] .icon,.home-booking .booking-form [data-guests] .icon { width: 18px; height: 18px; }
+  .home-search-caption { margin-top: 12px; }
+  .home-search-caption a { display: none; }
+  .home-mobile-actions:not([hidden]) { display: grid; grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); align-items: center; gap: 12px; position: fixed; inset: auto 0 0; z-index: 850; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: #fff; border-top: 1px solid var(--line); box-shadow: 0 -6px 24px #15345a0c; }
+  .home-mobile-actions button { min-height: 52px; font: inherit; font-size: 14px; }
+  .home-mobile-actions [data-mobile-map] { display: flex; align-items: center; justify-content: center; gap: 6px; color: var(--blue); border: 0; background: white; padding: 0; }
+  .home-mobile-actions .btn { padding: 12px; gap: 8px; }
+  body[data-page=home] .back-to-top { bottom: calc(96px + env(safe-area-inset-bottom)); }
+  .home-page :is(.section,.home-faq) { padding-block: 0; margin-block: 40px; }
+  .home-page .section-heading { gap: 12px; margin-bottom: 20px; }
+  .home-page h2 { font-size: clamp(24px,6.5vw,30px); line-height: 1.2; }
+  .home-page .home-mobile-map h2 { font-size: 20px; }
+  .home-page .home-offers,.home-page .home-review,.home-page .home-team { margin-block: 40px; }
+  .home-page .booking-bottom { margin-block: 40px 0; padding: 24px 16px; }
+  .home-page .selection-links a { min-height: 44px; display: inline-flex; align-items: center; }
+}

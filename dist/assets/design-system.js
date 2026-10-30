@@ -11,3 +11,19 @@ header.addEventListener('focusout',()=>requestAnimationFrame(()=>{if(opened&&!mo
 const measure=()=>document.documentElement.style.setProperty('--ux-header-height',header.querySelector('.header-inner').offsetHeight+'px');if('ResizeObserver'in window)new ResizeObserver(measure).observe(header.querySelector('.header-inner'));measure();
 if('IntersectionObserver'in window){const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){if(!motion.matches)e.target.classList.add('ux-enter');observer.unobserve(e.target);}}),{threshold:.08});document.querySelectorAll('main .section-heading,main .benefit,main .ct-topics article').forEach(e=>{if(e.getBoundingClientRect().top>innerHeight)observer.observe(e);});}
 })();
+
+/* Footer groups are compact disclosures on phones; all links remain in HTML. */
+(() => {
+  const mobile = matchMedia('(max-width:767px)');
+  const groups = [...document.querySelectorAll('.footer-top>div')].map((group,index) => {
+    const heading=group.querySelector('h2'),links=group.querySelector('.footer-links');
+    const label=document.createElement('span');label.className='footer-label';label.textContent=heading.textContent;
+    const button=document.createElement('button');button.type='button';button.className='footer-toggle';button.textContent=heading.textContent;
+    links.id='footer-links-'+index;button.setAttribute('aria-controls',links.id);button.setAttribute('aria-expanded','false');
+    heading.replaceChildren(label,button);
+    button.addEventListener('click',()=>{const opened=button.getAttribute('aria-expanded')==='true';button.setAttribute('aria-expanded',String(!opened));links.hidden=opened;});
+    return {button,links};
+  });
+  function layout(){groups.forEach(({button,links})=>{links.hidden=mobile.matches&&button.getAttribute('aria-expanded')!=='true';});}
+  mobile.addEventListener('change',layout);layout();
+})();

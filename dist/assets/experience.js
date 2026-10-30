@@ -80,7 +80,7 @@
     const markers = {};
     root.classList.add('map-ready');
     const select = (id, pan = true, speak = true) => {
-      if (!hotels[id]) return;
+      if (!hotels[id] && !(id === '' && root.hasAttribute('data-home-map'))) return;
       const changed=selected!==id; selected = id; root.dataset.selected = id;
       choices.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.mapSelect === id)));
       panels.forEach(panel => panel.hidden = panel.dataset.mapDetail !== id);
@@ -90,14 +90,14 @@
         marker.setZIndexOffset(key === id ? 1000 : 0);
       });
       if (map && pan && changed && hotels[id]) map.panTo([hotels[id].lat, hotels[id].lng], {animate: !motion.matches, duration: .3});
-      if (speak) announce.textContent = id ? 'Выбран отель «' + hotels[id].name + '». Адрес, условия и номера — в карточке рядом с картой.' : 'Выбраны все отели. Нажмите на название или отметку для выбора одного отеля.';
+      if (speak) announce.textContent = id ? 'Выбран отель «' + hotels[id].name + '».' + (root.closest('[data-mobile-map-slot]') ? ' Он добавлен в форму бронирования.' : ' Адрес, условия и номера — в карточке рядом с картой.') : 'Выбраны все отели. Нажмите на название или отметку для выбора одного отеля.';
 
       if (speak) root.dispatchEvent(new CustomEvent('hotel-map-selection', {detail: {id}}));
     };
     const fit = () => {
       if (!map || !visible.length) return;
       map.fitBounds(visible.map(id => [hotels[id].lat, hotels[id].lng]), {
-        paddingTopLeft: [48, 90], paddingBottomRight: [48, 60],
+        paddingTopLeft: root.closest('[data-mobile-map-slot]') ? [40, 100] : [48, 90], paddingBottomRight: root.closest('[data-mobile-map-slot]') ? [40, 28] : [48, 60],
         maxZoom: visible.length === 1 ? 15 : 13, animate: !motion.matches
       });
     };
@@ -108,7 +108,7 @@
     root.querySelector('[data-map-reset]').addEventListener('click', fit);
     if(!root.querySelector('[data-map-expand],[data-offer-map-expand],[data-booking-expand],[data-journal-map-expand]')){
       const expand=document.createElement('button');expand.type='button';expand.className='map-expand';expand.textContent='Развернуть';expand.setAttribute('aria-expanded','false');root.querySelector('.map-toolbar').append(expand);
-      function full(value){root.classList.toggle('map-expanded',value);document.body.classList.toggle('ux-map-open',value);expand.textContent=value?'Закрыть карту':'Развернуть';expand.setAttribute('aria-expanded',String(value));window.turrisModalBackground(root,value);if(value){root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');root.setAttribute('aria-label','Карта отелей Москвы');}else{root.removeAttribute('role');root.removeAttribute('aria-modal');root.removeAttribute('aria-label');}root.dispatchEvent(new Event('hotel-map-show'));requestAnimationFrame(()=>{if(map){map.invalidateSize();fit();}});expand.focus();}
+      function full(value){root.classList.toggle('map-expanded',value);document.body.classList.toggle('ux-map-open',value);expand.textContent=value?'Закрыть карту':'Развернуть';expand.setAttribute('aria-expanded',String(value));window.turrisModalBackground(root,value);if(value){root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');root.setAttribute('aria-label','Карта отелей Москвы');}else{root.removeAttribute('role');root.removeAttribute('aria-modal');root.removeAttribute('aria-label');}if(!value)root.dispatchEvent(new Event('hotel-map-collapse'));root.dispatchEvent(new Event('hotel-map-show'));requestAnimationFrame(()=>{if(map){map.invalidateSize();fit();}});expand.focus();}
       expand.addEventListener('click',()=>full(!root.classList.contains('map-expanded')));
       root.addEventListener('keydown',ev=>{if(!root.classList.contains('map-expanded'))return;if(ev.key==='Escape'){ev.preventDefault();full(false);}if(ev.key==='Tab'){const items=[...root.querySelectorAll('a,button,[tabindex="0"]')].filter(e=>e.getClientRects().length);if(ev.shiftKey&&document.activeElement===items[0]){ev.preventDefault();items.at(-1).focus();}else if(!ev.shiftKey&&document.activeElement===items.at(-1)){ev.preventDefault();items[0].focus();}}});
     }
@@ -137,6 +137,7 @@
             announce.textContent = enable ? 'Карту можно перемещать пальцем. Нажмите «Завершить просмотр», чтобы снова прокручивать страницу над картой.' : 'Перемещение карты выключено. Можно прокручивать страницу.';
           });
           root.querySelector('.map-stage').append(move);
+          root.addEventListener('hotel-map-collapse', () => {map.dragging.disable();move.setAttribute('aria-pressed','false');move.textContent='Двигать карту';});
         }
         const layer = tileLayer = L.tileLayer(root.dataset.tileUrl, {
           maxZoom: 19, minZoom: 10, updateWhenIdle: true,
