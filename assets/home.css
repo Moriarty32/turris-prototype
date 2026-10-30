@@ -500,3 +500,7 @@ html:not(.js) .hero-slide-caption { bottom: 24px; }
   .home-page .booking-bottom { margin-block: 40px 0; padding: 24px 16px; }
   .home-mobile-map .home-map-compare { order: 3; margin-top: 0; padding-top: 4px; }
 }
+
+@media (max-width:379px) {
+  .home-booking .booking-form { grid-template-columns: minmax(0,1fr); }
+}
