@@ -1,0 +1,26 @@
+{
+  "type": "Local Chromium lab, cold cache, single sample per width; not field Core Web Vitals",
+  "results": [
+    {
+      "viewport": 390,
+      "cpu_slowdown": 4,
+      "download_mbps": 1.6,
+      "latency_ms": 150,
+      "lcp": 2288,
+      "cls": 0,
+      "transfer": 365583,
+      "requests": 14
+    },
+    {
+      "viewport": 1366,
+      "cpu_slowdown": 4,
+      "download_mbps": 1.6,
+      "latency_ms": 150,
+      "lcp": 2376,
+      "cls": 0,
+      "transfer": 568473,
+      "requests": 15
+    }
+  ],
+  "inp": "Not measured as a field percentile"
+}

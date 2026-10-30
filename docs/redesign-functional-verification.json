@@ -1,0 +1,9 @@
+[
+  "Calendar pointer range and roving keyboard focus work on mobile",
+  "Hotel, offer, booking and blog fullscreen maps isolate background, Escape restores trigger focus",
+  "Hotel gallery named dialog, next/previous keyboard and focus return",
+  "Contacts clipboard confirmation; no contact form submitted",
+  "Guide topic filters, reset and progressive loading retained",
+  "Map engine failure exposes addresses/retry; retry successfully initializes one map",
+  "200% zoom: home, family, contacts and article have no horizontal document overflow"
+]

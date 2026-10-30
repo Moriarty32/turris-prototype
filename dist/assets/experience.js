@@ -3,9 +3,6 @@
   'use strict';
   const base = window.SITE_BASE || '';
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
-  const mobileHero = matchMedia('(max-width: 640px)');
-  const heroSlot = document.querySelector('[data-hero-map-slot]');
-  const isHeroMap = root => !!heroSlot && mobileHero.matches && heroSlot.contains(root);
   const header = document.querySelector('.header');
   const top = document.createElement('button');
   top.className = 'back-to-top'; top.type = 'button'; top.textContent = '↑';
@@ -29,8 +26,8 @@
   document.querySelectorAll('[data-hotel-explorer]').forEach(explorer => {
     const mapRoot = explorer.querySelector('[data-hotel-map]');
     const show = (view, updateAddress = false) => {
-      const localView = isHeroMap(mapRoot) ? 'cards' : view;
-      explorer.querySelectorAll('[data-explorer-panel]').forEach(panel => panel.hidden = explorer.hasAttribute('data-home-explorer') ? (isHeroMap(mapRoot) && panel.dataset.explorerPanel === 'map') : panel.dataset.explorerPanel !== localView);
+      const localView = view;
+      explorer.querySelectorAll('[data-explorer-panel]').forEach(panel => panel.hidden = panel.dataset.explorerPanel !== localView);
       explorer.querySelectorAll('[data-hotel-view]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.hotelView === localView)));
       explorer.dataset.view = localView;
       if (view === 'map') mapRoot.dispatchEvent(new Event('hotel-map-show'));
@@ -53,21 +50,6 @@
       }
     }));
   });
-  // Relocate one live map: no duplicate markers, IDs, downloads or selection state.
-  if (heroSlot) {
-    const root = document.querySelector('[data-hotel-map]');
-    const desktopSlot = root.parentElement;
-    const explorer = desktopSlot.closest('[data-hotel-explorer]');
-    const placeMap = () => {
-      (mobileHero.matches ? heroSlot : desktopSlot).append(root);
-      document.body.classList.toggle('has-mobile-map', mobileHero.matches);
-      root.classList.toggle('is-hero-map', mobileHero.matches);
-      explorer.showHotelView(location.hash === '#map' ? 'map' : 'cards');
-      root.dispatchEvent(new Event('hotel-map-layout'));
-      requestAnimationFrame(() => root.dispatchEvent(new Event('hotel-map-show')));
-    };
-    mobileHero.addEventListener('change', placeMap); placeMap();
-  }
   let leafletPromise;
   const loadLeaflet = () => {
     if (window.L) return Promise.resolve(window.L);
@@ -87,14 +69,19 @@
     const status = root.querySelector('[data-map-status]');
     const announce = root.querySelector('[data-map-announcement]');
     const requested = new URLSearchParams(location.search).get('map-hotel');
-    const heroHotel = document.querySelector('.hero [data-booking] [name=hotel]');
-    let selected = hotels[requested] ? requested : isHeroMap(root) ? (heroHotel?.value || '') : root.dataset.selected, map, L, started = false;
+    let selected = hotels[requested] ? requested : root.dataset.selected, map, L, started = false;
     let visible = Object.keys(hotels);
+    let tileLayer, tileTimer;
+    const retry=document.createElement('button');retry.type='button';retry.className='map-retry';retry.textContent='Повторить загрузку';retry.hidden=true;
+    root.querySelector('.map-stage').append(retry);
+    function mapError(message){status.hidden=false;status.textContent=message;retry.hidden=false;}
+    function loadingTimer(){clearTimeout(tileTimer);tileTimer=setTimeout(()=>mapError('Карта не загрузилась вовремя. Можно повторить загрузку или открыть маршрут из карточки отеля.'),12000);}
+    retry.addEventListener('click',()=>{retry.hidden=true;status.hidden=false;status.textContent='Загружаем карту…';if(tileLayer){loadingTimer();tileLayer.redraw();}else{started=false;leafletPromise=undefined;start();}});
     const markers = {};
     root.classList.add('map-ready');
     const select = (id, pan = true, speak = true) => {
-      if (!hotels[id] && !(id === '' && isHeroMap(root))) return;
-      selected = id; root.dataset.selected = id;
+      if (!hotels[id]) return;
+      const changed=selected!==id; selected = id; root.dataset.selected = id;
       choices.forEach(button => button.setAttribute('aria-pressed', String(button.dataset.mapSelect === id)));
       panels.forEach(panel => panel.hidden = panel.dataset.mapDetail !== id);
       Object.entries(markers).forEach(([key, marker]) => {
@@ -102,39 +89,30 @@
         marker.getElement()?.setAttribute('aria-pressed', String(key === id));
         marker.setZIndexOffset(key === id ? 1000 : 0);
       });
-      if (map && pan && hotels[id]) map.panTo([hotels[id].lat, hotels[id].lng], {animate: !motion.matches, duration: .35});
+      if (map && pan && changed && hotels[id]) map.panTo([hotels[id].lat, hotels[id].lng], {animate: !motion.matches, duration: .3});
       if (speak) announce.textContent = id ? 'Выбран отель «' + hotels[id].name + '». Адрес, условия и номера — в карточке рядом с картой.' : 'Выбраны все отели. Нажмите на название или отметку для выбора одного отеля.';
-      if (isHeroMap(root) && speak && heroHotel && heroHotel.value !== id) {
-        heroHotel.value = id; heroHotel.dispatchEvent(new Event('change', {bubbles: true}));
-      }
+
       if (speak) root.dispatchEvent(new CustomEvent('hotel-map-selection', {detail: {id}}));
     };
     const fit = () => {
       if (!map || !visible.length) return;
       map.fitBounds(visible.map(id => [hotels[id].lat, hotels[id].lng]), {
-        paddingTopLeft: isHeroMap(root) ? [35, 55] : [48, 90], paddingBottomRight: isHeroMap(root) ? [35, 30] : [48, 60],
+        paddingTopLeft: [48, 90], paddingBottomRight: [48, 60],
         maxZoom: visible.length === 1 ? 15 : 13, animate: !motion.matches
       });
     };
     root.addEventListener('hotel-map-select', ev => select(ev.detail.id, ev.detail.pan !== false, false));
     choices.forEach(button => button.addEventListener('click', () => select(button.dataset.mapSelect)));
     select(selected, false, false);
-    if (isHeroMap(root) && hotels[requested]) select(requested, false, true);
-    document.querySelectorAll('[data-booking] [name=hotel]').forEach(field => field.addEventListener('change', () => {
-      if (!isHeroMap(root)) return;
-      select(field.value, true, false); if (!field.value) fit();
-    }));
-    root.addEventListener('hotel-map-layout', () => {
-      select(isHeroMap(root) ? (heroHotel?.value || '') : (selected || 'tverskaya'), false, false);
-    });
-    root.querySelectorAll('[data-map-book-dates]').forEach(button => button.addEventListener('click', () => {
-      if (!heroHotel || !isHeroMap(root)) return;
-      select(selected, false, true);
-      const dates = document.querySelector('.hero [data-dates]');
-      document.querySelector('.hero').scrollIntoView({behavior: 'instant', block: 'start'});
-      dates.click();
-    }));
+    root.addEventListener('hotel-map-layout', () => select(selected || Object.keys(hotels)[0],false,false));
     root.querySelector('[data-map-reset]').addEventListener('click', fit);
+    if(!root.querySelector('[data-map-expand],[data-offer-map-expand],[data-booking-expand],[data-journal-map-expand]')){
+      const expand=document.createElement('button');expand.type='button';expand.className='map-expand';expand.textContent='Развернуть';expand.setAttribute('aria-expanded','false');root.querySelector('.map-toolbar').append(expand);
+      function full(value){root.classList.toggle('map-expanded',value);document.body.classList.toggle('ux-map-open',value);expand.textContent=value?'Закрыть карту':'Развернуть';expand.setAttribute('aria-expanded',String(value));window.turrisModalBackground(root,value);if(value){root.setAttribute('role','dialog');root.setAttribute('aria-modal','true');root.setAttribute('aria-label','Карта отелей Москвы');}else{root.removeAttribute('role');root.removeAttribute('aria-modal');root.removeAttribute('aria-label');}root.dispatchEvent(new Event('hotel-map-show'));requestAnimationFrame(()=>{if(map){map.invalidateSize();fit();}});expand.focus();}
+      expand.addEventListener('click',()=>full(!root.classList.contains('map-expanded')));
+      root.addEventListener('keydown',ev=>{if(!root.classList.contains('map-expanded'))return;if(ev.key==='Escape'){ev.preventDefault();full(false);}if(ev.key==='Tab'){const items=[...root.querySelectorAll('a,button,[tabindex="0"]')].filter(e=>e.getClientRects().length);if(ev.shiftKey&&document.activeElement===items[0]){ev.preventDefault();items.at(-1).focus();}else if(!ev.shiftKey&&document.activeElement===items.at(-1)){ev.preventDefault();items[0].focus();}}});
+    }
+
     const start = async () => {
       if (started) return; started = true;
       try {
@@ -159,17 +137,19 @@
           });
           root.querySelector('.map-stage').append(move);
         }
-        const layer = L.tileLayer(root.dataset.tileUrl, {
+        const layer = tileLayer = L.tileLayer(root.dataset.tileUrl, {
           maxZoom: 19, minZoom: 10, updateWhenIdle: true,
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>'
         });
         let loaded = 0, failed = 0;
-        layer.on('loading', () => {loaded = 0; failed = 0;});
+        layer.on('loading', () => {loaded = 0; failed = 0;loadingTimer();});
         layer.on('tileload', () => loaded++);
         layer.on('tileerror', () => failed++);
         layer.on('load', () => {
+          clearTimeout(tileTimer);
           status.hidden = failed === 0 && loaded > 0;
-          if (!status.hidden) status.textContent = 'Карта загружена не полностью. Выберите отель по названию или откройте маршрут.';
+          retry.hidden=status.hidden;
+          if (!status.hidden) mapError('Карта загружена не полностью. Выберите отель по названию, откройте маршрут или повторите загрузку.');
         });
         Object.entries(hotels).forEach(([id, hotel], index) => {
           const pin = L.divIcon({className: 'map-pin', html: '<span><b>0' + (index + 1) + '</b></span>', iconSize: [44, 44], iconAnchor: [22, 44]});
@@ -202,8 +182,7 @@
         });
         // Touch screens retain natural page scrolling; +/− and hotel selection operate the map.
       } catch (_) {
-        status.hidden = false;
-        status.textContent = 'Не удалось загрузить карту. Все адреса и ссылки на маршруты доступны в карточках отелей.';
+        clearTimeout(tileTimer);mapError('Не удалось загрузить карту. Все адреса и ссылки на маршруты доступны в карточках отелей.');
         root.dataset.mapLoaded = 'error';
       }
     };

@@ -1,13 +1,7 @@
 """Booking reference layout; static content and progressive selection controls."""
 import json
 
-def header(g):
- a,icon=g['a'],g['icon']
- return '<a class="skip" href="#main">Перейти к содержанию</a><header class="header bk-header"><div class="wrap header-inner"><div class="brand-block">'+a('home','TURRIS<span>ONLINE</span><i></i>','logo','aria-label="Туррис — главная"')+'</div><nav class="nav" id="main-nav" aria-label="Навигация бронирования">'+a('hotels','← <span>Все отели</span>','bk-back','aria-label="Все отели"')+a('manage',icon('calendar')+'<span>Моя бронь</span>','bk-manage')+'</nav><a class="header-phone" href="tel:88005054455" aria-label="Позвонить 8 800 505 44 55">'+icon('phone')+'<span>8 800 505 44 55<small>Помощь с бронированием</small></span></a><button class="demo-badge" data-demo-info>ДЕМО</button><button class="menu-button" aria-label="Открыть меню" aria-expanded="false" aria-controls="main-nav">'+icon('menu')+'</button></div></header>'
 
-def footer(g):
- a,icon=g['a'],g['icon']
- return '<footer class="footer bk-footer"><div class="wrap"><div class="bk-footer-grid"><div>'+a('home','TURRIS<span>ONLINE</span><i></i>','logo')+'<p>Отели в Москве</p></div><div><h3>Помощь</h3>'+a('help','Условия бронирования')+a('payment','Оплата')+a('manage','Моя бронь')+'</div><div><h3>Связаться с нами</h3><a class="bk-footer-phone" href="tel:88005054455">'+icon('phone')+'8 800 505 44 55</a><p>Поможем выбрать размещение</p></div></div><div class="footer-bottom"><span>© 2026 Туррис · Демонстрационный прототип</span>'+a('privacy','Политика конфиденциальности')+'</div></div></footer>'
 
 def render(p,g):
  a,e,image,icon,ext,url=[g[k] for k in ('a','e','image','icon','ext','url')]

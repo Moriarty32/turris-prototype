@@ -1,15 +1,20 @@
 /* Turris site UI. Live reservations are handled exclusively by the external TravelLine module. */
 (()=>{'use strict';
+
+const modalBackgrounds=new WeakMap();
+window.turrisModalBackground=(element,active)=>{if(active){if(modalBackgrounds.has(element))return;const previous=[];for(let node=element;node&&node!==document.body;node=node.parentElement){for(const sibling of node.parentElement.children){if(sibling!==node&&!['SCRIPT','STYLE','LINK'].includes(sibling.tagName)){previous.push([sibling,sibling.inert]);sibling.inert=true;}}}modalBackgrounds.set(element,previous);}else{for(const [node,inert]of modalBackgrounds.get(element)||[])node.inert=inert;modalBackgrounds.delete(element);}};
+
 const base=window.SITE_BASE||'', $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>[...r.querySelectorAll(s)];
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
+const today=()=>new Intl.DateTimeFormat('en-CA',{timeZone:'Europe/Moscow',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date());
 const addDay=s=>{const d=new Date(s+'T12:00:00');d.setDate(d.getDate()+1);return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`};
-const validDate=s=>/^\d{4}-\d{2}-\d{2}$/.test(s||'')&&!Number.isNaN(new Date(s+'T12:00:00').getTime());
+const validDate=s=>{if(!/^\d{4}-\d{2}-\d{2}$/.test(s||''))return false;const d=new Date(s+'T12:00:00Z');return !Number.isNaN(d.getTime())&&d.toISOString().slice(0,10)===s;};
 const fmt=s=>validDate(s)?new Date(s+'T12:00:00').toLocaleDateString('ru-RU',{day:'numeric',month:'short'}):'';
 const clamp=(v,min,max,def)=>{v=Number(v);return Number.isFinite(v)?Math.min(max,Math.max(min,Math.floor(v))):def};
 let context={hotel:'',room:'',scenario:'',checkin:'',checkout:'',adults:2,children:[]};
 try{const saved=JSON.parse(sessionStorage.getItem('turris-context')||'null');if(saved&&typeof saved==='object')context={...context,...saved};}catch{}
-function normalize(){context.adults=clamp(context.adults,1,6,2);context.children=Array.isArray(context.children)?context.children.slice(0,4).map(n=>clamp(n,0,17,0)):[];if(!validDate(context.checkin)||context.checkin<today()||!validDate(context.checkout)||context.checkout<=context.checkin){context.checkin='';context.checkout='';}}
+function normalize(){context.adults=clamp(context.adults,1,6,2);context.children=Array.isArray(context.children)?context.children.slice(0,4).map(n=>n===null||n===''||!Number.isInteger(Number(n))||Number(n)<0||Number(n)>17?null:Number(n)):[];if(!validDate(context.checkin)||context.checkin<today()||!validDate(context.checkout)||context.checkout<=context.checkin){context.checkin='';context.checkout='';}}
+if(!context.guestAgesConfirmed)context.children=(context.children||[]).map(n=>Number(n)===0?null:n);
 normalize();
 function save(){try{sessionStorage.setItem('turris-context',JSON.stringify(context));}catch{}}
 function guestLabel(adults,children){return `${adults} ${adults===1?'взрослый':'взрослых'}`+(children.length?`, ${children.length} ${children.length===1?'ребёнок':children.length<5?'ребёнка':'детей'}`:'');}
@@ -18,7 +23,7 @@ function setForm(form){
  $('[name=checkin]',form).value=context.checkin;$('[name=checkout]',form).value=context.checkout;
  if(document.body.dataset.template==='booking')$('[name=room]',form).value=context.room||'';
  $('[name=adults]',form).value=context.adults;$('[name=children]',form).value=JSON.stringify(context.children);
- $('[data-date-label]',form).textContent=context.checkin?`${fmt(context.checkin)} — ${fmt(context.checkout)}`:(document.body.dataset.template==='booking'?'Выберите даты':'Заезд — Выезд');
+ $('[data-date-label]',form).textContent=context.checkin?`${fmt(context.checkin)} — ${fmt(context.checkout)}`:'Выберите даты';
  $('[data-guest-label]',form).textContent=guestLabel(context.adults,context.children);
 }
 function syncForms(){$$('[data-booking]').forEach(setForm);document.dispatchEvent(new CustomEvent('booking-context-change',{detail:{...context}}));}
@@ -36,7 +41,7 @@ if(document.body.dataset.page==='booking'||document.body.dataset.page.endsWith('
 }
 if($('[data-scenario=family]')&&!['tverskaya','lubyansky'].includes(context.hotel)){context.hotel='';context.room='';save();}
 syncForms();
-document.addEventListener('booking-guests-change',ev=>{context.adults=ev.detail.adults;context.children=[...ev.detail.children];normalize();save();syncForms();});
+document.addEventListener('booking-guests-change',ev=>{context.adults=ev.detail.adults;context.children=[...ev.detail.children];context.guestAgesConfirmed=true;normalize();save();syncForms();});
 let activeForm=null,returnFocus=null,guestDraft={adults:2,children:[]};
 function open(dialog,trigger){returnFocus=trigger;dialog.showModal();}
 $$('[data-close]').forEach(b=>b.addEventListener('click',()=>b.closest('dialog').close()));
@@ -45,19 +50,20 @@ $$('[data-dates]').forEach(b=>b.addEventListener('click',()=>{
  activeForm=b.closest('form');const d=$('#dates-dialog'),f=$('#dates-form');$('[name=checkin]',f).min=today();$('[name=checkin]',f).value=context.checkin;$('[name=checkout]',f).value=context.checkout;$('[name=checkout]',f).min=context.checkin?addDay(context.checkin):addDay(today());$('.form-error',f).textContent='';open(d,b);
 }));
 $('[name=checkin]',$('#dates-form')).addEventListener('change',ev=>{$('[name=checkout]',$('#dates-form')).min=addDay(ev.target.value||today());});
-$('#dates-form').addEventListener('submit',ev=>{ev.preventDefault();const f=ev.currentTarget,start=f.elements.checkin.value,end=f.elements.checkout.value;if(!validDate(start)||!validDate(end)||start<today()||end<=start){$('.form-error',f).textContent='Выезд должен быть позже заезда. Выберите даты не раньше сегодняшнего дня.';return;}context.checkin=start;context.checkout=end;save();syncForms();if(activeForm)$('.form-error',activeForm).textContent='';$('#dates-dialog').close();});
+$('#dates-form').noValidate=true;
+$('#dates-form').addEventListener('submit',ev=>{ev.preventDefault();const f=ev.currentTarget,start=f.elements.checkin.value,end=f.elements.checkout.value;if(!validDate(start)||!validDate(end)||start<today()||end<=start){f.elements.checkin.setAttribute('aria-invalid',String(!validDate(start)||start<today()));f.elements.checkout.setAttribute('aria-invalid',String(!validDate(end)||end<=start));$('.form-error',f).textContent='Выезд должен быть позже заезда. Выберите даты не раньше сегодняшнего дня.';return;}f.elements.checkin.removeAttribute('aria-invalid');f.elements.checkout.removeAttribute('aria-invalid');context.checkin=start;context.checkout=end;save();syncForms();if(activeForm)$('.form-error',activeForm).textContent='';$('#dates-dialog').close();});
 function renderGuests(){
  $('[data-count-value=adults]').textContent=guestDraft.adults;$('[data-count-value=children]').textContent=guestDraft.children.length;
- $('.ages').innerHTML=guestDraft.children.map((age,i)=>`<label class="field">Возраст ребёнка ${i+1}<select data-age="${i}" aria-label="Возраст ребёнка ${i+1}">${Array.from({length:18},(_,n)=>`<option value="${n}" ${n===age?'selected':''}>${n===0?'До года':n+' лет'}</option>`).join('')}</select></label>`).join('');
- $$('[data-age]').forEach(s=>s.addEventListener('change',()=>guestDraft.children[+s.dataset.age]=+s.value));
+ $('.ages').innerHTML=guestDraft.children.map((age,i)=>`<label class="field">Возраст ребёнка ${i+1}<select data-age="${i}" aria-label="Возраст ребёнка ${i+1}"><option value="" ${age===null?'selected':''}>Укажите возраст</option>${Array.from({length:18},(_,n)=>`<option value="${n}" ${n===age?'selected':''}>${n===0?'До года':n+' '+(n===1?'год':n<5?'года':'лет')}</option>`).join('')}</select></label>`).join('');
+ $$('[data-age]').forEach(s=>s.addEventListener('change',()=>{guestDraft.children[+s.dataset.age]=s.value===''?null:+s.value;s.removeAttribute('aria-invalid');}));
  $$('[data-count]').forEach(b=>{const isAdult=b.dataset.count==='adults',n=isAdult?guestDraft.adults:guestDraft.children.length;b.disabled=+b.dataset.change<0?n<=(isAdult?1:0):n>=(isAdult?6:4);});
 }
-$$('[data-guests]').forEach(b=>b.addEventListener('click',()=>{activeForm=b.closest('form');guestDraft={adults:context.adults,children:[...context.children]};renderGuests();open($('#guests-dialog'),b);}));
-$$('[data-count]').forEach(b=>b.addEventListener('click',()=>{const change=+b.dataset.change;if(b.dataset.count==='adults')guestDraft.adults=clamp(guestDraft.adults+change,1,6,2);else if(change>0&&guestDraft.children.length<4)guestDraft.children.push(0);else if(change<0)guestDraft.children.pop();renderGuests();}));
-$('[data-save-guests]').addEventListener('click',()=>{context.adults=guestDraft.adults;context.children=[...guestDraft.children];save();syncForms();$('#guests-dialog').close();});
+$$('[data-guests]').forEach(b=>b.addEventListener('click',()=>{activeForm=b.closest('form');guestDraft={adults:context.adults,children:[...context.children]};renderGuests();$('#guests-error').textContent=context.children.some(n=>n===null)?'Подтвердите возраст каждого ребёнка, включая вариант «До года».':'';open($('#guests-dialog'),b);}));
+$$('[data-count]').forEach(b=>b.addEventListener('click',()=>{const change=+b.dataset.change;if(b.dataset.count==='adults')guestDraft.adults=clamp(guestDraft.adults+change,1,6,2);else if(change>0&&guestDraft.children.length<4)guestDraft.children.push(null);else if(change<0)guestDraft.children.pop();renderGuests();}));
+$('[data-save-guests]').addEventListener('click',()=>{const missing=guestDraft.children.findIndex(n=>n===null);if(missing!==-1){$('#guests-error').textContent='Укажите возраст ребёнка '+(missing+1)+' на дату заезда.';const field=$('[data-age="'+missing+'"]');field.setAttribute('aria-invalid','true');field.setAttribute('aria-describedby','guests-error');field.focus();return;}context.guestAgesConfirmed=true;context.adults=guestDraft.adults;context.children=[...guestDraft.children];save();syncForms();$('#guests-dialog').close();});
 $$('[data-booking]').forEach(f=>{
  $('[name=hotel]',f).addEventListener('change',ev=>{const preset=f.dataset.hotel||'',room=$('[name=room]',f);if(ev.target.value!==preset&&room.value){room.value='';f.dataset.room='';$('.form-error',f).textContent='Выбран другой отель. Категория сброшена — выберите подходящий номер в результатах.';}context.hotel=ev.target.value;context.room=room.value;if(context.scenario==='family'&&!['','tverskaya','lubyansky'].includes(context.hotel))context.scenario='';if(context.scenario==='offer_four'&&!['','lubyansky','tagansky'].includes(context.hotel))context.scenario='';$$('[data-booking]').forEach(other=>{other.dataset.hotel=context.hotel;if(other!==f){other.dataset.room='';$('[name=room]',other).value='';}});save();syncForms();});
- f.addEventListener('submit',async ev=>{ev.preventDefault();if(document.body.dataset.template==='booking'&&!f.elements.hotel.value){$('.form-error',f).textContent='Выберите отель, чтобы посмотреть его категории номеров.';f.elements.hotel.focus();return;}if(!context.checkin||!context.checkout){$('.form-error',f).textContent='Выберите даты поездки.';$('[data-dates]',f).click();return;}
+ f.addEventListener('submit',async ev=>{ev.preventDefault();if(context.children.some(n=>n===null)){$('.form-error',f).textContent='Укажите возраст каждого ребёнка.';$('[data-guests]',f).click();return;}if(document.body.dataset.template==='booking'&&!f.elements.hotel.value){$('.form-error',f).textContent='Выберите отель, чтобы посмотреть его категории номеров.';f.elements.hotel.focus();return;}if(!context.checkin||!context.checkout){$('.form-error',f).textContent='Выберите даты поездки.';$('[data-dates]',f).click();return;}
  $('.form-error',f).textContent='';const data=new FormData(f);context={...context,hotel:String(data.get('hotel')||''),room:String(data.get('room')||''),scenario:document.body.dataset.template==='booking'?context.scenario:(f.dataset.scenario||'')};save();const q=new URLSearchParams({hotel:context.hotel,room:context.room,checkin:context.checkin,checkout:context.checkout,adults:String(context.adults),children:JSON.stringify(context.children)});if(context.scenario)q.set('scenario',context.scenario);if(document.body.dataset.template==='booking'){history.replaceState(null,'',location.pathname+'?'+q.toString());await bookingResults();const result=$('#booking-results');result.scrollIntoView({block:'start',behavior:'instant'});result.focus({preventScroll:true});}else location.href=base+'/bronirovanie/?'+q.toString();});
 });
 $$('[data-demo-info]').forEach(b=>b.addEventListener('click',()=>open($('#demo-dialog'),b)));
@@ -77,12 +83,15 @@ $$('[data-lead]').forEach(f=>{
  f.addEventListener('submit',ev=>{ev.preventDefault();if(!$('[data-step="1"]',f).hidden){$('[data-next-step]',f).click();return;}if(!f.elements.name.value.trim()){error('Введите демонстрационное имя.');f.elements.name.focus();return;}if(!f.elements.email.value||!f.elements.email.reportValidity()){error('Укажите email в правильном формате. Для демонстрации можно использовать name@example.com.');return;}if(!f.elements.consent.checked){error('Подтвердите, что понимаете демонстрационный режим.');return;}
  const result=document.createElement('div');result.className='form-success';result.setAttribute('role','status');result.innerHTML=`<h3>Всё готово для расчёта</h3><p>${esc(fmt(start.value))} — ${esc(fmt(end.value))}<br>Гостей: ${esc(f.elements.guests.value)} · Комнат: ${esc(f.elements.rooms.value)}</p><p><strong>Это демонстрация. Заявка не отправлена, номера не забронированы.</strong></p><p>Для настоящего запроса позвоните <a href="tel:88005054455">8 800 505 44 55</a>.</p><button type="button" class="btn secondary" data-reset-lead>Попробовать ещё раз</button>`;f.hidden=true;f.after(result);$('[data-reset-lead]',result).addEventListener('click',()=>{result.remove();f.hidden=false;f.reset();step(1);});});
 });
+
+document.addEventListener('click',ev=>{const link=ev.target.closest('[data-trip-hotel]');if(!link||ev.ctrlKey||ev.metaKey||ev.shiftKey)return;ev.preventDefault();context.hotel=link.dataset.tripHotel;context.room='';save();syncForms();const q=new URLSearchParams({hotel:context.hotel,checkin:context.checkin,checkout:context.checkout,adults:String(context.adults),children:JSON.stringify(context.children)});location.href=base+'/bronirovanie/?'+q;});
+
 let dataPromise;const getData=()=>dataPromise||(dataPromise=fetch(base+'/site-data.json').then(r=>{if(!r.ok)throw new Error('data unavailable');return r.json();}));
 let bookingRequest=0,disposeBooking=()=>{};
 const chooseHotelMessage='<section class="empty-state"><h2>Сначала выберите отель</h2><p>Покажем номера и цены только выбранного отеля. Даты и гости сохранены.</p><button class="btn secondary" type="button" data-booking-choose-hotel>Выбрать отель</button></section>';
 function resetBooking(){bookingRequest++;disposeBooking();disposeBooking=()=>{};$$('.bk-steps li').forEach((li,i)=>{if(!i)li.setAttribute('aria-current','step');else li.removeAttribute('aria-current');});}
 async function bookingResults(){const root=$('#booking-results');if(!root)return;resetBooking();const request=bookingRequest;
- if(!context.checkin){root.innerHTML='';return;}root.hidden=false;
+ if(!context.checkin){root.innerHTML='';return;}if(context.children.some(n=>n===null)){root.hidden=false;root.innerHTML='<p class="notice">Подтвердите возраст детей в поле «Гости», затем покажем номера и цены.</p>';return;}root.hidden=false;
  if(!context.hotel){root.innerHTML=chooseHotelMessage;document.dispatchEvent(new Event('booking-results-updated'));return;}
  root.innerHTML='<p class="small" style="padding:25px 0">Подключаем бронирование отеля…</p>';
  try{

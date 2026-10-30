@@ -27,6 +27,7 @@
  dialog.addEventListener('keydown', ev => {
   if (ev.key === 'ArrowLeft' || ev.key === 'ArrowRight') {ev.preventDefault(); show(index + (ev.key === 'ArrowRight' ? 1 : -1));}
  });
+ let touchStart=null;picture.addEventListener('touchstart',ev=>{touchStart=ev.touches.length===1?[ev.touches[0].clientX,ev.touches[0].clientY]:null;},{passive:true});picture.addEventListener('touchend',ev=>{if(!touchStart||!ev.changedTouches[0])return;const dx=ev.changedTouches[0].clientX-touchStart[0],dy=ev.changedTouches[0].clientY-touchStart[1];if(Math.abs(dx)>60&&Math.abs(dx)>Math.abs(dy)*1.5)show(index+(dx<0?1:-1));touchStart=null;},{passive:true});
  dialog.addEventListener('close', () => trigger?.focus());
  const form = root.querySelector('#hotel-booking form');
  const selection = root.querySelector('.hd-selected-room');
@@ -42,6 +43,8 @@
  root.querySelector('[data-clear-room]').addEventListener('click', () => choose(''));
  const map = root.querySelector('.hd-map'), expand = root.querySelector('[data-map-expand]');
  function expandMap(value) {
+  window.turrisModalBackground(map,value);
+  if(value){map.setAttribute('role','dialog');map.setAttribute('aria-modal','true');map.setAttribute('aria-label','Расположение отеля на карте');}else{map.removeAttribute('role');map.removeAttribute('aria-modal');map.removeAttribute('aria-label');}
   map.classList.toggle('hd-map-expanded', value); expand.setAttribute('aria-expanded', String(value));
   expand.setAttribute('aria-label', value ? 'Свернуть карту' : 'Развернуть карту');
   document.body.classList.toggle('hd-map-open', value);

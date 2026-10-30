@@ -5,7 +5,7 @@ const items=[...root.querySelectorAll('[data-map-select]')].map(button=>{const i
 function sync(){items.forEach(({button,panel})=>button.setAttribute('aria-expanded',String(!panel.hidden)));}
 function arrange(){details.classList.toggle('home-map-accordion',!media.matches);items.forEach(({button,panel,wrapper})=>{if(media.matches){choices.append(button);details.append(panel);wrapper.remove();}else{wrapper.append(button,panel);details.append(wrapper);}});choices.hidden=!media.matches;sync();root.dispatchEvent(new Event('hotel-map-layout'));}
 new MutationObserver(sync).observe(root,{subtree:true,attributes:true,attributeFilter:['hidden']});media.addEventListener('change',arrange);arrange();
-root.addEventListener('hotel-map-selection',ev=>{if(form.elements.hotel.value!==ev.detail.id){form.elements.hotel.value=ev.detail.id;form.elements.hotel.dispatchEvent(new Event('change',{bubbles:true}));}});
+
 function syncHotel(){if(items.some(({button})=>button.dataset.mapSelect===form.elements.hotel.value))root.dispatchEvent(new CustomEvent('hotel-map-select',{detail:{id:form.elements.hotel.value,pan:false}}));}
 form.elements.hotel.addEventListener('change',syncHotel);document.addEventListener('booking-context-change',syncHotel);syncHotel();
 function dateLabel(){if(!form.elements.checkin.value)form.querySelector('[data-date-label]').textContent='Выберите даты';}document.addEventListener('booking-context-change',dateLabel);dateLabel();

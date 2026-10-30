@@ -56,7 +56,7 @@
   map.dispatchEvent(new CustomEvent('hotel-map-select',{detail:{id:hotel,pan:false}}));
  }
  function searchFocus(){root.querySelector('#offer-search').scrollIntoView({block:'start',behavior:'instant'});}
- root.querySelector('[data-offer-clear]')?.addEventListener('click',()=>{form.elements.room.value='';form.dataset.room='';form.elements.hotel.value=form.elements.hotel.options[0].value;form.elements.hotel.dispatchEvent(new Event('change',{bubbles:true}));selected.textContent='';root.querySelector('[data-offer-clear]').hidden=true;root.querySelector('#options').scrollIntoView({block:'start',behavior:'smooth'});});
+ root.querySelector('[data-offer-clear]')?.addEventListener('click',()=>{form.elements.room.value='';form.dataset.room='';form.elements.hotel.value=form.elements.hotel.options[0].value;form.elements.hotel.dispatchEvent(new Event('change',{bubbles:true}));selected.textContent='';root.querySelector('[data-offer-clear]').hidden=true;root.querySelector('#options').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});});
  root.querySelectorAll('[data-offer-room]').forEach(link=>link.addEventListener('click',ev=>{
   ev.preventDefault();choose(link.dataset.offerHotel,link.dataset.offerRoom,link.dataset.offerRoomName);searchFocus();
   if(family&&guestDraft.children.some(n=>n===null)){root.querySelector('[data-family-ages] select:invalid')?.reportValidity();return;}
@@ -64,7 +64,7 @@
  }));
  root.querySelectorAll('[data-offer-map-hotel]').forEach(link=>link.addEventListener('click',ev=>{
   ev.preventDefault();const id=link.dataset.offerMapHotel;
-  if(form){choose(id);root.querySelectorAll('.of-room').forEach(card=>card.hidden=card.querySelector('[data-offer-hotel]').dataset.offerHotel!==id);root.querySelector('#options').scrollIntoView({block:'start',behavior:'smooth'});}
+  if(form){choose(id);root.querySelectorAll('.of-room').forEach(card=>card.hidden=card.querySelector('[data-offer-hotel]').dataset.offerHotel!==id);root.querySelector('#options').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion:reduce)').matches?'instant':'smooth'});}
   else{const lead=root.querySelector('[data-lead]');lead.elements.wishes.value='Предпочтительный отель: '+link.closest('article').querySelector('[data-map-select]>span').firstChild.textContent+'.';searchFocus();lead.elements.arrival.focus();}
  }));
  // Choosing all hotels in the search restores all suggested categories.
@@ -73,7 +73,7 @@
  root.querySelector('[data-offer-guests]').addEventListener('click',ev=>{ev.preventDefault();searchFocus();if(family)root.querySelector('[data-family-count=adults][data-delta="1"]').focus();else if(form)form.querySelector('[data-guests]').click();else root.querySelector('[name=guests]').focus();});
  root.querySelector('[data-offer-submit]').addEventListener('click',ev=>{ev.preventDefault();searchFocus();if(form)form.requestSubmit();else root.querySelector('[data-next-step]').click();});
  const expand=root.querySelector('[data-offer-map-expand]'),stage=map.querySelector('.map-stage');
- function full(value){map.classList.toggle('of-map-expanded',value);document.body.classList.toggle('of-map-open',value);if(value){stage.setAttribute('role','dialog');stage.setAttribute('aria-modal','true');stage.setAttribute('aria-label','Карта отелей');}else{stage.removeAttribute('role');stage.removeAttribute('aria-modal');stage.removeAttribute('aria-label');}expand.setAttribute('aria-expanded',String(value));expand.setAttribute('aria-label',value?'Свернуть карту':'Развернуть карту');map.dispatchEvent(new Event('hotel-map-show'));expand.focus();}
+ function full(value){window.turrisModalBackground(stage,value);map.classList.toggle('of-map-expanded',value);document.body.classList.toggle('of-map-open',value);if(value){stage.setAttribute('role','dialog');stage.setAttribute('aria-modal','true');stage.setAttribute('aria-label','Карта отелей');}else{stage.removeAttribute('role');stage.removeAttribute('aria-modal');stage.removeAttribute('aria-label');}expand.setAttribute('aria-expanded',String(value));expand.setAttribute('aria-label',value?'Свернуть карту':'Развернуть карту');map.dispatchEvent(new Event('hotel-map-show'));expand.focus();}
  expand.addEventListener('click',()=>full(!map.classList.contains('of-map-expanded')));
  document.addEventListener('keydown',ev=>{if(ev.key==='Escape'&&map.classList.contains('of-map-expanded'))full(false);});
  stage.addEventListener('keydown',ev=>{if(ev.key!=='Tab'||!map.classList.contains('of-map-expanded'))return;const items=[...stage.querySelectorAll('a,button,[tabindex="0"]')].filter(el=>el.getClientRects().length);if(ev.shiftKey&&document.activeElement===items[0]){ev.preventDefault();items.at(-1).focus();}else if(!ev.shiftKey&&document.activeElement===items.at(-1)){ev.preventDefault();items[0].focus();}});

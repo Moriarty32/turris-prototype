@@ -1,0 +1,46 @@
+{
+  "article.css": {
+    "before": 22011,
+    "after": 19788
+  },
+  "booking.css": {
+    "before": 24782,
+    "after": 19710
+  },
+  "contacts.css": {
+    "before": 15745,
+    "after": 13936
+  },
+  "guide.css": {
+    "before": 15172,
+    "after": 14788
+  },
+  "hotel-detail.css": {
+    "before": 18113,
+    "after": 14627
+  },
+  "journal.css": {
+    "before": 14561,
+    "after": 11977
+  },
+  "layout.css": {
+    "before": 15425,
+    "after": 13457
+  },
+  "media.css": {
+    "before": 2624,
+    "after": 2521
+  },
+  "offers.css": {
+    "before": 19876,
+    "after": 15911
+  },
+  "premium.css": {
+    "before": 19003,
+    "after": 12496
+  },
+  "site.css": {
+    "before": 23965,
+    "after": 18457
+  }
+}

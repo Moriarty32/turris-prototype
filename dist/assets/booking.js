@@ -57,7 +57,7 @@
  changeHotel.addEventListener('click',()=>{choosingHotel=!choosingHotel;paint();if(choosingHotel)root.querySelector('[data-booking-pick]').focus({preventScroll:true});});
  results.addEventListener('click',event=>{if(event.target.closest('[data-booking-choose-hotel]')){root.querySelector('#booking-search').scrollIntoView({block:'start',behavior:'instant'});hotel.focus({preventScroll:true});}});
  document.addEventListener('booking-results-updated', () => {results.hidden=false;lastTrip=trip();});
- map.addEventListener('hotel-map-selection', ev => {pick(ev.detail.id);syncAccordion();});
+ map.addEventListener('hotel-map-selection', ev => {syncAccordion();});
  function syncAccordion() {
   map.querySelectorAll('[data-map-select]').forEach(button => button.setAttribute('aria-expanded', String(button.dataset.mapSelect === map.dataset.selected)));
  }
@@ -80,6 +80,7 @@
  promo.addEventListener('input',()=>document.dispatchEvent(new Event('booking-query-invalidated')));
  const expand = root.querySelector('[data-booking-expand]'), stage=map.querySelector('.map-stage');
  function expanded(value) {
+  window.turrisModalBackground(stage,value);
   map.classList.toggle('bk-map-expanded',value);document.body.classList.toggle('bk-map-open',value);
   expand.setAttribute('aria-expanded',String(value));expand.querySelector('span').textContent=value?'Свернуть карту':'На весь экран';
   stage.setAttribute('role',value?'dialog':'region');stage.setAttribute('aria-label','Карта отелей');

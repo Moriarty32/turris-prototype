@@ -1,0 +1,30 @@
+[
+  {
+    "page": "home",
+    "violations": []
+  },
+  {
+    "page": "hotel",
+    "violations": []
+  },
+  {
+    "page": "booking",
+    "violations": []
+  },
+  {
+    "page": "family",
+    "violations": []
+  },
+  {
+    "page": "contacts",
+    "violations": []
+  },
+  {
+    "page": "blog",
+    "violations": []
+  },
+  {
+    "page": "article",
+    "violations": []
+  }
+]

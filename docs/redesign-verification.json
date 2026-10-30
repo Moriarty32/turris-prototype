@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-30",
+  "checks": [
+    "109 routes: identical navigation links, local links resolve, named dialogs, noindex",
+    "Desktop hero, menu, hotel preview, date/guest draft cancellation, explicit zero age, year boundary, range validation, real Leaflet, modal isolation, preserved booking handoff, one-hotel scope",
+    "TravelLine iframe and official fallback retain dates, nights, children and explicitly selected infant age; retry remains available",
+    "Seven responsive widths × seven key pages; mobile menu semantics/focus isolation; one/two month calendar; no horizontal overflow",
+    "Legacy implicit infant age requests explicit confirmation",
+    "Without JS all hotel content and navigation remain available",
+    "Reduced-motion navigation has no entrance animation"
+  ],
+  "javascript_errors": [],
+  "screenshots": "D:\\Проекты\\turris.online\\prototype\\.qa\\redesign",
+  "reservation_or_payment_submitted": false
+}

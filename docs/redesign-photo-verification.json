@@ -1,0 +1,40 @@
+[
+  {
+    "url": "https://turris.online/hotels/turris-hotel-petrovsky/rooms/standartnyy-nomer-s-dvuspalnoy-krovatyu/",
+    "photos": [
+      "/upload/iblock/0cf/20e0mzjups44u73n9ih2k644p1mr9muh.jpg",
+      "/upload/iblock/dc0/98vmg819ce2ii89i3z07hdx6umnf61gk.png",
+      "/upload/iblock/4f7/hwykuxls3tcxjbiv46k2nj5xx60j39gc.png"
+    ]
+  },
+  {
+    "url": "https://turris.online/hotels/turris-hotel-tverskaya/rooms/standartnyy-nomer-s-dvuspalnoy-krovatyu/",
+    "photos": [
+      "/upload/iblock/61b/cgyau1ll0rr1q5k3f5kfq05rlef0mcwp.jpg",
+      "/upload/iblock/c7d/owgh9j3ypm2au3eh6608fc73kym8r36f.jpg"
+    ]
+  },
+  {
+    "id": "petrovsky_room_3",
+    "verified_detail_photo": "https://turris.online/upload/iblock/d06/d2he6c191h7wwpcqpjo7dxx814ctcb9q.jpg",
+    "previous_catalogue_photo": "https://turris.online/upload/resize_cache/iblock/020/1000_1000_2/ppeozpltttkryte3v0x04g3hopums1t8.jpg",
+    "reason": "The category detail gallery is authoritative; catalogue thumbnail was reused across hotels."
+  },
+  {
+    "id": "tverskaya_room_4",
+    "verified_detail_photo": "https://turris.online/upload/iblock/d06/d2he6c191h7wwpcqpjo7dxx814ctcb9q.jpg",
+    "previous_catalogue_photo": "https://turris.online/upload/resize_cache/iblock/020/1000_1000_2/ppeozpltttkryte3v0x04g3hopums1t8.jpg",
+    "reason": "The category detail gallery is authoritative; catalogue thumbnail was reused across hotels."
+  },
+  {
+    "id": "tverskaya_room_1",
+    "verified_detail_photo": "https://turris.online/upload/iblock/61b/cgyau1ll0rr1q5k3f5kfq05rlef0mcwp.jpg",
+    "previous_catalogue_photo": "https://turris.online/upload/resize_cache/iblock/61b/1000_1000_2/cgyau1ll0rr1q5k3f5kfq05rlef0mcwp.jpg",
+    "reason": "The category detail gallery is authoritative; catalogue thumbnail was reused across hotels."
+  },
+  {
+    "finding": "Both official category detail pages use the same d06 photo; catalogue thumbnails also repeat across properties. Detail photos retained as published by the hotel; definitive room attribution needs hotel confirmation.",
+    "date": "2026-10-30",
+    "petrovsky_facade": "Replaced AI reconstruction with the unmodified official photo; only delivery resize/compression applied."
+  }
+]

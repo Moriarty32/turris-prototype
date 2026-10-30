@@ -1,0 +1,50 @@
+{
+  "scope": "109 routes, 22 templates; one shared header/footer; current URLs retained",
+  "booking_state": "sessionStorage:turris-context",
+  "fields": [
+    "hotel",
+    "room",
+    "scenario",
+    "checkin",
+    "checkout",
+    "adults",
+    "children",
+    "guestAgesConfirmed"
+  ],
+  "events": [
+    "booking-context-change",
+    "booking-guests-change",
+    "hotel-map-select",
+    "hotel-map-selection"
+  ],
+  "travelLine_contexts": {
+    "tverskaya": "TL-INT-hotels-turris.turris-hotel-tverskaya",
+    "lubyansky": "TL-INT-hotels-turris.turris-hotel-lubyansky-",
+    "petrovsky": "TL-INT-hotels-turris.turris-hotel-petrovsky",
+    "tagansky": "TL-INT-hotels-turris.turris-hotel-tagansky"
+  },
+  "provider_ids": {
+    "tverskaya": 39663,
+    "lubyansky": 40263,
+    "petrovsky": 39291,
+    "tagansky": 20876
+  },
+  "provider_query": [
+    "date",
+    "nights",
+    "adults",
+    "children",
+    "children-age",
+    "promo-code-plain"
+  ],
+  "promo_state": "sessionStorage:turris-promo",
+  "logo": {
+    "source": "https://turris.online/upload/ui/logo.png",
+    "sha256": "5603a5553368aa38337ab63a5b4efa674980b9c8218aac06bca11ae3e53eb83e",
+    "modified": false
+  },
+  "maps": "Existing Leaflet and OpenStreetMap tiles; preview independent of booking; explicit booking CTA carries trip",
+  "css": "Template geometry uses @layer templates. Shared components owned by assets/design-system.css; no added !important except [hidden].",
+  "indexing": "noindex,nofollow,noimageindex,nosnippet on every published HTML",
+  "analytics": "No new analytics added; provider analytics remain inside existing TravelLine integration"
+}
