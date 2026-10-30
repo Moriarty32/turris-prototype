@@ -818,6 +818,17 @@ html:not(.js) .menu-button {
   margin-top: 24px;
 }
 /* Reusable content rhythm and alignment. */
+/* Keep prose, action groups and card metadata visibly separated. */
+.card-bottom { gap: 16px; padding-top: 24px; }
+.jr-topics { margin-bottom: 16px; }
+.jr-feature small { margin-bottom: 16px; }
+.hd-rules { margin-bottom: 24px; }
+.hd-location-copy>.btn + p { margin-top: 16px; }
+.ar-table-wrap { margin-bottom: 24px; }
+.ar-route>ol { margin-bottom: 24px; }
+.bk-card-actions { margin-top: 24px; }
+.bk-section-head { gap: 24px; }
+.explorer-toolbar { gap: 16px; }
 main :is(.of-section,.ct-section,.hd-section) {
   padding: 0;
   margin-block: var(--section-space);
@@ -1268,6 +1279,7 @@ main :is(.hotels-grid,.rooms-grid,.cards3,.blog-grid,.ct-cards,.of-rooms) {
   margin-bottom: 24px;
   background: none;
   border: 0;
+  overflow: visible;
 }
 .map-choice {
   background: white;
@@ -2125,7 +2137,7 @@ dialog h2 {
   flex-wrap: wrap;
   gap: 8px;
   align-items: center;
-  margin-block: 8px;
+  margin-block: 8px 16px;
 }
 .ct-phone-row .ct-admin-phone {
   font-size: 22px;
@@ -2617,6 +2629,9 @@ dialog h2 {
   }
   .bk-section-head {
     flex-wrap: wrap;
+  }
+  .jr-topics {
+    grid-template-columns: minmax(0,1fr);
   }
   .ar-answer {
     padding: 24px 20px;
