@@ -351,6 +351,19 @@ main [id] {
   width: 20px;
   height: 20px;
 }
+/* Labeled controls align with adjacent actions, rather than their captions. */
+.catalog-tools { display: flex; align-items: flex-end; flex-wrap: wrap; gap: 16px; }
+.catalog-tools>.field { flex: 1 1 280px; min-width: 0; max-width: 320px; gap: 8px; }
+.catalog-tools>.btn { flex: 0 0 auto; min-height: 56px; }
+.catalog-tools>[data-filter-count] { display: flex; align-items: center; flex: 1 1 200px; min-width: 0; min-height: 56px; line-height: 1.45; }
+.search-form { display: grid; grid-template-columns: minmax(0,1fr) auto; align-items: end; gap: 16px; }
+.form-grid,.ct-form-grid { align-items: end; }
+@media (max-width:767px) {
+  .catalog-tools>.field { flex-basis: 100%; max-width: none; width: 100%; }
+  .catalog-tools>.btn { flex-basis: 100%; width: 100%; }
+  .catalog-tools>[data-filter-count] { flex-basis: 100%; min-height: 0; }
+  .search-form { grid-template-columns: minmax(0,1fr); }
+}
 /* Shared select popovers; native controls still submit values and handle fallback. */
 .ui-select { display: block; position: relative; width: 100%; min-width: 0; }
 .ct-form-grid label>.ui-select { margin-top: 8px; }
@@ -425,7 +438,10 @@ main [id] {
   margin: 0;
   align-items: end;
 }
-.booking-form .field { gap: 8px; }
+.booking-form .field { gap: 8px; align-self: stretch; }
+.booking-form .field>.select-button { flex: 1; }
+.booking-form .field>.ui-select { display: flex; flex-direction: column; flex: 1; }
+.booking-form .ui-select-trigger { flex: 1; }
 .booking-form :is(.select-button,select:not(.ui-select-native)) {
   min-height: 64px; border-radius: 8px; padding: 12px 14px;
 }
@@ -437,6 +453,20 @@ main [id] {
 .booking-form>.btn {
   grid-column: 2/4;
   justify-self: end;
+}
+/* Room pages can place the form inside a narrow hero column. */
+.room-booking { container: room-search / inline-size; margin-top: 16px; }
+@container room-search (max-width:620px) {
+  .room-booking .booking-form { grid-template-columns: repeat(2,minmax(0,1fr)); gap: 12px; }
+  .room-booking .booking-form>.hotel-select,.room-booking .booking-form>.btn { grid-column: 1/-1; width: 100%; }
+  .room-booking .booking-form .select-button { padding: 10px 12px; }
+  .room-booking :is([data-dates],[data-guests])>.icon:last-child { display: none; }
+}
+@media (min-width:960px) and (max-height:700px) {
+  .room-booking .booking-form { row-gap: 8px; }
+}
+@container room-search (max-width:360px) {
+  .room-booking .booking-form { grid-template-columns: minmax(0,1fr); }
 }
 .booking-form .hotel-select {
   display: flex;
@@ -1989,7 +2019,8 @@ dialog h2 {
   min-height: 44px;
 }
 .jr-filters {
-  grid-template-columns: 1fr 1fr auto;
+  align-items: end;
+  grid-template-columns: minmax(0,1fr) minmax(0,1fr) auto;
   gap: 16px;
 }
 .jr-filters>[data-journal-count] {

@@ -1,0 +1,13 @@
+{
+  "layouts_checked": 654,
+  "alignment_tolerance_px": 2,
+  "findings": [],
+  "javascript_errors": [],
+  "reservation_or_lead_submitted": false,
+  "functional_checks": [
+    "All three catalog filters and reset: correct hotel counts, visible selection and focus restoration",
+    "Guide filter and reset, site search and catalog at 200% zoom",
+    "49 desktop first screens, seven zoom checks, booking dialogs and resize state",
+    "Custom dropdown interactions, infant-age validation, six responsive sizes and native fallback"
+  ]
+}

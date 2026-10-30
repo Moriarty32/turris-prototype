@@ -51,7 +51,7 @@
         1024,
         600
       ],
-      "cta_bottom": 534,
+      "cta_bottom": 598,
       "content_width": 976
     },
     {
@@ -114,7 +114,7 @@
         1280,
         720
       ],
-      "cta_bottom": 523,
+      "cta_bottom": 615,
       "content_width": 1200
     },
     {
@@ -177,7 +177,7 @@
         1366,
         768
       ],
-      "cta_bottom": 527,
+      "cta_bottom": 618,
       "content_width": 1200
     },
     {
@@ -240,7 +240,7 @@
         1440,
         900
       ],
-      "cta_bottom": 568,
+      "cta_bottom": 660,
       "content_width": 1200
     },
     {
@@ -303,7 +303,7 @@
         1920,
         1080
       ],
-      "cta_bottom": 575,
+      "cta_bottom": 569,
       "content_width": 1600
     },
     {
@@ -366,7 +366,7 @@
         2560,
         1440
       ],
-      "cta_bottom": 575,
+      "cta_bottom": 569,
       "content_width": 1600
     },
     {
@@ -429,7 +429,7 @@
         3840,
         2160
       ],
-      "cta_bottom": 575,
+      "cta_bottom": 569,
       "content_width": 1600
     },
     {
