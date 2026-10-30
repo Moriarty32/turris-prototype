@@ -25,7 +25,7 @@
   position: relative;
   margin: 0;
   aspect-ratio: auto;
-  height: 250px;
+  height: 300px;
   width: 100%;
   overflow: hidden;
   border-radius: 8px;
@@ -36,17 +36,80 @@
   object-fit: cover;
   object-position: 50% 50%;
 }
-.home-hero-photo figcaption {
+.hero-carousel { background: var(--navy); isolation: isolate; touch-action: pan-y; }
+.hero-slide {
   position: absolute;
-  bottom: 12px;
-  left: 16px;
-  right: auto;
-  background: white;
-  color: var(--ink);
-  font-size: 14px;
-  padding: 8px 12px;
-  border-radius: 6px;
-  max-width: calc(100% - 32px);
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 650ms ease, visibility 650ms;
+}
+.hero-slide.is-active { opacity: 1; visibility: visible; z-index: 1; }
+.hero-slide::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 10%, rgba(8,24,43,.15) 25%, rgba(8,24,43,.72) 50%, rgba(8,24,43,.94) 100%);
+  pointer-events: none;
+}
+.hero-slide-caption { position: absolute; z-index: 1; left: 28px; right: 28px; bottom: 82px; color: white; }
+.hero-slide-caption>span { display: block; font-size: 14px; line-height: 1.5; margin-bottom: 4px; }
+.hero-slide-caption .hero-hotel-link {
+  display: inline-flex; align-items: center; gap: 16px;
+  color: white; font-size: 28px; line-height: 1.3; font-weight: 600;
+  min-height: 44px; text-decoration: none;
+}
+.hero-hotel-link:hover { text-decoration: underline; text-underline-offset: 6px; }
+.hero-carousel-controls {
+  position: absolute; z-index: 2; inset: auto 28px 16px;
+  display: flex; align-items: center; gap: 32px;
+}
+.hero-slide-picker { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); gap: 20px; flex: 1; min-width: 0; }
+.hero-carousel button {
+  position: relative; background: transparent; color: white; border: 0;
+  min-height: 44px; padding: 0; font: inherit; cursor: pointer;
+  transition: background-color 160ms ease, border-color 160ms ease;
+}
+.hero-slide-picker button { display: flex; align-items: center; gap: 10px; font-size: 14px; padding-bottom: 8px; text-align: left; }
+.hero-slide-picker button::after,.hero-slide-progress {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px;
+  background: rgba(255,255,255,.4); border-radius: 1px;
+}
+.hero-slide-progress { z-index: 1; background: white; transform: scaleX(0); transform-origin: left; }
+.hero-slide-picker button[aria-pressed=true] { font-weight: 700; }
+.hero-slide-picker button[aria-pressed=true] .hero-slide-progress { transform: scaleX(1); }
+.hero-carousel.is-running button[aria-pressed=true] .hero-slide-progress { animation: hero-slide-time 5s linear both; }
+.hero-slide-picker button:hover::after { background: white; }
+.hero-carousel-actions { display: flex; gap: 8px; }
+.hero-carousel-actions button { width: 44px; height: 44px; border: 1px solid rgba(255,255,255,.6); border-radius: 50%; display: grid; place-items: center; }
+.hero-carousel-actions button:hover { background: rgba(255,255,255,.2); border-color: white; }
+.hero-carousel-actions .icon { width: 20px; height: 20px; }
+[data-hero-prev] .icon { rotate: 180deg; }
+.slider-play-icon { display: none; }
+.hero-carousel.is-paused .slider-play-icon { display: block; }
+.hero-carousel.is-paused .slider-pause-icon { display: none; }
+.hero-carousel :focus-visible { outline: 3px solid white; outline-offset: 4px; }
+.hero-slider-status { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+html:not(.js) .hero-carousel-controls { display: none; }
+html:not(.js) .hero-slide-caption { bottom: 24px; }
+@keyframes hero-slide-time { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@media (min-width:768px) and (max-width:1099px) {
+  .hero-slide-picker { gap: 12px; }
+  .hero-slide-number { display: none; }
+}
+@media (max-width:767px) {
+  .hero-slide-caption { left: 16px; right: 16px; bottom: 76px; }
+  .hero-slide-caption .hero-hotel-link { font-size: 24px; gap: 10px; }
+  .hero-carousel-controls { left: 16px; right: 16px; bottom: 14px; gap: 8px; }
+  .hero-slide-picker { gap: 0; }
+  .hero-slide-picker button::after,.hero-slide-progress { left: 4px; right: 4px; }
+  .hero-slide-picker button { justify-content: center; }
+  .hero-slide-name { display: none; }
+  .hero-carousel-actions { gap: 4px; }
+}
+@media (prefers-reduced-motion:reduce) {
+  .hero-slide { transition: none; }
+  .hero-carousel.is-running button[aria-pressed=true] .hero-slide-progress { animation: none; }
 }
 .home-booking {
   position: relative;
@@ -343,7 +406,7 @@
     padding-top: 20px;
   }
   .home-hero-photo {
-    height: 240px;
+    height: 280px;
   }
   .home-hero h1 {
     font-size: 52px;
@@ -354,7 +417,7 @@
     font-size: 46px;
   }
   .home-hero-photo {
-    height: 240px;
+    height: 280px;
   }
   .hotel-selection {
     gap: 32px;
@@ -404,7 +467,7 @@
   }
   .home-hero-photo {
     order: 2;
-    height: 220px;
+    height: 260px;
     aspect-ratio: auto;
   }
   .home-booking .booking-form {
@@ -420,11 +483,6 @@
   }
   .home-search-caption a {
     display: inline;
-  }
-  .home-hero-photo figcaption {
-    left: 12px;
-    bottom: 12px;
-    font-size: 14px;
   }
   .hotel-selection {
     grid-template-columns: 1fr;
@@ -514,6 +572,6 @@
     padding: 16px;
   }
   .home-hero-photo {
-    height: 180px;
+    height: 240px;
   }
 }
