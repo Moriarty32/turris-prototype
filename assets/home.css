@@ -167,41 +167,70 @@ html:not(.js) .hero-slide-caption { bottom: 24px; }
 .hotel-selection {
   display: grid;
   grid-template-columns: 5fr 7fr;
-  gap: 48px;
-  align-items: start;
+  gap: 24px;
+  align-items: stretch;
+}
+.hotel-index {
+  display: grid;
+  grid-template-columns: repeat(2,minmax(0,1fr));
+  grid-template-rows: repeat(2,1fr);
+  gap: 16px;
 }
 .hotel-index-row {
-  padding: 20px 0;
-  border-bottom: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: white;
+  transition: border-color 160ms ease, background-color 160ms ease;
 }
-.hotel-index-row:first-child {
-  padding-top: 0;
+.hotel-index-row:has(button[aria-pressed=true]) {
+  border-color: var(--red);
+  background: var(--pale);
+}
+.hotel-index-row:hover { border-color: var(--blue); }
+.hotel-index-row:has(button[aria-pressed=true]):hover { border-color: var(--red); }
+.hotel-previews { display: grid; min-width: 0; }
+html:not(.js) .hotel-selection { grid-template-columns: 1fr; }
+html:not(.js) .hotel-previews { gap: 24px; }
+.hotel-index-row>button:focus-visible { outline-offset: -5px; }
+.hotel-index-row>button[aria-pressed=true] .index-number {
+  background: var(--red);
+  color: white;
 }
 .hotel-index-row>button {
   display: flex;
-  gap: 16px;
-  padding: 8px 16px;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 20px 20px 12px;
   width: 100%;
   text-align: left;
   background: none;
   border: 0;
-  border-left: 3px solid transparent;
+  border-radius: 10px;
   color: var(--ink);
 }
-.hotel-index-row>button[aria-pressed=true] {
-  border-left-color: var(--red);
-}
 .index-number {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: var(--pale);
   font-size: 14px;
-  padding-top: 5px;
   color: var(--muted);
 }
 .hotel-index-row strong {
   display: block;
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 500;
   line-height: 1.25;
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 .hotel-index-row button[aria-pressed=true] strong {
   font-weight: 600;
@@ -213,26 +242,24 @@ html:not(.js) .hero-slide-caption { bottom: 24px; }
   line-height: 1.5;
   margin-top: 6px;
 }
-.hotel-index-row .preview-state {
-  color: var(--red);
-  font-size: 14px;
-}
-.hotel-index-row button[aria-pressed=false] .preview-state {
-  visibility: hidden;
-}
 .hotel-index-row>.text-link {
-  margin: 0 0 0 54px;
+  align-self: flex-start;
+  min-height: 44px;
+  margin: 0 20px 12px;
   font-size: 14px;
 }
 .hotel-preview {
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border-radius: 10px;
   background: var(--pale);
-  margin-bottom: 24px;
+  margin: 0;
 }
 .preview-photo {
   position: relative;
-  height: 300px;
+  height: 280px;
+  flex-shrink: 0;
   background: var(--pale);
 }
 .preview-photo img {
@@ -242,6 +269,9 @@ html:not(.js) .hero-slide-caption { bottom: 24px; }
 }
 .preview-copy {
   padding: 32px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 .preview-copy h3 {
   font-size: 32px;
@@ -255,7 +285,8 @@ html:not(.js) .hero-slide-caption { bottom: 24px; }
   align-items: center;
   flex-wrap: wrap;
   gap: 16px;
-  margin-top: 24px;
+  margin-top: auto;
+  padding-top: 24px;
 }
 .selection-links {
   display: flex;
@@ -420,10 +451,19 @@ html:not(.js) .hero-slide-caption { bottom: 24px; }
     height: 280px;
   }
   .hotel-selection {
-    gap: 32px;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .hotel-index-row>button {
+    flex-direction: row;
+  }
+  .hotel-preview {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
   }
   .preview-photo {
-    height: 280px;
+    height: 100%;
+    min-height: 300px;
   }
   .preview-copy {
     padding: 24px;
@@ -488,23 +528,30 @@ html:not(.js) .hero-slide-caption { bottom: 24px; }
     grid-template-columns: 1fr;
     gap: 24px;
   }
-  .hotel-index-row {
-    padding: 12px 0;
-  }
+  .hotel-index { gap: 12px; }
   .hotel-index-row strong {
-    font-size: 22px;
+    font-size: 20px;
   }
   .hotel-index-row button {
-    padding-left: 12px;
+    flex-direction: column;
+    padding: 16px 12px 8px;
   }
   .hotel-index-row>.text-link {
-    margin-left: 48px;
+    margin: 0 12px 8px;
+  }
+  .hotel-index-row button>span>span {
+    overflow-wrap: anywhere;
+  }
+  .hotel-index-row small {
+    display: none;
   }
   .hotel-preview {
+    display: flex;
     margin: 0;
   }
   .preview-photo {
     height: 220px;
+    min-height: 0;
   }
   .preview-copy {
     padding: 24px 20px;

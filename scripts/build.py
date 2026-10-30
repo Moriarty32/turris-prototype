@@ -271,7 +271,7 @@ def build():
   if p['id']=='contacts':
    doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/contacts.css?v=contacts-1"><script src="'+BASE+'/assets/contacts.js?v=contacts-1" defer></script></head>')
   if p['id']=='home':
-   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/home.css?v=home-slider-2"><script src="'+BASE+'/assets/home.js?v=home-slider-2" defer></script></head>')
+   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/home.css?v=home-grid-3"><script src="'+BASE+'/assets/home.js?v=home-slider-2" defer></script></head>')
   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/design-system.css?v=system-1"><script src="'+BASE+'/assets/design-system.js?v=system-1" defer></script></head>')
   if p['template']=='blog':
    doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/journal.css?v=journal-1"><script src="'+BASE+'/assets/journal.js?v=journal-1" defer></script></head>')
