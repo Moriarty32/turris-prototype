@@ -123,6 +123,7 @@
           tap: false, zoomAnimation: !motion.matches, fadeAnimation: !motion.matches,
           markerZoomAnimation: !motion.matches, inertia: !motion.matches
         });
+        map.attributionControl.setPrefix('<a href="https://leafletjs.com" target="_blank" rel="noopener" title="Библиотека интерактивных карт">Leaflet</a>');
         L.control.zoom({position: 'bottomleft', zoomInTitle: 'Приблизить', zoomOutTitle: 'Отдалить'}).addTo(map);
         if (matchMedia('(pointer: coarse)').matches) {
           const move = document.createElement('button');
