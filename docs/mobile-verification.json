@@ -5,11 +5,7 @@
     "Fullscreen map, touch movement, menu/modal isolation and footer disclosures work",
     "Responsive relocation keeps one map, guest state and desktop carousel; footer links restored on desktop",
     "109 routes at 320 and 390 px: no horizontal overflow, noindex retained",
-    "No-JS fallback retains forms, map address choices and footer links",
-    "Touch gesture over the inline map scrolls the page; map movement is reset after closing fullscreen",
-    "Primary action visible at 320, 360, 390, 430 and 767 px, via the form or contextual bottom bar",
-    "Resizing an expanded mobile map restores background interaction and desktop map detail",
-    "Dates retain their values when choosing another hotel; bottom action passes selected hotel and dates to booking"
+    "No-JS fallback retains forms, map address choices and footer links"
   ],
   "layouts_tested": 218,
   "javascript_errors": [],

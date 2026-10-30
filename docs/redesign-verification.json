@@ -2,7 +2,7 @@
   "date": "2026-10-30",
   "checks": [
     "109 routes: identical navigation links, local links resolve, named dialogs, noindex",
-    "Desktop hero, menu, hotel preview, date/guest draft cancellation, explicit zero age, year boundary, range validation, real Leaflet, modal isolation, preserved booking handoff, one-hotel scope",
+    "Desktop hero, menu, map-first home, date/guest draft cancellation, explicit zero age, year boundary, range validation, real Leaflet, modal isolation, preserved booking handoff, one-hotel scope",
     "TravelLine iframe and official fallback retain dates, nights, children and explicitly selected infant age; retry remains available",
     "Seven responsive widths × seven key pages; mobile menu semantics/focus isolation; one/two month calendar; no horizontal overflow",
     "Legacy implicit infant age requests explicit confirmation",
