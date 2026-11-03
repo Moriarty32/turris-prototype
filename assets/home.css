@@ -224,20 +224,59 @@ html:not(.js) .hero-carousel-controls { display: none; }
   .home-review-photo>img { transition: transform 650ms var(--ease); }
   .home-review-card:hover .home-review-photo>img { transform: scale(1.025); }
 }
-.home-faq {
-  display: grid;
+/* Booking questions: compact native disclosure controls and an illustrated help card. */
+.home-page .home-faq {
+  display: block; padding: 0; margin-block: 48px;
+  border: 1px solid #edf1fa; border-radius: 18px;
+  background: linear-gradient(120deg,#fafcff,#f6f9ff); box-shadow: 0 4px 18px #15345a05;
+  container: home-faq / inline-size; scroll-margin-top: 100px;
 }
-.home-faq>div>p {
-  color: var(--muted);
+.home-faq-layout { display: grid; grid-template-columns: minmax(0,1.08fr) minmax(0,1.92fr); gap: 20px; align-items: stretch; }
+.home-faq-intro { display: flex; flex-direction: column; min-width: 0; background: linear-gradient(125deg,#f2f6ff,#eef4ffb3); border-radius: 16px; overflow: hidden; }
+.home-faq-copy { padding: 28px 28px 24px; }
+.home-faq .home-faq-copy h2 { font: 400 clamp(28px,2.6vw,38px)/1.13 Georgia,"Times New Roman",serif; letter-spacing: -.025em; color: #142b4d; margin: 0 0 12px; }
+.home-faq-copy h2::before { content: ""; display: block; width: 64px; height: 2px; background: var(--red); margin-bottom: 16px; }
+.home-faq .home-faq-copy p { color: var(--muted); font-size: 15px; line-height: 1.5; margin: 0 0 14px; }
+.home-faq-copy>a { display: inline-flex; align-items: center; gap: 12px; min-height: 44px; color: var(--blue); font-size: 18px; text-decoration: none; font-weight: 700; }
+.home-faq-copy>a:hover { color: #034c9d; text-decoration: underline; text-underline-offset: 4px; }
+.home-faq-copy>a .icon { width: 36px; height: 36px; padding: 8px; background: #e6eeff; border-radius: 8px; }
+.home-faq-photo { position: relative; min-height: 180px; height: clamp(180px,15vw,240px); margin-top: auto; border-top-left-radius: 38% 100%; overflow: hidden; }
+.home-faq-photo>img { width: 100%; height: 100%; object-fit: cover; object-position: 58% 58%; }
+.home-faq-photo .ai-image-label { position: absolute; bottom: 10px; right: 10px; left: auto; width: max-content; margin: 0; padding: 3px 7px; max-width: calc(100% - 20px); border-radius: 4px; background: #142b4de8; color: white; font-size: 10px; line-height: 1.4; }
+.home-faq .faq { display: grid; gap: 8px; max-width: none; align-content: start; min-width: 0; margin: 0; border: 0; padding: 16px 16px 16px 0; }
+.home-faq .faq details { margin: 0; border: 1px solid #dfe7f4; border-radius: 9px; background: #ffffff80; overflow: clip; }
+.home-faq .faq details[open] { background: linear-gradient(120deg,#edf3ff,#edf2fc); }
+.home-faq .faq summary { min-height: 44px; padding: 11px 44px 11px 18px; color: #142b4d; font-size: 15px; font-weight: 600; line-height: 1.45; cursor: pointer; }
+.home-faq .faq summary:after { top: 10px; right: 16px; font-size: 20px; line-height: 24px; }
+.home-faq .faq .faq-answer { max-width: none; padding: 0 44px 14px 18px; color: var(--muted); font-size: 14px; line-height: 1.6; }
+.home-faq .faq-answer a { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 14px; margin-top: 4px; }
+.home-faq .faq summary:hover { background: #e8effb; }
+.home-faq .faq summary:focus-visible { outline: 3px solid var(--blue); outline-offset: -4px; border-radius: 8px; }
+@media (prefers-reduced-motion:no-preference) {
+  .home-faq .faq summary { transition: background-color 180ms ease; }
+  .home-faq-photo>img { transition: transform 650ms var(--ease); }
+  @media (hover:hover) { .home-faq-photo:hover>img { transform: scale(1.025); } }
+  @supports (interpolate-size:allow-keywords) {
+    .home-faq details { interpolate-size: allow-keywords; }
+    .home-faq details::details-content { transition: content-visibility 220ms allow-discrete,block-size 220ms var(--ease),opacity 220ms ease; block-size: 0; opacity: 0; overflow: clip; }
+    .home-faq details[open]::details-content { block-size: auto; opacity: 1; }
+  }
 }
-.home-faq>div>a {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  min-height: 44px;
-  font-size: 20px;
-  text-decoration: none;
-  font-weight: 600;
+@container home-faq (max-width:760px) {
+  .home-faq-layout { grid-template-columns: minmax(0,1fr); gap: 0; }
+  .home-faq-intro { display: grid; grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); }
+  .home-faq-copy { padding: 24px 20px 20px; }
+  .home-faq .home-faq-copy h2 { font-size: 29px; }
+  .home-faq-copy>a { font-size: 16px; gap: 8px; }
+  .home-faq .faq summary { padding-left: 14px; }
+  .home-faq .faq .faq-answer { padding-left: 14px; padding-right: 24px; }
+  .home-faq-photo { height: 100%; min-height: 190px; }
+  .home-faq .faq { padding: 16px; }
+}
+@container home-faq (max-width:500px) {
+  .home-faq-intro { display: flex; }
+  .home-faq-photo { height: 150px; min-height: 150px; }
+  .home-faq .home-faq-copy h2 { font-size: clamp(26px,7.5vw,32px); }
 }
 .home-page .booking-bottom {
   margin-bottom: 0;
