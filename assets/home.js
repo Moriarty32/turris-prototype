@@ -10,6 +10,13 @@
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const mobile = matchMedia('(max-width:767px)');
   const hotel = document.querySelector('.home-booking [name=hotel]');
+  // Keep hotel name/address above the actual booking form, including reflow and errors.
+  const booking = document.querySelector('.home-booking');
+  if (booking && 'ResizeObserver' in window) {
+    new ResizeObserver(() => {
+      carousel.style.setProperty('--hero-booking-height', booking.getBoundingClientRect().height + 'px');
+    }).observe(booking);
+  }
   let current = 0, timer, userPaused = motion.matches, hovered = false, visible = false;
   let pointer = null;
 
