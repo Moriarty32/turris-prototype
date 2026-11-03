@@ -12,8 +12,7 @@ def render(p, g):
  gallery=[]
  for asset in gallery_ids:
   caption=h['full']+' · фасад' if asset==i else g['room_name'](pages[asset])
-  label=g['DELIVERY'][asset].get('label','')
-  gallery.append(dict(src=g['BASE']+'/assets/'+g['ASSETS'][asset]['file'],caption=caption+(' · '+label if label else '')))
+  gallery.append(dict(src=g['BASE']+'/assets/'+g['ASSETS'][asset]['file'],caption=caption))
  def photo(asset,main=False):
   n=gallery_ids.index(asset)
   return f'<a class="hd-photo {"hd-main-photo" if main else ""}" href="{gallery[n]["src"]}" data-hotel-photo="{n}" aria-label="Открыть: {e(gallery[n]["caption"])}">'+image(asset,gallery[n]['caption'].split(' · ИИ')[0],eager=main,sizes='(max-width:640px) calc(100vw - 32px), (max-width:1000px) 58vw, 680px')+('<span class="hd-gallery-button">'+icon('search')+' Все фотографии · '+str(len(gallery))+'</span>' if main else '')+'</a>'

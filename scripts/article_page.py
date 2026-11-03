@@ -9,7 +9,7 @@ def render(p,g):
  if target=='longstay':hid='petrovsky'
  ids=[hid] if hid else ['tverskaya','lubyansky'] if target=='family' else list(hotels)
  asset=g['guide_asset'](b);photo_hotel=next(h for h in hotels if asset.startswith(h))
- caption=hotels[photo_hotel]['full']+' · '+('ИИ-реконструкция фасада' if g['DELIVERY'].get(asset,{}).get('label') else 'фасад' if asset in hotels else g['room_name'](g['PAGES'][asset]))
+ caption=hotels[photo_hotel]['full']+('' if g['DELIVERY'].get(asset,{}).get('label') else ' · '+('фасад' if asset in hotels else g['room_name'](g['PAGES'][asset])))
  intro='Сравниваем четыре адреса Туррис: по маршрутам, планам и условиям проживания.' if choose else d['takeaways'][0]+' '+d['takeaways'][1]
  cover='<figure class="guide-cover">'+image(asset,caption,eager=True,sizes='(max-width:640px) 92px, (max-width:900px) 36vw, 550px')+'<figcaption>'+caption+'</figcaption></figure>'
  head='<header class="guide-article-head"><div><div class="eyebrow">'+a('blog','Гид по Москве')+' · '+a('blog_'+b['rubric'],g['RUBRIC_LABELS'][b['rubric']])+'</div><h1>'+e(p['h1'])+'</h1><p class="ar-intro">'+intro+'</p><div class="guide-byline"><span>Редакция Туррис · прототип</span><time datetime="2026-10-29">Обновлено 29 октября 2026</time><span>'+str(minutes)+' мин чтения</span></div><div class="guide-tools"><a href="#article-summary">'+icon('arrow')+'Краткий ответ ↓</a><a href="#article-checklist">'+icon('check')+'К чек-листу ↓</a><button type="button" data-copy-article>'+icon('document')+'Скопировать ссылку</button><span role="status" data-copy-status></span></div></div>'+cover+'</header>'

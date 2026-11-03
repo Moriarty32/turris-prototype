@@ -13,7 +13,7 @@ def render(p,g):
  assets={'article_6':'lubyansky_room_1','article_12':'tverskaya_room_4'}
  def media(b,eager=False):
   special={'article_8':'guide-documents','article_15':'guide-arrival'}.get(b['id'])
-  if special:return '<img src="'+g['BASE']+'/assets/'+special+'.webp" width="2048" height="768" alt="'+('Чемодан и документы для поездки' if special=='guide-documents' else 'Часы и дверь номера: планирование времени приезда')+'" loading="lazy" decoding="async"><small class="jr-image-label">ИИ-иллюстрация</small>'
+  if special:return '<img src="'+g['BASE']+'/assets/'+special+'.webp" width="2048" height="768" alt="Иллюстрация: '+('Чемодан и документы для поездки' if special=='guide-documents' else 'Часы и дверь номера: планирование времени приезда')+'" loading="lazy" decoding="async">'
   return image(assets.get(b['id'],g['guide_asset'](b)),b['title'],eager=eager,sizes='(max-width:640px) calc(100vw - 32px), (max-width:1280px) 46vw, 600px')
  def related_hotels(b):
   slug,item,d,minutes=g['guide_info'](b)
