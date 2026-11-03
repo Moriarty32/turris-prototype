@@ -1,0 +1,104 @@
+{
+  "layouts": [
+    {
+      "viewport": [
+        320,
+        740
+      ],
+      "seeded_trip": false,
+      "cta_bottom": 1326
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "seeded_trip": false,
+      "cta_bottom": 1216
+    },
+    {
+      "viewport": [
+        768,
+        900
+      ],
+      "seeded_trip": false,
+      "cta_bottom": 858
+    },
+    {
+      "viewport": [
+        1024,
+        600
+      ],
+      "seeded_trip": false,
+      "cta_bottom": 562
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "seeded_trip": false,
+      "cta_bottom": 722
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "seeded_trip": false,
+      "cta_bottom": 1034
+    },
+    {
+      "viewport": [
+        320,
+        740
+      ],
+      "seeded_trip": true,
+      "cta_bottom": 1485
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "seeded_trip": true,
+      "cta_bottom": 1359
+    },
+    {
+      "viewport": [
+        768,
+        900
+      ],
+      "seeded_trip": true,
+      "cta_bottom": 858
+    },
+    {
+      "viewport": [
+        1024,
+        600
+      ],
+      "seeded_trip": true,
+      "cta_bottom": 562
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "seeded_trip": true,
+      "cta_bottom": 724
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "seeded_trip": true,
+      "cta_bottom": 1034
+    }
+  ],
+  "axe_violations": [],
+  "alignment_findings": [],
+  "javascript_errors": [],
+  "reservation_submitted": false
+}

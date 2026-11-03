@@ -1,10 +1,11 @@
 {
   "checks": [
-    "5s autoplay, hover pause, explicit pause/resume, focus pause, arrows, all four hotels and wraparound; booking state unchanged",
-    "Seven viewport widths; desktop booking CTA stays in first screen; controls have 44px height",
-    "Reduced motion disables autoplay by default; mobile swipe changes hotel",
-    "Without JavaScript: first hotel and its link remain usable"
+    "5s autoplay, hover/focus pause, explicit pause/resume and preview arrows preserve trip; inactive slides are inert",
+    "Hotel pills and keyboard select the booking hotel and map; dropdown selection updates preview and pressed state",
+    "Eight viewports: desktop CTA inside first screen; 44px carousel controls; mobile retains map instead of photography; no overflow",
+    "Restored dates and infant/child ages survive hotel choice, dialogs and submit; booking receives selected hotel only; provider request stubbed",
+    "No-JS fallback keeps the hotel link and native form"
   ],
   "javascript_errors": [],
-  "reservation_submitted": false
+  "reservation_payment_or_lead_submitted": false
 }

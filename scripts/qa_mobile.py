@@ -9,7 +9,7 @@ async def main():
   browser=await p.chromium.launch();context=await browser.new_context(viewport={'width':390,'height':844},is_mobile=True,has_touch=True,reduced_motion='reduce')
   page=await context.new_page();page.on('pageerror',lambda e:errors.append(str(e)))
   await page.goto(BASE+'/');await page.evaluate('document.fonts.ready');root=page.locator('[data-hotel-map]');await expect(root).to_have_attribute('data-map-loaded','true')
-  await expect(page.locator('[data-hero-carousel]')).to_be_hidden();await expect(root).to_have_count(1);await expect(page.locator('.home-mobile-map [data-hotel-map]')).to_have_count(1)
+  await expect(page.locator('.hero-slide.is-active')).to_be_hidden();await expect(root).to_have_count(1);await expect(page.locator('.home-mobile-map [data-hotel-map]')).to_have_count(1)
   await expect(page.locator('.home-mobile-actions')).to_be_visible();await expect(page.locator('.home-booking select')).to_have_value('')
   stage=await page.locator('.map-stage').bounding_box()
   for pin in await page.locator('.map-pin').all():

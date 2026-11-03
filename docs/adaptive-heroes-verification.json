@@ -6,8 +6,8 @@
         1024,
         600
       ],
-      "cta_bottom": 474,
-      "content_width": 976
+      "cta_bottom": 562,
+      "content_width": 1024
     },
     {
       "page": "hotel",
@@ -69,8 +69,8 @@
         1280,
         720
       ],
-      "cta_bottom": 653,
-      "content_width": 1200
+      "cta_bottom": 678,
+      "content_width": 1280
     },
     {
       "page": "hotel",
@@ -132,8 +132,8 @@
         1366,
         768
       ],
-      "cta_bottom": 705,
-      "content_width": 1200
+      "cta_bottom": 722,
+      "content_width": 1366
     },
     {
       "page": "hotel",
@@ -195,8 +195,8 @@
         1440,
         900
       ],
-      "cta_bottom": 865,
-      "content_width": 1200
+      "cta_bottom": 854,
+      "content_width": 1440
     },
     {
       "page": "hotel",
@@ -258,8 +258,8 @@
         1920,
         1080
       ],
-      "cta_bottom": 1000,
-      "content_width": 1600
+      "cta_bottom": 1034,
+      "content_width": 1920
     },
     {
       "page": "hotel",
@@ -321,8 +321,8 @@
         2560,
         1440
       ],
-      "cta_bottom": 1007,
-      "content_width": 1600
+      "cta_bottom": 1114,
+      "content_width": 2560
     },
     {
       "page": "hotel",
@@ -384,8 +384,8 @@
         3840,
         2160
       ],
-      "cta_bottom": 1007,
-      "content_width": 1600
+      "cta_bottom": 1114,
+      "content_width": 3840
     },
     {
       "page": "hotel",
