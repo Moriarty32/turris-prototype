@@ -1,0 +1,65 @@
+{
+  "date": "2026-11-03",
+  "scope": "Homepage design language applied to 108 interior routes; homepage appearance preserved through shared palette aliases.",
+  "content_preservation": {
+    "algorithm": "SHA-256 of BeautifulSoup-serialized body HTML before and after build",
+    "unchanged_routes": 109,
+    "changed_routes": [],
+    "text_images_links_forms_and_markup": "unchanged"
+  },
+  "responsive_audit": {
+    "routes": 109,
+    "widths": [
+      320,
+      390,
+      768,
+      1366
+    ],
+    "checks": 436,
+    "horizontal_overflow": [],
+    "unreadable_small_text": []
+  },
+  "final_template_audit": {
+    "interior_templates": 21,
+    "widths": [
+      390,
+      1366
+    ],
+    "checks": 42,
+    "axe_rules": [
+      "color-contrast",
+      "button-name",
+      "link-name",
+      "label"
+    ],
+    "violations": [],
+    "javascript_errors": [],
+    "short_monitor_hotel_viewports": [
+      "320x568",
+      "390x844",
+      "1024x600",
+      "1366x768",
+      "1920x1080"
+    ]
+  },
+  "interaction_checks": [
+    "Hotel gallery opens, advances and closes with Escape",
+    "Booking calendar, guests and native FAQ retain interaction and keyboard behaviour",
+    "Contact map switches to Tagansky with the correct address and contact card",
+    "Guide search and reset keep working",
+    "Dark booking surfaces retain light headings and helper text with dark input values",
+    "Existing homepage slider acceptance passed: autoplay, keyboard, eight viewports, no-JS fallback and trip handoff.",
+    "Existing mobile booking acceptance passed: compact results, optional editor, dates, infant and child ages, hotel switching, resize and invalid-trip validation."
+  ],
+  "booking_provider": "Widget requests stubbed during booking checks; no reservation, payment or contact submission performed.",
+  "indexing": "Existing noindex,nofollow,noimageindex,nosnippet preserved on all routes.",
+  "changes": [
+    "Shared pearl/paper/navy palette",
+    "Editorial serif heading hierarchy",
+    "Warm paper cards, restrained shadows and consistent corners",
+    "Burgundy section accents and article step numbers",
+    "Navy booking and closing panels with readable controls",
+    "Compact paper FAQ accordions",
+    "Coordinated spacing, hover motion and shared footer surfaces"
+  ]
+}

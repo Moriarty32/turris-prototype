@@ -271,10 +271,12 @@ def build():
   if p['id']=='contacts':
    doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/contacts.css?v=contacts-1"><script src="'+BASE+'/assets/contacts.js?v=contacts-1" defer></script></head>')
   if p['id']=='home':
-   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/home.css?v=photo-clean-1"><script src="'+BASE+'/assets/home.js?v=hero-address-1" defer></script></head>')
-  doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/design-system.css?v=contrast-1"><script src="'+BASE+'/assets/design-system.js?v=mobile-2" defer></script></head>')
+   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/home.css?v=shared-palette-1"><script src="'+BASE+'/assets/home.js?v=hero-address-1" defer></script></head>')
+  doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/design-system.css?v=shared-palette-1"><script src="'+BASE+'/assets/design-system.js?v=mobile-2" defer></script></head>')
   if p['template']=='blog':
    doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/journal.css?v=journal-1"><script src="'+BASE+'/assets/journal.js?v=journal-1" defer></script></head>')
+  if p['id']!='home':
+   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/interior.css?v=pearl-1"></head>')
   doc=doc.replace('</head>','<script src="'+BASE+'/assets/selects.js?v=selects-1" defer></script></head>')
   path=DIST/p['url'].strip('/')/'index.html';path.parent.mkdir(parents=True,exist_ok=True);path.write_text(doc,encoding='utf-8')
   public.append({'id':p['id'],'url':p['url'],'title':room_name(p) if p['template']=='room' else p['h1'],'type':p['template'],'hotel':next((i for i in HOTELS if p['id'].startswith(i)),None),'image':ASSETS.get(p['id'],{}).get('file'),'summary':p['intent']})

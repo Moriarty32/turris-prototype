@@ -1,13 +1,13 @@
 /* Homepage: real hotel photography, editorial heading and one booking dock. */
 body[data-page=home] {
-  --home-canvas: #f4f6f9;
-  --home-paper: #fffefd;
-  --home-mist: #ebf0f6;
-  --home-accent: #e3ebf4;
-  --home-border: #dce3ec;
-  --home-dark: #0b263c;
-  --home-dark-end: #193b51;
-  --home-card-shadow: 0 5px 16px #14253b0a;
+  --home-canvas: var(--site-canvas);
+  --home-paper: var(--site-paper);
+  --home-mist: var(--site-mist);
+  --home-accent: var(--site-accent);
+  --home-border: var(--site-border);
+  --home-dark: var(--site-dark);
+  --home-dark-end: var(--site-dark-end);
+  --home-card-shadow: var(--site-card-shadow);
   --background: var(--home-canvas);
 }
 .home-page.wrap { width: 100%; max-width: none; background: var(--home-canvas); }

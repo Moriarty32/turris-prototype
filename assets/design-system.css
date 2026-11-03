@@ -1,6 +1,15 @@
 /* Single source for shared typography, controls, navigation, motion and surfaces.
    Template files use @layer templates and own geometry, never component skins. */
 :root {
+  /* The homepage and interior templates share one material palette. */
+  --site-canvas: #f4f6f9;
+  --site-paper: #fffefd;
+  --site-mist: #ebf0f6;
+  --site-accent: #e3ebf4;
+  --site-border: #dce3ec;
+  --site-dark: #0b263c;
+  --site-dark-end: #193b51;
+  --site-card-shadow: 0 5px 16px #14253b0a;
   --ink: #15345a;
   --navy: #15345a;
   --blue: #075fc3;

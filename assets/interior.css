@@ -1,0 +1,219 @@
+/* Homepage art direction, applied to interior pages without changing their content
+   or template geometry. Loaded last and only outside the homepage. */
+body.ux-site {
+  --background: var(--site-canvas);
+  --surface: var(--site-paper);
+  --pale: var(--site-mist);
+  --line: var(--site-border);
+  --hd-border: var(--site-border);
+  --ink: #122b43;
+  --navy: var(--site-dark);
+  --muted: #53657d;
+  --section-space: clamp(48px, 4.5vw, 72px);
+  background: var(--site-canvas);
+}
+.guide-index,.guide-article {
+  --ink: #122b43;
+  --paper: var(--site-mist);
+  --rule: var(--site-border);
+}
+main :is(h1,h2,h3,h4) {
+  font-family: Georgia,"Times New Roman",serif;
+  font-weight: 400;
+  letter-spacing: -.025em;
+  text-wrap: pretty;
+}
+main h1 { line-height: 1.08; }
+main h2 { line-height: 1.14; }
+main h3 { line-height: 1.2; }
+main :is(.eyebrow,.jr-meta) { letter-spacing: .13em; }
+main .eyebrow { color: var(--muted); }
+.section-heading { margin-bottom: 24px; }
+.section-heading h2::before,
+:is(.ar-section,.of-section,.ct-section,.hd-section)>h2::before,
+:is(.bk-section,.jr-library,.jr-map-band)>h2::before {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 2px;
+  margin-bottom: 13px;
+  background: var(--red);
+}
+.prose { max-width: 76ch; }
+.prose h2 { margin-top: 36px; }
+.prose p,.prose li { color: var(--muted); }
+/* Warm paper against a continuous pearl canvas, as on the homepage. */
+main :is(.hotel-card,.room-card,.article-card,.info-card,.of-room,.of-option,
+  .bk-hotel-card,.ct-card,.jr-card,.jr-feature,.jr-topic,.ar-related-card,
+  .hd-room,.hd-quick,.search-result,.empty-state) {
+  background: var(--site-paper);
+  border: 1px solid var(--site-border);
+  border-radius: 16px;
+  box-shadow: var(--site-card-shadow);
+}
+main :is(.hotel-card,.room-card,.article-card,.of-room,.of-option,
+  .bk-hotel-card,.ct-card,.jr-card,.jr-feature,.ar-related-card,.hd-room) {
+  overflow: hidden;
+}
+:is(.hero-visual,.of-hero-photo,.hd-photo,.ar-hero-photo,.image-gallery img) {
+  border-radius: 16px;
+}
+.of-hero-photo figcaption {
+  background: linear-gradient(0deg,#071b2ee6,#071b2e00);
+  padding-top: 36px;
+}
+:is(.hotel-tabs,.hd-tabs,.of-tabs) {
+  background: var(--site-canvas);
+  border-color: var(--site-border);
+}
+main :is(.notice,.hd-important,.ar-answer,.guide-answer,.guide-tip,
+  .guide-checklist,.of-conditions,.of-request,.ct-write,.jr-map-band,
+  .of-programs article,.hd-review,.team-band,.feature.pale) {
+  background: var(--site-mist);
+  border-color: var(--site-border);
+  border-radius: 16px;
+}
+.hd-location::before { background: var(--site-mist); border-radius: 18px; }
+.image-gallery>div { background: var(--site-mist); border-radius: 16px; }
+.hd-review .hd-quote-mark,.quote-mark { color: var(--red); }
+.hd-amenities>div>.icon {
+  color: var(--red);
+  background: #be17420a;
+  border-radius: 12px;
+}
+:is(.of-conditions,.ct-write,.of-request) {
+  margin-block: var(--section-space);
+}
+.of-promo-grid article,.of-map-cards>article,.ct-topics article,
+.ct-docs>a,.guide-toc,.ct-form-panel,.lead-form {
+  background: var(--site-paper);
+  border: 1px solid var(--site-border);
+  border-radius: 14px;
+  box-shadow: var(--site-card-shadow);
+}
+.guide-toc { overflow: hidden; }
+.guide-table { background: var(--site-paper); border-color: var(--site-border); }
+.guide-table th { background: var(--site-mist); }
+.guide-table :is(th,td) { border-color: var(--site-border); }
+.ar-steps li>span,.ar-route li>span {
+  background: var(--site-mist);
+  color: var(--red);
+}
+.jr-topic[aria-current],.of-map-cards>article:has([aria-pressed=true]) {
+  background: var(--site-mist);
+  border-color: #b8c5d4;
+}
+/* Booking remains the strongest visual anchor; inputs keep their own light skin. */
+.hd-booking,.ct-booking,.hd-company,.of-band,.ar-booking,.jr-booking,
+.booking-bottom,.hd-bottom,.of-bottom,.bk-bottom {
+  background: linear-gradient(120deg,var(--site-dark),var(--site-dark-end));
+  border: 1px solid #ffffff1f;
+  border-radius: 18px;
+  box-shadow: var(--site-card-shadow);
+  color: white;
+}
+:is(.hd-booking,.ct-booking,.hd-company,.of-band,.ar-booking,.jr-booking,
+  .booking-bottom,.hd-bottom,.of-bottom,.bk-bottom) :is(h2,h3) { color: white; }
+:is(.hd-booking,.ct-booking,.hd-company,.of-band,.ar-booking,.jr-booking,
+  .booking-bottom,.hd-bottom,.bk-bottom)>p,
+.bk-bottom>div>p,.booking-bottom>.sub {
+  color: #e1e7ee;
+}
+:is(.hd-booking,.booking-bottom,.hd-bottom) .field { color: #e1e7ee; }
+:is(.hd-booking,.booking-bottom,.hd-bottom) .field>span { color: #e1e7ee; }
+:is(.hd-booking,.booking-bottom,.hd-bottom) :is(.small,.hd-cost-note,.hd-booking-note) {
+  color: #d9e3ed;
+}
+:is(.hd-booking,.booking-bottom,.hd-bottom) :is(.booking-help,.hd-help,.hd-booking-help,.hd-bottom-contact) {
+  color: #e1e7ee;
+  border-color: #ffffff30;
+}
+:is(.hd-booking,.booking-bottom,.hd-bottom) :is(.booking-help,.hd-help,.hd-booking-help,.hd-bottom-contact) a {
+  color: white;
+}
+.hd-booking .hd-times { border-color: #ffffff30; color: #e1e7ee; }
+.hd-booking .hd-selected-room { background: #ffffff12; color: white; }
+.hd-booking .hd-selected-room button { color: white; }
+.hd-booking .hd-important { background: #ffffff0d; color: #e1e7ee; }
+.hd-bottom-contact a,.booking-bottom .booking-assistance a { color: white; }
+.hd-bottom>p a,.booking-bottom .help-line a { color: white; }
+.hd-booking .hd-help>span,.booking-bottom .help-line { color: #d9e3ed; }
+.hd-booking>.small { margin-top: 12px; }
+.hd-booking .form-error,.hd-bottom .form-error,.booking-bottom .form-error { color: #ffd5df; }
+.of-band h2,.hd-company h2 { font-size: clamp(26px,2.4vw,34px); }
+.of-bottom h2 { font-size: clamp(22px,2vw,28px); }
+.bk-bottom>div>h2 { font-size: clamp(26px,2.6vw,38px); }
+.bk-bottom>.icon { color: #e1e7ee; }
+.bk-search,.of-search {
+  background: var(--site-paper);
+  border-color: var(--site-border);
+  border-radius: 18px;
+  box-shadow: var(--site-card-shadow);
+}
+.of-search-note { color: var(--muted); }
+/* Shared controls already contain their icons; the journal's legacy overlay
+   must not draw a second icon across the field label or border. */
+.jr-field-icon { display: none; }
+/* Selected map addresses are recognizable without depending on colour alone. */
+:is(.bk-map-item,.ct-map-item,.jr-map-item,.map-detail) {
+  background: var(--site-paper);
+  border-color: var(--site-border);
+  border-radius: 14px;
+  box-shadow: var(--site-card-shadow);
+}
+:is(.ct-map-item .map-choice,.jr-map-choice,.bk-map-choice) { background: var(--site-paper); }
+:is(.ct-map-item .map-choice,.jr-map-choice,.bk-map-choice)[aria-pressed=true],
+.jr-map-detail { background: var(--site-mist); }
+.map-stage { border-color: var(--site-border); border-radius: 16px; }
+/* The same compact, paper accordion used by the homepage. Native details stays intact. */
+.faq {
+  display: grid;
+  gap: 8px;
+  max-width: none;
+  background: transparent;
+  border: 0;
+}
+.faq details {
+  margin: 0;
+  border: 1px solid var(--site-border);
+  border-radius: 10px;
+  background: var(--site-paper);
+  transition: background-color 200ms ease,border-color 200ms ease;
+}
+.faq details[open] { background: var(--site-mist); }
+.faq summary {
+  min-height: 48px;
+  padding: 14px 48px 14px 18px;
+  font-size: 16px;
+  line-height: 1.45;
+}
+.faq summary::after { top: 10px; right: 16px; }
+.faq-answer { padding: 0 48px 18px 18px; }
+main .faq-answer { font-size: 16px; line-height: 1.65; }
+.faq summary:focus-visible { outline-offset: -3px; border-radius: 9px; }
+.ux-footer { background: var(--site-paper); border-top-color: var(--site-border); }
+/* Complement the shared focus, link, control and scroll motion. No transform on
+   entire cards: filters, controls and neighbouring text stay in alignment. */
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  main :is(.hotel-card,.room-card,.of-room,.of-option,.ct-card,.jr-card,.jr-topic,
+    .ar-related-card,.hd-room,.bk-hotel-card) {
+    transition: box-shadow 240ms var(--ease),border-color 240ms var(--ease);
+  }
+  main :is(.hotel-card,.room-card,.of-room,.of-option,.ct-card,.jr-card,.jr-topic,
+    .ar-related-card,.hd-room,.bk-hotel-card):hover {
+    border-color: #bcc8d6;
+    box-shadow: 0 10px 26px #14253b12;
+  }
+  .faq summary:hover { background: #e3ebf44d; border-radius: 9px; }
+}
+@media(max-width:767px) {
+  body.ux-site { --section-space: 44px; }
+  .section-heading { margin-bottom: 20px; }
+  main :is(.hotel-card,.room-card,.article-card,.info-card,.of-room,.of-option,
+    .bk-hotel-card,.ct-card,.jr-card,.jr-feature,.hd-room) { border-radius: 13px; }
+  .hd-booking,.ct-booking,.hd-company,.of-band,.ar-booking,.jr-booking,
+  .booking-bottom,.hd-bottom,.of-bottom,.bk-bottom { border-radius: 15px; }
+  .faq summary { padding-left: 14px; font-size: 15px; }
+  .faq-answer { padding-left: 14px; padding-right: 20px; }
+  .prose h2 { margin-top: 28px; }
+}
