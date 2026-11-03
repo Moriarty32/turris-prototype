@@ -23,7 +23,7 @@ for id,a in items.items():
   if not source.exists():
    response=requests.get(source_url,timeout=45);response.raise_for_status()
    check=Image.open(BytesIO(response.content));check.load();source.write_bytes(response.content)
- else:source=ROOT/'assets'/a['file'];source_url=a['source'];label=''
+ else:source=ROOT/'assets'/a['file'];source_url=a['source'];label=a.get('label','')
  raw=source.read_bytes();sha=hashlib.sha256(raw).hexdigest()
  im=ImageOps.exif_transpose(Image.open(source)).convert('RGB');im.load()
  # Never enlarge; 2560 maximum long edge is sufficient for the largest 1068px lightbox.

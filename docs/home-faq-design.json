@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-03",
+  "scope": "Homepage FAQ only; follow the supplied two-column visual reference.",
+  "layout": {
+    "desktop": "Light blue help card on the left with serif heading, telephone and decorative photograph with curved corner; seven compact native disclosure rows on the right.",
+    "tablet": "Reflow using the section's actual available width, including browser zoom; help text and photograph can share a row above questions.",
+    "mobile": "Help text, 150px photograph, then full-width questions; at least 44px visible interactive targets.",
+    "first_question": "Open by default; retain all existing answer text and detail links. Native named details group opens one answer at a time, without requiring JavaScript.",
+    "motion": "Subtle hover and disclosure transitions only when motion preference allows; native controls work without JavaScript."
+  },
+  "image": {
+    "mode": "Built-in image_gen tool; no API/CLI fallback",
+    "master": "assets/home-faq-reception.png",
+    "master_dimensions": [1680, 840],
+    "delivery": "assets/media/635d562d3b9f-{320,640,960,1280,1680}.webp",
+    "display_target": "Approximately 420x210px at 1366px viewport; responsive up to approximately 570px width, with smaller variants for narrow screens.",
+    "export": "Generated at 1774x887px; proportionally downsampled to exactly 1680x840px without creative edits, crops or upscaling. Original generated file retained in Codex generated_images.",
+    "identity": "Decorative hospitality illustration, not a photograph of any Turris property. Explicitly labelled as AI illustration on the page.",
+    "prompt": "Use case: photorealistic-natural. Asset type: a small decorative photograph for a premium Russian hotel website FAQ sidebar, not a photograph of any particular real hotel. Generate a horizontal image, exact target 1680 by 840 pixels (2:1 aspect ratio). Primary subject: a polished classic silver reception service bell with a small brass button on a light beige marble reception counter, next to a clear glass vase of ivory white hydrangea flowers. Bell is near the center, flower vase on the right; preserve both important subjects within the central 70 percent so a curved upper-left corner crop can be applied by the website. Warm softly lit hotel lobby background with dark wooden vertical details, natural shallow depth of field; bell, marble and flowers crisply detailed, no excessive blur on subjects. Refined understated editorial hospitality photography, realistic reflections, soft daylight and warm ambience. Full bleed photography only. No text, logos, hotel names, UI, frames, watermarks or people."
+  },
+  "preserved": ["All seven questions and original answers", "Original detail destinations", "Telephone contact", "Booking context and forms", "Noindex on every route"]
+}

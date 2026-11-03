@@ -1554,5 +1554,50 @@
     "label": "",
     "kind": "hero-original",
     "reviewed": "2026-11-03"
+  },
+  "home-faq-reception": {
+    "file": "media/635d562d3b9f-1680.webp",
+    "width": 1680,
+    "height": 840,
+    "variants": [
+      {
+        "file": "media/635d562d3b9f-320.webp",
+        "width": 320,
+        "height": 160,
+        "bytes": 19880
+      },
+      {
+        "file": "media/635d562d3b9f-640.webp",
+        "width": 640,
+        "height": 320,
+        "bytes": 59350
+      },
+      {
+        "file": "media/635d562d3b9f-960.webp",
+        "width": 960,
+        "height": 480,
+        "bytes": 102028
+      },
+      {
+        "file": "media/635d562d3b9f-1280.webp",
+        "width": 1280,
+        "height": 640,
+        "bytes": 156832
+      },
+      {
+        "file": "media/635d562d3b9f-1680.webp",
+        "width": 1680,
+        "height": 840,
+        "bytes": 227614
+      }
+    ],
+    "source": "built-in image_gen; decorative hospitality illustration, not a photograph of a Turris property",
+    "source_width": 1680,
+    "source_height": 840,
+    "source_bytes": 1954511,
+    "source_sha256": "635d562d3b9f78379cf6d93b566551825df8359276788ca9730a9eeaae33763c",
+    "label": "Иллюстрация, созданная ИИ",
+    "kind": "concept",
+    "reviewed": "2026-11-03"
   }
 }

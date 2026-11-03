@@ -249,5 +249,15 @@
     "width": 1000,
     "height": 1000,
     "checked": "2026-10-28"
+  },
+  {
+    "id": "home-faq-reception",
+    "source": "built-in image_gen; decorative hospitality illustration, not a photograph of a Turris property",
+    "file": "home-faq-reception.png",
+    "kind": "concept",
+    "width": 1680,
+    "height": 840,
+    "checked": "2026-11-03",
+    "label": "Иллюстрация, созданная ИИ"
   }
 ]
