@@ -1,0 +1,50 @@
+{
+  "checks": [
+    "Four choices synchronize card, button state and selected marker; overview retains all four markers",
+    "Fullscreen appears above shared header; Escape restores section and focus",
+    "Four desktop sizes, aligned card/map edges, visible actions, color contrast and 200% zoom",
+    "Same map relocates to mobile hero and back into inner wrapper; hotel selection survives resize",
+    "Card booking action retains selected hotel, dates and infant/child ages; no booking submitted"
+  ],
+  "layouts": [
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "stage_height": 390,
+      "card_height": 390,
+      "overflow": 0
+    },
+    {
+      "viewport": [
+        992,
+        768
+      ],
+      "stage_height": 390,
+      "card_height": 390,
+      "overflow": 0
+    },
+    {
+      "viewport": [
+        1366,
+        900
+      ],
+      "stage_height": 432,
+      "card_height": 432,
+      "overflow": 0
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "stage_height": 440,
+      "card_height": 440,
+      "overflow": 0
+    }
+  ],
+  "javascript_errors": [],
+  "axe_violations": [],
+  "reservation_payment_or_lead_submitted": false
+}

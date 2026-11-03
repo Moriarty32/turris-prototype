@@ -41,7 +41,7 @@ async def main():
     layouts.append([route['id'],width]);assert 'noindex' in await page.locator('meta[name=robots]').get_attribute('content')
    await context.close()
   checks.append('109 routes at 320 and 390 px: no horizontal overflow, noindex retained')
-  context=await browser.new_context(java_script_enabled=False,viewport={'width':390,'height':844});page=await context.new_page();await page.goto(BASE+'/');await expect(page.locator('.home-booking select')).to_be_visible();await expect(page.locator('.footer-links').first).to_be_visible();await expect(page.locator('.map-choices')).to_be_visible();await context.close()
+  context=await browser.new_context(java_script_enabled=False,viewport={'width':390,'height':844});page=await context.new_page();await page.goto(BASE+'/');await expect(page.locator('.home-booking select')).to_be_visible();await expect(page.locator('.footer-links').first).to_be_visible();await expect(page.locator('.map-detail:visible')).to_have_count(4);await expect(page.locator('.map-detail').first.locator('.btn')).to_be_visible();await context.close()
   checks.append('No-JS fallback retains forms, map address choices and footer links')
   await browser.close()
  assert not errors,errors

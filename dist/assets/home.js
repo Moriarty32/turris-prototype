@@ -108,7 +108,8 @@
   if (!slot) return;
   const mobile = matchMedia('(max-width:767px)');
   const root = document.querySelector('.home-map-section [data-hotel-map]');
-  const section = root.parentElement;
+  const section = root.closest('.home-map-section');
+  const mapHome = root.parentElement;
   const form = document.querySelector('.home-booking [data-booking]');
   const select = form.querySelector('[name=hotel]');
   const bar = document.querySelector('.home-mobile-actions');
@@ -129,7 +130,7 @@
   }
   function layout() {
     if (root.classList.contains('map-expanded')) root.querySelector('.map-expand')?.click();
-    (mobile.matches ? slot : section).append(root);
+    (mobile.matches ? slot : mapHome).append(root);
     section.hidden = mobile.matches;
     sync();
     root.dispatchEvent(new Event('hotel-map-show'));

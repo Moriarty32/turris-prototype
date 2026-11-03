@@ -89,7 +89,13 @@
         marker.getElement()?.setAttribute('aria-pressed', String(key === id));
         marker.setZIndexOffset(key === id ? 1000 : 0);
       });
-      if (map && pan && changed && hotels[id]) map.panTo([hotels[id].lat, hotels[id].lng], {animate: !motion.matches, duration: .3});
+      if (map && pan && hotels[id]) {
+        const location = [hotels[id].lat, hotels[id].lng];
+        if (root.hasAttribute('data-map-keep-overview') && !root.closest('[data-mobile-map-slot]')) {
+          // Selecting a card keeps the four-address overview; recover offscreen choices after manual zooming.
+          if (!map.getBounds().contains(location)) fit();
+        } else if (changed) map.panTo(location, {animate: !motion.matches, duration: .3});
+      }
       if (speak) announce.textContent = id ? 'Выбран отель «' + hotels[id].name + '».' + (root.closest('[data-mobile-map-slot]') ? ' Он добавлен в форму бронирования.' : ' Адрес, условия и номера — в карточке рядом с картой.') : 'Выбраны все отели. Нажмите на название или отметку для выбора одного отеля.';
 
       if (speak) root.dispatchEvent(new CustomEvent('hotel-map-selection', {detail: {id}}));
