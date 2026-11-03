@@ -1,0 +1,332 @@
+{
+  "image_checks": [
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1,
+      "file": "hero/tverskaya-restored-v2-1600.webp",
+      "selected_width": 1600,
+      "cover_width_required": 1358
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1,
+      "file": "hero/lubyansky-original-v2-1600.webp",
+      "selected_width": 1600,
+      "cover_width_required": 1358
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1,
+      "file": "hero/petrovsky-restored-v2-1600.webp",
+      "selected_width": 1600,
+      "cover_width_required": 1358
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1,
+      "file": "hero/tagansky-restored-v2-1600.webp",
+      "selected_width": 1600,
+      "cover_width_required": 1358
+    },
+    {
+      "viewport": [
+        1366,
+        900
+      ],
+      "dpr": 2,
+      "file": "hero/tverskaya-restored-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 2916
+    },
+    {
+      "viewport": [
+        1366,
+        900
+      ],
+      "dpr": 2,
+      "file": "hero/lubyansky-original-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 2916
+    },
+    {
+      "viewport": [
+        1366,
+        900
+      ],
+      "dpr": 2,
+      "file": "hero/petrovsky-restored-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 2916
+    },
+    {
+      "viewport": [
+        1366,
+        900
+      ],
+      "dpr": 2,
+      "file": "hero/tagansky-restored-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 2916
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 2,
+      "file": "hero/tverskaya-restored-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 3824
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 2,
+      "file": "hero/lubyansky-original-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 3824
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 2,
+      "file": "hero/petrovsky-restored-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 3824
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 2,
+      "file": "hero/tagansky-restored-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 3824
+    },
+    {
+      "viewport": [
+        3840,
+        2160
+      ],
+      "dpr": 1,
+      "file": "hero/tverskaya-restored-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 3832
+    },
+    {
+      "viewport": [
+        3840,
+        2160
+      ],
+      "dpr": 1,
+      "file": "hero/lubyansky-original-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 3832
+    },
+    {
+      "viewport": [
+        3840,
+        2160
+      ],
+      "dpr": 1,
+      "file": "hero/petrovsky-restored-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 3832
+    },
+    {
+      "viewport": [
+        3840,
+        2160
+      ],
+      "dpr": 1,
+      "file": "hero/tagansky-restored-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 3832
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "dpr": 1,
+      "file": "hero/tverskaya-restored-v2-1920.webp",
+      "selected_width": 1920,
+      "cover_width_required": 1679
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "dpr": 1,
+      "file": "hero/lubyansky-original-v2-1920.webp",
+      "selected_width": 1920,
+      "cover_width_required": 1679
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "dpr": 1,
+      "file": "hero/petrovsky-restored-v2-1920.webp",
+      "selected_width": 1920,
+      "cover_width_required": 1679
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "dpr": 1,
+      "file": "hero/tagansky-restored-v2-1920.webp",
+      "selected_width": 1920,
+      "cover_width_required": 1679
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "dpr": 2,
+      "file": "hero/tverskaya-restored-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 3357
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "dpr": 2,
+      "file": "hero/lubyansky-original-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 3357
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "dpr": 2,
+      "file": "hero/petrovsky-restored-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 3357
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "dpr": 2,
+      "file": "hero/tagansky-restored-v2-3840.webp",
+      "selected_width": 3840,
+      "cover_width_required": 3357
+    }
+  ],
+  "layout_checks": [
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1,
+      "overflow": 0,
+      "card_content_within_bounds": true,
+      "mobile_background_not_downloaded": false
+    },
+    {
+      "viewport": [
+        1366,
+        900
+      ],
+      "dpr": 2,
+      "overflow": 0,
+      "card_content_within_bounds": true,
+      "mobile_background_not_downloaded": false
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 2,
+      "overflow": 0,
+      "card_content_within_bounds": true,
+      "mobile_background_not_downloaded": false
+    },
+    {
+      "viewport": [
+        3840,
+        2160
+      ],
+      "dpr": 1,
+      "overflow": 0,
+      "card_content_within_bounds": true,
+      "mobile_background_not_downloaded": false
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "dpr": 1,
+      "overflow": 0,
+      "card_content_within_bounds": true,
+      "mobile_background_not_downloaded": false
+    },
+    {
+      "viewport": [
+        768,
+        1024
+      ],
+      "dpr": 2,
+      "overflow": 0,
+      "card_content_within_bounds": true,
+      "mobile_background_not_downloaded": false
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 2,
+      "overflow": 0,
+      "card_content_within_bounds": true,
+      "mobile_background_not_downloaded": true
+    },
+    {
+      "viewport": [
+        320,
+        740
+      ],
+      "dpr": 2,
+      "overflow": 0,
+      "card_content_within_bounds": true,
+      "mobile_background_not_downloaded": true
+    }
+  ],
+  "axe_violations": [],
+  "javascript_errors": [],
+  "reservation_payment_or_lead_submitted": false,
+  "processing_note": "Restored textures are generated from original hotel photos; 3840px exports are not native 4K generation. Lubyansky is downsampled from the 6341px official original.",
+  "offer_and_loyalty_links": "passed",
+  "zoom_200_percent": "no horizontal overflow"
+}

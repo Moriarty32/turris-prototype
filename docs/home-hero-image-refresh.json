@@ -1,0 +1,230 @@
+{
+  "date": "2026-11-03",
+  "scope": "Four homepage background slides; galleries keep their original hotel photographs.",
+  "target": {
+    "width": 3840,
+    "height": 2160,
+    "aspect": "16:9",
+    "reason": "Full-width desktop background up to 3840 CSS pixels or 1920 CSS pixels at DPR 2.",
+    "variants": [
+      960,
+      1600,
+      1920,
+      2560,
+      3840
+    ]
+  },
+  "tool": "Built-in image_gen; no CLI/API fallback",
+  "processing_note": "The built-in generator returned 1672×941 restorations. Native dimensions are recorded separately; 3840×2160 files are delivery exports, not a claim of native 4K generation. The Lubyansky frame is downsampled from its 6341×4756 official original.",
+  "prompts": [
+    {
+      "hotel": "tverskaya",
+      "file": "output/imagegen/turris-hero-tverskaya-restored.png",
+      "reference": "assets/media/00cabef939b6-1639.webp",
+      "generated": "C:/Users/Bogomazov/.codex/generated_images/01a18293-2285-74e3-91e7-cbebd8b87a81/exec-78a04ecc-a8b8-4947-bc33-aee1c133388f.png",
+      "prompt": "Use case: precise-object-edit / faithful photographic restoration. Edit target: the attached real photograph of the Turris Tverskaya hotel bedroom. Deliver exactly 3840 × 2160 pixels, 16:9 landscape, one full-frame clean photographic bitmap for a full-width website hero, NO website layout, no overlays. Restore high-resolution photographic detail lost to compression: sharply resolved woven gray curtains, sheer fabric, real wood grain and straight door edges, natural fabric headboard, fine white striped bed linen, carpet fibers. Keep the same camera perspective and the same real room: two windows on left, double bed on right, gray upholstered headboard with wood frame, two existing wall posters, thermostat, wood door right. Preserve bed count, furniture, geometry, materials, existing colors and natural daylight. Adapt to the wider 16:9 frame by conservative crop/outpainting at edges only, while keeping the full headboard and most of the bed visible; no new objects. This is restoration of the same photo, not a redesign or a more luxurious imaginary room. Avoid blurry painterly textures, artificial plastic smoothing, shallow depth of field, oversharpened halos, added views, landmarks, added lighting or decorations. Keep existing poster lettering faithful if legible; do not add any new text, logo or watermark. Output highest detail, edge-to-edge focus, realistic professional architectural photo.",
+      "native_dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "hotel": "petrovsky",
+      "file": "output/imagegen/turris-hero-petrovsky-restored.png",
+      "reference": "assets/media/0c86738f2144-1995.webp",
+      "generated": "C:/Users/Bogomazov/.codex/generated_images/01a18293-2285-74e3-91e7-cbebd8b87a81/exec-b818ad52-7704-4c11-9289-40402ca73861.png",
+      "native_dimensions": [
+        1672,
+        941
+      ]
+    },
+    {
+      "hotel": "tagansky",
+      "file": "output/imagegen/turris-hero-tagansky-restored.png",
+      "reference": "assets/media/b60365cdfd29-2560.webp",
+      "generated": "C:/Users/Bogomazov/.codex/generated_images/01a18293-2285-74e3-91e7-cbebd8b87a81/exec-bf903abf-f4a7-4dc7-afe9-78d135ccf659.png",
+      "native_dimensions": [
+        1672,
+        941
+      ]
+    }
+  ],
+  "delivery": [
+    {
+      "hotel": "tverskaya",
+      "asset_id": "hero_tverskaya_v2",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "delivery_dimensions": [
+        3840,
+        2160
+      ],
+      "variants": [
+        {
+          "file": "hero/tverskaya-restored-v2-960.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 127022
+        },
+        {
+          "file": "hero/tverskaya-restored-v2-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 348076
+        },
+        {
+          "file": "hero/tverskaya-restored-v2-1920.webp",
+          "width": 1920,
+          "height": 1080,
+          "bytes": 482262
+        },
+        {
+          "file": "hero/tverskaya-restored-v2-2560.webp",
+          "width": 2560,
+          "height": 1440,
+          "bytes": 709334
+        },
+        {
+          "file": "hero/tverskaya-restored-v2-3840.webp",
+          "width": 3840,
+          "height": 2160,
+          "bytes": 1169180
+        }
+      ]
+    },
+    {
+      "hotel": "petrovsky",
+      "asset_id": "hero_petrovsky_v2",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "delivery_dimensions": [
+        3840,
+        2160
+      ],
+      "variants": [
+        {
+          "file": "hero/petrovsky-restored-v2-960.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 109570
+        },
+        {
+          "file": "hero/petrovsky-restored-v2-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 306504
+        },
+        {
+          "file": "hero/petrovsky-restored-v2-1920.webp",
+          "width": 1920,
+          "height": 1080,
+          "bytes": 420624
+        },
+        {
+          "file": "hero/petrovsky-restored-v2-2560.webp",
+          "width": 2560,
+          "height": 1440,
+          "bytes": 641610
+        },
+        {
+          "file": "hero/petrovsky-restored-v2-3840.webp",
+          "width": 3840,
+          "height": 2160,
+          "bytes": 1068932
+        }
+      ]
+    },
+    {
+      "hotel": "tagansky",
+      "asset_id": "hero_tagansky_v2",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "delivery_dimensions": [
+        3840,
+        2160
+      ],
+      "variants": [
+        {
+          "file": "hero/tagansky-restored-v2-960.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 79130
+        },
+        {
+          "file": "hero/tagansky-restored-v2-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 213750
+        },
+        {
+          "file": "hero/tagansky-restored-v2-1920.webp",
+          "width": 1920,
+          "height": 1080,
+          "bytes": 291090
+        },
+        {
+          "file": "hero/tagansky-restored-v2-2560.webp",
+          "width": 2560,
+          "height": 1440,
+          "bytes": 436398
+        },
+        {
+          "file": "hero/tagansky-restored-v2-3840.webp",
+          "width": 3840,
+          "height": 2160,
+          "bytes": 749002
+        }
+      ]
+    },
+    {
+      "hotel": "lubyansky",
+      "asset_id": "hero_lubyansky_v2",
+      "native_dimensions": [
+        6341,
+        4756
+      ],
+      "delivery_dimensions": [
+        3840,
+        2160
+      ],
+      "variants": [
+        {
+          "file": "hero/lubyansky-original-v2-960.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 121376
+        },
+        {
+          "file": "hero/lubyansky-original-v2-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 315596
+        },
+        {
+          "file": "hero/lubyansky-original-v2-1920.webp",
+          "width": 1920,
+          "height": 1080,
+          "bytes": 447154
+        },
+        {
+          "file": "hero/lubyansky-original-v2-2560.webp",
+          "width": 2560,
+          "height": 1440,
+          "bytes": 780558
+        },
+        {
+          "file": "hero/lubyansky-original-v2-3840.webp",
+          "width": 3840,
+          "height": 2160,
+          "bytes": 1647210
+        }
+      ]
+    }
+  ]
+}

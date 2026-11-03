@@ -1378,5 +1378,181 @@
     "label": "",
     "kind": "concept",
     "reviewed": "2026-10-29"
+  },
+  "hero_tverskaya_v2": {
+    "file": "hero/tverskaya-restored-v2-3840.webp",
+    "width": 3840,
+    "height": 2160,
+    "variants": [
+      {
+        "file": "hero/tverskaya-restored-v2-960.webp",
+        "width": 960,
+        "height": 540,
+        "bytes": 127022
+      },
+      {
+        "file": "hero/tverskaya-restored-v2-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 348076
+      },
+      {
+        "file": "hero/tverskaya-restored-v2-1920.webp",
+        "width": 1920,
+        "height": 1080,
+        "bytes": 482262
+      },
+      {
+        "file": "hero/tverskaya-restored-v2-2560.webp",
+        "width": 2560,
+        "height": 1440,
+        "bytes": 709334
+      },
+      {
+        "file": "hero/tverskaya-restored-v2-3840.webp",
+        "width": 3840,
+        "height": 2160,
+        "bytes": 1169180
+      }
+    ],
+    "source": "assets/media/00cabef939b6-1639.webp",
+    "source_width": 1672,
+    "source_height": 941,
+    "source_sha256": "9bd78c73d6a2e78f42d2e0b692dd235c7925960faaca71dbdf82a72eb7158336",
+    "label": "Восстановлено по фото отеля · ИИ",
+    "kind": "hero-restoration",
+    "reviewed": "2026-11-03"
+  },
+  "hero_petrovsky_v2": {
+    "file": "hero/petrovsky-restored-v2-3840.webp",
+    "width": 3840,
+    "height": 2160,
+    "variants": [
+      {
+        "file": "hero/petrovsky-restored-v2-960.webp",
+        "width": 960,
+        "height": 540,
+        "bytes": 109570
+      },
+      {
+        "file": "hero/petrovsky-restored-v2-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 306504
+      },
+      {
+        "file": "hero/petrovsky-restored-v2-1920.webp",
+        "width": 1920,
+        "height": 1080,
+        "bytes": 420624
+      },
+      {
+        "file": "hero/petrovsky-restored-v2-2560.webp",
+        "width": 2560,
+        "height": 1440,
+        "bytes": 641610
+      },
+      {
+        "file": "hero/petrovsky-restored-v2-3840.webp",
+        "width": 3840,
+        "height": 2160,
+        "bytes": 1068932
+      }
+    ],
+    "source": "assets/media/0c86738f2144-1995.webp",
+    "source_width": 1672,
+    "source_height": 941,
+    "source_sha256": "980a4085301b6de4c9163b62b9b81e5b9d23830bdae718e296304e4ba3c2e2e3",
+    "label": "Восстановлено по фото отеля · ИИ",
+    "kind": "hero-restoration",
+    "reviewed": "2026-11-03"
+  },
+  "hero_tagansky_v2": {
+    "file": "hero/tagansky-restored-v2-3840.webp",
+    "width": 3840,
+    "height": 2160,
+    "variants": [
+      {
+        "file": "hero/tagansky-restored-v2-960.webp",
+        "width": 960,
+        "height": 540,
+        "bytes": 79130
+      },
+      {
+        "file": "hero/tagansky-restored-v2-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 213750
+      },
+      {
+        "file": "hero/tagansky-restored-v2-1920.webp",
+        "width": 1920,
+        "height": 1080,
+        "bytes": 291090
+      },
+      {
+        "file": "hero/tagansky-restored-v2-2560.webp",
+        "width": 2560,
+        "height": 1440,
+        "bytes": 436398
+      },
+      {
+        "file": "hero/tagansky-restored-v2-3840.webp",
+        "width": 3840,
+        "height": 2160,
+        "bytes": 749002
+      }
+    ],
+    "source": "assets/media/b60365cdfd29-2560.webp",
+    "source_width": 1672,
+    "source_height": 941,
+    "source_sha256": "881f825a2814881c6bce4dc55a6a54a84635f19e52c4581003ce297a9fa12a93",
+    "label": "Восстановлено по фото отеля · ИИ",
+    "kind": "hero-restoration",
+    "reviewed": "2026-11-03"
+  },
+  "hero_lubyansky_v2": {
+    "file": "hero/lubyansky-original-v2-3840.webp",
+    "width": 3840,
+    "height": 2160,
+    "variants": [
+      {
+        "file": "hero/lubyansky-original-v2-960.webp",
+        "width": 960,
+        "height": 540,
+        "bytes": 121376
+      },
+      {
+        "file": "hero/lubyansky-original-v2-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 315596
+      },
+      {
+        "file": "hero/lubyansky-original-v2-1920.webp",
+        "width": 1920,
+        "height": 1080,
+        "bytes": 447154
+      },
+      {
+        "file": "hero/lubyansky-original-v2-2560.webp",
+        "width": 2560,
+        "height": 1440,
+        "bytes": 780558
+      },
+      {
+        "file": "hero/lubyansky-original-v2-3840.webp",
+        "width": 3840,
+        "height": 2160,
+        "bytes": 1647210
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/209/u58zxzcqcf1zfzn0rsmadwfk3so17y8a.jpg",
+    "source_width": 6341,
+    "source_height": 4756,
+    "source_sha256": "562eba91f9316538836cd1091b93c8b62e1ab21ac54f9082e7ab0d70f8082f13",
+    "label": "",
+    "kind": "hero-original",
+    "reviewed": "2026-11-03"
   }
 }

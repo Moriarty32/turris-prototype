@@ -271,7 +271,7 @@ def build():
   if p['id']=='contacts':
    doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/contacts.css?v=contacts-1"><script src="'+BASE+'/assets/contacts.js?v=contacts-1" defer></script></head>')
   if p['id']=='home':
-   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/home.css?v=panorama-1"><script src="'+BASE+'/assets/home.js?v=panorama-1" defer></script></head>')
+   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/home.css?v=photo-story-2"><script src="'+BASE+'/assets/home.js?v=panorama-1" defer></script></head>')
   doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/design-system.css?v=contrast-1"><script src="'+BASE+'/assets/design-system.js?v=mobile-2" defer></script></head>')
   if p['template']=='blog':
    doc=doc.replace('</head>','<link rel="stylesheet" href="'+BASE+'/assets/journal.css?v=journal-1"><script src="'+BASE+'/assets/journal.js?v=journal-1" defer></script></head>')
@@ -294,6 +294,6 @@ def build():
   if robots not in markup:raise RuntimeError('Missing indexing protection: '+str(page))
   page.write_text(markup,encoding='utf-8')
  (DIST/'robots.txt').write_text('User-agent: *\nDisallow:\n# Indexing is disabled through robots meta on every HTML page.\n# Crawling must remain allowed so robots can read noindex.\n# This project-path robots.txt is informational; host-root rules take precedence.\n',encoding='utf-8')
- (ROOT/'docs/build-report.json').write_text(json.dumps({'pages':len(public),'templates':len(RENDER),'base':BASE,'generated_assets':4,'documentary_assets':len(ASSETS),'mode':'prototype-with-live-travelline-booking-demo-contact-forms','indexing':'noindex'},ensure_ascii=False,indent=2),encoding='utf-8')
+ (ROOT/'docs/build-report.json').write_text(json.dumps({'pages':len(public),'templates':len(RENDER),'base':BASE,'generated_assets':4,'documentary_assets':sum(not a.get('label') for a in ASSETS.values()),'restored_hero_assets':sum(a.get('kind')=='hero-restoration' for a in ASSETS.values()),'mode':'prototype-with-live-travelline-booking-demo-contact-forms','indexing':'noindex'},ensure_ascii=False,indent=2),encoding='utf-8')
  print('Built',len(public),'pages,',len(RENDER),'templates')
 if __name__=='__main__':build()
