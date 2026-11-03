@@ -1599,5 +1599,169 @@
     "label": "Иллюстрация, созданная ИИ",
     "kind": "concept",
     "reviewed": "2026-11-03"
+  },
+  "hero_tverskaya_v3": {
+    "file": "hero/tverskaya-native-v3-1672.webp",
+    "width": 1672,
+    "height": 941,
+    "variants": [
+      {
+        "file": "hero/tverskaya-native-v3-960.webp",
+        "width": 960,
+        "height": 540,
+        "bytes": 154676
+      },
+      {
+        "file": "hero/tverskaya-native-v3-1600.webp",
+        "width": 1600,
+        "height": 900,
+        "bytes": 449692
+      },
+      {
+        "file": "hero/tverskaya-native-v3-1672.webp",
+        "width": 1672,
+        "height": 941,
+        "bytes": 499128
+      }
+    ],
+    "source": "output/imagegen/turris-hero-tverskaya-v3.png",
+    "source_width": 1672,
+    "source_height": 941,
+    "source_sha256": "ddd4a8b6a558455eb8676746f28189b2f67ab46e66a935aeb44da0f5822998b6",
+    "label": "Восстановлено по фото отеля · ИИ",
+    "kind": "hero-restoration",
+    "reviewed": "2026-11-03"
+  },
+  "hero_petrovsky_v3": {
+    "file": "hero/petrovsky-native-v3-1995.webp",
+    "width": 1995,
+    "height": 1080,
+    "variants": [
+      {
+        "file": "hero/petrovsky-native-v3-960.webp",
+        "width": 960,
+        "height": 520,
+        "bytes": 83410
+      },
+      {
+        "file": "hero/petrovsky-native-v3-1600.webp",
+        "width": 1600,
+        "height": 866,
+        "bytes": 223714
+      },
+      {
+        "file": "hero/petrovsky-native-v3-1920.webp",
+        "width": 1920,
+        "height": 1039,
+        "bytes": 309528
+      },
+      {
+        "file": "hero/petrovsky-native-v3-1995.webp",
+        "width": 1995,
+        "height": 1080,
+        "bytes": 331978
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/0cf/20e0mzjups44u73n9ih2k644p1mr9muh.jpg",
+    "source_width": 1995,
+    "source_height": 1080,
+    "source_sha256": "0c86738f2144c190879c2d3a2beef0e5e516f11bb152744fbca91b6e944e08b7",
+    "label": "",
+    "kind": "hero-original",
+    "reviewed": "2026-11-03"
+  },
+  "hero_tagansky_v3": {
+    "file": "hero/tagansky-native-v3-2560.webp",
+    "width": 2560,
+    "height": 1381,
+    "variants": [
+      {
+        "file": "hero/tagansky-native-v3-960.webp",
+        "width": 960,
+        "height": 518,
+        "bytes": 64608
+      },
+      {
+        "file": "hero/tagansky-native-v3-1600.webp",
+        "width": 1600,
+        "height": 863,
+        "bytes": 163508
+      },
+      {
+        "file": "hero/tagansky-native-v3-1920.webp",
+        "width": 1920,
+        "height": 1036,
+        "bytes": 226870
+      },
+      {
+        "file": "hero/tagansky-native-v3-2560.webp",
+        "width": 2560,
+        "height": 1381,
+        "bytes": 346712
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/af2/2tzv9dtxc1c38sz5jop3wnbd8mpiru3t.jpg",
+    "source_width": 2560,
+    "source_height": 1381,
+    "source_sha256": "b60365cdfd298f941d5ac5545a12aae16f3e8b094c6b9059df134d29d7b82e63",
+    "label": "",
+    "kind": "hero-original",
+    "reviewed": "2026-11-03"
+  },
+  "hero_lubyansky_v3": {
+    "file": "hero/lubyansky-native-v3-6341.webp",
+    "width": 6341,
+    "height": 4756,
+    "variants": [
+      {
+        "file": "hero/lubyansky-native-v3-960.webp",
+        "width": 960,
+        "height": 720,
+        "bytes": 188554
+      },
+      {
+        "file": "hero/lubyansky-native-v3-1600.webp",
+        "width": 1600,
+        "height": 1200,
+        "bytes": 500746
+      },
+      {
+        "file": "hero/lubyansky-native-v3-1920.webp",
+        "width": 1920,
+        "height": 1440,
+        "bytes": 713402
+      },
+      {
+        "file": "hero/lubyansky-native-v3-2560.webp",
+        "width": 2560,
+        "height": 1920,
+        "bytes": 1248334
+      },
+      {
+        "file": "hero/lubyansky-native-v3-3840.webp",
+        "width": 3840,
+        "height": 2880,
+        "bytes": 2724510
+      },
+      {
+        "file": "hero/lubyansky-native-v3-5120.webp",
+        "width": 5120,
+        "height": 3840,
+        "bytes": 4556132
+      },
+      {
+        "file": "hero/lubyansky-native-v3-6341.webp",
+        "width": 6341,
+        "height": 4756,
+        "bytes": 7258572
+      }
+    ],
+    "source": "https://turris.online/upload/iblock/209/u58zxzcqcf1zfzn0rsmadwfk3so17y8a.jpg",
+    "source_width": 6341,
+    "source_height": 4756,
+    "source_sha256": "562eba91f9316538836cd1091b93c8b62e1ab21ac54f9082e7ab0d70f8082f13",
+    "label": "",
+    "kind": "hero-original",
+    "reviewed": "2026-11-03"
   }
 }

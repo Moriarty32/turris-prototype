@@ -1,0 +1,178 @@
+{
+  "date": "2026-11-03",
+  "scope": "Finish the homepage background quality refresh, keeping the existing four-hotel carousel, booking form and mobile map.",
+  "diagnosis": "Three v2 wallpapers were enlarged from 1672x941 generated masters to 3840x2160. The larger files did not contain native 4K detail. Some of the actual hotel photographs are larger and sharper than these generated reconstructions.",
+  "delivery": "Export each responsive variant directly from the native master, quality 96 WebP, retaining original aspect ratio. No enlargement, repeated resampling, offline cropping, artificial sharpening or CSS blur. Browser object-fit preserves the established composition. Versioned filenames bypass cached v2 files.",
+  "target_slots": "Full-width desktop hero; 1366xapproximately688 and 1920xapproximately1000 CSS pixels, depending on the viewport and header. Larger originals serve high-density and wide monitors. At 767px and below the current map replaces photography and the large wallpapers must not download.",
+  "generation_tool": "Built-in image_gen for the Tverskaya photographic restoration; no CLI/API fallback",
+  "native_resolution_limit": "The built-in image generator returned 1672x941px despite the requested 3840x2160 canvas. Tverskaya cannot provide genuine 4K/Retina native detail from this master; the delivered dimensions must not conceal that limitation. The new restoration is selected for clearer textures after visual inspection.",
+  "images": [
+    {
+      "hotel": "tverskaya",
+      "source": "output/imagegen/turris-hero-tverskaya-v3.png",
+      "reference": "assets/hero/tverskaya-restored-v2-3840.webp",
+      "original_property_photo": "https://turris.online/upload/iblock/020/ppeozpltttkryte3v0x04g3hopums1t8.jpg",
+      "native_dimensions": [
+        1672,
+        941
+      ],
+      "kind": "hero-restoration",
+      "label": "Восстановлено по фото отеля · ИИ",
+      "decision": "New restoration with clearer curtain, timber and linen textures. Preserve room geometry and existing furniture; label as restored imagery.",
+      "prompt": "Faithful high-resolution photographic detail restoration / precise-object-edit. Edit ONLY photographic quality of the supplied hotel-room photograph. Preserve the exact 3840x2160 canvas, camera angle, framing, geometry, room layout, bed, pillows, windows, curtains, posters, thermostat, wood door, furniture, colors and natural daylight. This is the same actual room, not a redesign. Make the entire image sharply focused edge-to-edge, as a professional architectural photograph at f/8, with genuinely resolved fine woven curtain texture, crisp sheer curtain folds, natural wood grain, fabric headboard and fine white striped bed linen. Remove soft painterly interpolation and compression haze. No bokeh, blur, plastic smoothing, oversharpening halos, fake luxury accessories, added furniture, new light fixtures, new text, landmarks or logos. Retain existing wall posters without inventing text. Output highest native detail and resolution available, target 3840 by 2160 pixels, 16:9. Do not present a webpage or UI; only the restored photograph.",
+      "asset_id": "hero_tverskaya_v3",
+      "variants": [
+        {
+          "file": "hero/tverskaya-native-v3-960.webp",
+          "width": 960,
+          "height": 540,
+          "bytes": 154676
+        },
+        {
+          "file": "hero/tverskaya-native-v3-1600.webp",
+          "width": 1600,
+          "height": 900,
+          "bytes": 449692
+        },
+        {
+          "file": "hero/tverskaya-native-v3-1672.webp",
+          "width": 1672,
+          "height": 941,
+          "bytes": 499128
+        }
+      ]
+    },
+    {
+      "hotel": "petrovsky",
+      "source": "https://turris.online/upload/iblock/0cf/20e0mzjups44u73n9ih2k644p1mr9muh.jpg",
+      "native_dimensions": [
+        1995,
+        1080
+      ],
+      "kind": "hero-original",
+      "label": "",
+      "decision": "Return to the larger official original of the same attic bedroom, instead of the smaller 1672px generated reconstruction.",
+      "asset_id": "hero_petrovsky_v3",
+      "variants": [
+        {
+          "file": "hero/petrovsky-native-v3-960.webp",
+          "width": 960,
+          "height": 520,
+          "bytes": 83410
+        },
+        {
+          "file": "hero/petrovsky-native-v3-1600.webp",
+          "width": 1600,
+          "height": 866,
+          "bytes": 223714
+        },
+        {
+          "file": "hero/petrovsky-native-v3-1920.webp",
+          "width": 1920,
+          "height": 1039,
+          "bytes": 309528
+        },
+        {
+          "file": "hero/petrovsky-native-v3-1995.webp",
+          "width": 1995,
+          "height": 1080,
+          "bytes": 331978
+        }
+      ]
+    },
+    {
+      "hotel": "tagansky",
+      "source": "https://turris.online/upload/iblock/af2/2tzv9dtxc1c38sz5jop3wnbd8mpiru3t.jpg",
+      "native_dimensions": [
+        2560,
+        1381
+      ],
+      "kind": "hero-original",
+      "label": "",
+      "decision": "Return to the official 2560px original of the same twin bedroom; it contains more actual image samples than the 1672px reconstruction.",
+      "asset_id": "hero_tagansky_v3",
+      "variants": [
+        {
+          "file": "hero/tagansky-native-v3-960.webp",
+          "width": 960,
+          "height": 518,
+          "bytes": 64608
+        },
+        {
+          "file": "hero/tagansky-native-v3-1600.webp",
+          "width": 1600,
+          "height": 863,
+          "bytes": 163508
+        },
+        {
+          "file": "hero/tagansky-native-v3-1920.webp",
+          "width": 1920,
+          "height": 1036,
+          "bytes": 226870
+        },
+        {
+          "file": "hero/tagansky-native-v3-2560.webp",
+          "width": 2560,
+          "height": 1381,
+          "bytes": 346712
+        }
+      ]
+    },
+    {
+      "hotel": "lubyansky",
+      "source": "https://turris.online/upload/iblock/209/u58zxzcqcf1zfzn0rsmadwfk3so17y8a.jpg",
+      "native_dimensions": [
+        6341,
+        4756
+      ],
+      "kind": "hero-original",
+      "label": "",
+      "decision": "Retain the official high-resolution original, adding native 5120px and 6341px options for large and high-density displays. Preserve the full original without offline 16:9 cropping.",
+      "asset_id": "hero_lubyansky_v3",
+      "variants": [
+        {
+          "file": "hero/lubyansky-native-v3-960.webp",
+          "width": 960,
+          "height": 720,
+          "bytes": 188554
+        },
+        {
+          "file": "hero/lubyansky-native-v3-1600.webp",
+          "width": 1600,
+          "height": 1200,
+          "bytes": 500746
+        },
+        {
+          "file": "hero/lubyansky-native-v3-1920.webp",
+          "width": 1920,
+          "height": 1440,
+          "bytes": 713402
+        },
+        {
+          "file": "hero/lubyansky-native-v3-2560.webp",
+          "width": 2560,
+          "height": 1920,
+          "bytes": 1248334
+        },
+        {
+          "file": "hero/lubyansky-native-v3-3840.webp",
+          "width": 3840,
+          "height": 2880,
+          "bytes": 2724510
+        },
+        {
+          "file": "hero/lubyansky-native-v3-5120.webp",
+          "width": 5120,
+          "height": 3840,
+          "bytes": 4556132
+        },
+        {
+          "file": "hero/lubyansky-native-v3-6341.webp",
+          "width": 6341,
+          "height": 4756,
+          "bytes": 7258572
+        }
+      ]
+    }
+  ]
+}

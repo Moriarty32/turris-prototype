@@ -1,0 +1,566 @@
+{
+  "status": "passed",
+  "checks": [
+    "All exports match their manifest and never exceed native master dimensions",
+    "All four versioned backgrounds decode and select an appropriate srcset variant",
+    "At source-limited sizes, browser uses largest native variant",
+    "No CSS blur, transform scale or horizontal overflow",
+    "Four explicit hotel picks retain matching booking state",
+    "Mobile keeps the map and requests zero large wallpaper files",
+    "noindex retained"
+  ],
+  "observations": [
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1,
+      "hotel": "tverskaya",
+      "file": "hero/tverskaya-native-v3-1600.webp",
+      "delivered": [
+        1600,
+        900
+      ],
+      "native_source": [
+        1672,
+        941
+      ],
+      "effective_density": 1.178,
+      "native_source_limited": false
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1,
+      "hotel": "lubyansky",
+      "file": "hero/lubyansky-native-v3-1600.webp",
+      "delivered": [
+        1600,
+        1200
+      ],
+      "native_source": [
+        6341,
+        4756
+      ],
+      "effective_density": 1.178,
+      "native_source_limited": false
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1,
+      "hotel": "petrovsky",
+      "file": "hero/petrovsky-native-v3-1600.webp",
+      "delivered": [
+        1600,
+        866
+      ],
+      "native_source": [
+        1995,
+        1080
+      ],
+      "effective_density": 1.178,
+      "native_source_limited": false
+    },
+    {
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 1,
+      "hotel": "tagansky",
+      "file": "hero/tagansky-native-v3-1600.webp",
+      "delivered": [
+        1600,
+        863
+      ],
+      "native_source": [
+        2560,
+        1381
+      ],
+      "effective_density": 1.178,
+      "native_source_limited": false
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "hotel": "tverskaya",
+      "file": "hero/tverskaya-native-v3-1672.webp",
+      "delivered": [
+        1672,
+        941
+      ],
+      "native_source": [
+        1672,
+        941
+      ],
+      "effective_density": 0.874,
+      "native_source_limited": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "hotel": "lubyansky",
+      "file": "hero/lubyansky-native-v3-1920.webp",
+      "delivered": [
+        1920,
+        1440
+      ],
+      "native_source": [
+        6341,
+        4756
+      ],
+      "effective_density": 1.004,
+      "native_source_limited": false
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "hotel": "petrovsky",
+      "file": "hero/petrovsky-native-v3-1920.webp",
+      "delivered": [
+        1920,
+        1039
+      ],
+      "native_source": [
+        1995,
+        1080
+      ],
+      "effective_density": 1.004,
+      "native_source_limited": false
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 1,
+      "hotel": "tagansky",
+      "file": "hero/tagansky-native-v3-1920.webp",
+      "delivered": [
+        1920,
+        1036
+      ],
+      "native_source": [
+        2560,
+        1381
+      ],
+      "effective_density": 1.004,
+      "native_source_limited": false
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 2,
+      "hotel": "tverskaya",
+      "file": "hero/tverskaya-native-v3-1672.webp",
+      "delivered": [
+        1672,
+        941
+      ],
+      "native_source": [
+        1672,
+        941
+      ],
+      "effective_density": 0.874,
+      "native_source_limited": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 2,
+      "hotel": "lubyansky",
+      "file": "hero/lubyansky-native-v3-3840.webp",
+      "delivered": [
+        3840,
+        2880
+      ],
+      "native_source": [
+        6341,
+        4756
+      ],
+      "effective_density": 2.008,
+      "native_source_limited": false
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 2,
+      "hotel": "petrovsky",
+      "file": "hero/petrovsky-native-v3-1995.webp",
+      "delivered": [
+        1995,
+        1080
+      ],
+      "native_source": [
+        1995,
+        1080
+      ],
+      "effective_density": 1.043,
+      "native_source_limited": true
+    },
+    {
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 2,
+      "hotel": "tagansky",
+      "file": "hero/tagansky-native-v3-2560.webp",
+      "delivered": [
+        2560,
+        1381
+      ],
+      "native_source": [
+        2560,
+        1381
+      ],
+      "effective_density": 1.339,
+      "native_source_limited": true
+    },
+    {
+      "viewport": [
+        2560,
+        1440
+      ],
+      "dpr": 1,
+      "hotel": "tverskaya",
+      "file": "hero/tverskaya-native-v3-1672.webp",
+      "delivered": [
+        1672,
+        941
+      ],
+      "native_source": [
+        1672,
+        941
+      ],
+      "effective_density": 0.655,
+      "native_source_limited": true
+    },
+    {
+      "viewport": [
+        2560,
+        1440
+      ],
+      "dpr": 1,
+      "hotel": "lubyansky",
+      "file": "hero/lubyansky-native-v3-2560.webp",
+      "delivered": [
+        2560,
+        1920
+      ],
+      "native_source": [
+        6341,
+        4756
+      ],
+      "effective_density": 1.003,
+      "native_source_limited": false
+    },
+    {
+      "viewport": [
+        2560,
+        1440
+      ],
+      "dpr": 1,
+      "hotel": "petrovsky",
+      "file": "hero/petrovsky-native-v3-1995.webp",
+      "delivered": [
+        1995,
+        1080
+      ],
+      "native_source": [
+        1995,
+        1080
+      ],
+      "effective_density": 0.782,
+      "native_source_limited": true
+    },
+    {
+      "viewport": [
+        2560,
+        1440
+      ],
+      "dpr": 1,
+      "hotel": "tagansky",
+      "file": "hero/tagansky-native-v3-2560.webp",
+      "delivered": [
+        2560,
+        1381
+      ],
+      "native_source": [
+        2560,
+        1381
+      ],
+      "effective_density": 1.003,
+      "native_source_limited": false
+    },
+    {
+      "viewport": [
+        2560,
+        1440
+      ],
+      "dpr": 2,
+      "hotel": "tverskaya",
+      "file": "hero/tverskaya-native-v3-1672.webp",
+      "delivered": [
+        1672,
+        941
+      ],
+      "native_source": [
+        1672,
+        941
+      ],
+      "effective_density": 0.655,
+      "native_source_limited": true
+    },
+    {
+      "viewport": [
+        2560,
+        1440
+      ],
+      "dpr": 2,
+      "hotel": "lubyansky",
+      "file": "hero/lubyansky-native-v3-5120.webp",
+      "delivered": [
+        5120,
+        3840
+      ],
+      "native_source": [
+        6341,
+        4756
+      ],
+      "effective_density": 2.006,
+      "native_source_limited": false
+    },
+    {
+      "viewport": [
+        2560,
+        1440
+      ],
+      "dpr": 2,
+      "hotel": "petrovsky",
+      "file": "hero/petrovsky-native-v3-1995.webp",
+      "delivered": [
+        1995,
+        1080
+      ],
+      "native_source": [
+        1995,
+        1080
+      ],
+      "effective_density": 0.782,
+      "native_source_limited": true
+    },
+    {
+      "viewport": [
+        2560,
+        1440
+      ],
+      "dpr": 2,
+      "hotel": "tagansky",
+      "file": "hero/tagansky-native-v3-2560.webp",
+      "delivered": [
+        2560,
+        1381
+      ],
+      "native_source": [
+        2560,
+        1381
+      ],
+      "effective_density": 1.003,
+      "native_source_limited": true
+    },
+    {
+      "viewport": [
+        3840,
+        2160
+      ],
+      "dpr": 1,
+      "hotel": "tverskaya",
+      "file": "hero/tverskaya-native-v3-1672.webp",
+      "delivered": [
+        1672,
+        941
+      ],
+      "native_source": [
+        1672,
+        941
+      ],
+      "effective_density": 0.436,
+      "native_source_limited": true
+    },
+    {
+      "viewport": [
+        3840,
+        2160
+      ],
+      "dpr": 1,
+      "hotel": "lubyansky",
+      "file": "hero/lubyansky-native-v3-3840.webp",
+      "delivered": [
+        3840,
+        2880
+      ],
+      "native_source": [
+        6341,
+        4756
+      ],
+      "effective_density": 1.002,
+      "native_source_limited": false
+    },
+    {
+      "viewport": [
+        3840,
+        2160
+      ],
+      "dpr": 1,
+      "hotel": "petrovsky",
+      "file": "hero/petrovsky-native-v3-1995.webp",
+      "delivered": [
+        1995,
+        1080
+      ],
+      "native_source": [
+        1995,
+        1080
+      ],
+      "effective_density": 0.521,
+      "native_source_limited": true
+    },
+    {
+      "viewport": [
+        3840,
+        2160
+      ],
+      "dpr": 1,
+      "hotel": "tagansky",
+      "file": "hero/tagansky-native-v3-2560.webp",
+      "delivered": [
+        2560,
+        1381
+      ],
+      "native_source": [
+        2560,
+        1381
+      ],
+      "effective_density": 0.668,
+      "native_source_limited": true
+    },
+    {
+      "viewport": [
+        1024,
+        1366
+      ],
+      "dpr": 2,
+      "hotel": "tverskaya",
+      "file": "hero/tverskaya-native-v3-1672.webp",
+      "delivered": [
+        1672,
+        941
+      ],
+      "native_source": [
+        1672,
+        941
+      ],
+      "effective_density": 0.871,
+      "native_source_limited": true
+    },
+    {
+      "viewport": [
+        1024,
+        1366
+      ],
+      "dpr": 2,
+      "hotel": "lubyansky",
+      "file": "hero/lubyansky-native-v3-3840.webp",
+      "delivered": [
+        3840,
+        2880
+      ],
+      "native_source": [
+        6341,
+        4756
+      ],
+      "effective_density": 2.667,
+      "native_source_limited": false
+    },
+    {
+      "viewport": [
+        1024,
+        1366
+      ],
+      "dpr": 2,
+      "hotel": "petrovsky",
+      "file": "hero/petrovsky-native-v3-1995.webp",
+      "delivered": [
+        1995,
+        1080
+      ],
+      "native_source": [
+        1995,
+        1080
+      ],
+      "effective_density": 1.0,
+      "native_source_limited": true
+    },
+    {
+      "viewport": [
+        1024,
+        1366
+      ],
+      "dpr": 2,
+      "hotel": "tagansky",
+      "file": "hero/tagansky-native-v3-2560.webp",
+      "delivered": [
+        2560,
+        1381
+      ],
+      "native_source": [
+        2560,
+        1381
+      ],
+      "effective_density": 1.279,
+      "native_source_limited": true
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "dpr": 2,
+      "mobile_map": true,
+      "background_requests": 0
+    },
+    {
+      "viewport": [
+        320,
+        740
+      ],
+      "dpr": 2,
+      "mobile_map": true,
+      "background_requests": 0
+    }
+  ],
+  "javascript_errors": [],
+  "limitation": "Tverskaya 1672px and some official hotel originals have insufficient native pixels for full-width 4K/Retina detail. Native source limits are recorded explicitly, not masked with enlarged exports."
+}

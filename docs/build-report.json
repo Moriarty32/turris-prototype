@@ -3,8 +3,8 @@
   "templates": 22,
   "base": "/turris-prototype",
   "generated_assets": 4,
-  "documentary_assets": 29,
-  "restored_hero_assets": 3,
+  "documentary_assets": 32,
+  "restored_hero_assets": 4,
   "mode": "prototype-with-live-travelline-booking-demo-contact-forms",
   "indexing": "noindex"
 }

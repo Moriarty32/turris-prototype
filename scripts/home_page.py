@@ -9,7 +9,7 @@ def render(p,g):
    s=s.replace('>'+label+'<', '><span class="home-field-icon">'+icon(ic)+'</span><span class="home-field-label">'+('Заезд — Выезд' if label=='Даты поездки' else label)+'</span><')
   return s
  slides='';slide_buttons=''
- photos={i:'hero_'+i+'_v2' for i in hotels}
+ photos={i:'hero_'+i+'_v3' for i in hotels}
  photo_sizes='(max-width:767px) 1px, max(calc(100vw - 8px), min(calc(177.78svh - 142.23px), 1920px))'
  for n,(i,h) in enumerate(hotels.items(),1):
   active=n==1

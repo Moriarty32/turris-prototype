@@ -38,5 +38,11 @@ for id,a in items.items():
    variants.append({'file':name,'width':w,'height':h,'bytes':dest.stat().st_size})
   encoded[sha]=variants
  result[id]={'file':variants[-1]['file'],'width':variants[-1]['width'],'height':variants[-1]['height'],'variants':variants,'source':source_url,'source_width':im.width,'source_height':im.height,'source_bytes':len(raw),'source_sha256':sha,'label':label,'kind':a['kind'],'reviewed':'2026-10-29'}
-(ROOT/'data/image-delivery.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+# Hero exports have their own native masters and exporter. Preserve them when
+# refreshing room thumbnails so a later asset refresh cannot silently remove them.
+manifest=ROOT/'data/image-delivery.json'
+if manifest.exists():
+ previous=json.loads(manifest.read_text(encoding='utf-8'))
+ result.update({id:entry for id,entry in previous.items() if id.startswith('hero_') and id not in result})
+manifest.write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'assets':len(result),'unique_masters':len(encoded),'web_files':sum(len(x) for x in encoded.values()),'web_bytes':sum(v['bytes'] for x in encoded.values() for v in x)},indent=2))
