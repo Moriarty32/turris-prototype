@@ -1,4 +1,4 @@
-/* The visual carousel never changes the trip or the hotel comparison below. */
+/* Rotation previews real rooms. Only an explicit hotel choice updates the trip. */
 (() => {
   'use strict';
   const carousel = document.querySelector('[data-hero-carousel]');
@@ -9,6 +9,7 @@
   const status = carousel.querySelector('.hero-slider-status');
   const motion = matchMedia('(prefers-reduced-motion: reduce)');
   const mobile = matchMedia('(max-width:767px)');
+  const hotel = document.querySelector('.home-booking [name=hotel]');
   let current = 0, timer, userPaused = motion.matches, hovered = false, visible = false;
   let pointer = null;
 
@@ -30,7 +31,8 @@
       slide.classList.toggle('is-active', active);
       slide.inert = !active;
       slide.setAttribute('aria-hidden', String(!active));
-      picks[n].setAttribute('aria-pressed', String(active));
+      picks[n].classList.toggle('is-preview', active);
+      picks[n].setAttribute('aria-pressed', String(hotel.value === slide.dataset.heroSlide));
     });
     if (manual) {
       userPaused = true;
@@ -39,7 +41,17 @@
     schedule();
   }
 
-  picks.forEach((button, index) => button.addEventListener('click', () => show(index, true)));
+  function choose(index) {
+    show(index, true);
+    hotel.value = slides[current].dataset.heroSlide;
+    hotel.dispatchEvent(new Event('change', {bubbles: true}));
+  }
+  picks.forEach((button, index) => button.addEventListener('click', () => choose(index)));
+  document.addEventListener('booking-context-change', () => {
+    const index = slides.findIndex(slide => slide.dataset.heroSlide === hotel.value);
+    if (index >= 0) show(index, true);
+    else picks.forEach(button => button.setAttribute('aria-pressed', 'false'));
+  });
   carousel.querySelector('[data-hero-prev]').addEventListener('click', () => show(current - 1, true));
   carousel.querySelector('[data-hero-next]').addEventListener('click', () => show(current + 1, true));
   // Focus stops rotation until the visitor explicitly starts it again.
@@ -52,13 +64,16 @@
   carousel.addEventListener('pointerenter', event => { if (event.pointerType === 'mouse') { hovered = true; schedule(); } });
   carousel.addEventListener('pointerleave', () => { hovered = false; schedule(); });
   carousel.addEventListener('keydown', event => {
+    if (!event.target.closest('.hero-carousel-controls,.hero-slide-caption')) return;
     if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
     event.preventDefault();
-    show(current + (event.key === 'ArrowRight' ? 1 : -1), true);
+    const index = current + (event.key === 'ArrowRight' ? 1 : -1);
+    if (event.target.closest('.hero-slide-picker')) choose(index);
+    else show(index, true);
     if (event.target.closest('a')) picks[current].focus();
   });
   carousel.addEventListener('pointerdown', event => {
-    if (event.pointerType !== 'mouse' && !event.target.closest('button,a')) pointer = {x: event.clientX, y: event.clientY};
+    if (!mobile.matches && event.pointerType !== 'mouse' && !event.target.closest('button,a,form')) pointer = {x: event.clientX, y: event.clientY};
   });
   carousel.addEventListener('pointerup', event => {
     if (!pointer) return;
@@ -81,7 +96,8 @@
   }); }
   mobile.addEventListener('change', () => { preload(); schedule(); });
   preload();
-  schedule();
+  const initial = slides.findIndex(slide => slide.dataset.heroSlide === hotel.value);
+  show(initial >= 0 ? initial : 0, initial >= 0);
 })();
 
 /* One map moves between the mobile hero and its desktop section. Selection
@@ -105,7 +121,7 @@
   root.querySelector('.map-details').append(empty);
   function sync() {
     if (mobile.matches) root.dispatchEvent(new CustomEvent('hotel-map-select', {detail:{id:select.value,pan:false}}));
-    else if (!root.dataset.selected) root.dispatchEvent(new CustomEvent('hotel-map-select', {detail:{id:'tverskaya',pan:false}}));
+    else if (select.value || !root.dataset.selected) root.dispatchEvent(new CustomEvent('hotel-map-select', {detail:{id:select.value || 'tverskaya',pan:false}}));
     empty.hidden = !!select.value;
     const hasDates = !!form.elements.checkin.value;
     book.firstChild.textContent = hasDates ? 'Номера и цены ' : 'Выбрать даты ';
